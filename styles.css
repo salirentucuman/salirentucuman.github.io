@@ -196,10 +196,9 @@ img { display: block; max-width: 100%; }
 .visor-foto img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .visor-cerrar { position: absolute; top: calc(16px + env(safe-area-inset-top)); right: 16px; width: 44px; height: 44px; border-radius: 22px; border: none; background: #FFFFFF; color: var(--tinta); display: flex; align-items: center; justify-content: center; }
 
-/* Párrafos de lado a lado: justificados, con corte de palabras para que no queden huecos. */
+/* Párrafos de lado a lado: justificados y sin cortar palabras. */
 .lema, .cierre p, .texto, .ficha-breve, .vacio {
   text-align: justify;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-  overflow-wrap: break-word;
+  -webkit-hyphens: none;
+  hyphens: none;
 }
