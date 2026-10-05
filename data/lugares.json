@@ -209,6 +209,34 @@
       "web": "zelmira.com.ar",
       "whatsapp": "+54 9 381 655-9521",
       "credito": "Zelmira"
+    },
+    {
+      "id": "costal",
+      "nombre": "Costal",
+      "categorias": [
+        "comer"
+      ],
+      "zona": "",
+      "tipo": "Cafetería de especialidad",
+      "momento": "dia",
+      "breve": "La cafetería de especialidad indiscutida.",
+      "texto": "Maestros baristas locales de alto expertise, granos de café seleccionados por expertos y una curaduría de pastelería artesana. También sirven jugos naturales y té de Tealosophy.\n\nEstá dentro del circuito de diseño de Alterpoint. La terraza trasera es probablemente uno de los sitios más especiales para tomar un café: un lugar meditativo.\n\nEs un café de nicho, y la terraza lo es más aún. Ideal para leer, por ejemplo.",
+      "foto": "fotos/costal.jpg",
+      "galeria": [
+        "fotos/costal-2.jpg",
+        "fotos/costal-3.jpg",
+        "fotos/costal-4.jpg",
+        "fotos/costal-5.jpg",
+        "fotos/costal-6.jpg",
+        "fotos/costal-7.jpg",
+        "fotos/costal-8.jpg"
+      ],
+      "credito": "Café Costal",
+      "direccion": "",
+      "precio": "",
+      "idealPara": "",
+      "instagram": "@cafecostal",
+      "alta": "2026-10-06"
     }
   ]
 }
