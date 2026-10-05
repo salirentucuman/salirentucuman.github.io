@@ -1,7 +1,7 @@
 /* Panel privado: publica lugares escribiendo data/lugares.json y fotos/ en el repositorio de GitHub. */
 
 var CATEGORIAS = [
-  ['comer', 'Café y copas'], ['pasear', 'Pasear'], ['curiosear', 'Curiosear'], ['barrio', 'De barrio'], ['eventos', 'Eventos']
+  ['comer', 'Café y copas'], ['restaurantes', 'Restaurantes y bodegones'], ['pasear', 'Pasear'], ['curiosear', 'Curiosear'], ['barrio', 'De barrio'], ['eventos', 'Eventos']
 ];
 var CAMPOS = ['nombre', 'zona', 'breve', 'texto', 'tipo', 'direccion', 'precio', 'idealPara', 'web', 'mail', 'instagram', 'whatsapp', 'credito'];
 var ARCHIVO = 'data/lugares.json';

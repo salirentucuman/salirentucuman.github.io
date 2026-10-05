@@ -83,7 +83,7 @@
       "id": "vintter",
       "nombre": "Vintter",
       "categorias": [
-        "comer"
+        "restaurantes"
       ],
       "zona": "Yerba Buena",
       "tipo": "Restaurant para cenar, solo con reservas",
@@ -160,7 +160,7 @@
       "id": "obrador-manteco",
       "nombre": "Obrador Manteco",
       "categorias": [
-        "comer",
+        "restaurantes",
         "barrio"
       ],
       "zona": "San Miguel de Tucumán",
