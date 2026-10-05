@@ -204,3 +204,26 @@ img { display: block; max-width: 100%; }
 }
 
 .enlace { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Eventos: otro ritmo. Fondo oscuro, acento cálido y un estado que marca la urgencia. */
+.evento, .tarjeta-evento {
+  --fondo: #1E2320; --tarjeta: #2A302C; --tinta: #F2F3F0; --tinta-suave: #D5D9D3;
+  --gris: #A9B0AA; --linea: #3A413C; --borde: #4A524C; --acento: #E9B872;
+  background: var(--fondo); color: var(--tinta);
+}
+.evento { min-height: 100vh; }
+.evento .boton-lleno { color: #1E2320; }
+.evento .ficha-cuando { font-size: 20px; letter-spacing: -0.3px; color: var(--acento); }
+.evento .guardar[aria-pressed="true"] svg { fill: var(--tinta); }
+
+.pildora { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 28px; padding: 0 12px; border-radius: 14px; background: var(--acento); color: #1E2320; font-size: 12px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; }
+.punto { width: 8px; height: 8px; border-radius: 4px; background: #1E2320; opacity: 0.45; }
+.punto.vivo { opacity: 1; animation: latido 1.4s ease-in-out infinite; }
+@keyframes latido { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .punto.vivo { animation: none; } }
+
+.tarjeta-evento { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; }
+.tarjeta-evento-foto { width: 100%; height: 150px; object-fit: cover; }
+.tarjeta-evento-texto { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+.tarjeta-evento-nombre { font-size: 20px; font-weight: 600; letter-spacing: -0.4px; line-height: 1.15; }
+.tarjeta-evento-cuando { font-size: 14px; font-weight: 600; color: var(--acento); }

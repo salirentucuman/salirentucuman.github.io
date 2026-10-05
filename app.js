@@ -96,7 +96,40 @@ function foto(lugar, clase) {
   return '<div class="' + clase + '"></div>';
 }
 
+/* Estado de un evento: marca la urgencia según la fecha de hoy. */
+function estadoEvento(lugar) {
+  var ev = lugar.evento || {}, ahora = Date.now(), dia = 86400000;
+  var inicio = ev.inicio ? new Date(ev.inicio).getTime() : NaN;
+  var fin = ev.fin ? new Date(ev.fin).getTime() : NaN;
+  if (!isNaN(inicio) && ahora < inicio) {
+    if (new Date(inicio).toDateString() === new Date().toDateString()) return { vivo: false, texto: 'Empieza hoy' };
+    var faltan = Math.ceil((inicio - ahora) / dia);
+    return { vivo: false, texto: faltan <= 1 ? 'Empieza mañana' : 'Empieza en ' + faltan + ' días' };
+  }
+  if (isNaN(fin)) return { vivo: false, texto: 'Se repite' };
+  var quedan = Math.ceil((fin - ahora) / dia);
+  if (quedan <= 1) return { vivo: true, texto: 'Termina hoy' };
+  if (quedan <= 2) return { vivo: true, texto: 'Últimos días' };
+  return { vivo: true, texto: 'Está pasando · quedan ' + quedan + ' días' };
+}
+
+function pildora(lugar) {
+  var e = estadoEvento(lugar);
+  return '<div class="pildora"><span class="punto' + (e.vivo ? ' vivo' : '') + '"></span>' + e.texto + '</div>';
+}
+
+function tarjetaEvento(lugar) {
+  var cuando = lugar.evento && lugar.evento.cuando;
+  return '<a class="tarjeta-evento" href="#/lugar/' + encodeURIComponent(lugar.id) + '">' +
+    (lugar.foto ? '<img class="tarjeta-evento-foto" src="' + esc(lugar.foto) + '" alt="" loading="lazy">' : '') +
+    '<div class="tarjeta-evento-texto">' + pildora(lugar) +
+    '<div class="tarjeta-evento-nombre">' + esc(lugar.nombre) + '</div>' +
+    (cuando ? '<div class="tarjeta-evento-cuando">' + esc(cuando) + '</div>' : '') +
+    '</div></a>';
+}
+
 function tarjeta(lugar) {
+  if (lugar.evento) return tarjetaEvento(lugar);
   return '<a class="tarjeta" href="#/lugar/' + encodeURIComponent(lugar.id) + '">' +
     foto(lugar, 'tarjeta-foto') +
     '<div class="tarjeta-texto">' +
@@ -125,7 +158,8 @@ function vistaInicio() {
       '<span><span class="categoria-nombre">' + c.nombre + '</span><span class="categoria-sub">' + c.sub + '</span></span></a>';
   }).join('');
 
-  var nuevos = lugaresVigentes().slice().sort(function (a, b) {
+  var agenda = deCategoria('eventos').filter(function (l) { return l.evento; });
+  var nuevos = lugaresVigentes().filter(function (l) { return !l.evento; }).sort(function (a, b) {
     return String(b.alta || '').localeCompare(String(a.alta || ''));
   }).slice(0, 4);
 
@@ -134,6 +168,7 @@ function vistaInicio() {
   return '<main class="pagina">' +
     '<div class="marca"><div class="marca-nombre">Day Out</div><div class="marca-ciudad">Tucumán</div></div>' +
     '<h1 class="lema">Una guía de lugares para visitar en Tucumán, seas residente o turista.</h1>' +
+    (agenda.length ? '<section class="bloque"><h2 class="etiqueta">Agenda</h2><div class="lista">' + agenda.map(tarjetaEvento).join('') + '</div></section>' : '') +
     '<section class="bloque"><h2 class="etiqueta">Categorías</h2><div class="categorias">' + cats + '</div></section>' +
     (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">Hallazgos</h2><div class="lista">' + nuevos.map(tarjeta).join('') + '</div></section>' : '') +
     (hayLugares ? '<button class="boton boton-lleno boton-grande" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
@@ -198,13 +233,13 @@ function vistaLugar(id) {
     (miniaturas ? '<div class="miniaturas">' + miniaturas + '</div>' : '') +
     (lugar.credito ? '<div class="credito">Fotos: ' + esc(lugar.credito) + '</div>' : '') + '</div>' : '';
 
-  return '<main>' +
+  return '<main' + (lugar.evento ? ' class="evento"' : '') + '>' +
     '<div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0">' : '') +
     '<a class="volver" href="#/" data-accion="volver" aria-label="Volver">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<button class="guardar" data-accion="guardar" data-id="' + esc(lugar.id) + '" aria-pressed="' + guardado + '" aria-label="Guardar lugar">' + svg(ICONOS.guardar, 20, 1.8) + '</button>' +
     '</div>' +
     '<div class="pagina">' + fotosBloque +
-    '<div class="ficha-cabecera"><div class="ficha-cat">' + esc(nombresCategorias(lugar)) + zona + '</div>' +
+    '<div class="ficha-cabecera">' + (lugar.evento ? pildora(lugar) : '') + '<div class="ficha-cat">' + esc(nombresCategorias(lugar)) + zona + '</div>' +
     '<h1 class="ficha-nombre">' + esc(lugar.nombre) + '</h1>' +
     (cuando ? '<div class="ficha-cuando">' + esc(cuando) + '</div>' : '') +
     (lugar.breve ? '<div class="ficha-breve">' + esc(lugar.breve) + '</div>' : '') + '</div>' +
@@ -213,7 +248,7 @@ function vistaLugar(id) {
     '<button class="boton" data-accion="compartir" data-nombre="' + esc(lugar.nombre) + '">' + svg(ICONOS.compartir, 18, 1.8) + '<span>Compartir</span></button>' +
     '</div>' +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
-    (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">Por qué ir</h2><div class="texto">' + esc(lugar.texto) + '</div></section>' : '') +
+    (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : 'Por qué ir') + '</h2><div class="texto">' + esc(lugar.texto) + '</div></section>' : '') +
     '<div class="fuiste"><div class="fuiste-titulo">¿Ya fuiste?</div>' +
     '<a class="boton boton-chico" target="_blank" rel="noopener" href="' + esc(whatsapp('Mi reseña de ' + lugar.nombre + ' para Day Out Tucumán: ')) + '">Dejar reseña</a></div>' +
     '</div></main>' + nav('');

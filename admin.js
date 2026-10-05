@@ -109,11 +109,11 @@ function cargarFormulario(lugar) {
   });
   var ev = lugar.evento || {};
   $('cuando').value = ev.cuando || '';
-  $('fin').value = '';
-  if (ev.fin) {
-    var f = new Date(ev.fin);
-    if (!isNaN(f.getTime())) $('fin').value = new Date(f.getTime() - f.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
-  }
+  ['inicio', 'fin'].forEach(function (campo) {
+    $(campo).value = '';
+    var f = ev[campo] ? new Date(ev[campo]) : null;
+    if (f && !isNaN(f.getTime())) $(campo).value = new Date(f.getTime() - f.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  });
   $('foto').value = '';
   $('galeria').value = '';
   $('vista-foto').hidden = !lugar.foto;
@@ -184,9 +184,10 @@ function publicar(ev) {
       if (rutaFoto) lugar.foto = rutaFoto;
       if (!lugar.foto) lugar.foto = '';
       if (rutasGaleria.length) lugar.galeria = (lugar.galeria || []).concat(rutasGaleria);
-      var cuando = $('cuando').value.trim(), fin = $('fin').value;
-      if (cuando || fin) {
+      var cuando = $('cuando').value.trim(), inicio = $('inicio').value, fin = $('fin').value;
+      if (cuando || inicio || fin) {
         lugar.evento = { cuando: cuando };
+        if (inicio) lugar.evento.inicio = new Date(inicio).toISOString();
         if (fin) lugar.evento.fin = new Date(fin).toISOString();
       } else delete lugar.evento;
       return escribir(actual.json, actual.sha, (idActual ? 'Actualiza ' : 'Suma ') + nombre).then(function () { datos = actual.json; });
