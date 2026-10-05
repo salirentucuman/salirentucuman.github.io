@@ -180,11 +180,13 @@ function vistaInicio() {
   }).join('');
 
   var agenda = deCategoria('eventos').filter(function (l) { return l.evento; });
-  var nuevos = lugaresVigentes().filter(function (l) { return !l.evento; }).sort(function (a, b) {
-    return String(b.alta || '').localeCompare(String(a.alta || ''));
-  }).slice(0, 4);
+  /* Hallazgos: el último lugar y el último evento cargados. */
+  var visibles2 = lugaresVigentes();
+  var ultimoLugar = visibles2.filter(function (l) { return !l.evento; }).pop();
+  var ultimoEvento = visibles2.filter(function (l) { return l.evento; }).pop();
+  var nuevos = [ultimoLugar, ultimoEvento].filter(Boolean);
 
-  var hayLugares = lugaresVigentes().length > 0;
+  var hayLugares = datos.lugares.filter(vigente).length > 0;
 
   return '<main class="pagina">' +
     '<div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Tucumán</div></div>' +
@@ -322,7 +324,7 @@ app.addEventListener('click', function (ev) {
   if (!el) return;
   var accion = el.getAttribute('data-accion');
   if (accion === 'azar') {
-    var lista = lugaresVigentes();
+    var lista = datos.lugares.filter(vigente);
     if (lista.length) location.hash = '#/lugar/' + encodeURIComponent(lista[Math.floor(Math.random() * lista.length)].id);
   } else if (accion === 'volver') {
     if (history.length > 1) { ev.preventDefault(); history.back(); }
