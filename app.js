@@ -190,7 +190,7 @@ function vistaInicio() {
 
   return '<main class="pagina">' +
     '<div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Tucumán</div></div>' +
-    '<h1 class="lema">Una guía de lugares para visitar en Tucumán, seas residente o turista.</h1>' +
+    '<h1 class="lema">¡La guía para salir en Tucumán, seas residente o turista!</h1>' +
     filtroMomento() +
     (agenda.length ? '<section class="bloque"><h2 class="etiqueta">Agenda</h2><div class="lista">' + agenda.map(tarjetaEvento).join('') + '</div></section>' : '') +
     '<section class="bloque"><h2 class="etiqueta">Categorías</h2><div class="categorias">' + cats + '</div></section>' +
