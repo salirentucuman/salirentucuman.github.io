@@ -75,6 +75,31 @@
         "inicio": "2026-10-05T00:00:00-03:00",
         "fin": "2026-10-10T23:59:00-03:00"
       }
+    },
+    {
+      "id": "vintter",
+      "nombre": "Vintter",
+      "categorias": [
+        "comer"
+      ],
+      "zona": "Yerba Buena",
+      "tipo": "Speakeasy restaurant",
+      "momento": "noche",
+      "breve": "Speakeasy restaurant. Solo con reservas.",
+      "texto": "",
+      "foto": "fotos/vintter.jpg",
+      "galeria": [
+        "fotos/vintter-2.jpg",
+        "fotos/vintter-3.jpg",
+        "fotos/vintter-4.jpg",
+        "fotos/vintter-5.jpg"
+      ],
+      "direccion": "",
+      "precio": "",
+      "idealPara": "",
+      "instagram": "@vinttercocina",
+      "whatsapp": "+54 9 381 464-7083",
+      "alta": "2026-10-06"
     }
   ]
 }
