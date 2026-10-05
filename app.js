@@ -140,10 +140,11 @@ function vistaInicio() {
     '<section class="sugerir"><div class="sugerir-titulo">¿Falta algún lugar?</div>' +
     '<a class="boton" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Day Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>Sugerilo por WhatsApp</span></a></section>' +
     '<section class="cierre">' +
-    '<p>Day Out Tucumán no es un directorio. No están todos los cafés ni todos los bares ni eventos: están los que creemos que hacen la diferencia, elegidos uno por uno. Un café de nicho, una librería, un productor de barrio, un rincón en un parque.</p>' +
-    '<p>Con esta selección te proponemos ser turista en tu ciudad o usarla para recorrer los mejores lugares si estás de visita en San Miguel de Tucumán y Yerba Buena.</p>' +
-    '<p>La diferencia con otras guías es que nadie paga por aparecer. Si un lugar está, es porque fui y volvería.</p>' +
-    '<p>¡Me encantaría que, si vas o los conocés, me dejes tu reseña por privado!</p>' +
+    '<p>Day Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, una librería, un productor de queso de barrio, un rincón perfecto para leer en un parque.</p>' +
+    '<p>Day Out Tucumán es una invitación a ir a los mejores lugares y a ser turista en tu ciudad, o a recorrer San Miguel de Tucumán y Yerba Buena con el criterio de un local para quien está de visita.</p>' +
+    '<p>Day Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos.</p>' +
+    '<p>Si conocés los sitios destacados aquí, ¡nos gustaría saber qué te parecen! Dejanos tu reseña por privado.</p>' +
+    '<p>Si conocés un sitio que creés que merece ser parte de esta selección, ¡avisanos!</p>' +
     '</section>' +
     '</main>' + nav('inicio');
 }
