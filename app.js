@@ -198,8 +198,8 @@ function vistaInicio() {
   var agendaHtml = !agenda.length ? '' : '<section class="bloque"><h2 class="etiqueta">Agenda</h2>' +
     '<div class="' + (agenda.length > 1 ? 'carrusel' : 'lista') + '">' + agenda.map(tarjetaEvento).join('') + '</div>' +
     (eventos.length > agenda.length ? '<a class="ver-todo" href="#/categoria/eventos">Ver toda la agenda</a>' : '') + '</section>';
-  /* Hallazgos: el último lugar y el último evento cargados. */
-  var visibles2 = lugaresVigentes();
+  /* Hallazgos: lo último cargado en Café y copas (último lugar y, si lo hay, último evento de esa categoría). */
+  var visibles2 = deCategoria('comer');
   var ultimoLugar = visibles2.filter(function (l) { return !l.evento; }).pop();
   var ultimoEvento = visibles2.filter(function (l) { return l.evento; }).pop();
   var nuevos = [ultimoLugar, ultimoEvento].filter(Boolean);
