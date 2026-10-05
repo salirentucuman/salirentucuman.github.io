@@ -3,7 +3,7 @@
 var CATEGORIAS = [
   ['comer', 'Café y copas'], ['pasear', 'Pasear'], ['curiosear', 'Curiosear'], ['barrio', 'De barrio'], ['eventos', 'Eventos']
 ];
-var CAMPOS = ['nombre', 'zona', 'breve', 'texto', 'tipo', 'direccion', 'precio', 'idealPara', 'instagram', 'credito'];
+var CAMPOS = ['nombre', 'zona', 'breve', 'texto', 'tipo', 'direccion', 'precio', 'idealPara', 'instagram', 'whatsapp', 'credito'];
 var ARCHIVO = 'data/lugares.json';
 
 var datos = null;

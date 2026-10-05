@@ -25,6 +25,24 @@
       ],
       "credito": "Rancho Café @ranchocafe.arg",
       "tipo": "Café de nicho"
+    },
+    {
+      "id": "madame-rouges",
+      "nombre": "Madame Rouges",
+      "categorias": [
+        "comer"
+      ],
+      "zona": "Yerba Buena",
+      "tipo": "Cafetería",
+      "breve": "Cafetería en la Yunga tucumana. Un ambiente sofisticado que convive con la vida silvestre.",
+      "texto": "Los platitos del desayuno son caseros: granola recién horneada y pancitos hechos a mano en la casa.\n\nPerfecto para estar alejado del ruido de la ciudad, pero con todas las comodidades.\n\nCon interior y exteriores, abierto y techado. Tiene cochera propia. No toma reservas.",
+      "foto": "",
+      "direccion": "Villa Poli, Av. Aconquija, Yerba Buena",
+      "precio": "",
+      "idealPara": "",
+      "instagram": "@madamerougestucuman",
+      "whatsapp": "+54 9 3812 49-0004",
+      "alta": "2026-10-05"
     }
   ]
 }

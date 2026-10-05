@@ -202,3 +202,5 @@ img { display: block; max-width: 100%; }
   -webkit-hyphens: none;
   hyphens: none;
 }
+
+.enlace { text-decoration: underline; text-underline-offset: 3px; }

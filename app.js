@@ -179,9 +179,12 @@ function vistaLugar(id) {
   var guardado = leerGuardados().indexOf(lugar.id) !== -1;
   var filas = [
     ['Tipo', lugar.tipo], ['Dirección', lugar.direccion], ['Precio', lugar.precio],
-    ['Ideal para', lugar.idealPara], ['Instagram', lugar.instagram]
+    ['Ideal para', lugar.idealPara], ['Instagram', lugar.instagram], ['WhatsApp', lugar.whatsapp]
   ].filter(function (f) { return f[1]; }).map(function (f) {
-    return '<div class="dato"><dt>' + f[0] + '</dt><dd>' + esc(f[1]) + '</dd></div>';
+    var valor = esc(f[1]);
+    if (f[0] === 'Instagram') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://www.instagram.com/' + encodeURIComponent(String(f[1]).replace(/^@/, '')) + '/">' + valor + '</a>';
+    if (f[0] === 'WhatsApp') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://wa.me/' + String(f[1]).replace(/\D/g, '') + '">' + valor + '</a>';
+    return '<div class="dato"><dt>' + f[0] + '</dt><dd>' + valor + '</dd></div>';
   }).join('');
   var zona = lugar.zona ? ' · ' + esc(lugar.zona) : '';
   var cuando = lugar.evento && lugar.evento.cuando;
