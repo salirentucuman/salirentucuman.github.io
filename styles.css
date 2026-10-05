@@ -197,7 +197,7 @@ img { display: block; max-width: 100%; }
 .visor-cerrar { position: absolute; top: calc(16px + env(safe-area-inset-top)); right: 16px; width: 44px; height: 44px; border-radius: 22px; border: none; background: #FFFFFF; color: var(--tinta); display: flex; align-items: center; justify-content: center; }
 
 /* Párrafos de lado a lado: justificados y sin cortar palabras. */
-.lema, .cierre p, .texto, .ficha-breve, .vacio {
+.cierre p, .texto, .ficha-breve, .vacio {
   text-align: justify;
   -webkit-hyphens: none;
   hyphens: none;
@@ -232,3 +232,9 @@ img { display: block; max-width: 100%; }
 .momentos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; background: var(--tarjeta); border-radius: 16px; }
 .momento { min-height: 44px; border: none; border-radius: 12px; background: transparent; color: var(--gris); font-size: 14px; font-weight: 600; }
 .momento[aria-pressed="true"] { background: var(--tinta); color: #FFFFFF; }
+
+/* Agenda con varios eventos: se pasa deslizando y el siguiente asoma por el borde. */
+.carrusel { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 24px; margin: 0 -24px; padding: 0 24px; scrollbar-width: none; }
+.carrusel::-webkit-scrollbar { display: none; }
+.carrusel .tarjeta-evento { flex: 0 0 84%; scroll-snap-align: start; }
+.ver-todo { align-self: flex-start; min-height: 44px; display: flex; align-items: center; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }

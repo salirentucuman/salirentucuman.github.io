@@ -134,6 +134,20 @@ function estadoEvento(lugar) {
   return { vivo: true, texto: 'Está pasando · quedan ' + quedan + ' días' };
 }
 
+/* Orden de la agenda: primero lo que termina antes, después lo que está por empezar, al final lo que se repite. */
+function urgencia(lugar) {
+  var ev = lugar.evento || {}, ahora = Date.now();
+  var inicio = ev.inicio ? new Date(ev.inicio).getTime() : NaN;
+  var fin = ev.fin ? new Date(ev.fin).getTime() : NaN;
+  if (!isNaN(inicio) && inicio > ahora) return [1, inicio];
+  if (!isNaN(fin)) return [0, fin];
+  return [2, 0];
+}
+function porUrgencia(a, b) {
+  var x = urgencia(a), y = urgencia(b);
+  return x[0] - y[0] || x[1] - y[1];
+}
+
 function pildora(lugar) {
   var e = estadoEvento(lugar);
   return '<div class="pildora"><span class="punto' + (e.vivo ? ' vivo' : '') + '"></span>' + e.texto + '</div>';
@@ -179,7 +193,11 @@ function vistaInicio() {
       '<span><span class="categoria-nombre">' + c.nombre + '</span><span class="categoria-sub">' + c.sub + '</span></span></a>';
   }).join('');
 
-  var agenda = deCategoria('eventos').filter(function (l) { return l.evento; });
+  var eventos = deCategoria('eventos').filter(function (l) { return l.evento; }).sort(porUrgencia);
+  var agenda = eventos.slice(0, 5);
+  var agendaHtml = !agenda.length ? '' : '<section class="bloque"><h2 class="etiqueta">Agenda</h2>' +
+    '<div class="' + (agenda.length > 1 ? 'carrusel' : 'lista') + '">' + agenda.map(tarjetaEvento).join('') + '</div>' +
+    (eventos.length > agenda.length ? '<a class="ver-todo" href="#/categoria/eventos">Ver toda la agenda</a>' : '') + '</section>';
   /* Hallazgos: el último lugar y el último evento cargados. */
   var visibles2 = lugaresVigentes();
   var ultimoLugar = visibles2.filter(function (l) { return !l.evento; }).pop();
@@ -192,7 +210,7 @@ function vistaInicio() {
     '<div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Tucumán</div></div>' +
     '<h1 class="lema">¡La guía para salir en Tucumán, seas residente o turista!</h1>' +
     filtroMomento() +
-    (agenda.length ? '<section class="bloque"><h2 class="etiqueta">Agenda</h2><div class="lista">' + agenda.map(tarjetaEvento).join('') + '</div></section>' : '') +
+    agendaHtml +
     '<section class="bloque"><h2 class="etiqueta">Categorías</h2><div class="categorias">' + cats + '</div></section>' +
     (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">Hallazgos</h2><div class="lista">' + nuevos.map(tarjeta).join('') + '</div></section>' : '') +
     (hayLugares ? '<button class="boton boton-lleno boton-grande" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
@@ -212,6 +230,7 @@ function vistaCategoria(id) {
   var c = categoria(id);
   if (!c) return vistaInicio();
   var lista = deCategoria(id);
+  if (id === 'eventos') lista.sort(porUrgencia);
   return '<main class="pagina">' +
     '<a class="volver" href="#/" aria-label="Volver al inicio">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<div><h1 class="titulo">' + c.nombre + '</h1><div class="subtitulo">' + c.sub + '</div></div>' +
