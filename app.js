@@ -258,10 +258,11 @@ function vistaLugar(id) {
   var guardado = leerGuardados().indexOf(lugar.id) !== -1;
   var filas = [
     ['Tipo', lugar.tipo], ['Momento', etiquetaMomento(lugar)], ['Dirección', lugar.direccion], ['Precio', lugar.precio],
-    ['Ideal para', lugar.idealPara], ['Web', lugar.web], ['Instagram', lugar.instagram], ['WhatsApp', lugar.whatsapp]
+    ['Ideal para', lugar.idealPara], ['Web', lugar.web], ['Mail', lugar.mail], ['Instagram', lugar.instagram], ['WhatsApp', lugar.whatsapp]
   ].filter(function (f) { return f[1]; }).map(function (f) {
     var valor = esc(f[1]);
     if (f[0] === 'Web') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://' + esc(String(f[1]).replace(/^https?:\/\//, '')) + '">' + valor + '</a>';
+    if (f[0] === 'Mail') valor = '<a class="enlace" href="mailto:' + esc(f[1]) + '">' + valor + '</a>';
     if (f[0] === 'Instagram') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://www.instagram.com/' + encodeURIComponent(String(f[1]).replace(/^@/, '')) + '/">' + valor + '</a>';
     if (f[0] === 'WhatsApp') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://wa.me/' + String(f[1]).replace(/\D/g, '') + '">' + valor + '</a>';
     return '<div class="dato"><dt>' + f[0] + '</dt><dd>' + valor + '</dd></div>';
