@@ -6,7 +6,9 @@
     {
       "id": "el-rosedal",
       "nombre": "El Rosedal",
-      "categorias": ["pasear"],
+      "categorias": [
+        "pasear"
+      ],
       "zona": "Parque 9 de Julio",
       "breve": "Un rincón tranquilo para caminar entre rosas, sentarse a leer o tomar unos mates.",
       "texto": "",
@@ -17,6 +19,23 @@
       "idealPara": "",
       "instagram": "",
       "alta": "2026-10-04"
+    },
+    {
+      "id": "rancho",
+      "nombre": "Rancho",
+      "categorias": [
+        "comer"
+      ],
+      "zona": "Barrio Norte",
+      "breve": "Café de especialidad. Cozy, íntimo, nicho.",
+      "texto": "A pasos de pleno centro, pero lo suficientemente retirado para más tranquilidad.\n\nNo tiene estacionamiento.",
+      "foto": "fotos/rancho.jpg",
+      "direccion": "",
+      "horario": "",
+      "precio": "",
+      "idealPara": "",
+      "instagram": "",
+      "alta": "2026-10-05"
     }
   ]
 }
