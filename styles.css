@@ -41,7 +41,7 @@ img { display: block; max-width: 100%; }
   padding: 24px 24px 32px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
 
 /* Encabezado */
@@ -49,7 +49,7 @@ img { display: block; max-width: 100%; }
 .marca-nombre { font-size: 20px; font-weight: 700; letter-spacing: -0.4px; line-height: 1; }
 .marca-ciudad { font-size: 11px; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gris); }
 
-.lema { margin: 0; font-size: 22px; font-weight: 500; letter-spacing: -0.3px; line-height: 1.25; }
+.lema { margin: 0; font-size: 16px; font-weight: 400; letter-spacing: 0; line-height: 1.45; color: var(--tinta-suave); max-width: 30ch; }
 
 .etiqueta { font-size: 12px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gris); margin: 0; }
 
@@ -110,7 +110,7 @@ img { display: block; max-width: 100%; }
 }
 .tarjeta-texto { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .tarjeta-cat { font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--gris); }
-.tarjeta-nombre { font-size: 17px; font-weight: 600; letter-spacing: -0.2px; }
+.tarjeta-nombre { font-size: 16px; font-weight: 600; letter-spacing: -0.2px; }
 .tarjeta-breve { font-size: 14px; line-height: 1.35; color: var(--gris); }
 
 .vacio { font-size: 15px; line-height: 1.5; color: var(--gris); }

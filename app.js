@@ -7,7 +7,7 @@ var CATEGORIAS = [
     icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
   { id: 'curiosear', nombre: 'Curiosear', sub: 'Librerías, tiendas, cultura',
     icono: '<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>' },
-  { id: 'barrio', nombre: 'De barrio', sub: 'Productores y oficios locales',
+  { id: 'barrio', nombre: 'De barrio', sub: 'Productores locales o tiendas de barrio destacadas',
     icono: '<path d="M4 10 5.5 4h13L20 10"/><path d="M4 10h16"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/>' },
   { id: 'eventos', nombre: 'Eventos', sub: 'Ferias, música, muestras',
     icono: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/><path d="M8 3v4"/><path d="M16 3v4"/>' }
@@ -134,9 +134,9 @@ function vistaInicio() {
   return '<main class="pagina">' +
     '<div class="marca"><div class="marca-nombre">Day Out</div><div class="marca-ciudad">Tucumán</div></div>' +
     '<h1 class="lema">Una guía de lugares que me gustan, para visitar en Tucumán</h1>' +
-    (hayLugares ? '<button class="boton boton-lleno boton-grande" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
     '<section class="bloque"><h2 class="etiqueta">Categorías</h2><div class="categorias">' + cats + '</div></section>' +
     (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">Hallazgos</h2><div class="lista">' + nuevos.map(tarjeta).join('') + '</div></section>' : '') +
+    (hayLugares ? '<button class="boton boton-lleno boton-grande" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
     '<section class="sugerir"><div class="sugerir-titulo">¿Falta algún lugar?</div>' +
     '<a class="boton" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Day Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>Sugerilo por WhatsApp</span></a></section>' +
     '<p class="cierre">Mi selección de lugares para salir y conocer en Tucumán</p>' +
