@@ -10,11 +10,10 @@
         "comer"
       ],
       "zona": "Barrio Norte",
-      "breve": "Café de especialidad chiquito e íntimo, de esos que uno casi prefiere no contar.",
-      "texto": "Rancho es cálido, de nicho y sin apuro: café de especialidad bien hecho y una carta corta para acompañar, del roll de canela al carrot cake.\n\nQueda a pasos del centro, pero lo justo para que baje el ruido.\n\nDato: no tiene estacionamiento, así que mejor llegar caminando.",
+      "breve": "Pequeña cafetería de especialidad en Barrio Norte de la ciudad. Atmósfera íntima y calma.",
+      "texto": "Con interior y exteriores, abierto y techado. Mesas privadas y mesón para compartir.\n\nBuen café.\n\nApenas retirado de pleno centro, justo para estar cerca pero en mayor tranquilidad. No tiene cochera propia.",
       "foto": "fotos/rancho.jpg",
       "direccion": "Marcos Paz 294",
-      "horario": "Lunes a viernes, 8 a 21 h. Sábados, 8:30 a 21 h.",
       "precio": "",
       "idealPara": "",
       "instagram": "@ranchocafe.arg",
@@ -24,7 +23,8 @@
         "fotos/rancho-3.jpg",
         "fotos/rancho-4.jpg"
       ],
-      "credito": "Rancho Café @ranchocafe.arg"
+      "credito": "Rancho Café @ranchocafe.arg",
+      "tipo": "Café de nicho"
     }
   ]
 }

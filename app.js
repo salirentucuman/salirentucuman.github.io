@@ -172,7 +172,7 @@ function vistaLugar(id) {
   }
   var guardado = leerGuardados().indexOf(lugar.id) !== -1;
   var filas = [
-    ['Dirección', lugar.direccion], ['Horario', lugar.horario], ['Precio', lugar.precio],
+    ['Tipo', lugar.tipo], ['Dirección', lugar.direccion], ['Precio', lugar.precio],
     ['Ideal para', lugar.idealPara], ['Instagram', lugar.instagram]
   ].filter(function (f) { return f[1]; }).map(function (f) {
     return '<div class="dato"><dt>' + f[0] + '</dt><dd>' + esc(f[1]) + '</dd></div>';
