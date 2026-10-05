@@ -180,13 +180,21 @@ function vistaLugar(id) {
   var zona = lugar.zona ? ' · ' + esc(lugar.zona) : '';
   var cuando = lugar.evento && lugar.evento.cuando;
   var consulta = [lugar.nombre, lugar.direccion, 'Tucumán'].filter(Boolean).join(', ');
+  var galeria = (lugar.galeria || []).filter(Boolean);
+  var desfase = lugar.foto ? 1 : 0;
+  var miniaturas = galeria.map(function (ruta, i) {
+    return '<button class="miniatura" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="' + (i + desfase) + '" aria-label="Ver foto ' + (i + 1 + desfase) + '"><img src="' + esc(ruta) + '" alt="" loading="lazy"></button>';
+  }).join('');
+  var fotosBloque = (miniaturas || lugar.credito) ? '<div class="fotos">' +
+    (miniaturas ? '<div class="miniaturas">' + miniaturas + '</div>' : '') +
+    (lugar.credito ? '<div class="credito">Fotos: ' + esc(lugar.credito) + '</div>' : '') + '</div>' : '';
 
   return '<main>' +
-    '<div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '">' : '') +
+    '<div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0">' : '') +
     '<a class="volver" href="#/" data-accion="volver" aria-label="Volver">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<button class="guardar" data-accion="guardar" data-id="' + esc(lugar.id) + '" aria-pressed="' + guardado + '" aria-label="Guardar lugar">' + svg(ICONOS.guardar, 20, 1.8) + '</button>' +
     '</div>' +
-    '<div class="pagina">' +
+    '<div class="pagina">' + fotosBloque +
     '<div class="ficha-cabecera"><div class="ficha-cat">' + esc(nombresCategorias(lugar)) + zona + '</div>' +
     '<h1 class="ficha-nombre">' + esc(lugar.nombre) + '</h1>' +
     (cuando ? '<div class="ficha-cuando">' + esc(cuando) + '</div>' : '') +
@@ -200,6 +208,33 @@ function vistaLugar(id) {
     '<div class="fuiste"><div class="fuiste-titulo">¿Ya fuiste?</div>' +
     '<a class="boton boton-chico" target="_blank" rel="noopener" href="' + esc(whatsapp('Mi reseña de ' + lugar.nombre + ' para Day Out Tucumán: ')) + '">Dejar reseña</a></div>' +
     '</div></main>' + nav('');
+}
+
+/* Visor de fotos a pantalla completa: se pasan deslizando. */
+function abrirVisor(id, indice) {
+  var lugar = null;
+  datos.lugares.forEach(function (l) { if (l.id === id) lugar = l; });
+  if (!lugar) return;
+  var fotos = [lugar.foto].concat(lugar.galeria || []).filter(Boolean);
+  if (!fotos.length) return;
+  var visor = document.createElement('div');
+  visor.className = 'visor';
+  visor.setAttribute('role', 'dialog');
+  visor.setAttribute('aria-modal', 'true');
+  visor.setAttribute('aria-label', 'Fotos de ' + lugar.nombre);
+  visor.innerHTML = '<div class="visor-pista">' + fotos.map(function (ruta) {
+    return '<div class="visor-foto"><img src="' + esc(ruta) + '" alt=""></div>';
+  }).join('') + '</div><button class="visor-cerrar" aria-label="Cerrar fotos">' +
+    svg('<path d="M6 6l12 12"/><path d="M18 6 6 18"/>', 20, 1.8) + '</button>';
+  function cerrar() { visor.remove(); document.removeEventListener('keydown', tecla); document.body.style.overflow = ''; }
+  function tecla(ev) { if (ev.key === 'Escape') cerrar(); }
+  visor.querySelector('.visor-cerrar').addEventListener('click', cerrar);
+  document.addEventListener('keydown', tecla);
+  document.body.style.overflow = 'hidden';
+  document.body.appendChild(visor);
+  var pista = visor.querySelector('.visor-pista');
+  pista.scrollLeft = pista.clientWidth * indice;
+  visor.querySelector('.visor-cerrar').focus();
 }
 
 function pintar() {
@@ -222,6 +257,8 @@ app.addEventListener('click', function (ev) {
     if (lista.length) location.hash = '#/lugar/' + encodeURIComponent(lista[Math.floor(Math.random() * lista.length)].id);
   } else if (accion === 'volver') {
     if (history.length > 1) { ev.preventDefault(); history.back(); }
+  } else if (accion === 'ver') {
+    abrirVisor(el.getAttribute('data-id'), Number(el.getAttribute('data-indice')) || 0);
   } else if (accion === 'guardar') {
     var ahora = alternarGuardado(el.getAttribute('data-id'));
     el.setAttribute('aria-pressed', String(ahora));

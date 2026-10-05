@@ -3,7 +3,7 @@
 var CATEGORIAS = [
   ['comer', 'Comer y tomar'], ['pasear', 'Pasear'], ['curiosear', 'Curiosear'], ['barrio', 'De barrio'], ['eventos', 'Eventos']
 ];
-var CAMPOS = ['nombre', 'zona', 'breve', 'texto', 'direccion', 'horario', 'precio', 'idealPara', 'instagram'];
+var CAMPOS = ['nombre', 'zona', 'breve', 'texto', 'direccion', 'horario', 'precio', 'idealPara', 'instagram', 'credito'];
 var ARCHIVO = 'data/lugares.json';
 
 var datos = null;
@@ -115,6 +115,7 @@ function cargarFormulario(lugar) {
     if (!isNaN(f.getTime())) $('fin').value = new Date(f.getTime() - f.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
   }
   $('foto').value = '';
+  $('galeria').value = '';
   $('vista-foto').hidden = !lugar.foto;
   if (lugar.foto) $('vista-foto').src = lugar.foto;
   $('borrar').hidden = !lugar.id;
@@ -154,7 +155,20 @@ function publicar(ev) {
     return api(ruta, { method: 'PUT', body: JSON.stringify({ message: 'Foto de ' + nombre, content: b64 }) }).then(function () { return ruta; });
   });
 
+  var extras = Array.prototype.slice.call($('galeria').files);
+  var rutasGaleria = [];
+  var subirGaleria = function () {
+    return extras.reduce(function (cadena, archivo, i) {
+      return cadena.then(function () { return prepararFoto(archivo); }).then(function (b64) {
+        var ruta = 'fotos/' + id + '-' + Date.now() + '-' + (i + 1) + '.jpg';
+        return api(ruta, { method: 'PUT', body: JSON.stringify({ message: 'Foto de ' + nombre, content: b64 }) }).then(function () { rutasGaleria.push(ruta); });
+      });
+    }, Promise.resolve());
+  };
+
   subirFoto.then(function (rutaFoto) {
+    return subirGaleria().then(function () { return rutaFoto; });
+  }).then(function (rutaFoto) {
     return leer().then(function (actual) {
       var lista = actual.json.lugares, lugar = null;
       lista.forEach(function (l) { if (l.id === idActual) lugar = l; });
@@ -169,6 +183,7 @@ function publicar(ev) {
       CAMPOS.forEach(function (c) { if (c !== 'nombre') lugar[c] = $(c).value.trim(); });
       if (rutaFoto) lugar.foto = rutaFoto;
       if (!lugar.foto) lugar.foto = '';
+      if (rutasGaleria.length) lugar.galeria = (lugar.galeria || []).concat(rutasGaleria);
       var cuando = $('cuando').value.trim(), fin = $('fin').value;
       if (cuando || fin) {
         lugar.evento = { cuando: cuando };

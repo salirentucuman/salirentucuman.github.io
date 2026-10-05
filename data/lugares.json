@@ -4,38 +4,27 @@
   },
   "lugares": [
     {
-      "id": "el-rosedal",
-      "nombre": "El Rosedal",
-      "categorias": [
-        "pasear"
-      ],
-      "zona": "Parque 9 de Julio",
-      "breve": "Un rincón tranquilo para caminar entre rosas, sentarse a leer o tomar unos mates.",
-      "texto": "",
-      "foto": "",
-      "direccion": "",
-      "horario": "",
-      "precio": "",
-      "idealPara": "",
-      "instagram": "",
-      "alta": "2026-10-04"
-    },
-    {
       "id": "rancho",
       "nombre": "Rancho",
       "categorias": [
         "comer"
       ],
       "zona": "Barrio Norte",
-      "breve": "Café de especialidad. Cozy, íntimo, nicho.",
-      "texto": "A pasos de pleno centro, pero lo suficientemente retirado para más tranquilidad.\n\nNo tiene estacionamiento.",
+      "breve": "Café de especialidad chiquito e íntimo, de esos que uno casi prefiere no contar.",
+      "texto": "Rancho es cálido, de nicho y sin apuro: café de especialidad bien hecho y una carta corta para acompañar, del roll de canela al carrot cake.\n\nQueda a pasos del centro, pero lo justo para que baje el ruido.\n\nDato: no tiene estacionamiento, así que mejor llegar caminando.",
       "foto": "fotos/rancho.jpg",
-      "direccion": "",
-      "horario": "",
+      "direccion": "Marcos Paz 294",
+      "horario": "Lunes a viernes, 8 a 21 h. Sábados, 8:30 a 21 h.",
       "precio": "",
       "idealPara": "",
-      "instagram": "",
-      "alta": "2026-10-05"
+      "instagram": "@ranchocafe.arg",
+      "alta": "2026-10-05",
+      "galeria": [
+        "fotos/rancho-2.jpg",
+        "fotos/rancho-3.jpg",
+        "fotos/rancho-4.jpg"
+      ],
+      "credito": "Rancho Café @ranchocafe.arg"
     }
   ]
 }
