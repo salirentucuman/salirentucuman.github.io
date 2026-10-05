@@ -150,7 +150,7 @@ img { display: block; max-width: 100%; }
 
 .texto { font-size: 16px; line-height: 1.55; white-space: pre-line; }
 
-.fuiste { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.fuiste { display: flex; justify-content: flex-start; align-items: center; gap: 16px; }
 .fuiste-titulo { font-size: 16px; font-weight: 600; }
 
 /* Navegación inferior */
