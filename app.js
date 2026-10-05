@@ -267,7 +267,9 @@ function vistaLugar(id) {
     (cuando ? '<div class="ficha-cuando">' + esc(cuando) + '</div>' : '') +
     (lugar.breve ? '<div class="ficha-breve">' + esc(lugar.breve) + '</div>' : '') + '</div>' +
     '<div class="acciones">' +
-    '<a class="boton boton-lleno" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(consulta) + '">' + svg(ICONOS.mapa, 18, 1.8) + '<span>Cómo llegar</span></a>' +
+    '<a class="boton boton-lleno" target="_blank" rel="noopener" href="' + (lugar.sinMapa && lugar.whatsapp
+      ? 'https://wa.me/' + String(lugar.whatsapp).replace(/\D/g, '') + '?text=' + encodeURIComponent('Hola, quisiera saber cómo llegar a ' + lugar.nombre + '.')
+      : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(consulta)) + '">' + svg(ICONOS.mapa, 18, 1.8) + '<span>Cómo llegar</span></a>' +
     '<button class="boton" data-accion="compartir" data-nombre="' + esc(lugar.nombre) + '">' + svg(ICONOS.compartir, 18, 1.8) + '<span>Compartir</span></button>' +
     '</div>' +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +

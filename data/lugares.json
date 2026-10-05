@@ -83,23 +83,26 @@
         "comer"
       ],
       "zona": "Yerba Buena",
-      "tipo": "Speakeasy restaurant",
+      "tipo": "Restaurant para cenar, solo con reservas",
       "momento": "noche",
-      "breve": "Speakeasy restaurant. Solo con reservas.",
-      "texto": "",
+      "breve": "Restaurant tipo speakeasy, solo con reservas. Atmósfera íntima, pocas mesas y atendido por sus dueños.",
+      "texto": "Reservas completas hasta mayo de 2027, aunque parecen tener disponibilidad extra para eventos privados.",
       "foto": "fotos/vintter.jpg",
       "galeria": [
         "fotos/vintter-2.jpg",
         "fotos/vintter-3.jpg",
         "fotos/vintter-4.jpg",
-        "fotos/vintter-5.jpg"
+        "fotos/vintter-5.jpg",
+        "fotos/vintter-6.jpg"
       ],
-      "direccion": "",
+      "direccion": "Se solicita por WhatsApp",
       "precio": "",
       "idealPara": "",
       "instagram": "@vinttercocina",
       "whatsapp": "+54 9 381 464-7083",
-      "alta": "2026-10-06"
+      "alta": "2026-10-06",
+      "sinMapa": true,
+      "credito": "Vintter @vinttercocina"
     }
   ]
 }
