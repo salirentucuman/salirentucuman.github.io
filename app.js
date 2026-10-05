@@ -288,7 +288,7 @@ function vistaLugar(id) {
     '<h1 class="ficha-nombre">' + esc(lugar.nombre) + '</h1>' +
     (cuando ? '<div class="ficha-cuando">' + esc(cuando) + '</div>' : '') +
     (lugar.breve ? '<div class="ficha-breve">' + esc(lugar.breve) + '</div>' : '') + '</div>' +
-    '<div class="acciones">' +
+    '<div class="acciones' + (lugar.sinMapa && !lugar.whatsapp ? ' solo' : '') + '">' +
     '<a class="boton boton-lleno" target="_blank" rel="noopener" href="' + (lugar.sinMapa && lugar.whatsapp
       ? 'https://wa.me/' + String(lugar.whatsapp).replace(/\D/g, '') + '?text=' + encodeURIComponent('Hola, quisiera saber cómo llegar a ' + lugar.nombre + '.')
       : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(consulta)) + '">' + svg(ICONOS.mapa, 18, 1.8) + '<span>Cómo llegar</span></a>' +

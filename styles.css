@@ -238,3 +238,7 @@ img { display: block; max-width: 100%; }
 .carrusel::-webkit-scrollbar { display: none; }
 .carrusel .tarjeta-evento { flex: 0 0 84%; scroll-snap-align: start; }
 .ver-todo { align-self: flex-start; min-height: 44px; display: flex; align-items: center; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Fichas sin lugar físico: solo queda Compartir. */
+.acciones.solo { grid-template-columns: minmax(0, 1fr); }
+.acciones.solo a.boton-lleno { display: none; }
