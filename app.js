@@ -133,13 +133,13 @@ function vistaInicio() {
 
   return '<main class="pagina">' +
     '<div class="marca"><div class="marca-nombre">Day Out</div><div class="marca-ciudad">Tucumán</div></div>' +
-    '<h1 class="lema">Una guía de lugares que me gustan, para visitar en Tucumán</h1>' +
+    '<h1 class="lema">Una guía de lugares para visitar en Tucumán, seas residente o turista</h1>' +
     '<section class="bloque"><h2 class="etiqueta">Categorías</h2><div class="categorias">' + cats + '</div></section>' +
     (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">Hallazgos</h2><div class="lista">' + nuevos.map(tarjeta).join('') + '</div></section>' : '') +
     (hayLugares ? '<button class="boton boton-lleno boton-grande" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
     '<section class="sugerir"><div class="sugerir-titulo">¿Falta algún lugar?</div>' +
     '<a class="boton" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Day Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>Sugerilo por WhatsApp</span></a></section>' +
-    '<p class="cierre">Mi selección de lugares para salir y conocer en Tucumán</p>' +
+    '<p class="cierre">Una selección de lugares para salir y conocer en Tucumán</p>' +
     '</main>' + nav('inicio');
 }
 
