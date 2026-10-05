@@ -224,7 +224,8 @@ function vistaInicio() {
     '<p>Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos.</p>' +
     '<p>Si conocés un sitio que creés que merece ser parte de esta selección, ¡avisanos!</p>' +
     '<p>Si conocés los sitios destacados aquí, dejá tu reseña.</p>' +
-    '<p class="aviso-legal">Las descripciones y reseñas de esta guía son opiniones personales y subjetivas. No constituyen una recomendación profesional ni garantizan la experiencia de cada visita. Los datos pueden cambiar: confirmalos con cada lugar antes de ir.</p>' +
+    '<p class="aviso-legal">Hang Out Tucumán es una guía independiente, sin vínculo con los lugares, marcas y personas que menciona. Las descripciones son una mirada personal y no representan la voz oficial de nadie. '
+    + '¿Sos parte de alguno y encontraste un dato inexacto? <a class="enlace" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, quiero corregir un dato de Hang Out Tucumán: ')) + '">Escribinos</a> y lo corregimos.</p>' +
     '</section>' +
     '</main>' + nav('inicio');
 }
