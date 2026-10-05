@@ -244,3 +244,5 @@ img { display: block; max-width: 100%; }
 .acciones.solo a.boton-lleno { display: none; }
 
 .dato dd { overflow-wrap: anywhere; }
+
+.cierre .aviso-legal { font-size: 12px; line-height: 1.5; padding-top: 12px; border-top: 1px solid var(--borde); }

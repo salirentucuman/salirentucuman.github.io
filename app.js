@@ -219,11 +219,12 @@ function vistaInicio() {
     '<section class="sugerir"><div class="sugerir-titulo">¿Falta algún lugar?</div>' +
     '<a class="boton" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Hang Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>Sugerilo por WhatsApp</span></a></section>' +
     '<section class="cierre">' +
-    '<p>Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, una librería, un productor de queso de barrio, un rincón perfecto para leer en un parque.</p>' +
-    '<p>Hang Out Tucumán es una invitación a ir a los mejores lugares y a ser turista en tu ciudad, o a recorrer San Miguel de Tucumán y Yerba Buena con el criterio de un local para quien está de visita.</p>' +
+    '<p>Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque.</p>' +
+    '<p>Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local.</p>' +
     '<p>Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos.</p>' +
-    '<p>Si conocés los sitios destacados aquí, ¡nos gustaría saber qué te parecen! Dejanos tu reseña por privado.</p>' +
     '<p>Si conocés un sitio que creés que merece ser parte de esta selección, ¡avisanos!</p>' +
+    '<p>Si conocés los sitios destacados aquí, dejá tu reseña.</p>' +
+    '<p class="aviso-legal">Las descripciones y reseñas de esta guía son opiniones personales y subjetivas. No constituyen una recomendación profesional ni garantizan la experiencia de cada visita. Los datos pueden cambiar: confirmalos con cada lugar antes de ir.</p>' +
     '</section>' +
     '</main>' + nav('inicio');
 }
