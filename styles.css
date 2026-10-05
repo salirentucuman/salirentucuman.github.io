@@ -118,7 +118,8 @@ img { display: block; max-width: 100%; }
 /* Sugerencias y cierre */
 .sugerir { border: 1px solid var(--borde); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
 .sugerir-titulo { font-size: 15px; font-weight: 600; }
-.cierre { font-size: 13px; line-height: 1.5; color: var(--gris); text-align: center; padding: 0 24px; }
+.cierre { font-size: 14px; line-height: 1.55; color: var(--gris); display: flex; flex-direction: column; gap: 12px; }
+.cierre p { margin: 0; }
 
 /* Página de categoría */
 .volver { width: 44px; height: 44px; border-radius: 22px; background: var(--tarjeta); display: flex; align-items: center; justify-content: center; border: none; }
