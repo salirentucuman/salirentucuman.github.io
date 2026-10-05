@@ -24,7 +24,8 @@
         "fotos/rancho-4.jpg"
       ],
       "credito": "Rancho Café @ranchocafe.arg",
-      "tipo": "Café de nicho"
+      "tipo": "Café de nicho",
+      "momento": "dia"
     },
     {
       "id": "madame-rouges",
@@ -50,7 +51,8 @@
         "fotos/madame-rouges-5.jpg",
         "fotos/madame-rouges-6.jpg"
       ],
-      "credito": "Madame Rouges @madamerougestucuman"
+      "credito": "Madame Rouges @madamerougestucuman",
+      "momento": "dia"
     },
     {
       "id": "villa-poli-2-anos",
@@ -74,7 +76,8 @@
         "cuando": "Del lunes 5 al sábado 10 de octubre",
         "inicio": "2026-10-05T00:00:00-03:00",
         "fin": "2026-10-10T23:59:00-03:00"
-      }
+      },
+      "momento": "dia"
     },
     {
       "id": "vintter",
