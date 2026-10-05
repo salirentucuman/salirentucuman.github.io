@@ -1,7 +1,7 @@
 /* Day Out Tucumán: aplicación. El contenido vive en data/lugares.json */
 
 var CATEGORIAS = [
-  { id: 'comer', nombre: 'Comer y tomar', sub: 'Cafés, bares, pastelerías',
+  { id: 'comer', nombre: 'Café y copas', sub: 'Cafés, bares, pastelerías',
     icono: '<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3"/><path d="M12 3v3"/>' },
   { id: 'pasear', nombre: 'Pasear', sub: 'Parques, callecitas, rincones',
     icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
