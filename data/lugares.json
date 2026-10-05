@@ -111,19 +111,23 @@
       "id": "snacphone",
       "nombre": "SnacPhone",
       "categorias": [
-        "curiosear"
+        "barrio"
       ],
       "zona": "San Miguel de Tucumán",
       "tipo": "Comercio de barrio",
       "momento": "dia",
-      "breve": "Artículos para celulares y tecnología, en un edificio que respeta y pone en valor su arquitectura original.",
-      "texto": "SnacPhone vende artículos vinculados a celulares y tecnología. Merece su lugar en esta guía porque su edificio respeta y pone en valor la arquitectura original.\n\nLa atención, además, es muy buena.\n\nEstá a pasos de Rancho, otro de nuestros favoritos.",
-      "foto": "",
+      "breve": "Tecnología y accesorios para celulares en un edificio de época puesto en valor. Atención muy cálida.",
+      "texto": "Merece su lugar en esta guía porque, además de tener una atención muy cálida, el edificio respeta y pone en valor su arquitectura original (de época).\n\nSnacPhone vende artículos vinculados a celulares y tecnología.\n\nAdemás, está a pasos de Rancho café, otro de nuestros favoritos.",
+      "foto": "fotos/snacphone.jpg",
       "direccion": "Virgen de la Merced 644",
       "precio": "",
       "idealPara": "",
       "instagram": "@snacphone",
-      "alta": "2026-10-06"
+      "alta": "2026-10-06",
+      "galeria": [
+        "fotos/snacphone-2.jpg"
+      ],
+      "whatsapp": "+54 381 448-2626"
     }
   ]
 }
