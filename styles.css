@@ -1,0 +1,180 @@
+:root {
+  --fondo: #F2F3F0;
+  --tarjeta: #FFFFFF;
+  --tinta: #1E2320;
+  --tinta-suave: #3C4640;
+  --gris: #5C645F;
+  --linea: #E1E3DE;
+  --borde: #C9CDC6;
+  --acento: #2F4A3C;
+  --foto-a: #C9D1C8;
+  --foto-b: #D9D2C7;
+  --foto-c: #C5CCD3;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; color: inherit; }
+img { display: block; max-width: 100%; }
+
+:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+
+.app {
+  max-width: 560px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(76px + env(safe-area-inset-bottom));
+}
+
+.pagina {
+  padding: 24px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Encabezado */
+.marca { display: flex; flex-direction: column; gap: 2px; }
+.marca-nombre { font-size: 20px; font-weight: 700; letter-spacing: -0.4px; line-height: 1; }
+.marca-ciudad { font-size: 11px; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gris); }
+
+.lema { margin: 0; font-size: 22px; font-weight: 500; letter-spacing: -0.3px; line-height: 1.25; }
+
+.etiqueta { font-size: 12px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gris); margin: 0; }
+
+.bloque { display: flex; flex-direction: column; gap: 14px; }
+
+/* Botones */
+.boton {
+  min-height: 52px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 1px solid var(--tinta);
+  background: transparent;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.boton-lleno { background: var(--acento); border-color: var(--acento); color: #FFFFFF; }
+.boton-grande { min-height: 56px; border-radius: 16px; font-size: 16px; gap: 10px; }
+.boton-chico { min-height: 44px; border-radius: 22px; font-size: 14px; padding: 0 16px; }
+
+/* Categorías */
+.categorias { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.categoria {
+  min-height: 104px;
+  border-radius: 16px;
+  background: var(--tarjeta);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+.categoria.ancha { grid-column: 1 / -1; }
+.categoria-nombre { display: block; font-size: 15px; font-weight: 600; line-height: 1.2; }
+.categoria-sub { display: block; font-size: 12px; color: var(--gris); margin-top: 2px; }
+
+/* Tarjeta de lugar */
+.lista { display: flex; flex-direction: column; gap: 14px; }
+.tarjeta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--tarjeta);
+  border-radius: 16px;
+  padding: 10px;
+  min-height: 96px;
+}
+.tarjeta-foto {
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  object-fit: cover;
+  background: var(--foto-a);
+}
+.tarjeta-texto { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tarjeta-cat { font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--gris); }
+.tarjeta-nombre { font-size: 17px; font-weight: 600; letter-spacing: -0.2px; }
+.tarjeta-breve { font-size: 14px; line-height: 1.35; color: var(--gris); }
+
+.vacio { font-size: 15px; line-height: 1.5; color: var(--gris); }
+
+/* Sugerencias y cierre */
+.sugerir { border: 1px solid var(--borde); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.sugerir-titulo { font-size: 15px; font-weight: 600; }
+.cierre { font-size: 13px; line-height: 1.5; color: var(--gris); text-align: center; padding: 0 24px; }
+
+/* Página de categoría */
+.volver { width: 44px; height: 44px; border-radius: 22px; background: var(--tarjeta); display: flex; align-items: center; justify-content: center; border: none; }
+.titulo { margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -0.8px; line-height: 1.1; }
+.subtitulo { font-size: 15px; color: var(--gris); margin-top: 6px; }
+
+/* Ficha */
+.tapa { position: relative; height: 300px; background: var(--foto-a); }
+.tapa img { width: 100%; height: 100%; object-fit: cover; }
+.tapa .volver, .tapa .guardar { position: absolute; top: 20px; }
+.tapa .volver { left: 20px; }
+.guardar { right: 20px; width: 44px; height: 44px; border-radius: 22px; background: var(--tarjeta); border: none; display: flex; align-items: center; justify-content: center; }
+.guardar[aria-pressed="true"] svg { fill: var(--tinta); }
+
+.ficha-cat { font-size: 11px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gris); }
+.ficha-nombre { margin: 0; font-size: 34px; font-weight: 600; letter-spacing: -1px; line-height: 1.08; }
+.ficha-breve { font-size: 17px; line-height: 1.45; color: var(--tinta-suave); }
+.ficha-cuando { font-size: 15px; font-weight: 600; }
+.ficha-cabecera { display: flex; flex-direction: column; gap: 10px; }
+
+.acciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+.datos { background: var(--tarjeta); border-radius: 16px; padding: 4px 16px; margin: 0; }
+.dato { display: flex; justify-content: space-between; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--linea); font-size: 15px; }
+.dato:last-child { border-bottom: none; }
+.dato dt { color: var(--gris); }
+.dato dd { margin: 0; font-weight: 600; text-align: right; }
+
+.texto { font-size: 16px; line-height: 1.55; white-space: pre-line; }
+
+.fuiste { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.fuiste-titulo { font-size: 16px; font-weight: 600; }
+
+/* Navegación inferior */
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--tarjeta);
+  border-top: 1px solid var(--linea);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.nav-interior { max-width: 560px; margin: 0 auto; height: 76px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; }
+.nav a { height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; font-size: 11px; font-weight: 500; color: var(--gris); }
+.nav a[aria-current="page"] { color: var(--tinta); font-weight: 700; }
+
+.aviso {
+  position: fixed;
+  left: 50%;
+  bottom: calc(96px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  background: var(--tinta);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 22px;
+}

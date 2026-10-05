@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Panel · Day Out Tucumán</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<style>
+.app { padding-bottom: 48px; }
+.campo { display: flex; flex-direction: column; gap: 6px; }
+.campo label, .grupo legend { font-size: 14px; font-weight: 600; padding: 0; }
+.campo small { font-size: 13px; color: var(--gris); line-height: 1.4; }
+.campo input, .campo textarea, .campo select {
+  font: inherit; font-size: 16px; color: var(--tinta); background: var(--tarjeta);
+  border: 1px solid var(--borde); border-radius: 12px; padding: 12px 14px; min-height: 48px; width: 100%;
+}
+.campo textarea { min-height: 140px; resize: vertical; line-height: 1.5; }
+.grupo { border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opcion { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 22px; font-size: 14px; font-weight: 500; }
+.opcion input { width: 18px; height: 18px; accent-color: var(--acento); }
+.panel { background: var(--tarjeta); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.estado { font-size: 14px; font-weight: 600; line-height: 1.4; min-height: 20px; }
+.estado.error { color: #9B2C2C; }
+.boton-borrar { border-color: #9B2C2C; color: #9B2C2C; }
+.vista-foto { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="app">
+<main class="pagina">
+  <div class="marca"><div class="marca-nombre">Day Out</div><div class="marca-ciudad">Panel privado</div></div>
+
+  <section class="panel" id="acceso">
+    <div class="campo">
+      <label for="token">Clave de acceso</label>
+      <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
+      <small>Se guarda solo en este dispositivo. Sin la clave nadie puede publicar.</small>
+    </div>
+    <div class="campo"><label for="repo">Repositorio</label><input id="repo" type="text" autocomplete="off" placeholder="usuario/repositorio"></div>
+    <button class="boton boton-lleno" id="entrar" type="button">Entrar</button>
+    <div class="estado" id="estado-acceso" role="status"></div>
+  </section>
+
+  <form id="formulario" class="pagina" style="padding: 0" hidden>
+    <div class="campo">
+      <label for="elegir">Qué querés hacer</label>
+      <select id="elegir"></select>
+    </div>
+
+    <div class="campo"><label for="nombre">Nombre</label><input id="nombre" type="text" required></div>
+
+    <fieldset class="grupo">
+      <legend>Categorías (podés marcar varias)</legend>
+      <div class="opciones" id="categorias"></div>
+    </fieldset>
+
+    <div class="campo"><label for="zona">Zona o barrio</label><input id="zona" type="text"></div>
+    <div class="campo"><label for="breve">Reseña breve</label><input id="breve" type="text" maxlength="140"><small>Una o dos líneas. Es lo que se ve en la tarjeta.</small></div>
+    <div class="campo"><label for="texto">Por qué ir</label><textarea id="texto"></textarea></div>
+
+    <div class="campo">
+      <label for="foto">Foto de tapa</label>
+      <img id="vista-foto" class="vista-foto" alt="" hidden>
+      <input id="foto" type="file" accept="image/*">
+      <small>Se achica sola antes de subir. Si no elegís una nueva, queda la actual.</small>
+    </div>
+
+    <div class="campo"><label for="direccion">Dirección</label><input id="direccion" type="text"></div>
+    <div class="campo"><label for="horario">Horario</label><input id="horario" type="text"></div>
+    <div class="campo"><label for="precio">Precio</label><input id="precio" type="text" placeholder="Gratis, $, $$ o $$$"></div>
+    <div class="campo"><label for="idealPara">Ideal para</label><input id="idealPara" type="text"></div>
+    <div class="campo"><label for="instagram">Instagram</label><input id="instagram" type="text" placeholder="@cuenta"></div>
+
+    <section class="panel">
+      <div class="etiqueta">Solo para eventos</div>
+      <div class="campo"><label for="cuando">Cuándo</label><input id="cuando" type="text" placeholder="Sábado 10 de octubre, 18 h"><small>Para los que se repiten, escribí por ejemplo "Todos los sábados, 10 a 14 h" y dejá vacío el campo de abajo.</small></div>
+      <div class="campo"><label for="fin">Termina el</label><input id="fin" type="datetime-local"><small>Pasada esa fecha y hora, el evento desaparece solo.</small></div>
+    </section>
+
+    <button class="boton boton-lleno boton-grande" type="submit" id="publicar">Publicar</button>
+    <button class="boton boton-borrar" type="button" id="borrar" hidden>Eliminar este lugar</button>
+    <div class="estado" id="estado" role="status"></div>
+  </form>
+</main>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>

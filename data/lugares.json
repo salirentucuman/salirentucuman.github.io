@@ -1,0 +1,22 @@
+{
+  "config": {
+    "whatsapp": ""
+  },
+  "lugares": [
+    {
+      "id": "el-rosedal",
+      "nombre": "El Rosedal",
+      "categorias": ["pasear"],
+      "zona": "Parque 9 de Julio",
+      "breve": "Un rincón tranquilo para caminar entre rosas, sentarse a leer o tomar unos mates.",
+      "texto": "",
+      "foto": "",
+      "direccion": "",
+      "horario": "",
+      "precio": "",
+      "idealPara": "",
+      "instagram": "",
+      "alta": "2026-10-04"
+    }
+  ]
+}
