@@ -1,4 +1,4 @@
-/* Day Out Tucumán: aplicación. El contenido vive en data/lugares.json */
+/* Hang Out Tucumán: aplicación. El contenido vive en data/lugares.json */
 
 var CATEGORIAS = [
   { id: 'comer', nombre: 'Café y copas', sub: 'Cafés, bares, pastelerías',
@@ -50,8 +50,29 @@ function vigente(lugar) {
   return isNaN(fecha.getTime()) || fecha.getTime() >= Date.now();
 }
 
+/* Filtro Day Out / Night Out. Un lugar sin momento cargado aparece en los dos. */
+var MOMENTOS = [['todo', 'Todo'], ['dia', 'Day Out'], ['noche', 'Night Out']];
+var momento = 'todo';
+try { momento = localStorage.getItem('dayout-momento') || 'todo'; } catch (e) { /* sin almacenamiento */ }
+
+function coincide(lugar) {
+  if (momento === 'todo') return true;
+  var m = lugar.momento || 'ambos';
+  return m === 'ambos' || m === momento;
+}
+
+function etiquetaMomento(lugar) {
+  return { dia: 'De día', noche: 'De noche', ambos: 'De día y de noche' }[lugar.momento] || '';
+}
+
+function filtroMomento() {
+  return '<div class="momentos" role="group" aria-label="Filtrar por momento del día">' + MOMENTOS.map(function (m) {
+    return '<button class="momento" data-accion="momento" data-valor="' + m[0] + '" aria-pressed="' + (momento === m[0]) + '">' + m[1] + '</button>';
+  }).join('') + '</div>';
+}
+
 function lugaresVigentes() {
-  return datos.lugares.filter(vigente);
+  return datos.lugares.filter(vigente).filter(coincide);
 }
 
 function deCategoria(id) {
@@ -166,18 +187,19 @@ function vistaInicio() {
   var hayLugares = lugaresVigentes().length > 0;
 
   return '<main class="pagina">' +
-    '<div class="marca"><div class="marca-nombre">Day Out</div><div class="marca-ciudad">Tucumán</div></div>' +
+    '<div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Tucumán</div></div>' +
     '<h1 class="lema">Una guía de lugares para visitar en Tucumán, seas residente o turista.</h1>' +
+    filtroMomento() +
     (agenda.length ? '<section class="bloque"><h2 class="etiqueta">Agenda</h2><div class="lista">' + agenda.map(tarjetaEvento).join('') + '</div></section>' : '') +
     '<section class="bloque"><h2 class="etiqueta">Categorías</h2><div class="categorias">' + cats + '</div></section>' +
     (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">Hallazgos</h2><div class="lista">' + nuevos.map(tarjeta).join('') + '</div></section>' : '') +
     (hayLugares ? '<button class="boton boton-lleno boton-grande" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
     '<section class="sugerir"><div class="sugerir-titulo">¿Falta algún lugar?</div>' +
-    '<a class="boton" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Day Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>Sugerilo por WhatsApp</span></a></section>' +
+    '<a class="boton" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Hang Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>Sugerilo por WhatsApp</span></a></section>' +
     '<section class="cierre">' +
-    '<p>Day Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, una librería, un productor de queso de barrio, un rincón perfecto para leer en un parque.</p>' +
-    '<p>Day Out Tucumán es una invitación a ir a los mejores lugares y a ser turista en tu ciudad, o a recorrer San Miguel de Tucumán y Yerba Buena con el criterio de un local para quien está de visita.</p>' +
-    '<p>Day Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos.</p>' +
+    '<p>Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, una librería, un productor de queso de barrio, un rincón perfecto para leer en un parque.</p>' +
+    '<p>Hang Out Tucumán es una invitación a ir a los mejores lugares y a ser turista en tu ciudad, o a recorrer San Miguel de Tucumán y Yerba Buena con el criterio de un local para quien está de visita.</p>' +
+    '<p>Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos.</p>' +
     '<p>Si conocés los sitios destacados aquí, ¡nos gustaría saber qué te parecen! Dejanos tu reseña por privado.</p>' +
     '<p>Si conocés un sitio que creés que merece ser parte de esta selección, ¡avisanos!</p>' +
     '</section>' +
@@ -191,13 +213,14 @@ function vistaCategoria(id) {
   return '<main class="pagina">' +
     '<a class="volver" href="#/" aria-label="Volver al inicio">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<div><h1 class="titulo">' + c.nombre + '</h1><div class="subtitulo">' + c.sub + '</div></div>' +
-    (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">Todavía no hay lugares en esta categoría.</p>') +
+    filtroMomento() +
+    (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">' + (momento === 'todo' ? 'Todavía no hay lugares en esta categoría.' : 'No hay nada cargado para este momento del día. Probá con Todo.') + '</p>') +
     '</main>' + nav('');
 }
 
 function vistaGuardados() {
   var ids = leerGuardados();
-  var lista = lugaresVigentes().filter(function (l) { return ids.indexOf(l.id) !== -1; });
+  var lista = datos.lugares.filter(vigente).filter(function (l) { return ids.indexOf(l.id) !== -1; });
   return '<main class="pagina">' +
     '<div><h1 class="titulo">Guardados</h1><div class="subtitulo">Los lugares que marcaste para ir</div></div>' +
     (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">Todavía no guardaste ningún lugar. Tocá el marcador en la ficha de un lugar para tenerlo acá.</p>') +
@@ -213,7 +236,7 @@ function vistaLugar(id) {
   }
   var guardado = leerGuardados().indexOf(lugar.id) !== -1;
   var filas = [
-    ['Tipo', lugar.tipo], ['Dirección', lugar.direccion], ['Precio', lugar.precio],
+    ['Tipo', lugar.tipo], ['Momento', etiquetaMomento(lugar)], ['Dirección', lugar.direccion], ['Precio', lugar.precio],
     ['Ideal para', lugar.idealPara], ['Instagram', lugar.instagram], ['WhatsApp', lugar.whatsapp]
   ].filter(function (f) { return f[1]; }).map(function (f) {
     var valor = esc(f[1]);
@@ -250,7 +273,7 @@ function vistaLugar(id) {
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
     (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : 'Por qué ir') + '</h2><div class="texto">' + esc(lugar.texto) + '</div></section>' : '') +
     '<div class="fuiste"><div class="fuiste-titulo">¿Ya fuiste?</div>' +
-    '<a class="boton boton-chico" target="_blank" rel="noopener" href="' + esc(whatsapp('Mi reseña de ' + lugar.nombre + ' para Day Out Tucumán: ')) + '">Dejar reseña</a></div>' +
+    '<a class="boton boton-chico" target="_blank" rel="noopener" href="' + esc(whatsapp('Mi reseña de ' + lugar.nombre + ' para Hang Out Tucumán: ')) + '">Dejar reseña</a></div>' +
     '</div></main>' + nav('');
 }
 
@@ -301,6 +324,12 @@ app.addEventListener('click', function (ev) {
     if (lista.length) location.hash = '#/lugar/' + encodeURIComponent(lista[Math.floor(Math.random() * lista.length)].id);
   } else if (accion === 'volver') {
     if (history.length > 1) { ev.preventDefault(); history.back(); }
+  } else if (accion === 'momento') {
+    momento = el.getAttribute('data-valor');
+    try { localStorage.setItem('dayout-momento', momento); } catch (e) { /* sin almacenamiento */ }
+    var arriba = window.scrollY;
+    pintar();
+    window.scrollTo(0, arriba);
   } else if (accion === 'ver') {
     abrirVisor(el.getAttribute('data-id'), Number(el.getAttribute('data-indice')) || 0);
   } else if (accion === 'guardar') {
@@ -308,7 +337,7 @@ app.addEventListener('click', function (ev) {
     el.setAttribute('aria-pressed', String(ahora));
     aviso(ahora ? 'Guardado' : 'Quitado de guardados');
   } else if (accion === 'compartir') {
-    var info = { title: el.getAttribute('data-nombre') + ' · Day Out Tucumán', url: location.href };
+    var info = { title: el.getAttribute('data-nombre') + ' · Hang Out Tucumán', url: location.href };
     if (navigator.share) navigator.share(info).catch(function () {});
     else if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { aviso('Enlace copiado'); });
   }

@@ -107,6 +107,7 @@ function cargarFormulario(lugar) {
   document.querySelectorAll('#categorias input').forEach(function (caja) {
     caja.checked = (lugar.categorias || []).indexOf(caja.value) !== -1;
   });
+  $('momento').value = lugar.momento || '';
   var ev = lugar.evento || {};
   $('cuando').value = ev.cuando || '';
   ['inicio', 'fin'].forEach(function (campo) {
@@ -181,6 +182,7 @@ function publicar(ev) {
       lugar.nombre = nombre;
       lugar.categorias = cats;
       CAMPOS.forEach(function (c) { if (c !== 'nombre') lugar[c] = $(c).value.trim(); });
+      if ($('momento').value) lugar.momento = $('momento').value; else delete lugar.momento;
       if (rutaFoto) lugar.foto = rutaFoto;
       if (!lugar.foto) lugar.foto = '';
       if (rutasGaleria.length) lugar.galeria = (lugar.galeria || []).concat(rutasGaleria);

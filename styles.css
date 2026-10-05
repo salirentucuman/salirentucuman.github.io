@@ -227,3 +227,8 @@ img { display: block; max-width: 100%; }
 .tarjeta-evento-texto { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
 .tarjeta-evento-nombre { font-size: 20px; font-weight: 600; letter-spacing: -0.4px; line-height: 1.15; }
 .tarjeta-evento-cuando { font-size: 14px; font-weight: 600; color: var(--acento); }
+
+/* Filtro Day Out / Night Out */
+.momentos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; background: var(--tarjeta); border-radius: 16px; }
+.momento { min-height: 44px; border: none; border-radius: 12px; background: transparent; color: var(--gris); font-size: 14px; font-weight: 600; }
+.momento[aria-pressed="true"] { background: var(--tinta); color: #FFFFFF; }

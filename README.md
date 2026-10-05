@@ -1,4 +1,4 @@
-# Day Out Tucumán
+# Hang Out Tucumán
 
 Una selección de lugares para salir y conocer en Tucumán.
 
