@@ -212,7 +212,7 @@
     },
     {
       "id": "costal",
-      "nombre": "Costal",
+      "nombre": "Costal Café",
       "categorias": [
         "comer"
       ],
@@ -232,11 +232,15 @@
         "fotos/costal-8.jpg"
       ],
       "credito": "Café Costal",
-      "direccion": "",
+      "direccion": "Alter Point",
       "precio": "",
       "idealPara": "",
       "instagram": "@cafecostal",
-      "alta": "2026-10-06"
+      "alta": "2026-10-06",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "favorito": true
     },
     {
       "id": "elevate",
