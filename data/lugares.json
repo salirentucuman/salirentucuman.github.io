@@ -123,11 +123,11 @@
       "categorias": [
         "barrio"
       ],
-      "zona": "San Miguel de Tucumán",
+      "zona": "Barrio Norte, SMT",
       "tipo": "Comercio de barrio",
       "momento": "dia",
       "breve": "Tecnología y accesorios para celulares en un edificio de época puesto en valor. Atención muy cálida.",
-      "texto": "Merece su lugar en esta guía porque, además de tener una atención muy cálida, el edificio respeta y pone en valor su arquitectura original (de época).\n\nSnacPhone vende artículos vinculados a celulares y tecnología.\n\nAdemás, está a pasos de Rancho café, otro de nuestros favoritos.",
+      "texto": "Merece su lugar en esta guía porque, además de tener una atención muy cálida, el edificio respeta y pone en valor su arquitectura original (de época).\n\nSnacPhone vende artículos vinculados a celulares y tecnología. Además, está a pasos de Rancho café, otro de nuestros favoritos.",
       "foto": "fotos/snacphone.jpg",
       "direccion": "Virgen de la Merced 644",
       "precio": "",
@@ -138,7 +138,9 @@
         "fotos/snacphone-2.jpg"
       ],
       "whatsapp": "+54 381 448-2626",
-      "credito": "SnacPhone @snacphone y Google Maps"
+      "credito": "@snacphone",
+      "web": "",
+      "mail": ""
     },
     {
       "id": "bingo-en-rancho",
