@@ -355,7 +355,9 @@ function vistaInicio() {
       '<div class="apertura' + (agendaHtml ? '' : ' sola') + '"><section class="bloque destacado"><h2 class="etiqueta">' + t('Hallazgos') + '</h2>' + tarjeta(destacado) + '</section>' + agendaHtml + '</div>') +
     (resto.length ? bloque(t('Lugares'), resto) : (filtrado ? '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>' : '')) +
     (filtrado ? '' : bloque(t('Curiosear'), curiosos, t('Iniciativas tucumanas que tenés que conocer'))) +
-    '<p class="sugerir-linea">' + sugerir() + '</p>' +
+    '<section class="banda"><div><div class="banda-titulo">' + t('Falta algún lugar?') + '</div><div class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</div></div>' +
+    '<div class="banda-botones"><a class="boton banda-lleno" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te sugiero un lugar para Hang Out Tucumán: '))) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>WhatsApp</span></a>' +
+    '<a class="boton" href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent(t('Sugerencia para Hang Out Tucumán')) + '">' + svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', 18, 1.8) + '<span>' + t('Mail') + '</span></a></div></section>' +
     '<section class="cierre">' +
     '<p>' + t('cierre') + '</p>' +
     '<p class="aviso-legal">' + t('legal1') + '<a class="enlace" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, quiero corregir un dato de Hang Out Tucumán: '))) + '">' + t('nos escribís') + '</a>' + t(' para corregirlo.') + '</p>' +
