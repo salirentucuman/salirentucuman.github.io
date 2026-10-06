@@ -302,6 +302,27 @@
       "momento": "dia",
       "foto": "fotos/naxus-yougurt-griego-1791297687669-1.jpg",
       "favorito": true
+    },
+    {
+      "id": "maria-bonita-cafe-et-patisserie",
+      "alta": "2026-10-06",
+      "nombre": "Maria bonita Café et Pâtisserie",
+      "tipo": "Cafetería",
+      "zona": "Barrio Sur, SMT",
+      "direccion": "Chacabuco 563",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "instagram": "@mariabonitacafe_",
+      "breve": "Una pequena cafetería en Barrio Sur, que parece de cuentos.",
+      "texto": "Un rincon acogedor y tranquilo, dentro del calmo Barrio Sur. Un cafe para hacer una pausa, cuando no hay eventos (porque suelen hacer eventos muy convocantes). \n\nRevisar antes de ir si ese dia no hay evento.",
+      "precio": "",
+      "credito": "Hang Out Tucuman",
+      "categorias": [
+        "comer"
+      ],
+      "momento": "dia",
+      "foto": "fotos/maria-bonita-cafe-et-patisserie-1791299933042-1.jpg"
     }
   ]
 }
