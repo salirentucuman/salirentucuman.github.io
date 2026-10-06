@@ -12,6 +12,8 @@ var CATEGORIAS = [
     icono: '<path d="M4 10 5.5 4h13L20 10"/><path d="M4 10h16"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/>' },
   { id: 'pasear', nombre: 'Aire libre', sub: 'Parques, callecitas, rincones',
     icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
+  { id: 'cultura', nombre: 'Cultura', sub: 'Museos, teatros, muestras',
+    icono: '<path d="M3 9 12 4l9 5"/><path d="M4 9h16"/><path d="M6 9v9"/><path d="M10 9v9"/><path d="M14 9v9"/><path d="M18 9v9"/><path d="M3 20h18"/>' },
   { id: 'curiosear', nombre: 'Curiosear', sub: 'Iniciativas tucumanas que tenés que conocer',
     icono: '<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>' },
   { id: 'eventos', nombre: 'Eventos', sub: '',
@@ -215,7 +217,9 @@ function vistaInicio() {
   var nuevos = datos.lugares.filter(vigente).filter(function (l) { return l.hallazgo; }).reverse().slice(0, 3);
   /* Curiosear no es una salida: queda fuera de los filtros y del conteo. */
   function curioso(l) { return (l.categorias || []).indexOf('curiosear') !== -1; }
-  var sitios = lugaresVigentes().filter(function (l) { return !l.evento && !curioso(l); });
+  /* Con otra categoría además de Curiosear, sí entra en los filtros. */
+  function soloCurioso(l) { return curioso(l) && l.categorias.length === 1; }
+  var sitios = lugaresVigentes().filter(function (l) { return !l.evento && !soloCurioso(l); });
   var nEventos = lugaresVigentes().filter(function (l) { return l.evento; }).length;
   var curiosos = datos.lugares.filter(vigente).filter(curioso);
   var conteo = (momento === 'noche' ? 'Night Out' : 'Day Out') + ' · ' + sitios.length + (sitios.length === 1 ? ' lugar' : ' lugares') +

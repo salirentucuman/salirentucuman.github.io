@@ -2,7 +2,7 @@
 
 var CATEGORIAS = [
   ['comer', 'Café y copas'], ['restaurantes', 'Restaurantes y bodegones'], ['pasear', 'Pasear'],
-  ['curiosear', 'Curiosear'], ['autor', 'De autor'], ['barrio', 'De barrio']
+  ['cultura', 'Cultura'], ['curiosear', 'Curiosear'], ['autor', 'De autor'], ['barrio', 'De barrio']
 ];
 var CAMPOS = ['nombre', 'tipo', 'zona', 'direccion', 'whatsapp', 'web', 'mail', 'instagram', 'breve', 'texto', 'precio', 'credito'];
 var ARCHIVO = 'data/lugares.json';
