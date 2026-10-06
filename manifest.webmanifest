@@ -1,7 +1,7 @@
 {
   "name": "Hang Out Tucumán",
   "short_name": "Hang Out",
-  "description": "Una selección de lugares para salir y conocer en Tucumán.",
+  "description": "La guía de los mejores lugares para salir en Tucumán.",
   "lang": "es-AR",
   "start_url": "./",
   "scope": "./",
