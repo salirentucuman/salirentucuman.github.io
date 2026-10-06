@@ -315,9 +315,7 @@
     {
       "id": "elevate",
       "nombre": "Elevate Tucumán",
-      "categorias": [
-        "curiosear"
-      ],
+      "categorias": [],
       "zona": "",
       "tipo": "Mentoreo emprendedor (por empresarios para jóvenes)",
       "momento": "dia",
@@ -336,7 +334,8 @@
         "tipo": "Mentoring for young entrepreneurs, by business owners",
         "breve": "Tucumán business owners who help secondary school students turn a classroom project into a company.",
         "texto": "Elevate is an initiative of business owners, connecting them with students and preparing them to build something of their own. It encourages enterprise through direct accompaniment: more than a place of inspiration, it is an incubator for the province.\n\nIt works in partnership with schools. In the final years of secondary education, the curriculum includes a course in enterprise, from which each class graduates with a shared business. Elevate mentors those businesses, and looks ahead with them.\n\nThe mentors are notable names: Jacobo Cohen Imach (Mercado Libre) and Matías Mahtuk (Grupo Yuhmak), both mentors and founders of Elevate; Ezequiel Coletti (Coletti); Pablo Hatem and Benjamín Gollan (CB Developers); Mili Esper (Beautytuc); Nadim Richa (Bullanga Milanga); Mercedes and Gonzalo Costal (Costal Group); Horacio Neme (Grupo Neme); Ramiro Pato (Getnet Santander); Fran Martínez Luque (Culmen) and Máximo Bulacio (ArgentiGroup), among others."
-      }
+      },
+      "curiosidad": true
     },
     {
       "id": "naxus-yougurt-griego",

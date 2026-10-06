@@ -292,6 +292,7 @@ body.noche .guardar[aria-pressed="true"] svg { fill: var(--tinta); }
 .banda .boton { border-color: #FFFFFF; border-radius: 26px; color: #FFFFFF; }
 .banda .banda-lleno { background: #FFFFFF; color: #2F4A3C; }
 
+.bloque-sub { font-size: 14px; color: var(--gris); margin-top: 4px; }
 .cabecera { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .idiomas { display: flex; gap: 2px; padding: 3px; background: var(--tarjeta); border-radius: 12px; }
 .idioma { min-width: 40px; min-height: 34px; border: none; border-radius: 9px; background: transparent; color: var(--gris); font-size: 12px; font-weight: 700; letter-spacing: 1px; }

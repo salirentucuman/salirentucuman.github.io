@@ -2,7 +2,7 @@
 
 var CATEGORIAS = [
   ['comer', 'Café y copas'], ['restaurantes', 'Restaurantes y bodegones'], ['pasear', 'Aire libre'],
-  ['cultura', 'Cultura'], ['curiosear', 'Curiosear'], ['autor', 'De autor'], ['barrio', 'De barrio']
+  ['cultura', 'Cultura'], ['autor', 'De autor'], ['barrio', 'De barrio']
 ];
 var CAMPOS = ['nombre', 'tipo', 'zona', 'direccion', 'whatsapp', 'web', 'mail', 'instagram', 'breve', 'texto', 'precio', 'credito'];
 var ARCHIVO = 'data/lugares.json';
@@ -110,11 +110,13 @@ function ajustarClase() {
   var evento = $('clase').value === 'evento';
   document.querySelectorAll('.solo-evento').forEach(function (el) { el.hidden = !evento; });
   $('campo-cat2').hidden = evento;
-  $('rotulo-cat1').textContent = evento ? 'Además de Eventos, aparece en (opcional)' : 'Categoría';
+  var curiosidad = $('clase').value === 'curiosidad';
+  $('campo-momento').hidden = curiosidad;
+  $('rotulo-cat1').textContent = evento ? 'Además de Eventos, aparece en (opcional)' : curiosidad ? 'Además de Curiosear, aparece en (opcional)' : 'Categoría';
   var previa = $('cat1').value;
-  opciones($('cat1'), evento ? 'Solo en Eventos' : 'Elegí una categoría');
+  opciones($('cat1'), evento ? 'Solo en Eventos' : curiosidad ? 'Solo en Curiosear' : 'Elegí una categoría');
   $('cat1').value = previa;
-  $('rotulo-texto').textContent = evento ? 'De qué se trata' : 'Por qué ir';
+  $('rotulo-texto').textContent = evento || curiosidad ? 'De qué se trata' : 'Por qué ir';
 }
 
 function llenarSelector() {
@@ -143,7 +145,7 @@ function cargarFormulario(lugar) {
   CAMPOS.forEach(function (c) { $(c).value = lugar[c] || ''; });
   var cats = (lugar.categorias || []).filter(function (c) { return c !== 'eventos'; });
   var esEvento = !!lugar.evento || (lugar.categorias || []).indexOf('eventos') !== -1;
-  $('clase').value = esEvento ? 'evento' : 'sitio';
+  $('clase').value = esEvento ? 'evento' : lugar.curiosidad ? 'curiosidad' : 'sitio';
   ajustarClase();
   $('cat1').value = cats[0] || '';
   $('cat2').value = cats[1] || '';
@@ -185,7 +187,8 @@ function publicar(ev) {
   if ($('cat1').value) cats.push($('cat1').value);
   if (!esEvento && $('cat2').value && cats.indexOf($('cat2').value) === -1) cats.push($('cat2').value);
   if (!nombre) return estado('Falta el nombre.', true);
-  if (!cats.length) return estado('Elegí una categoría.', true);
+  var esCuriosidad = $('clase').value === 'curiosidad';
+  if (!cats.length && !esCuriosidad) return estado('Elegí una categoría.', true);
   if (esEvento && !$('cuando').value.trim()) return estado('Falta indicar cuándo es el evento.', true);
 
   $('publicar').disabled = true;
@@ -220,6 +223,7 @@ function publicar(ev) {
     CAMPOS.forEach(function (c) { lugar[c] = $(c).value.trim(); });
     lugar.categorias = cats;
     lugar.momento = $('momento').value;
+    if (esCuriosidad) { lugar.curiosidad = true; lugar.sinMapa = true; } else if (lugar.curiosidad) { delete lugar.curiosidad; delete lugar.sinMapa; }
     if ($('favorito').checked) lugar.favorito = true; else delete lugar.favorito;
     if ($('hallazgo').checked) lugar.hallazgo = true; else delete lugar.hallazgo;
     var rutas = fotos.map(function (f) { return f.ruta; });

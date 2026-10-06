@@ -5,11 +5,11 @@ var idioma = 'es';
 try { idioma = localStorage.getItem('hangout-idioma') === 'en' ? 'en' : 'es'; } catch (e) { /* sin almacenamiento */ }
 document.documentElement.lang = idioma === 'en' ? 'en-GB' : 'es-AR';
 var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.", "legal1": "Hang Out Tucumán es una guía independiente. Las descripciones son una mirada personal. Sos parte de un sitio o evento y encontraste un dato inexacto? Agradecemos si ", " días restantes": " días"}, en: {
- "La guía para salir en Tucumán, seas residente o turista!": "A considered guide to Tucumán, for those who live here and those passing through.",
+ "La guía para salir en Tucumán, seas residente o turista!": "A considered guide to enjoying Tucumán.",
  "Todo": "All",
  "Agenda": "Diary",
  "Categorías": "Categories",
- "Hallazgos": "Discoveries",
+ "Hallazgos": "Latest",
  "Lugares": "Places",
  "Curiosear": "Curiosities",
  "Iniciativas tucumanas que tenés que conocer": "Tucumán initiatives worth knowing",
@@ -18,16 +18,16 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Restaurantes y bodegones": "Restaurants & bodegones",
  "Para almorzar o cenar": "For lunch or supper",
  "De autor": "Makers",
- "De barrio": "Neighbourhood",
+ "De barrio": "Buy as a local",
  "Productores locales o tiendas de barrio destacadas": "Local producers and shops of note",
  "Aire libre": "Outdoors",
  "Parques, callecitas, rincones": "Parks, quiet streets, corners",
  "Cultura": "Culture",
  "Museos, teatros, muestras": "Museums, theatres, exhibitions",
  "Eventos": "Events",
- "Sorprendeme con un lugar": "Surprise me",
+ "Sorprendeme con un lugar": "Surprise me with a place to visit",
  "Falta algún lugar?": "Somewhere we have missed?",
- "Contanos cuál y por qué vale la pena.": "Tell us where, and why it deserves a place.",
+ "Contanos cuál y por qué vale la pena.": "Tell us where, and why it deserves a place within this guide.",
  "Mail": "Email",
  "Ver toda la agenda": "View the full diary",
  "Todavía no hay lugares en esta categoría.": "Nothing here yet.",
@@ -79,7 +79,8 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "cierre": "Hang Out Tucumán is not a directory, nor does it try to gather everything. It is a selection of the places we are especially fond of. A coffee house for the few, a neighbourhood cheesemaker, the right corner of a park in which to read. It is an invitation to the best of the city: to be a visitor in your own town, or to see it with the eye of someone who lives here. Hang Out Tucumán is self-funded and carries no advertising. A place appears because we went, and because we would go back. If you know somewhere that belongs in this selection, do tell us. And if you know the places gathered here, leave a note.",
  "legal1": "Hang Out Tucumán is an independent guide. The descriptions are a personal view. If you are part of a place or event and have found a detail that is not quite right, we would be grateful if you would ",
  "nos escribís": "write to us",
- " para corregirlo.": " so that we may correct it."
+ " para corregirlo.": " so that we may correct it.",
+ "Curiosidad": "Curiosity"
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -105,8 +106,6 @@ var CATEGORIAS = [
     icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
   { id: 'cultura', nombre: t('Cultura'), sub: t('Museos, teatros, muestras'),
     icono: '<path d="M3 9 12 4l9 5"/><path d="M4 9h16"/><path d="M6 9v9"/><path d="M10 9v9"/><path d="M14 9v9"/><path d="M18 9v9"/><path d="M3 20h18"/>' },
-  { id: 'curiosear', nombre: t('Curiosear'), sub: t('Iniciativas tucumanas que tenés que conocer'),
-    icono: '<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>' },
   { id: 'eventos', nombre: t('Eventos'), sub: '',
     icono: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/><path d="M8 3v4"/><path d="M16 3v4"/>' }
 ];
@@ -155,6 +154,7 @@ try { momento = localStorage.getItem('dayout-momento') || 'todo'; } catch (e) { 
 
 function coincide(lugar) {
   if (momento === 'todo') return true;
+  if (lugar.curiosidad) return false;
   var m = lugar.momento || 'ambos';
   return m === 'ambos' || m === momento;
 }
@@ -178,10 +178,12 @@ function deCategoria(id) {
 }
 
 function nombresCategorias(lugar) {
-  return (lugar.categorias || []).map(function (id) {
+  var nombres = (lugar.categorias || []).map(function (id) {
     var c = categoria(id);
     return c ? c.nombre : '';
-  }).filter(Boolean).join(' · ');
+  }).filter(Boolean);
+  if (lugar.curiosidad) nombres.unshift(t('Curiosidad'));
+  return nombres.join(' · ');
 }
 
 /* Guardados: se recuerdan solo en este dispositivo. */
@@ -300,7 +302,7 @@ function marca() {
 
 function vistaInicio() {
   var filtrado = momento !== 'todo';
-  var visibles = CATEGORIAS.filter(function (c) { return filtrado ? c.id !== 'curiosear' : (c.id !== 'eventos' || deCategoria('eventos').length > 0); });
+  var visibles = CATEGORIAS.filter(function (c) { return filtrado || c.id !== 'eventos' || deCategoria('eventos').length > 0; });
   var impar = visibles.length % 2 === 1;
   var cats = filtrado ? visibles.map(function (c) {
     return '<a class="chip-cat" href="#/categoria/' + c.id + '">' + svg(c.icono, 16) + '<span>' + c.nombre + '</span></a>';
@@ -317,13 +319,10 @@ function vistaInicio() {
     (eventos.length > agenda.length ? '<a class="ver-todo" href="#/categoria/eventos">' + t('Ver toda la agenda') + '</a>' : '') + '</section>';
   /* Hallazgos: solo los marcados a mano en el panel; primero el más reciente. */
   var nuevos = datos.lugares.filter(vigente).filter(function (l) { return l.hallazgo; }).reverse().slice(0, 3);
-  /* Curiosear no es una salida: queda fuera de los filtros y del conteo. */
-  function curioso(l) { return (l.categorias || []).indexOf('curiosear') !== -1; }
-  /* Con otra categoría además de Curiosear, sí entra en los filtros. */
-  function soloCurioso(l) { return curioso(l) && l.categorias.length === 1; }
-  var sitios = lugaresVigentes().filter(function (l) { return !l.evento && !soloCurioso(l); });
+  /* Las curiosidades no son una salida: solo se ven con Todo y no entran en el conteo. */
+  var sitios = lugaresVigentes().filter(function (l) { return !l.evento; });
   var nEventos = lugaresVigentes().filter(function (l) { return l.evento; }).length;
-  var curiosos = datos.lugares.filter(vigente).filter(curioso);
+  var curiosos = datos.lugares.filter(vigente).filter(function (l) { return l.curiosidad; });
   var conteo = (momento === 'noche' ? 'Night Out' : 'Day Out') + ' · ' + sitios.length + (sitios.length === 1 ? t(' lugar') : t(' lugares')) +
     (nEventos ? t(' y ') + nEventos + (nEventos === 1 ? t(' evento') : t(' eventos')) : '');
 
@@ -338,7 +337,7 @@ function vistaInicio() {
     '<section class="bloque"><h2 class="etiqueta">' + t('Categorías') + '</h2><div class="' + (filtrado ? 'chips-cat' : 'categorias') + '">' + cats + '</div></section>' +
     (filtrado ? '<section class="bloque"><h2 class="etiqueta">' + t('Lugares') + '</h2>' + (sitios.length ? '<div class="mosaico">' + sitios.map(tarjeta).join('') + '</div>' : '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>') + '</section>'
       : (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">' + t('Hallazgos') + '</h2><div class="mosaico tres">' + nuevos.map(tarjeta).join('') + '</div></section>' : '') +
-        (curiosos.length ? '<section class="bloque"><h2 class="etiqueta">' + t('Curiosear') + '</h2><div class="lista">' + curiosos.map(tarjeta).join('') + '</div></section>' : '')) +
+        (curiosos.length ? '<section class="bloque"><div><h2 class="etiqueta">' + t('Curiosear') + '</h2><div class="bloque-sub">' + t('Iniciativas tucumanas que tenés que conocer') + '</div></div><div class="lista">' + curiosos.map(tarjeta).join('') + '</div></section>' : '')) +
     (hayLugares ? '<button class="boton boton-lleno boton-grande azar-abajo" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>' + t('Sorprendeme con un lugar') + '</span></button>' : '') +
     '<section class="banda"><div><div class="banda-titulo">' + t('Falta algún lugar?') + '</div><div class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</div></div>' +
     '<div class="banda-botones"><a class="boton banda-lleno" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te sugiero un lugar para Hang Out Tucumán: '))) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>WhatsApp</span></a>' +
@@ -353,14 +352,13 @@ function vistaInicio() {
 function vistaCategoria(id) {
   var c = categoria(id);
   if (!c) return vistaInicio();
-  var sinFiltro = id === 'curiosear';
-  var lista = sinFiltro ? datos.lugares.filter(vigente).filter(function (l) { return (l.categorias || []).indexOf(id) !== -1; }) : deCategoria(id);
+  var lista = deCategoria(id);
   if (id === 'eventos') lista.sort(porUrgencia);
   return '<main class="pagina">' +
     marca() +
     '<a class="volver" href="#/" aria-label="Volver al inicio">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<div><h1 class="titulo">' + c.nombre + '</h1>' + (c.sub ? '<div class="subtitulo">' + c.sub + '</div>' : '') + '</div>' +
-    (sinFiltro ? '' : filtroMomento()) +
+    filtroMomento() +
     (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">' + (momento === 'todo' ? 'Todavía no hay lugares en esta categoría.' : t('No hay nada cargado para este momento del día. Probá con Todo.')) + '</p>') +
     '</main>' + nav('');
 }
@@ -383,9 +381,10 @@ function vistaLugar(id) {
       '<p class="vacio">' + t('Este lugar ya no está disponible.') + '</p></main>' + nav('');
   }
   lugar = L(lugar);
+  if (lugar.curiosidad) lugar.sinMapa = true;
   var guardado = leerGuardados().indexOf(lugar.id) !== -1;
   var filas = [
-    [t('Tipo'), lugar.tipo], [t('Momento'), etiquetaMomento(lugar)], [t('Dirección'), lugar.direccion], [t('Precio'), lugar.precio],
+    [t('Tipo'), lugar.tipo], [t('Momento'), lugar.curiosidad ? '' : etiquetaMomento(lugar)], [t('Dirección'), lugar.direccion], [t('Precio'), lugar.precio],
     [t('Ideal para'), lugar.idealPara], ['Web', lugar.web], [t('Mail'), lugar.mail], ['Instagram', lugar.instagram], ['WhatsApp', lugar.whatsapp]
   ].filter(function (f) { return f[1]; }).map(function (f) {
     var valor = esc(f[1]);
@@ -480,7 +479,7 @@ app.addEventListener('click', function (ev) {
     return;
   }
   if (accion === 'azar') {
-    var lista = datos.lugares.filter(vigente);
+    var lista = datos.lugares.filter(vigente).filter(function (l) { return !l.curiosidad; });
     if (lista.length) location.hash = '#/lugar/' + encodeURIComponent(lista[Math.floor(Math.random() * lista.length)].id);
   } else if (accion === 'volver') {
     if (history.length > 1) { ev.preventDefault(); history.back(); }
