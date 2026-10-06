@@ -280,6 +280,27 @@
       "alta": "2026-10-06",
       "mail": "elevatetucoficial@gmail.com",
       "credito": "Elevate Tucumán @elevatetucuman"
+    },
+    {
+      "id": "naxus-yougurt-griego",
+      "alta": "2026-10-06",
+      "nombre": "NAXUS Yougurt griego",
+      "tipo": "Yougurt griego",
+      "zona": "SMT y Yerba Buena",
+      "direccion": "Envios a domicilio",
+      "whatsapp": "+5493815888883",
+      "web": "",
+      "mail": "",
+      "instagram": "No tiene",
+      "breve": "Increible e inigualablemente cremoso. No hay otro similar.",
+      "texto": "Vivi Rosino, odontologa y academica, prepara un inigualable yogurt griego casero. \nPrecio hiper competitivo. \nAcuerda entregas por WhatsApp.",
+      "precio": "",
+      "credito": "Hang Out Tucuman",
+      "categorias": [
+        "autor"
+      ],
+      "momento": "dia",
+      "foto": ""
     }
   ]
 }
