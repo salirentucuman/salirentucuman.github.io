@@ -435,3 +435,31 @@ body.indice-abierto .indice { transform: none; visibility: visible; transition: 
   .curiosear-titulo { font-size: 32px; }
   .curiosear-fila { grid-template-columns: 54px minmax(0, 1fr) 30px; }
 }
+
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 300; font-style: normal; font-display: swap; src: url(fonts/cormorant-garamond-latin-300-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 400; font-style: normal; font-display: swap; src: url(fonts/cormorant-garamond-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 500; font-style: normal; font-display: swap; src: url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 400; font-style: italic; font-display: swap; src: url(fonts/cormorant-garamond-latin-400-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 500; font-style: italic; font-display: swap; src: url(fonts/cormorant-garamond-latin-500-italic.woff2) format('woff2'); }
+/* ===== Tipografía: serif para títulos y reseñas, sans para navegar ===== */
+:root { --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; }
+.lema { font-family: var(--serif); font-weight: 300; font-size: 27px; letter-spacing: -0.3px; line-height: 1.1; }
+.lema.conteo { font-weight: 400; font-size: 27px; }
+.tarjeta-nombre, .tarjeta-evento-nombre, .compacta .tarjeta-evento-nombre, .curiosear-nombre, .banda-titulo, .indice-fila span:first-child { font-family: var(--serif); font-weight: 500; font-size: 22px; letter-spacing: 0; line-height: 1.1; }
+.tarjeta-breve, .curiosear-breve, .tarjeta-evento-cuando, .compacta .tarjeta-evento-cuando, .curiosear-sub, .banda-sub, .bloque-sub { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 17px; line-height: 1.25; }
+.destacado .tarjeta-nombre { font-size: 28px; font-weight: 400; }
+.destacado .tarjeta-breve { font-size: 20px; }
+.curiosear-titulo { font-family: var(--serif); font-weight: 300; font-size: 36px; }
+.cierre p:first-child { font-family: var(--serif); font-size: 17px; line-height: 1.4; }
+.titulo { font-family: var(--serif); font-weight: 400; font-size: 38px; letter-spacing: -0.4px; }
+.subtitulo { font-family: var(--serif); font-style: italic; font-size: 19px; }
+.ficha-nombre { font-family: var(--serif); font-weight: 400; font-size: 40px; letter-spacing: -0.4px; line-height: 1.05; }
+.ficha-breve { font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.3; }
+.estrella { width: 0.6em; height: 0.6em; }
+@media (min-width: 820px) {
+  .lema, .lema.conteo { font-size: 34px; }
+  .destacado .tarjeta-nombre { font-size: 34px; }
+  .curiosear-titulo { font-size: 44px; }
+  .ficha-nombre { font-size: 52px; }
+  .titulo { font-size: 46px; }
+}
