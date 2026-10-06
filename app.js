@@ -196,6 +196,12 @@ function nav(actual) {
     '</div></nav>';
 }
 
+/* Logo del encabezado: siempre lleva al inicio. */
+function marca() {
+  return '<a class="marca" href="#/" data-accion="inicio" aria-label="Hang Out Tucumán, ir al inicio"><span class="marca-nombre">Hang Out</span>' +
+    '<span class="marca-ciudad" aria-hidden="true">' + 'TUCUMÁN'.split('').map(function (c) { return '<span>' + c + '</span>'; }).join('') + '</span></a>';
+}
+
 function vistaInicio() {
   var filtrado = momento !== 'todo';
   var visibles = CATEGORIAS.filter(function (c) { return filtrado ? c.id !== 'curiosear' : (c.id !== 'eventos' || deCategoria('eventos').length > 0); });
@@ -228,7 +234,7 @@ function vistaInicio() {
   var hayLugares = datos.lugares.filter(vigente).length > 0;
 
   return '<main class="pagina">' +
-    '<div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Tucumán</div></div>' +
+    marca() +
     (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">La guía para salir en Tucumán, seas residente o turista!</h1>') +
     '<div class="barra">' + filtroMomento() +
     (hayLugares ? '<button class="boton boton-lleno barra-azar" data-accion="azar">' + svg(ICONOS.azar, 18, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') + '</div>' +
@@ -259,6 +265,7 @@ function vistaCategoria(id) {
   var lista = sinFiltro ? datos.lugares.filter(vigente).filter(function (l) { return (l.categorias || []).indexOf(id) !== -1; }) : deCategoria(id);
   if (id === 'eventos') lista.sort(porUrgencia);
   return '<main class="pagina">' +
+    marca() +
     '<a class="volver" href="#/" aria-label="Volver al inicio">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<div><h1 class="titulo">' + c.nombre + '</h1>' + (c.sub ? '<div class="subtitulo">' + c.sub + '</div>' : '') + '</div>' +
     (sinFiltro ? '' : filtroMomento()) +
@@ -270,6 +277,7 @@ function vistaGuardados() {
   var ids = leerGuardados();
   var lista = datos.lugares.filter(vigente).filter(function (l) { return ids.indexOf(l.id) !== -1; });
   return '<main class="pagina">' +
+    marca() +
     '<div><h1 class="titulo">Guardados</h1><div class="subtitulo">Los lugares que marcaste para ir</div></div>' +
     (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">Todavía no guardaste ningún lugar. Tocá el marcador en la ficha de un lugar para tenerlo acá.</p>') +
     '</main>' + nav('guardados');
@@ -372,6 +380,7 @@ app.addEventListener('click', function (ev) {
   var el = ev.target.closest('[data-accion]');
   if (!el) return;
   var accion = el.getAttribute('data-accion');
+  if (accion === 'inicio') { window.scrollTo(0, 0); return; }
   if (accion === 'azar') {
     var lista = datos.lugares.filter(vigente);
     if (lista.length) location.hash = '#/lugar/' + encodeURIComponent(lista[Math.floor(Math.random() * lista.length)].id);
