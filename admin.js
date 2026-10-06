@@ -81,11 +81,25 @@ function opciones(select, primera) {
   }).join('');
 }
 
+var FLECHA_IZQ = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>';
+var FLECHA_DER = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>';
+
+/* Cambia una foto de lugar; la portada sigue siendo la misma foto. */
+function moverFoto(desde, hasta) {
+  if (desde === hasta || hasta < 0 || hasta >= fotos.length) return;
+  var tapa = fotos[portada];
+  fotos.splice(hasta, 0, fotos.splice(desde, 1)[0]);
+  portada = fotos.indexOf(tapa);
+  pintarFotos();
+}
+
 function pintarFotos() {
   if (portada >= fotos.length) portada = 0;
   $('galeria').innerHTML = fotos.map(function (f, i) {
-    return '<div class="foto' + (i === portada ? ' es-portada' : '') + '">' +
-      '<img src="' + (f.vista || f.ruta) + '" alt="">' +
+    return '<div class="foto' + (i === portada ? ' es-portada' : '') + '" draggable="true" data-i="' + i + '">' +
+      '<img src="' + (f.vista || f.ruta) + '" alt="" draggable="false">' +
+      (i > 0 ? '<button type="button" class="mover antes" data-mover="-1" data-i="' + i + '" aria-label="Mover foto ' + (i + 1) + ' hacia atrás">' + FLECHA_IZQ + '</button>' : '') +
+      (i < fotos.length - 1 ? '<button type="button" class="mover despues" data-mover="1" data-i="' + i + '" aria-label="Mover foto ' + (i + 1) + ' hacia adelante">' + FLECHA_DER + '</button>' : '') +
       '<button type="button" class="quitar" data-quitar="' + i + '" aria-label="Quitar foto ' + (i + 1) + '">' +
       '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg></button>' +
       '<label><input type="radio" name="portada" value="' + i + '"' + (i === portada ? ' checked' : '') + '>Portada</label></div>';
@@ -255,7 +269,35 @@ $('fotos').addEventListener('change', function () {
 $('galeria').addEventListener('change', function (ev) {
   if (ev.target.name === 'portada') { portada = Number(ev.target.value); pintarFotos(); }
 });
+var arrastrada = null;
+$('galeria').addEventListener('dragstart', function (ev) {
+  var el = ev.target.closest('.foto');
+  if (!el) return;
+  arrastrada = Number(el.getAttribute('data-i'));
+  el.classList.add('arrastrando');
+  ev.dataTransfer.effectAllowed = 'move';
+  ev.dataTransfer.setData('text/plain', String(arrastrada));
+});
+$('galeria').addEventListener('dragover', function (ev) {
+  if (arrastrada === null) return;
+  ev.preventDefault();
+  var el = ev.target.closest('.foto');
+  document.querySelectorAll('.foto.destino').forEach(function (f) { if (f !== el) f.classList.remove('destino'); });
+  if (el && Number(el.getAttribute('data-i')) !== arrastrada) el.classList.add('destino');
+});
+$('galeria').addEventListener('drop', function (ev) {
+  if (arrastrada === null) return;
+  ev.preventDefault();
+  var el = ev.target.closest('.foto');
+  var desde = arrastrada;
+  arrastrada = null;
+  if (el) moverFoto(desde, Number(el.getAttribute('data-i'))); else pintarFotos();
+});
+$('galeria').addEventListener('dragend', function () { arrastrada = null; pintarFotos(); });
+
 $('galeria').addEventListener('click', function (ev) {
+  var m = ev.target.closest('[data-mover]');
+  if (m) { var desde = Number(m.getAttribute('data-i')); return moverFoto(desde, desde + Number(m.getAttribute('data-mover'))); }
   var b = ev.target.closest('[data-quitar]');
   if (!b) return;
   var i = Number(b.getAttribute('data-quitar'));

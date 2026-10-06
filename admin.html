@@ -38,6 +38,12 @@
 .foto.es-portada img { outline: 3px solid var(--acento); outline-offset: -3px; }
 .foto label { display: flex; align-items: center; gap: 6px; min-height: 32px; font-size: 13px; font-weight: 600; cursor: pointer; }
 .foto input { width: 18px; height: 18px; accent-color: var(--acento); }
+.foto { cursor: grab; }
+.foto.arrastrando { opacity: 0.35; }
+.foto.destino img { outline: 3px dashed var(--acento); outline-offset: -3px; }
+.foto .mover { position: absolute; top: calc(100% - 78px); width: 32px; height: 32px; border-radius: 16px; border: none; background: #FFFFFF; color: var(--tinta); display: flex; align-items: center; justify-content: center; }
+.foto .mover.antes { left: 6px; }
+.foto .mover.despues { right: 6px; }
 .foto .quitar { position: absolute; top: 6px; right: 6px; width: 32px; height: 32px; border-radius: 16px; border: none; background: #FFFFFF; color: var(--tinta); display: flex; align-items: center; justify-content: center; }
 .estado { font-size: 14px; font-weight: 600; line-height: 1.4; min-height: 20px; }
 .estado.error { color: #9B2C2C; }
@@ -101,7 +107,7 @@
       <h2>Fotos</h2>
       <div class="galeria" id="galeria"></div>
       <label class="subir"><input id="fotos" type="file" accept="image/*" multiple><span>Agregar fotos</span></label>
-      <small class="intro">Podés elegir varias. Marcá cuál es la portada; el resto queda en la galería, en el orden en que se ven acá.</small>
+      <small class="intro">Podés elegir varias. Marcá cuál es la portada; el resto queda en la galería, en el orden en que se ven acá. Para cambiar el orden, arrastrá una foto con el mouse o usá las flechas.</small>
       <div class="campo"><label for="credito">Crédito de las fotos</label><input id="credito" type="text" placeholder="Nombre @cuenta"></div>
     </section>
 
@@ -129,6 +135,6 @@
   </form>
 </main>
 </div>
-<script src="admin.js"></script>
+<script src="admin.js?v=2"></script>
 </body>
 </html>
