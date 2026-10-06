@@ -242,7 +242,7 @@ function publicar(ev) {
 
 function borrar() {
   var id = $('elegir').value, lugar = buscar(id);
-  if (!lugar || !confirm('¿Eliminar "' + lugar.nombre + '"? No se puede deshacer desde acá.')) return;
+  if (!lugar || !confirm('Eliminar "' + lugar.nombre + '"? No se puede deshacer desde acá.')) return;
   estado('Eliminando…');
   leer().then(function (actual) {
     actual.json.lugares = actual.json.lugares.filter(function (l) { return l.id !== id; });

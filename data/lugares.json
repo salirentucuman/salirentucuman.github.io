@@ -96,7 +96,7 @@
       "zona": "Yerba Buena",
       "tipo": "Speakeasy Restaurant",
       "momento": "noche",
-      "breve": "Restaurant tipo speakeasy, para cenar y solo con reservas.",
+      "breve": "Restaurante tipo speakeasy, para cenar y solo con reservas.",
       "texto": "Atmósfera íntima, comida de autor, pocas mesas y atendido por sus dueños.\nReservas completas hasta mayo de 2027, aunque parecen tener disponibilidad extra para eventos privados.",
       "foto": "fotos/vintter.jpg",
       "galeria": [
@@ -211,7 +211,7 @@
       "tipo": "Pastelería gourmet. Bakery.",
       "momento": "dia",
       "breve": "El Oscar de oro para esta pastelería.",
-      "texto": "Zelmira es la pastelería que destrona a toda pastelería. Habrá muchas cosas exquisitas en Tucumán, pero será muy difícil sumar otra pastelería después de las delicias de este lugar.\n\nTienen su tienda física en Yerba Buena. Además, podés comprar cómodamente desde su web y también te venden por WhatsApp. Al comprar en la web, ella te contacta por WhatsApp para coordinar el envío.\n\nEs decir, además de hacer la mejor pastelería con sus propias manos, tienen una atención inigualable.",
+      "texto": "Zelmira es la pastelería que destrona a toda pastelería. Habrá muchas cosas exquisitas en Tucumán, pero será muy difícil sumar otra pastelería después de las delicias de este lugar.\n\nTienen su tienda física en Yerba Buena. Además, podés comprar cómodamente desde su web y también te venden por WhatsApp. Al comprar en la web, te contactan por WhatsApp para coordinar el envío.\n\nEs decir, además de hacer la mejor pastelería con sus propias manos, tienen una atención inigualable.",
       "foto": "fotos/zelmira-8.jpg",
       "galeria": [
         "fotos/zelmira-9.jpg",
@@ -284,18 +284,18 @@
     {
       "id": "naxus-yougurt-griego",
       "alta": "2026-10-06",
-      "nombre": "NAXUS Yougurt griego",
-      "tipo": "Yougurt griego",
+      "nombre": "NAXUS Yogurt griego",
+      "tipo": "Yogurt griego",
       "zona": "SMT y Yerba Buena",
-      "direccion": "Envios a domicilio",
+      "direccion": "Envíos a domicilio",
       "whatsapp": "+5493815888883",
       "web": "",
       "mail": "",
       "instagram": "No tiene",
       "breve": "Una estrella Michelin para este yogurt griego casero.",
-      "texto": "Detrás de NAXUS está Vivi Rosino, odontóloga y académica, que prepara en casa un yogurt griego de una cremosidad inigualable.\nHe probado todos los yogures griegos, no hay nada parecido a este en la ciudad.\n\nEl precio es muy competitivo.\nNo tiene local, desde la comodidad de tu WhatsApp coordina entregas a domicilio, en San Miguel de Tucumán y Yerba Buena.",
+      "texto": "Detrás de NAXUS está Vivi Rosino, odontóloga y académica, que prepara en casa un yogurt griego de una cremosidad inigualable.\nHe probado todos los yogures griegos: no hay nada parecido a este en la ciudad.\n\nEl precio es muy competitivo.\nNo tiene local: coordina por WhatsApp entregas a domicilio en San Miguel de Tucumán y Yerba Buena.",
       "precio": "",
-      "credito": "Hang Out Tucuman",
+      "credito": "Hang Out Tucumán",
       "categorias": [
         "autor"
       ],

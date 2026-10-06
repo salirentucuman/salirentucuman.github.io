@@ -12,7 +12,7 @@ var CATEGORIAS = [
     icono: '<path d="M4 10 5.5 4h13L20 10"/><path d="M4 10h16"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/>' },
   { id: 'pasear', nombre: 'Aire libre', sub: 'Parques, callecitas, rincones',
     icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
-  { id: 'curiosear', nombre: 'Curiosear', sub: 'Librerías, tiendas, cultura',
+  { id: 'curiosear', nombre: 'Curiosear', sub: 'Iniciativas tucumanas que tenés que conocer',
     icono: '<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>' },
   { id: 'eventos', nombre: 'Eventos', sub: '',
     icono: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/><path d="M8 3v4"/><path d="M16 3v4"/>' }
@@ -196,7 +196,7 @@ function nav(actual) {
 
 function vistaInicio() {
   var filtrado = momento !== 'todo';
-  var visibles = CATEGORIAS.filter(function (c) { return filtrado || c.id !== 'eventos' || deCategoria('eventos').length > 0; });
+  var visibles = CATEGORIAS.filter(function (c) { return filtrado ? c.id !== 'curiosear' : (c.id !== 'eventos' || deCategoria('eventos').length > 0); });
   var impar = visibles.length % 2 === 1;
   var cats = filtrado ? visibles.map(function (c) {
     return '<a class="chip-cat" href="#/categoria/' + c.id + '">' + svg(c.icono, 16) + '<span>' + c.nombre + '</span></a>';
@@ -213,8 +213,11 @@ function vistaInicio() {
     (eventos.length > agenda.length ? '<a class="ver-todo" href="#/categoria/eventos">Ver toda la agenda</a>' : '') + '</section>';
   /* Hallazgos: solo los marcados a mano en el panel; primero el más reciente. */
   var nuevos = datos.lugares.filter(vigente).filter(function (l) { return l.hallazgo; }).reverse().slice(0, 3);
-  var sitios = lugaresVigentes().filter(function (l) { return !l.evento; });
-  var nEventos = lugaresVigentes().length - sitios.length;
+  /* Curiosear no es una salida: queda fuera de los filtros y del conteo. */
+  function curioso(l) { return (l.categorias || []).indexOf('curiosear') !== -1; }
+  var sitios = lugaresVigentes().filter(function (l) { return !l.evento && !curioso(l); });
+  var nEventos = lugaresVigentes().filter(function (l) { return l.evento; }).length;
+  var curiosos = datos.lugares.filter(vigente).filter(curioso);
   var conteo = (momento === 'noche' ? 'Night Out' : 'Day Out') + ' · ' + sitios.length + (sitios.length === 1 ? ' lugar' : ' lugares') +
     (nEventos ? ' y ' + nEventos + (nEventos === 1 ? ' evento' : ' eventos') : '');
 
@@ -222,24 +225,25 @@ function vistaInicio() {
 
   return '<main class="pagina">' +
     '<div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Tucumán</div></div>' +
-    (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">¡La guía para salir en Tucumán, seas residente o turista!</h1>') +
+    (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">La guía para salir en Tucumán, seas residente o turista!</h1>') +
     '<div class="barra">' + filtroMomento() +
     (hayLugares ? '<button class="boton boton-lleno barra-azar" data-accion="azar">' + svg(ICONOS.azar, 18, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') + '</div>' +
     agendaHtml +
     '<section class="bloque"><h2 class="etiqueta">Categorías</h2><div class="' + (filtrado ? 'chips-cat' : 'categorias') + '">' + cats + '</div></section>' +
     (filtrado ? '<section class="bloque"><h2 class="etiqueta">Lugares</h2>' + (sitios.length ? '<div class="mosaico">' + sitios.map(tarjeta).join('') + '</div>' : '<p class="vacio">No hay lugares cargados para este momento del día.</p>') + '</section>'
-      : (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">Hallazgos</h2><div class="mosaico tres">' + nuevos.map(tarjeta).join('') + '</div></section>' : '')) +
+      : (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">Hallazgos</h2><div class="mosaico tres">' + nuevos.map(tarjeta).join('') + '</div></section>' : '') +
+        (curiosos.length ? '<section class="bloque"><h2 class="etiqueta">Curiosear</h2><div class="lista">' + curiosos.map(tarjeta).join('') + '</div></section>' : '')) +
     (hayLugares ? '<button class="boton boton-lleno boton-grande azar-abajo" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
-    '<section class="banda"><div><div class="banda-titulo">¿Falta algún lugar?</div><div class="banda-sub">Contanos cuál y por qué vale la pena.</div></div>' +
+    '<section class="banda"><div><div class="banda-titulo">Falta algún lugar?</div><div class="banda-sub">Contanos cuál y por qué vale la pena.</div></div>' +
     '<div class="banda-botones"><a class="boton banda-lleno" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Hang Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>WhatsApp</span></a>' +
     '<a class="boton" href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent('Sugerencia para Hang Out Tucumán') + '">' + svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', 18, 1.8) + '<span>Mail</span></a></div></section>' +
     '<section class="cierre">' +
     '<p>Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. ' +
     'Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. ' +
     'Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. ' +
-    'Si conocés un sitio que creés que merece ser parte de esta selección, ¡avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.</p>' +
+    'Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.</p>' +
     '<p class="aviso-legal">Hang Out Tucumán es una guía independiente. Las descripciones son una mirada personal. '
-    + '¿Sos parte de un sitio o evento y encontraste un dato inexacto? Agradecemos si <a class="enlace" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, quiero corregir un dato de Hang Out Tucumán: ')) + '">nos escribís</a> para corregirlo.</p>' +
+    + 'Sos parte de un sitio o evento y encontraste un dato inexacto? Agradecemos si <a class="enlace" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, quiero corregir un dato de Hang Out Tucumán: ')) + '">nos escribís</a> para corregirlo.</p>' +
     '</section>' +
     '</main>' + nav('inicio');
 }
@@ -247,12 +251,13 @@ function vistaInicio() {
 function vistaCategoria(id) {
   var c = categoria(id);
   if (!c) return vistaInicio();
-  var lista = deCategoria(id);
+  var sinFiltro = id === 'curiosear';
+  var lista = sinFiltro ? datos.lugares.filter(vigente).filter(function (l) { return (l.categorias || []).indexOf(id) !== -1; }) : deCategoria(id);
   if (id === 'eventos') lista.sort(porUrgencia);
   return '<main class="pagina">' +
     '<a class="volver" href="#/" aria-label="Volver al inicio">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<div><h1 class="titulo">' + c.nombre + '</h1>' + (c.sub ? '<div class="subtitulo">' + c.sub + '</div>' : '') + '</div>' +
-    filtroMomento() +
+    (sinFiltro ? '' : filtroMomento()) +
     (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">' + (momento === 'todo' ? 'Todavía no hay lugares en esta categoría.' : 'No hay nada cargado para este momento del día. Probá con Todo.') + '</p>') +
     '</main>' + nav('');
 }
@@ -315,7 +320,7 @@ function vistaLugar(id) {
     '</div>' +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
     (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : 'Por qué ir') + '</h2><div class="texto">' + esc(lugar.texto) + '</div></section>' : '') +
-    '<div class="fuiste"><div class="fuiste-titulo">¿Ya fuiste?</div>' +
+    '<div class="fuiste"><div class="fuiste-titulo">Ya fuiste?</div>' +
     '<a class="boton boton-chico" target="_blank" rel="noopener" href="' + esc(whatsapp('Mi reseña de ' + lugar.nombre + ' para Hang Out Tucumán: ')) + '">Dejar reseña</a></div>' +
     '</div></main>' + nav('');
 }
