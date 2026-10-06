@@ -69,22 +69,23 @@
       ],
       "zona": "Yerba Buena",
       "tipo": "Aniversario",
-      "breve": "Una semana de festejo, con algo diferente cada día.",
+      "breve": "Una semana de festejo.",
       "texto": "Villa Poli y Madame Rouges cumplen 2 años y lo festejan toda la semana: cada día esperan con algo distinto.\n\nPara ir a sorprenderse.",
       "foto": "fotos/villa-poli-2-anos.jpg",
-      "galeria": [
-        "fotos/villa-poli-2-anos-2.jpg"
-      ],
-      "credito": "Villa Poli @villapolitucuman",
+      "credito": "@villapolitucuman",
       "direccion": "Villa Poli, Av. Aconquija, Yerba Buena",
       "instagram": "@villapolitucuman",
       "alta": "2026-10-05",
       "evento": {
         "cuando": "Del lunes 5 al sábado 10 de octubre",
-        "inicio": "2026-10-05T00:00:00-03:00",
-        "fin": "2026-10-10T23:59:00-03:00"
+        "inicio": "2026-10-05T03:00:00.000Z",
+        "fin": "2026-10-11T02:59:00.000Z"
       },
-      "momento": "dia"
+      "momento": "dia",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "precio": ""
     },
     {
       "id": "vintter",
