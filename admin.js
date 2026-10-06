@@ -149,6 +149,7 @@ function cargarFormulario(lugar) {
   $('cat2').value = cats[1] || '';
   $('momento').value = lugar.momento || 'dia';
   $('favorito').checked = !!lugar.favorito;
+  $('hallazgo').checked = !!lugar.hallazgo;
   var ev = lugar.evento || {};
   $('cuando').value = ev.cuando || '';
   $('inicio').value = fechaLocal(ev.inicio);
@@ -220,6 +221,7 @@ function publicar(ev) {
     lugar.categorias = cats;
     lugar.momento = $('momento').value;
     if ($('favorito').checked) lugar.favorito = true; else delete lugar.favorito;
+    if ($('hallazgo').checked) lugar.hallazgo = true; else delete lugar.hallazgo;
     var rutas = fotos.map(function (f) { return f.ruta; });
     lugar.foto = rutas[portada] || '';
     var resto = rutas.filter(function (r, i) { return i !== portada; });
