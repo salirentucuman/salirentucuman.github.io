@@ -246,3 +246,6 @@ img { display: block; max-width: 100%; }
 .dato dd { overflow-wrap: anywhere; }
 
 .cierre .aviso-legal { font-size: 12px; line-height: 1.5; padding-top: 12px; border-top: 1px solid var(--borde); }
+
+/* Estrella de favoritos */
+.estrella { display: inline-block; width: 0.72em; height: 0.72em; vertical-align: 0.02em; margin-left: 0.12em; color: var(--acento); }

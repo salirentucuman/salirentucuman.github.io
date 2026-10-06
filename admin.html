@@ -4,98 +4,127 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Panel · Hang Out Tucumán</title>
+<title>Cargar · Hang Out Tucumán</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="styles.css">
 <style>
-.app { padding-bottom: 48px; }
+.app { padding-bottom: 56px; }
+.intro { font-size: 15px; line-height: 1.5; color: var(--gris); margin: 0; }
+.seccion { background: var(--tarjeta); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.seccion h2 { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gris); }
 .campo { display: flex; flex-direction: column; gap: 6px; }
-.campo label, .grupo legend { font-size: 14px; font-weight: 600; padding: 0; }
+.campo label, .campo .rotulo { font-size: 14px; font-weight: 600; }
 .campo small { font-size: 13px; color: var(--gris); line-height: 1.4; }
-.campo input, .campo textarea, .campo select {
-  font: inherit; font-size: 16px; color: var(--tinta); background: var(--tarjeta);
-  border: 1px solid var(--borde); border-radius: 12px; padding: 12px 14px; min-height: 48px; width: 100%;
+.campo input[type=text], .campo input[type=password], .campo input[type=email], .campo input[type=datetime-local], .campo textarea, .campo select {
+  font: inherit; font-size: 16px; color: var(--tinta); background: var(--fondo);
+  border: 1px solid transparent; border-radius: 12px; padding: 12px 14px; min-height: 48px; width: 100%;
+  -webkit-appearance: none; appearance: none;
 }
-.campo textarea { min-height: 140px; resize: vertical; line-height: 1.5; }
-.grupo { border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
-.opcion { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 22px; font-size: 14px; font-weight: 500; }
-.opcion input { width: 18px; height: 18px; accent-color: var(--acento); }
-.panel { background: var(--tarjeta); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.campo select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235C645F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+.campo input:focus, .campo textarea:focus, .campo select:focus { outline: none; border-color: var(--acento); background: #FFFFFF; }
+.campo textarea { min-height: 150px; resize: vertical; line-height: 1.5; }
+.dos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.tilde { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 10px 14px; background: var(--fondo); border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; }
+.tilde input { width: 22px; height: 22px; accent-color: var(--acento); flex-shrink: 0; }
+.tilde small { display: block; font-size: 13px; font-weight: 400; color: var(--gris); margin-top: 2px; }
+.tilde .estrella { width: 18px; height: 18px; }
+.subir { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; border: 1px dashed var(--borde); border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; }
+.subir input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.subir:focus-within { border-color: var(--acento); }
+.galeria { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.galeria:empty { display: none; }
+.foto { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.foto img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; background: var(--foto-a); }
+.foto.es-portada img { outline: 3px solid var(--acento); outline-offset: -3px; }
+.foto label { display: flex; align-items: center; gap: 6px; min-height: 32px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.foto input { width: 18px; height: 18px; accent-color: var(--acento); }
+.foto .quitar { position: absolute; top: 6px; right: 6px; width: 32px; height: 32px; border-radius: 16px; border: none; background: #FFFFFF; color: var(--tinta); display: flex; align-items: center; justify-content: center; }
 .estado { font-size: 14px; font-weight: 600; line-height: 1.4; min-height: 20px; }
 .estado.error { color: #9B2C2C; }
 .boton-borrar { border-color: #9B2C2C; color: #9B2C2C; }
-.vista-foto { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; }
 [hidden] { display: none !important; }
 </style>
 </head>
 <body>
 <div class="app">
 <main class="pagina">
-  <div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Panel privado</div></div>
+  <div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Cargar un sitio o evento</div></div>
 
-  <section class="panel" id="acceso">
+  <section class="seccion" id="acceso">
+    <h2>Acceso</h2>
     <div class="campo">
       <label for="token">Clave de acceso</label>
       <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
       <small>Se guarda solo en este dispositivo. Sin la clave nadie puede publicar.</small>
     </div>
-    <div class="campo"><label for="repo">Repositorio</label><input id="repo" type="text" autocomplete="off" placeholder="usuario/repositorio"></div>
+    <div class="campo"><label for="repo">Repositorio</label><input id="repo" type="text" autocomplete="off"></div>
     <button class="boton boton-lleno" id="entrar" type="button">Entrar</button>
     <div class="estado" id="estado-acceso" role="status"></div>
   </section>
 
-  <form id="formulario" class="pagina" style="padding: 0" hidden>
-    <div class="campo">
-      <label for="elegir">Qué querés hacer</label>
-      <select id="elegir"></select>
-    </div>
+  <form id="formulario" class="pagina" style="padding: 0" hidden novalidate>
+    <section class="seccion">
+      <h2>Qué vas a cargar</h2>
+      <div class="campo"><label for="elegir">Ficha</label><select id="elegir"></select></div>
+      <div class="campo">
+        <label for="clase">Es un</label>
+        <select id="clase"><option value="sitio">Sitio</option><option value="evento">Evento</option></select>
+      </div>
+      <div class="campo"><label for="nombre">Nombre</label><input id="nombre" type="text" autocomplete="off"></div>
+      <label class="tilde"><input id="favorito" type="checkbox">
+        <span><svg class="estrella" viewBox="0 0 24 24" aria-hidden="true"><path fill="#2F4A3C" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg> Favorito de mi selección
+        <small>Muestra la estrella junto al nombre.</small></span>
+      </label>
+    </section>
 
-    <div class="campo"><label for="nombre">Nombre</label><input id="nombre" type="text" required></div>
+    <section class="seccion">
+      <h2>Dónde aparece</h2>
+      <div class="campo"><label for="cat1" id="rotulo-cat1">Categoría</label><select id="cat1"></select></div>
+      <div class="campo" id="campo-cat2"><label for="cat2">Otra categoría (opcional)</label><select id="cat2"></select></div>
+      <div class="campo">
+        <label for="momento">Momento</label>
+        <select id="momento"><option value="dia">Day Out, de día</option><option value="noche">Night Out, de noche</option><option value="ambos">Los dos</option></select>
+      </div>
+    </section>
 
-    <fieldset class="grupo">
-      <legend>Categorías (podés marcar varias)</legend>
-      <div class="opciones" id="categorias"></div>
-    </fieldset>
+    <section class="seccion solo-evento">
+      <h2>Fechas del evento</h2>
+      <div class="campo"><label for="cuando">Cuándo</label><input id="cuando" type="text" placeholder="Sábado 17 de octubre, por la tarde"><small>Es el texto que se lee en la ficha.</small></div>
+      <div class="dos">
+        <div class="campo"><label for="inicio">Empieza</label><input id="inicio" type="datetime-local"></div>
+        <div class="campo"><label for="fin">Termina</label><input id="fin" type="datetime-local"></div>
+      </div>
+      <small class="intro">Al pasar la fecha de fin, el evento desaparece solo. Si se repite siempre, dejá las dos fechas vacías.</small>
+    </section>
 
-    <div class="campo"><label for="momento">Momento</label><select id="momento"><option value="">Sin definir (aparece en los dos)</option><option value="dia">Day Out, de día</option><option value="noche">Night Out, de noche</option><option value="ambos">Los dos</option></select></div>
-    <div class="campo"><label for="tipo">Tipo</label><input id="tipo" type="text" placeholder="Café de nicho"></div>
-    <div class="campo"><label for="zona">Zona o barrio</label><input id="zona" type="text"></div>
-    <div class="campo"><label for="breve">Reseña breve</label><input id="breve" type="text" maxlength="140"><small>Una o dos líneas. Es lo que se ve en la tarjeta.</small></div>
-    <div class="campo"><label for="texto">Por qué ir</label><textarea id="texto"></textarea></div>
+    <section class="seccion">
+      <h2>Fotos</h2>
+      <div class="galeria" id="galeria"></div>
+      <label class="subir"><input id="fotos" type="file" accept="image/*" multiple><span>Agregar fotos</span></label>
+      <small class="intro">Podés elegir varias. Marcá cuál es la portada; el resto queda en la galería, en el orden en que se ven acá.</small>
+      <div class="campo"><label for="credito">Crédito de las fotos</label><input id="credito" type="text" placeholder="Nombre @cuenta"></div>
+    </section>
 
-    <div class="campo">
-      <label for="foto">Foto de tapa</label>
-      <img id="vista-foto" class="vista-foto" alt="" hidden>
-      <input id="foto" type="file" accept="image/*">
-      <small>Se achica sola antes de subir. Si no elegís una nueva, queda la actual.</small>
-    </div>
+    <section class="seccion">
+      <h2>Textos</h2>
+      <div class="campo"><label for="tipo">Tipo</label><input id="tipo" type="text" placeholder="Cafetería de especialidad"></div>
+      <div class="campo"><label for="breve">Reseña breve</label><input id="breve" type="text" maxlength="160"><small>Una o dos líneas. Es lo que se ve en la tarjeta.</small></div>
+      <div class="campo"><label for="texto" id="rotulo-texto">Por qué ir</label><textarea id="texto"></textarea><small>Dejá una línea en blanco entre párrafos.</small></div>
+    </section>
 
-    <div class="campo">
-      <label for="galeria">Más fotos para la galería</label>
-      <input id="galeria" type="file" accept="image/*" multiple>
-      <small>Podés elegir varias. Se suman a las que ya tiene el lugar.</small>
-    </div>
-    <div class="campo"><label for="credito">Crédito de las fotos</label><input id="credito" type="text" placeholder="Nombre @cuenta"></div>
-
-    <div class="campo"><label for="direccion">Dirección</label><input id="direccion" type="text"></div>
-    
-    <div class="campo"><label for="precio">Precio</label><input id="precio" type="text" placeholder="Gratis, $, $$ o $$$"></div>
-    <div class="campo"><label for="idealPara">Ideal para</label><input id="idealPara" type="text"></div>
-    <div class="campo"><label for="web">Web</label><input id="web" type="text" placeholder="ejemplo.com.ar"></div>
-    <div class="campo"><label for="mail">Mail</label><input id="mail" type="email"></div>
-    <div class="campo"><label for="instagram">Instagram</label><input id="instagram" type="text" placeholder="@cuenta"></div>
-    <div class="campo"><label for="whatsapp">WhatsApp del lugar</label><input id="whatsapp" type="text" placeholder="+54 9 381 ..."></div>
-
-    <section class="panel">
-      <div class="etiqueta">Solo para eventos</div>
-      <div class="campo"><label for="cuando">Cuándo</label><input id="cuando" type="text" placeholder="Sábado 10 de octubre, 18 h"><small>Para los que se repiten, escribí por ejemplo "Todos los sábados, 10 a 14 h" y dejá vacío el campo de abajo.</small></div>
-      <div class="campo"><label for="inicio">Empieza el</label><input id="inicio" type="datetime-local"></div>
-      <div class="campo"><label for="fin">Termina el</label><input id="fin" type="datetime-local"><small>Pasada esa fecha y hora, el evento desaparece solo.</small></div>
+    <section class="seccion">
+      <h2>Datos</h2>
+      <div class="campo"><label for="zona">Zona o barrio</label><input id="zona" type="text" placeholder="Yerba Buena"></div>
+      <div class="campo"><label for="direccion">Dirección</label><input id="direccion" type="text" placeholder="Calle y número"></div>
+      <div class="campo"><label for="whatsapp">WhatsApp del sitio</label><input id="whatsapp" type="text" inputmode="tel" placeholder="+54 9 381 ..."></div>
+      <div class="campo"><label for="instagram">Instagram</label><input id="instagram" type="text" placeholder="@cuenta" autocapitalize="none"></div>
+      <div class="campo"><label for="web">Web</label><input id="web" type="text" placeholder="ejemplo.com.ar" autocapitalize="none"></div>
+      <div class="campo"><label for="mail">Mail</label><input id="mail" type="email" autocapitalize="none"></div>
+      <div class="campo solo-evento"><label for="precio">Precio de la entrada</label><input id="precio" type="text" placeholder="Gratis, o el valor"></div>
     </section>
 
     <button class="boton boton-lleno boton-grande" type="submit" id="publicar">Publicar</button>
-    <button class="boton boton-borrar" type="button" id="borrar" hidden>Eliminar este lugar</button>
+    <button class="boton boton-borrar" type="button" id="borrar" hidden>Eliminar esta ficha</button>
     <div class="estado" id="estado" role="status"></div>
   </form>
 </main>

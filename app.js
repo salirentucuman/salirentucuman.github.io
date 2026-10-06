@@ -155,12 +155,17 @@ function pildora(lugar) {
   return '<div class="pildora"><span class="punto' + (e.vivo ? ' vivo' : '') + '"></span>' + e.texto + '</div>';
 }
 
+/* Estrella propia para los favoritos de la selección. */
+function nombreCon(lugar) {
+  return esc(lugar.nombre) + (lugar.favorito ? ' <svg class="estrella" viewBox="0 0 24 24" role="img" aria-label="Favorito de Hang Out"><path fill="currentColor" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg>' : '');
+}
+
 function tarjetaEvento(lugar) {
   var cuando = lugar.evento && lugar.evento.cuando;
   return '<a class="tarjeta-evento" href="#/lugar/' + encodeURIComponent(lugar.id) + '">' +
     (lugar.foto ? '<img class="tarjeta-evento-foto" src="' + esc(lugar.foto) + '" alt="" loading="lazy">' : '') +
     '<div class="tarjeta-evento-texto">' + pildora(lugar) +
-    '<div class="tarjeta-evento-nombre">' + esc(lugar.nombre) + '</div>' +
+    '<div class="tarjeta-evento-nombre">' + nombreCon(lugar) + '</div>' +
     (cuando ? '<div class="tarjeta-evento-cuando">' + esc(cuando) + '</div>' : '') +
     '</div></a>';
 }
@@ -171,7 +176,7 @@ function tarjeta(lugar) {
     foto(lugar, 'tarjeta-foto') +
     '<div class="tarjeta-texto">' +
     '<div class="tarjeta-cat">' + esc(nombresCategorias(lugar)) + '</div>' +
-    '<div class="tarjeta-nombre">' + esc(lugar.nombre) + '</div>' +
+    '<div class="tarjeta-nombre">' + nombreCon(lugar) + '</div>' +
     (lugar.breve ? '<div class="tarjeta-breve">' + esc(lugar.breve) + '</div>' : '') +
     '</div></a>';
 }
@@ -290,7 +295,7 @@ function vistaLugar(id) {
     '</div>' +
     '<div class="pagina">' + fotosBloque +
     '<div class="ficha-cabecera">' + (lugar.evento ? pildora(lugar) : '') + '<div class="ficha-cat">' + esc(nombresCategorias(lugar)) + zona + '</div>' +
-    '<h1 class="ficha-nombre">' + esc(lugar.nombre) + '</h1>' +
+    '<h1 class="ficha-nombre">' + nombreCon(lugar) + '</h1>' +
     (cuando ? '<div class="ficha-cuando">' + esc(cuando) + '</div>' : '') +
     (lugar.breve ? '<div class="ficha-breve">' + esc(lugar.breve) + '</div>' : '') + '</div>' +
     '<div class="acciones' + (lugar.sinMapa && !lugar.whatsapp ? ' solo' : '') + '">' +
