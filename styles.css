@@ -206,7 +206,7 @@ img { display: block; max-width: 100%; }
 .enlace { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Eventos: otro ritmo. Fondo oscuro, acento cálido y un estado que marca la urgencia. */
-.evento, .tarjeta-evento {
+.evento {
   --fondo: #1E2320; --tarjeta: #2A302C; --tinta: #F2F3F0; --tinta-suave: #D5D9D3;
   --gris: #A9B0AA; --linea: #3A413C; --borde: #4A524C; --acento: #E9B872;
   background: var(--fondo); color: var(--tinta);
@@ -334,3 +334,71 @@ body.noche .guardar[aria-pressed="true"] svg { fill: var(--tinta); }
   .acciones { max-width: 460px; }
 }
 
+
+/* ===== Portada con índice bajo demanda: sin cajas, fotos sin marco ===== */
+:root { --logo: #2F4A3C; --estado: #8A5F1C; --apagado: #9AA19B; }
+body.noche { --logo: #F2F3F0; --estado: #E9B872; --apagado: #7C847E; }
+
+.cabecera { display: flex; align-items: center; justify-content: flex-start; gap: 10px; }
+.menu-btn { width: 44px; height: 44px; margin-left: -10px; border: none; background: transparent; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--tinta); flex-shrink: 0; }
+.marca { display: block; width: auto; font-size: 15px; font-weight: 400; letter-spacing: 2px; line-height: 1; white-space: nowrap; color: var(--logo); }
+.marca b { font-weight: 700; }
+.lema { font-size: 17px; }
+
+/* Filtros como texto */
+.momentos { display: flex; gap: 24px; padding: 0; background: none; border-radius: 0; width: auto; }
+.momento { position: relative; min-height: 44px; padding: 0; border-radius: 0; background: none !important; color: var(--gris); font-size: 14px; font-weight: 500; }
+.momento[aria-pressed="true"] { color: var(--tinta) !important; font-weight: 600; }
+.momento[aria-pressed="true"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: 9px; height: 1.5px; background: var(--tinta); }
+
+/* Lugares: foto arriba, texto debajo, sin tarjeta */
+.lista, .mosaico, .mosaico.tres { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; }
+.tarjeta, .mosaico .tarjeta { display: flex; flex-direction: column; align-items: stretch; gap: 0; min-height: 0; padding: 0; background: none; border-radius: 0; overflow: visible; }
+.tarjeta-foto, .mosaico .tarjeta-foto { width: 100%; height: 220px; border-radius: 4px; }
+.tarjeta-texto, .mosaico .tarjeta-texto { padding: 11px 0 0; gap: 3px; }
+.tarjeta-cat { font-size: 10.500px; }
+.tarjeta-nombre { font-size: 17px; }
+
+/* Eventos: miniatura y estado, sin fondo */
+.lista-eventos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.tarjeta-evento, .tarjeta-evento.compacta { position: static; display: flex; flex-direction: row; align-items: center; gap: 14px; min-height: 0; padding: 0; background: none; color: inherit; border-radius: 0; overflow: visible; }
+.tarjeta-evento-foto, .compacta .tarjeta-evento-foto { position: static; width: 68px; height: 68px; flex-shrink: 0; border-radius: 4px; object-fit: cover; }
+.tarjeta-evento-texto, .compacta .tarjeta-evento-texto { padding: 0; gap: 4px; min-width: 0; }
+.tarjeta-evento .pildora { min-height: 0; padding: 0; background: none; color: var(--estado); font-size: 10.500px; letter-spacing: 1px; line-height: 1.3; align-items: baseline; gap: 7px; }
+.tarjeta-evento .punto { width: 7px; height: 7px; background: #C8923A; opacity: 1; flex-shrink: 0; }
+.tarjeta-evento-nombre, .compacta .tarjeta-evento-nombre { display: block; font-size: 17px; letter-spacing: -0.2px; line-height: 1.2; }
+.tarjeta-evento-cuando, .compacta .tarjeta-evento-cuando { font-size: 13.500px; font-weight: 400; color: var(--gris); }
+
+.sugerir-linea { margin: 0; padding-top: 22px; border-top: 1px solid var(--borde); font-size: 15px; line-height: 1.5; color: var(--tinta-suave); }
+.sugerir-linea a, .indice-pie a { font-weight: 600; color: var(--tinta); text-decoration: underline; text-underline-offset: 4px; }
+
+/* Índice: panel que entra desde la izquierda */
+.velo { position: fixed; inset: 0; z-index: 20; background: rgba(20, 22, 20, 0.4); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.indice { position: fixed; top: 0; bottom: 0; left: 0; z-index: 21; width: min(330px, 86vw); padding: 22px 28px calc(24px + env(safe-area-inset-bottom)); background: var(--fondo); border-right: 1px solid var(--borde); display: flex; flex-direction: column; gap: 22px; overflow-y: auto; transform: translateX(-102%); visibility: hidden; transition: transform 0.22s ease, visibility 0s 0.22s; }
+body.indice-abierto .velo { opacity: 1; pointer-events: auto; }
+body.indice-abierto .indice { transform: none; visibility: visible; transition: transform 0.22s ease, visibility 0s; }
+@media (prefers-reduced-motion: reduce) { .velo, .indice, body.indice-abierto .indice { transition: none; } }
+.indice-cabeza { display: flex; align-items: center; justify-content: space-between; }
+.indice-cabeza .menu-btn { margin: 0 -10px 0 0; }
+.indice-titulo { margin-bottom: 8px; }
+.indice-fila { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-top: 1px solid var(--borde); font-size: 17px; font-weight: 500; }
+.indice-fila span:last-child { font-size: 13px; font-weight: 500; color: var(--gris); }
+.indice-fila.apagada, .indice-fila.apagada span:last-child { color: var(--apagado); }
+.enlace-azar, .indice-link { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0; border: none; background: none; font-size: 15px; font-weight: 600; text-align: left; }
+.enlace-azar { color: var(--logo); margin-bottom: -14px; }
+.idiomas { display: flex; align-items: center; gap: 6px; padding: 0; background: none; color: var(--gris); font-size: 14px; }
+.idioma { min-width: 0; min-height: 44px; padding: 0 4px 0 0; border-radius: 0; background: none !important; color: var(--gris); font-size: 14px; font-weight: 500; letter-spacing: 0.5px; }
+.idioma[aria-pressed="true"] { color: var(--tinta) !important; font-weight: 700; }
+.indice-pie { margin-top: auto; padding-top: 8px; font-size: 14px; line-height: 1.6; color: var(--tinta-suave); }
+
+@media (min-width: 820px) {
+  .app { padding-bottom: 0; }
+  .nav { display: none; }
+  .aviso { bottom: 32px; }
+  .lema { font-size: 20px; }
+  .lema.conteo { font-size: 24px; }
+  .lista, .mosaico, .mosaico.tres { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 28px; }
+  .tarjeta-foto, .mosaico .tarjeta-foto { height: 240px; }
+  .lista-eventos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 28px; }
+  .pagina { gap: 30px; }
+}
