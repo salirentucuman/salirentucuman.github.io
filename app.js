@@ -232,7 +232,7 @@ function vistaInicio() {
     (hayLugares ? '<button class="boton boton-lleno boton-grande azar-abajo" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
     '<section class="banda"><div><div class="banda-titulo">¿Falta algún lugar?</div><div class="banda-sub">Contanos cuál y por qué vale la pena.</div></div>' +
     '<div class="banda-botones"><a class="boton banda-lleno" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Hang Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>WhatsApp</span></a>' +
-    '<a class="boton" href="mailto:info@hangout-tucuman.com?subject=' + encodeURIComponent('Sugerencia para Hang Out Tucumán') + '">' + svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', 18, 1.8) + '<span>Mail</span></a></div></section>' +
+    '<a class="boton" href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent('Sugerencia para Hang Out Tucumán') + '">' + svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', 18, 1.8) + '<span>Mail</span></a></div></section>' +
     '<section class="cierre">' +
     '<p>Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. ' +
     'Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. ' +
