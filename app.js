@@ -307,6 +307,11 @@ function sugerir() {
   return t('Falta algún lugar?') + ' ' + t('Sugerilo por ') + '<a target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te sugiero un lugar para Hang Out Tucumán: '))) + '">WhatsApp</a>' +
     t(' o por ') + '<a href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent(t('Sugerencia para Hang Out Tucumán')) + '">' + t('mail') + '</a>.';
 }
+function idiomas() {
+  return '<div class="idiomas" role="group" aria-label="Idioma / Language">' + [['es', 'ES'], ['en', 'EN']].map(function (i, n) {
+    return (n ? '<span aria-hidden="true">/</span>' : '') + '<button class="idioma" data-accion="idioma" data-valor="' + i[0] + '" aria-pressed="' + (idioma === i[0]) + '">' + i[1] + '</button>';
+  }).join('') + '</div>';
+}
 function indice() {
   var filas = CATEGORIAS.map(function (c) {
     var n = deCategoria(c.id).length;
@@ -316,12 +321,10 @@ function indice() {
     '<aside class="indice" aria-label="' + t('Índice') + '">' +
     '<div class="indice-cabeza"><a class="marca" href="#/" data-accion="inicio">' + LOGO + '</a>' +
     '<button class="menu-btn" data-accion="cerrar-menu" aria-label="' + t('Cerrar índice') + '">' + svg('<path d="M6 6l12 12"/><path d="M18 6 6 18"/>', 22, 1.8) + '</button></div>' +
+    idiomas() +
     '<div><div class="etiqueta indice-titulo">' + t('Categorías') + '</div>' + filas + '</div>' +
     '<button class="enlace-azar" data-accion="azar">' + svg(ICONOS.azar, 18, 1.8) + '<span>' + t('Sorprendeme con un lugar') + '</span></button>' +
     '<a class="indice-link" href="#/guardados">' + svg(ICONOS.guardar, 18, 1.8) + '<span>' + t('Guardados') + '</span></a>' +
-    '<div class="idiomas" role="group" aria-label="Idioma / Language">' + [['es', 'ES'], ['en', 'EN']].map(function (i, n) {
-      return (n ? '<span aria-hidden="true">/</span>' : '') + '<button class="idioma" data-accion="idioma" data-valor="' + i[0] + '" aria-pressed="' + (idioma === i[0]) + '">' + i[1] + '</button>';
-    }).join('') + '</div>' +
     '<div class="indice-pie">' + sugerir() + '</div></aside>';
 }
 function marca() {
@@ -354,7 +357,8 @@ function vistaInicio() {
   }
 
   return '<main class="pagina">' +
-    '<div class="tope">' + marca() + filtroMomento() + '</div>' +
+    '<div class="tope">' + marca() + '<nav class="menu-centro" aria-label="' + t('Índice') + '">' + filtroMomento() +
+    '<a class="menu-enlace" href="#/guardados">' + t('Guardados') + '</a>' + idiomas() + '</nav></div>' +
     (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">' + t('La guía para salir en Tucumán') + '</h1>') +
     (filtrado ? agendaHtml : destacado ?
       '<div class="apertura"><section class="bloque destacado"><h2 class="etiqueta">' + t('Hallazgos') + '</h2>' + tarjeta(destacado) + '</section>' + lateral + '</div>' : lateral) +

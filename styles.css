@@ -463,3 +463,32 @@ body.indice-abierto .indice { transform: none; visibility: visible; transition: 
   .ficha-nombre { font-size: 52px; }
   .titulo { font-size: 46px; }
 }
+
+/* ===== Encabezado centrado ===== */
+.cabecera { position: relative; justify-content: center; min-height: 44px; }
+.cabecera .menu-btn { position: absolute; left: 0; top: 0; margin: 0 0 0 -10px; }
+.marca { font-size: 12.500px; letter-spacing: 4px; }
+.tope { flex-direction: column; align-items: stretch; gap: 6px; }
+.menu-centro { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0 20px; }
+.menu-centro .momentos { gap: 20px; }
+.menu-centro .momento, .menu-enlace, .menu-centro .idioma, .menu-centro .idiomas { font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase; font-weight: 500; color: var(--gris); }
+.menu-centro .momento, .menu-enlace, .menu-centro .idioma { min-height: 40px; display: inline-flex; align-items: center; }
+.menu-centro .momento[aria-pressed="true"]::after { bottom: 8px; }
+.menu-centro .idioma[aria-pressed="true"] { font-weight: 700; }
+.lema { text-align: center; }
+
+/* Índice más chico */
+.indice { width: min(290px, 84vw); gap: 16px; padding-top: 18px; }
+.indice .marca { font-size: 12px; letter-spacing: 3px; }
+.indice-fila { padding: 9px 0; }
+.indice-fila span:first-child { font-size: 17px; }
+.indice-fila span:last-child { font-size: 11.500px; }
+.enlace-azar, .indice-link { font-size: 13.500px; min-height: 40px; }
+.indice .idiomas, .indice .idioma { font-size: 12px; letter-spacing: 1.5px; }
+.indice .idioma { min-height: 32px; }
+.indice-pie { font-size: 13px; }
+@media (min-width: 820px) {
+  .tope { flex-direction: column; align-items: stretch; }
+  .marca { font-size: 14px; letter-spacing: 5px; }
+  .menu-centro, .menu-centro .momentos { gap: 0 34px; }
+}
