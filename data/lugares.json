@@ -284,23 +284,23 @@
     {
       "id": "naxus-yougurt-griego",
       "alta": "2026-10-06",
-      "nombre": "NAXUS Yogurt griego",
-      "tipo": "Yogurt griego",
+      "nombre": "NAXUS Yougurt griego",
+      "tipo": "Yougurt griego",
       "zona": "SMT y Yerba Buena",
-      "direccion": "Envíos a domicilio",
-      "whatsapp": "+54 9 381 588-8883",
+      "direccion": "Envios a domicilio",
+      "whatsapp": "+5493815888883",
       "web": "",
       "mail": "",
-      "instagram": "",
-      "breve": "Increíble e inigualablemente cremoso. No hay otro similar.",
-      "texto": "Vivi Rosino, odontóloga y académica, prepara un inigualable yogurt griego casero.\nPrecio hiper competitivo.\nAcuerda entregas por WhatsApp.",
+      "instagram": "No tiene",
+      "breve": "Una estrella Michelin para este yogurt griego casero.",
+      "texto": "Detrás de NAXUS está Vivi Rosino, odontóloga y académica, que prepara en casa un yogurt griego de una cremosidad inigualable.\nHe probado todos los yogures griegos, no hay nada parecido a este en la ciudad.\n\nEl precio es muy competitivo.\nNo tiene local, desde la comodidad de tu WhatsApp coordina entregas a domicilio, en San Miguel de Tucumán y Yerba Buena.",
       "precio": "",
-      "credito": "Hang Out Tucumán",
+      "credito": "Hang Out Tucuman",
       "categorias": [
         "autor"
       ],
       "momento": "dia",
-      "foto": "",
+      "foto": "fotos/naxus-yougurt-griego-1791297687669-1.jpg",
       "favorito": true
     }
   ]
