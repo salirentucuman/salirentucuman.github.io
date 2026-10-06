@@ -5,13 +5,13 @@
   "lugares": [
     {
       "id": "rancho",
-      "nombre": "Rancho",
+      "nombre": "Rancho Café",
       "categorias": [
         "comer"
       ],
-      "zona": "Barrio Norte",
-      "breve": "Pequeña cafetería de especialidad en Barrio Norte de la ciudad. Atmósfera íntima y calma.",
-      "texto": "Con interior y exteriores, abierto y techado. Mesas privadas y mesón para compartir.\n\nBuen café. Y también se puede almorzar: tiene menú ejecutivo todos los días, con platos del día y empanadas.\n\nApenas retirado de pleno centro, justo para estar cerca pero en mayor tranquilidad. No tiene cochera propia.",
+      "zona": "Barrio Norte, SMT",
+      "breve": "Cafetería de especialidad en Barrio Norte de la ciudad. Una oda a los materiales del norte. Atmósfera íntima y calma.",
+      "texto": "Buen café. Y también se puede almorzar: tiene menú ejecutivo todos los días, con platos del día y empanadas.\nCon interior y exteriores, abierto y techado. Mesas privadas y mesón para compartir.\nApenas retirado de pleno centro, justo para estar cerca pero en mayor tranquilidad. No tiene cochera propia.",
       "foto": "fotos/rancho.jpg",
       "direccion": "Marcos Paz 294",
       "precio": "",
@@ -19,13 +19,16 @@
       "instagram": "@ranchocafe.arg",
       "alta": "2026-10-05",
       "galeria": [
-        "fotos/rancho-2.jpg",
         "fotos/rancho-3.jpg",
         "fotos/rancho-4.jpg"
       ],
-      "credito": "Rancho Café @ranchocafe.arg",
-      "tipo": "All day café",
-      "momento": "dia"
+      "credito": "@ranchocafe.arg",
+      "tipo": "Café y brunch",
+      "momento": "dia",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "favorito": true
     },
     {
       "id": "madame-rouges",
