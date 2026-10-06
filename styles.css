@@ -292,6 +292,11 @@ body.noche .guardar[aria-pressed="true"] svg { fill: var(--tinta); }
 .banda .boton { border-color: #FFFFFF; border-radius: 26px; color: #FFFFFF; }
 .banda .banda-lleno { background: #FFFFFF; color: #2F4A3C; }
 
+.cabecera { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.idiomas { display: flex; gap: 2px; padding: 3px; background: var(--tarjeta); border-radius: 12px; }
+.idioma { min-width: 40px; min-height: 34px; border: none; border-radius: 9px; background: transparent; color: var(--gris); font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+.idioma[aria-pressed="true"] { background: var(--tinta); color: var(--fondo); }
+
 /* Pantallas grandes: la guía ocupa el ancho de la ventana. */
 @media (min-width: 820px) {
   .app { max-width: 1360px; }
@@ -301,7 +306,7 @@ body.noche .guardar[aria-pressed="true"] svg { fill: var(--tinta); }
   .barra { flex-direction: row; align-items: center; justify-content: space-between; }
   .barra-azar { display: flex; min-height: 46px; padding: 0 28px; }
   .azar-abajo { display: none; }
-  .categorias { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+  .categorias { grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 14px; }
   .categoria.ancha { grid-column: auto; }
   .categoria { min-height: 132px; }
   .lista, .carrusel { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }

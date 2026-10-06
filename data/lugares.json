@@ -29,7 +29,12 @@
       "whatsapp": "",
       "web": "",
       "mail": "",
-      "favorito": true
+      "favorito": true,
+      "en": {
+        "tipo": "Coffee and brunch",
+        "breve": "Speciality coffee in Barrio Norte. An ode to the materials of the north; intimate, and calm.",
+        "texto": "Good coffee, and lunch besides: a set menu each day, with daily dishes and empanadas.\nInside and out, open and covered. Private tables, and a long one to share.\nA step removed from the centre; close enough, and quieter for it. No parking of its own."
+      }
     },
     {
       "id": "madame-rouges",
@@ -59,7 +64,12 @@
       "momento": "dia",
       "web": "",
       "mail": "",
-      "favorito": true
+      "favorito": true,
+      "en": {
+        "tipo": "Café",
+        "breve": "A café in the Yungas of Tucumán. A refined room that lives alongside the wild.",
+        "texto": "There is nowhere else like it in Tucumán: the café sits within the forest itself. Breakfast is made in the house: granola just out of the oven, small breads shaped by hand.\nFar from the noise of the city, with every comfort to hand. Inside and out, open and covered.\nIts own parking.\nNo reservations."
+      }
     },
     {
       "id": "villa-poli-2-anos",
@@ -85,7 +95,14 @@
       "whatsapp": "",
       "web": "",
       "mail": "",
-      "precio": ""
+      "precio": "",
+      "en": {
+        "nombre": "Villa Poli and Madame Rouges turn two",
+        "tipo": "Anniversary",
+        "cuando": "Monday 5 to Saturday 10 October",
+        "breve": "A week of celebration.",
+        "texto": "Villa Poli and Madame Rouges turn two, and mark it all week: something different each day.\n\nGo, and be surprised."
+      }
     },
     {
       "id": "vintter",
@@ -115,7 +132,13 @@
       "sinMapa": true,
       "credito": "@vinttercocina",
       "web": "",
-      "mail": ""
+      "mail": "",
+      "en": {
+        "tipo": "Speakeasy restaurant",
+        "direccion": "Shared on request, by WhatsApp",
+        "breve": "A speakeasy of a restaurant. Supper only, by reservation.",
+        "texto": "An intimate room, a personal kitchen, few tables, and the owners at the door.\nFully booked until May 2027, though there appears to be room for private occasions."
+      }
     },
     {
       "id": "snacphone",
@@ -140,7 +163,12 @@
       "whatsapp": "+54 381 448-2626",
       "credito": "@snacphone",
       "web": "",
-      "mail": ""
+      "mail": "",
+      "en": {
+        "tipo": "Neighbourhood shop",
+        "breve": "Phones and their accessories, in a period building carefully kept. The warmest of welcomes.",
+        "texto": "It earns its place here for two reasons: the warmth of the welcome, and a building that respects and restores its original period architecture.\n\nSnacPhone sells all that relates to phones and technology. It is also a few steps from Rancho Café, another of our favourites."
+      }
     },
     {
       "id": "bingo-en-rancho",
@@ -169,7 +197,15 @@
       },
       "whatsapp": "",
       "web": "",
-      "mail": ""
+      "mail": "",
+      "en": {
+        "nombre": "Bingo at Rancho",
+        "tipo": "Bingo and afternoon tea",
+        "cuando": "Saturday 17 October, in the afternoon",
+        "precio": "$25.000 per card",
+        "breve": "An afternoon of bingo and coffee at Rancho.",
+        "texto": "An afternoon of bingo and coffee. The card includes Rancho's afternoon tea and two bingo sheets, with prizes and a draw to close.\n\nPlaces are limited; reservation required."
+      }
     },
     {
       "id": "obrador-manteco",
@@ -199,7 +235,13 @@
       "whatsapp": "+54 9 3816 22-6563",
       "credito": "@obradormanteco",
       "web": "",
-      "mail": ""
+      "mail": "",
+      "en": {
+        "tipo": "A bodegón of handmade pasta and pastry",
+        "zona": "Ciudadela (close to Av. Mate de Luna), SMT",
+        "breve": "A bodegón for handmade pasta, and pastry with a signature.",
+        "texto": "Fresh pasta and hand-laminated pastry, made in the workshop itself by Sebastián.\nThe rice pudding will surprise you.\nServed by the owner: a man living inside the thing he dreamed of."
+      }
     },
     {
       "id": "zelmira",
@@ -226,7 +268,12 @@
       "web": "zelmira.com.ar",
       "whatsapp": "+54 9 381 655-9521",
       "credito": "Zelmira",
-      "mail": ""
+      "mail": "",
+      "en": {
+        "tipo": "Pâtisserie and bakery",
+        "breve": "The golden Oscar goes to this pâtisserie.",
+        "texto": "Zelmira is the pâtisserie that unseats all others. There is much that is exquisite in Tucumán, but it will be hard to add another after this.\n\nThere is a shop in Yerba Buena. You may also order from their website, or by WhatsApp; buy online and they will write to arrange delivery.\n\nWhich is to say: the finest pastry, made by their own hands, and service to match."
+      }
     },
     {
       "id": "costal",
@@ -258,7 +305,12 @@
       "whatsapp": "",
       "web": "",
       "mail": "",
-      "favorito": true
+      "favorito": true,
+      "en": {
+        "tipo": "Speciality coffee",
+        "breve": "The speciality coffee house of Tucumán. Without argument.",
+        "texto": "Behind Costal is Mercedes Costal, the talent who created Costal Prints & Patterns (wallpapers). Her eye, creative and exacting, is in every detail.\n\nAt the bar, local master baristas work with chosen beans, natural process coffees among them. Alongside: an edit of artisan pastry, fresh juices, and tea by Tealosophy.\n\nBeans to take home, and coffee to take away.\n\nIt forms part of the design circuit at Alter Point. And it keeps its best secret at the back: a terrace that is, quite possibly, one of the loveliest places in the city to sit with a coffee. Calm and contemplative, in every season."
+      }
     },
     {
       "id": "elevate",
@@ -279,7 +331,12 @@
       "instagram": "@elevatetucuman",
       "alta": "2026-10-06",
       "mail": "elevatetucoficial@gmail.com",
-      "credito": "Elevate Tucumán @elevatetucuman"
+      "credito": "Elevate Tucumán @elevatetucuman",
+      "en": {
+        "tipo": "Mentoring for young entrepreneurs, by business owners",
+        "breve": "Tucumán business owners who help secondary school students turn a classroom project into a company.",
+        "texto": "Elevate is an initiative of business owners, connecting them with students and preparing them to build something of their own. It encourages enterprise through direct accompaniment: more than a place of inspiration, it is an incubator for the province.\n\nIt works in partnership with schools. In the final years of secondary education, the curriculum includes a course in enterprise, from which each class graduates with a shared business. Elevate mentors those businesses, and looks ahead with them.\n\nThe mentors are notable names: Jacobo Cohen Imach (Mercado Libre) and Matías Mahtuk (Grupo Yuhmak), both mentors and founders of Elevate; Ezequiel Coletti (Coletti); Pablo Hatem and Benjamín Gollan (CB Developers); Mili Esper (Beautytuc); Nadim Richa (Bullanga Milanga); Mercedes and Gonzalo Costal (Costal Group); Horacio Neme (Grupo Neme); Ramiro Pato (Getnet Santander); Fran Martínez Luque (Culmen) and Máximo Bulacio (ArgentiGroup), among others."
+      }
     },
     {
       "id": "naxus-yougurt-griego",
@@ -301,7 +358,15 @@
       ],
       "momento": "dia",
       "foto": "fotos/naxus-yougurt-griego-1791297687669-1.jpg",
-      "favorito": true
+      "favorito": true,
+      "en": {
+        "nombre": "NAXUS Greek yoghurt",
+        "tipo": "Greek yoghurt",
+        "zona": "SMT and Yerba Buena",
+        "direccion": "Delivered to your door",
+        "breve": "A Michelin star for this homemade Greek yoghurt.",
+        "texto": "Behind NAXUS is Vivi Rosino, dentist and academic, who makes at home a Greek yoghurt of incomparable creaminess.\nI have tried them all: there is nothing like it in the city.\n\nThe price is very fair.\nThere is no shop: deliveries are arranged by WhatsApp, in San Miguel de Tucumán and Yerba Buena."
+      }
     },
     {
       "id": "maria-bonita-cafe-et-patisserie",
@@ -323,7 +388,12 @@
       ],
       "momento": "dia",
       "foto": "fotos/maria-bonita-cafe-et-patisserie-1791299933042-1.jpg",
-      "hallazgo": true
+      "hallazgo": true,
+      "en": {
+        "tipo": "Café",
+        "breve": "A small café in Barrio Sur that might have stepped out of a story.",
+        "texto": "A quiet, welcoming corner in the heart of Barrio Sur; the place for a pause. They often host events that draw a crowd, so it is worth looking at their Instagram before you go.\n\nThe coffee is good, though there is no plant milk for now, and the pastry is lovely. But what draws me most is the café itself: almost hidden, in the middle of the city."
+      }
     }
   ]
 }
