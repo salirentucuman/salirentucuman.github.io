@@ -241,7 +241,8 @@
         "zona": "Ciudadela (close to Av. Mate de Luna), SMT",
         "breve": "A bodegón for handmade pasta, and pastry with a signature.",
         "texto": "Fresh pasta and hand-laminated pastry, made in the workshop itself by Sebastián.\nThe rice pudding will surprise you.\nServed by the owner: a man living inside the thing he dreamed of."
-      }
+      },
+      "hallazgo": true
     },
     {
       "id": "zelmira",
@@ -387,7 +388,6 @@
       ],
       "momento": "dia",
       "foto": "fotos/maria-bonita-cafe-et-patisserie-1791299933042-1.jpg",
-      "hallazgo": true,
       "en": {
         "tipo": "Café",
         "breve": "A small café in Barrio Sur that might have stepped out of a story.",
