@@ -5,7 +5,7 @@ var idioma = 'es';
 try { idioma = localStorage.getItem('hangout-idioma') === 'en' ? 'en' : 'es'; } catch (e) { /* sin almacenamiento */ }
 document.documentElement.lang = idioma === 'en' ? 'en-GB' : 'es-AR';
 var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.", "legal1": "Hang Out Tucumán es una guía independiente. Las descripciones son una mirada personal. Sos parte de un sitio o evento y encontraste un dato inexacto? Agradecemos si ", " días restantes": " días", "Sorprendeme con un lugar": "Sorprendeme con un lugar para visitar"}, en: {
- "La guía para salir en Tucumán, seas residente o turista!": "A considered guide to enjoying Tucumán.",
+ "La guía para salir en Tucumán": "A considered guide to enjoying Tucumán.",
  "Todo": "All",
  "Agenda": "Diary",
  "Categorías": "Categories",
@@ -355,7 +355,7 @@ function vistaInicio() {
 
   return '<main class="pagina">' +
     '<div class="tope">' + marca() + filtroMomento() + '</div>' +
-    (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">' + t('La guía para salir en Tucumán, seas residente o turista!') + '</h1>') +
+    (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">' + t('La guía para salir en Tucumán') + '</h1>') +
     (filtrado ? agendaHtml : destacado ?
       '<div class="apertura"><section class="bloque destacado"><h2 class="etiqueta">' + t('Hallazgos') + '</h2>' + tarjeta(destacado) + '</section>' + lateral + '</div>' : lateral) +
     (resto.length ? bloque(t('Lugares'), resto) : (filtrado ? '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>' : '')) +
