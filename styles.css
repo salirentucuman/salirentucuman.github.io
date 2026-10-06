@@ -256,7 +256,7 @@ img { display: block; max-width: 100%; }
   .pagina { padding: 40px 56px 48px; gap: 36px; }
   .lema { font-size: 20px; }
   .momentos { max-width: 440px; }
-  .categorias { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; }
+  .categorias { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
   .categoria.ancha { grid-column: auto; }
   .categoria { min-height: 132px; }
   .lista, .carrusel { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }

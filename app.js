@@ -9,6 +9,8 @@ var CATEGORIAS = [
     icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
   { id: 'curiosear', nombre: 'Curiosear', sub: 'Librerías, tiendas, cultura',
     icono: '<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>' },
+  { id: 'autor', nombre: 'De autor', sub: 'Marcas tucumanas con trayectoria',
+    icono: '<path d="M4 20l1.200-4.800L16.500 3.900a2 2 0 0 1 2.800 0l.8.8a2 2 0 0 1 0 2.800L8.800 18.800z"/><path d="m14.500 6 3.500 3.500"/><path d="M13 20h7"/>' },
   { id: 'barrio', nombre: 'De barrio', sub: 'Productores locales o tiendas de barrio destacadas',
     icono: '<path d="M4 10 5.5 4h13L20 10"/><path d="M4 10h16"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/>' },
   { id: 'eventos', nombre: 'Eventos', sub: 'Ferias, música, muestras',
