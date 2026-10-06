@@ -1,6 +1,6 @@
 /* Copia local para que la guía abra rápido y funcione sin conexión.
    Siempre intenta primero la red, así las novedades aparecen enseguida. */
-var CACHE = 'dayout-v1';
+var CACHE = 'hangout-v2';
 
 self.addEventListener('install', function () { self.skipWaiting(); });
 
@@ -17,7 +17,7 @@ self.addEventListener('fetch', function (ev) {
   if (pedido.method !== 'GET' || new URL(pedido.url).origin !== location.origin) return;
   if (new URL(pedido.url).pathname.indexOf('admin') !== -1) return;
   ev.respondWith(
-    fetch(pedido).then(function (respuesta) {
+    fetch(pedido, { cache: 'no-cache' }).then(function (respuesta) {
       var copia = respuesta.clone();
       caches.open(CACHE).then(function (c) { c.put(pedido, copia); });
       return respuesta;

@@ -251,7 +251,7 @@ img { display: block; max-width: 100%; }
 .estrella { display: inline-block; width: 0.72em; height: 0.72em; vertical-align: 0.02em; margin-left: 0.12em; color: var(--acento); }
 
 /* Pantallas grandes: la guía ocupa el ancho de la ventana. */
-@media (min-width: 900px) {
+@media (min-width: 820px) {
   .app { max-width: 1360px; }
   .pagina { padding: 40px 56px 48px; gap: 36px; }
   .lema { font-size: 20px; }
