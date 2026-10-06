@@ -396,24 +396,28 @@ body.indice-abierto .indice { transform: none; visibility: visible; transition: 
 .destacado .tarjeta-nombre { font-size: 22px; letter-spacing: -0.4px; }
 .destacado .tarjeta-foto { height: 280px; }
 
+.lateral { display: flex; flex-direction: column; gap: 22px; }
+
 @media (min-width: 820px) {
   .app { padding-bottom: 0; }
   .nav { display: none; }
   .aviso { bottom: 32px; }
   .lema { font-size: 20px; }
   .lema.conteo { font-size: 24px; }
-  .lista, .mosaico, .mosaico.tres { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 28px; }
-  .tarjeta-foto, .mosaico .tarjeta-foto { height: 240px; }
+  .lista, .mosaico, .mosaico.tres { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 24px; }
+  .tarjeta-foto, .mosaico .tarjeta-foto { height: 185px; }
+  .tarjeta-nombre { font-size: 16px; }
+  .tarjeta-breve { font-size: 13px; }
   .lista-eventos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 28px; }
   .pagina { gap: 30px; }
   .pagina { padding-top: 26px; gap: 28px; }
   .tope { flex-direction: row; align-items: center; justify-content: space-between; }
-  .apertura { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .apertura { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 56px; align-items: start; }
   .apertura.sola { grid-template-columns: minmax(0, 1fr); }
   .apertura .lista-eventos { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .apertura .tarjeta-evento { padding: 16px 0; border-top: 1px solid var(--borde); }
   .apertura .tarjeta-evento:last-child { border-bottom: 1px solid var(--borde); }
-  .destacado .tarjeta-foto { height: min(460px, 52vh); }
-  .destacado .tarjeta-nombre { font-size: 30px; letter-spacing: -0.7px; }
-  .destacado .tarjeta-breve { font-size: 16px; }
+  .destacado .tarjeta-foto { height: 290px; }
+  .destacado .tarjeta-nombre { font-size: 22px; letter-spacing: -0.4px; }
+  .destacado .tarjeta-breve { font-size: 14px; }
 }
