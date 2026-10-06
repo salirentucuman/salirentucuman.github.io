@@ -118,7 +118,7 @@ img { display: block; max-width: 100%; }
 /* Sugerencias y cierre */
 .sugerir { border: 1px solid var(--borde); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
 .sugerir-titulo { font-size: 15px; font-weight: 600; }
-.cierre { font-size: 14px; line-height: 1.55; color: var(--gris); display: flex; flex-direction: column; gap: 12px; }
+.cierre { font-size: 13px; line-height: 1.55; color: var(--gris); display: flex; flex-direction: column; gap: 12px; }
 .cierre p { margin: 0; }
 
 /* Página de categoría */
@@ -230,7 +230,7 @@ img { display: block; max-width: 100%; }
 
 /* Filtro Day Out / Night Out */
 .momentos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; background: var(--tarjeta); border-radius: 16px; }
-.momento { min-height: 44px; border: none; border-radius: 12px; background: transparent; color: var(--gris); font-size: 14px; font-weight: 600; }
+.momento { min-height: 40px; border: none; border-radius: 12px; background: transparent; color: var(--gris); font-size: 13px; font-weight: 600; }
 .momento[aria-pressed="true"] { background: var(--tinta); color: #FFFFFF; }
 
 /* Agenda con varios eventos: se pasa deslizando y el siguiente asoma por el borde. */
@@ -250,25 +250,39 @@ img { display: block; max-width: 100%; }
 /* Estrella de favoritos */
 .estrella { display: inline-block; width: 0.72em; height: 0.72em; vertical-align: 0.02em; margin-left: 0.12em; color: var(--acento); }
 
+/* Barra de filtros; en pantallas grandes suma Sorprendeme a la derecha. */
+.barra { display: flex; flex-direction: column; gap: 12px; }
+.barra-azar { display: none; }
+.categoria-iconos { display: flex; gap: 8px; }
+
+/* Agenda de la portada: pastillas bajas, con la foto al costado. */
+.tarjeta-evento.compacta { position: relative; min-height: 112px; padding-left: 112px; justify-content: center; }
+.compacta .tarjeta-evento-foto { position: absolute; left: 0; top: 0; width: 112px; height: 100%; }
+.compacta .tarjeta-evento-texto { padding: 12px 14px; gap: 6px; }
+.compacta .tarjeta-evento-nombre { font-size: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.compacta .tarjeta-evento-cuando { font-size: 13px; }
+.compacta .pildora { min-height: 0; padding: 0; background: none; color: var(--acento); font-size: 11px; line-height: 1.3; align-items: baseline; }
+.compacta .punto { background: var(--acento); flex-shrink: 0; }
+
 /* Pantallas grandes: la guía ocupa el ancho de la ventana. */
 @media (min-width: 820px) {
   .app { max-width: 1360px; }
-  .pagina { padding: 40px 56px 48px; gap: 36px; }
+  .pagina { padding: 28px 56px 40px; gap: 24px; }
   .lema { font-size: 20px; }
-  .momentos { max-width: 440px; }
+  .momentos { width: 360px; }
+  .barra { flex-direction: row; align-items: center; justify-content: space-between; }
+  .barra-azar { display: flex; min-height: 46px; padding: 0 28px; }
+  .azar-abajo { display: none; }
   .categorias { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
   .categoria.ancha { grid-column: auto; }
   .categoria { min-height: 132px; }
   .lista, .carrusel { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
   .carrusel { margin: 0; padding: 0; overflow: visible; }
   .carrusel .tarjeta-evento { flex: none; }
-  .tarjeta-evento-foto { height: 220px; }
+  .tarjeta-evento-foto { height: 180px; }
   .pagina > .boton-grande { align-self: flex-start; padding: 0 40px; }
   .sugerir { flex-direction: row; align-items: center; justify-content: space-between; padding: 20px 24px; }
   .sugerir .boton { padding: 0 32px; }
-  .cierre { display: block; columns: 2; column-gap: 56px; font-size: 15px; }
-  .cierre p { margin: 0 0 14px; break-inside: avoid; }
-  .cierre .aviso-legal { column-span: all; margin: 10px 0 0; }
 
   /* Ficha: foto a la izquierda, contenido a la derecha. */
   main:has(> .tapa) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; padding: 40px 56px 48px; }
@@ -278,3 +292,4 @@ img { display: block; max-width: 100%; }
   .miniatura { width: 88px; height: 88px; }
   .acciones { max-width: 460px; }
 }
+

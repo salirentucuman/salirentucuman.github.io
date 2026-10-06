@@ -2,18 +2,19 @@
 
 var CATEGORIAS = [
   { id: 'comer', nombre: 'Café y copas', sub: 'Cafés, bares, pastelerías',
-    icono: '<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3"/><path d="M12 3v3"/>' },
+    icono: '<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3"/><path d="M12 3v3"/>',
+    icono2: '<path d="M5 4h14l-7 8z"/><path d="M12 12v8"/><path d="M8 20h8"/>' },
   { id: 'restaurantes', nombre: 'Restaurantes y bodegones', sub: 'Para almorzar o cenar',
     icono: '<path d="M7 3v8"/><path d="M4 3v5a3 3 0 0 0 6 0V3"/><path d="M7 11v10"/><path d="M17 3c-2 2-3 4.500-3 8h3"/><path d="M17 3v18"/>' },
-  { id: 'pasear', nombre: 'Pasear', sub: 'Parques, callecitas, rincones',
-    icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
-  { id: 'curiosear', nombre: 'Curiosear', sub: 'Librerías, tiendas, cultura',
-    icono: '<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>' },
   { id: 'autor', nombre: 'De autor', sub: 'Marcas tucumanas con trayectoria',
     icono: '<path d="M4 20l1.200-4.800L16.500 3.900a2 2 0 0 1 2.800 0l.8.8a2 2 0 0 1 0 2.800L8.800 18.800z"/><path d="m14.500 6 3.500 3.500"/><path d="M13 20h7"/>' },
   { id: 'barrio', nombre: 'De barrio', sub: 'Productores locales o tiendas de barrio destacadas',
     icono: '<path d="M4 10 5.5 4h13L20 10"/><path d="M4 10h16"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/>' },
-  { id: 'eventos', nombre: 'Eventos', sub: 'Ferias, música, muestras',
+  { id: 'pasear', nombre: 'Aire libre', sub: 'Parques, callecitas, rincones',
+    icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
+  { id: 'curiosear', nombre: 'Curiosear', sub: 'Librerías, tiendas, cultura',
+    icono: '<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>' },
+  { id: 'eventos', nombre: 'Eventos', sub: '',
     icono: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/><path d="M8 3v4"/><path d="M16 3v4"/>' }
 ];
 
@@ -162,9 +163,9 @@ function nombreCon(lugar) {
   return esc(lugar.nombre) + (lugar.favorito ? ' <svg class="estrella" viewBox="0 0 24 24" role="img" aria-label="Favorito de Hang Out"><path fill="currentColor" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg>' : '');
 }
 
-function tarjetaEvento(lugar) {
+function tarjetaEvento(lugar, compacta) {
   var cuando = lugar.evento && lugar.evento.cuando;
-  return '<a class="tarjeta-evento" href="#/lugar/' + encodeURIComponent(lugar.id) + '">' +
+  return '<a class="tarjeta-evento' + (compacta === true ? ' compacta' : '') + '" href="#/lugar/' + encodeURIComponent(lugar.id) + '">' +
     (lugar.foto ? '<img class="tarjeta-evento-foto" src="' + esc(lugar.foto) + '" alt="" loading="lazy">' : '') +
     '<div class="tarjeta-evento-texto">' + pildora(lugar) +
     '<div class="tarjeta-evento-nombre">' + nombreCon(lugar) + '</div>' +
@@ -198,14 +199,14 @@ function vistaInicio() {
   var impar = visibles.length % 2 === 1;
   var cats = visibles.map(function (c, i) {
     var ancha = impar && i === visibles.length - 1;
-    return '<a class="categoria' + (ancha ? ' ancha' : '') + '" href="#/categoria/' + c.id + '">' + svg(c.icono, 22) +
-      '<span><span class="categoria-nombre">' + c.nombre + '</span><span class="categoria-sub">' + c.sub + '</span></span></a>';
+    return '<a class="categoria' + (ancha ? ' ancha' : '') + '" href="#/categoria/' + c.id + '"><span class="categoria-iconos">' + svg(c.icono, 22) + (c.icono2 ? svg(c.icono2, 22) : '') + '</span>' +
+      '<span><span class="categoria-nombre">' + c.nombre + '</span>' + (c.sub ? '<span class="categoria-sub">' + c.sub + '</span>' : '') + '</span></a>';
   }).join('');
 
   var eventos = deCategoria('eventos').filter(function (l) { return l.evento; }).sort(porUrgencia);
   var agenda = eventos.slice(0, 5);
   var agendaHtml = !agenda.length ? '' : '<section class="bloque"><h2 class="etiqueta">Agenda</h2>' +
-    '<div class="' + (agenda.length > 1 ? 'carrusel' : 'lista') + '">' + agenda.map(tarjetaEvento).join('') + '</div>' +
+    '<div class="' + (agenda.length > 1 ? 'carrusel' : 'lista') + '">' + agenda.map(function (l) { return tarjetaEvento(l, true); }).join('') + '</div>' +
     (eventos.length > agenda.length ? '<a class="ver-todo" href="#/categoria/eventos">Ver toda la agenda</a>' : '') + '</section>';
   /* Hallazgos: lo último cargado en Café y copas (último lugar y, si lo hay, último evento de esa categoría). */
   var visibles2 = deCategoria('comer');
@@ -218,19 +219,19 @@ function vistaInicio() {
   return '<main class="pagina">' +
     '<div class="marca"><div class="marca-nombre">Hang Out</div><div class="marca-ciudad">Tucumán</div></div>' +
     '<h1 class="lema">¡La guía para salir en Tucumán, seas residente o turista!</h1>' +
-    filtroMomento() +
+    '<div class="barra">' + filtroMomento() +
+    (hayLugares ? '<button class="boton boton-lleno barra-azar" data-accion="azar">' + svg(ICONOS.azar, 18, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') + '</div>' +
     agendaHtml +
     '<section class="bloque"><h2 class="etiqueta">Categorías</h2><div class="categorias">' + cats + '</div></section>' +
     (nuevos.length ? '<section class="bloque"><h2 class="etiqueta">Hallazgos</h2><div class="lista">' + nuevos.map(tarjeta).join('') + '</div></section>' : '') +
-    (hayLugares ? '<button class="boton boton-lleno boton-grande" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
+    (hayLugares ? '<button class="boton boton-lleno boton-grande azar-abajo" data-accion="azar">' + svg(ICONOS.azar, 20, 1.8) + '<span>Sorprendeme con un lugar</span></button>' : '') +
     '<section class="sugerir"><div class="sugerir-titulo">¿Falta algún lugar?</div>' +
     '<a class="boton" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, te sugiero un lugar para Hang Out Tucumán: ')) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>Sugerilo por WhatsApp</span></a></section>' +
     '<section class="cierre">' +
-    '<p>Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque.</p>' +
-    '<p>Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local.</p>' +
-    '<p>Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos.</p>' +
-    '<p>Si conocés un sitio que creés que merece ser parte de esta selección, ¡avisanos!</p>' +
-    '<p>Si conocés los sitios destacados aquí, dejá tu reseña.</p>' +
+    '<p>Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. ' +
+    'Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. ' +
+    'Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. ' +
+    'Si conocés un sitio que creés que merece ser parte de esta selección, ¡avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.</p>' +
     '<p class="aviso-legal">Hang Out Tucumán es una guía independiente. Las descripciones son una mirada personal. '
     + '¿Sos parte de un sitio o evento y encontraste un dato inexacto? Agradecemos si <a class="enlace" target="_blank" rel="noopener" href="' + esc(whatsapp('Hola, quiero corregir un dato de Hang Out Tucumán: ')) + '">nos escribís</a> para corregirlo.</p>' +
     '</section>' +
@@ -244,7 +245,7 @@ function vistaCategoria(id) {
   if (id === 'eventos') lista.sort(porUrgencia);
   return '<main class="pagina">' +
     '<a class="volver" href="#/" aria-label="Volver al inicio">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
-    '<div><h1 class="titulo">' + c.nombre + '</h1><div class="subtitulo">' + c.sub + '</div></div>' +
+    '<div><h1 class="titulo">' + c.nombre + '</h1>' + (c.sub ? '<div class="subtitulo">' + c.sub + '</div>' : '') + '</div>' +
     filtroMomento() +
     (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">' + (momento === 'todo' ? 'Todavía no hay lugares en esta categoría.' : 'No hay nada cargado para este momento del día. Probá con Todo.') + '</p>') +
     '</main>' + nav('');

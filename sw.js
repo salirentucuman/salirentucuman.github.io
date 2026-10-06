@@ -1,6 +1,6 @@
 /* Copia local para que la guía abra rápido y funcione sin conexión.
    Siempre intenta primero la red, así las novedades aparecen enseguida. */
-var CACHE = 'hangout-v2';
+var CACHE = 'hangout-v3';
 
 self.addEventListener('install', function () { self.skipWaiting(); });
 
