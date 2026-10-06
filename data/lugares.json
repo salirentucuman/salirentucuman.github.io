@@ -205,10 +205,10 @@
       "id": "zelmira",
       "nombre": "Zelmira",
       "categorias": [
-        "comer"
+        "barrio"
       ],
       "zona": "Yerba Buena",
-      "tipo": "Pastelería gourmet, bakery",
+      "tipo": "Pastelería gourmet. Bakery.",
       "momento": "dia",
       "breve": "El Oscar de oro para esta pastelería.",
       "texto": "Zelmira es la pastelería que destrona a toda pastelería. Habrá muchas cosas exquisitas en Tucumán, pero será muy difícil sumar otra pastelería después de las delicias de este lugar.\n\nTienen su tienda física en Yerba Buena. Además, podés comprar cómodamente desde su web y también te venden por WhatsApp. Al comprar en la web, ella te contacta por WhatsApp para coordinar el envío.\n\nEs decir, además de hacer la mejor pastelería con sus propias manos, tienen una atención inigualable.",
@@ -225,7 +225,8 @@
       "alta": "2026-10-06",
       "web": "zelmira.com.ar",
       "whatsapp": "+54 9 381 655-9521",
-      "credito": "Zelmira"
+      "credito": "Zelmira",
+      "mail": ""
     },
     {
       "id": "costal",
