@@ -94,10 +94,10 @@
         "restaurantes"
       ],
       "zona": "Yerba Buena",
-      "tipo": "Restaurant para cenar, solo con reservas",
+      "tipo": "Speakeasy Restaurant",
       "momento": "noche",
-      "breve": "Restaurant tipo speakeasy, solo con reservas. Atmósfera íntima, pocas mesas y atendido por sus dueños.",
-      "texto": "Reservas completas hasta mayo de 2027, aunque parecen tener disponibilidad extra para eventos privados.",
+      "breve": "Restaurant tipo speakeasy, para cenar y solo con reservas.",
+      "texto": "Atmósfera íntima, comida de autor, pocas mesas y atendido por sus dueños.\nReservas completas hasta mayo de 2027, aunque parecen tener disponibilidad extra para eventos privados.",
       "foto": "fotos/vintter.jpg",
       "galeria": [
         "fotos/vintter-2.jpg",
@@ -113,7 +113,9 @@
       "whatsapp": "+54 9 381 464-7083",
       "alta": "2026-10-06",
       "sinMapa": true,
-      "credito": "Vintter @vinttercocina"
+      "credito": "@vinttercocina",
+      "web": "",
+      "mail": ""
     },
     {
       "id": "snacphone",
