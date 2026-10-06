@@ -87,7 +87,8 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Índice": "Index",
  "Sugerilo por ": "Tell us by ",
  " o por ": " or by ",
- "mail": "email"
+ "mail": "email",
+ "Diseño": "Design"
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -113,6 +114,8 @@ var CATEGORIAS = [
     icono: '<path d="M12 3 6 12h3l-4 6h14l-4-6h3z"/><path d="M12 18v3"/>' },
   { id: 'cultura', nombre: t('Cultura'), sub: t('Museos, teatros, muestras'),
     icono: '<path d="M3 9 12 4l9 5"/><path d="M4 9h16"/><path d="M6 9v9"/><path d="M10 9v9"/><path d="M14 9v9"/><path d="M18 9v9"/><path d="M3 20h18"/>' },
+  { id: 'diseno', nombre: t('Diseño'), sub: '',
+    icono: '<path d="M12 3 4 7v6c0 4 3.500 7 8 8 4.500-1 8-4 8-8V7z"/>' },
   { id: 'eventos', nombre: t('Eventos'), sub: '',
     icono: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/><path d="M8 3v4"/><path d="M16 3v4"/>' }
 ];
@@ -356,7 +359,13 @@ function vistaInicio() {
     (filtrado ? agendaHtml : destacado ?
       '<div class="apertura"><section class="bloque destacado"><h2 class="etiqueta">' + t('Hallazgos') + '</h2>' + tarjeta(destacado) + '</section>' + lateral + '</div>' : lateral) +
     (resto.length ? bloque(t('Lugares'), resto) : (filtrado ? '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>' : '')) +
-    (filtrado ? '' : bloque(t('Curiosear'), curiosos, t('Iniciativas tucumanas que tenés que conocer'))) +
+    (filtrado || !curiosos.length ? '' : '<section class="curiosear"><div><h2 class="curiosear-titulo">' + t('Curiosear') + '</h2><div class="curiosear-sub">' + t('Iniciativas tucumanas que tenés que conocer') + '</div></div>' +
+      '<div class="curiosear-lista">' + curiosos.map(function (l, i) {
+        l = L(l);
+        return '<a class="curiosear-fila" href="#/lugar/' + encodeURIComponent(l.id) + '"><span class="curiosear-num">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
+          '<span><span class="curiosear-nombre">' + esc(l.nombre) + '</span>' + (l.breve ? '<span class="curiosear-breve">' + esc(l.breve) + '</span>' : '') + '</span>' +
+          '<span class="curiosear-flecha" aria-hidden="true">→</span></a>';
+      }).join('') + '</div></section>') +
     '<section class="banda"><div><div class="banda-titulo">' + t('Falta algún lugar?') + '</div><div class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</div></div>' +
     '<div class="banda-botones"><a class="boton banda-lleno" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te sugiero un lugar para Hang Out Tucumán: '))) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>WhatsApp</span></a>' +
     '<a class="boton" href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent(t('Sugerencia para Hang Out Tucumán')) + '">' + svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', 18, 1.8) + '<span>' + t('Mail') + '</span></a></div></section>' +
