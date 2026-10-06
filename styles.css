@@ -391,6 +391,11 @@ body.indice-abierto .indice { transform: none; visibility: visible; transition: 
 .idioma[aria-pressed="true"] { color: var(--tinta) !important; font-weight: 700; }
 .indice-pie { margin-top: auto; padding-top: 8px; font-size: 14px; line-height: 1.6; color: var(--tinta-suave); }
 
+.tope { display: flex; flex-direction: column; gap: 4px; }
+.apertura { display: flex; flex-direction: column; gap: 28px; }
+.destacado .tarjeta-nombre { font-size: 22px; letter-spacing: -0.4px; }
+.destacado .tarjeta-foto { height: 280px; }
+
 @media (min-width: 820px) {
   .app { padding-bottom: 0; }
   .nav { display: none; }
@@ -401,4 +406,14 @@ body.indice-abierto .indice { transform: none; visibility: visible; transition: 
   .tarjeta-foto, .mosaico .tarjeta-foto { height: 240px; }
   .lista-eventos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 28px; }
   .pagina { gap: 30px; }
+  .pagina { padding-top: 26px; gap: 28px; }
+  .tope { flex-direction: row; align-items: center; justify-content: space-between; }
+  .apertura { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .apertura.sola { grid-template-columns: minmax(0, 1fr); }
+  .apertura .lista-eventos { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .apertura .tarjeta-evento { padding: 16px 0; border-top: 1px solid var(--borde); }
+  .apertura .tarjeta-evento:last-child { border-bottom: 1px solid var(--borde); }
+  .destacado .tarjeta-foto { height: min(460px, 52vh); }
+  .destacado .tarjeta-nombre { font-size: 30px; letter-spacing: -0.7px; }
+  .destacado .tarjeta-breve { font-size: 16px; }
 }

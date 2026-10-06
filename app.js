@@ -339,7 +339,9 @@ function vistaInicio() {
   var sitios = lugaresVigentes().filter(function (l) { return !l.evento && !l.curiosidad; });
   var nEventos = lugaresVigentes().filter(function (l) { return l.evento; }).length;
   var curiosos = datos.lugares.filter(vigente).filter(function (l) { return l.curiosidad; });
-  var resto = filtrado ? sitios : sitios.filter(function (l) { return nuevos.indexOf(l) === -1; });
+  /* El hallazgo más reciente abre la portada en grande; los demás encabezan la grilla de lugares. */
+  var destacado = nuevos[0];
+  var resto = filtrado ? sitios : nuevos.slice(1).concat(sitios.filter(function (l) { return nuevos.indexOf(l) === -1; }));
   var conteo = (momento === 'noche' ? 'Night Out' : 'Day Out') + ' · ' + sitios.length + (sitios.length === 1 ? t(' lugar') : t(' lugares')) +
     (nEventos ? t(' y ') + nEventos + (nEventos === 1 ? t(' evento') : t(' eventos')) : '');
   function bloque(titulo, lista, sub) {
@@ -347,11 +349,10 @@ function vistaInicio() {
   }
 
   return '<main class="pagina">' +
-    marca() +
+    '<div class="tope">' + marca() + filtroMomento() + '</div>' +
     (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">' + t('La guía para salir en Tucumán, seas residente o turista!') + '</h1>') +
-    filtroMomento() +
-    agendaHtml +
-    (filtrado ? '' : bloque(t('Hallazgos'), nuevos)) +
+    (filtrado || !destacado ? agendaHtml :
+      '<div class="apertura' + (agendaHtml ? '' : ' sola') + '"><section class="bloque destacado"><h2 class="etiqueta">' + t('Hallazgos') + '</h2>' + tarjeta(destacado) + '</section>' + agendaHtml + '</div>') +
     (resto.length ? bloque(t('Lugares'), resto) : (filtrado ? '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>' : '')) +
     (filtrado ? '' : bloque(t('Curiosear'), curiosos, t('Iniciativas tucumanas que tenés que conocer'))) +
     '<p class="sugerir-linea">' + sugerir() + '</p>' +
