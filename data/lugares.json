@@ -181,8 +181,8 @@
       "zona": "San Miguel de Tucumán",
       "tipo": "Bodegón de pastas y hojaldres artesanales",
       "momento": "ambos",
-      "breve": "Tu bodegón para comer pastas caseras y hojaldres de autor.",
-      "texto": "Pastas caseras y laminado artesanal: hojaldres y masas finas hechos en el propio obrador.\n\nAtendido por su propio dueño, el dueño de un sueño hecho realidad.",
+      "breve": "Bodegón para comer pastas caseras y hojaldres de autor.",
+      "texto": "Pastas caseras y laminado artesanal (hojaldres y masas finas) hechos en el propio obrador Sebastian.\nEl arroz con leche te sorprendera.\nAtendido por su propio dueño, el dueño de un sueño hecho realidad.",
       "foto": "fotos/obrador-manteco-4.jpg",
       "galeria": [
         "fotos/obrador-manteco-7.jpg",
@@ -197,7 +197,9 @@
       "instagram": "@obradormanteco",
       "alta": "2026-10-06",
       "whatsapp": "+54 9 3816 22-6563",
-      "credito": "Obrador Manteco @obradormanteco"
+      "credito": "@obradormanteco",
+      "web": "",
+      "mail": ""
     },
     {
       "id": "zelmira",
