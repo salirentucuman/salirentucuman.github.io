@@ -249,3 +249,32 @@ img { display: block; max-width: 100%; }
 
 /* Estrella de favoritos */
 .estrella { display: inline-block; width: 0.72em; height: 0.72em; vertical-align: 0.02em; margin-left: 0.12em; color: var(--acento); }
+
+/* Pantallas grandes: la guía ocupa el ancho de la ventana. */
+@media (min-width: 900px) {
+  .app { max-width: 1360px; }
+  .pagina { padding: 40px 56px 48px; gap: 36px; }
+  .lema { font-size: 20px; }
+  .momentos { max-width: 440px; }
+  .categorias { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; }
+  .categoria.ancha { grid-column: auto; }
+  .categoria { min-height: 132px; }
+  .lista, .carrusel { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .carrusel { margin: 0; padding: 0; overflow: visible; }
+  .carrusel .tarjeta-evento { flex: none; }
+  .tarjeta-evento-foto { height: 220px; }
+  .pagina > .boton-grande { align-self: flex-start; padding: 0 40px; }
+  .sugerir { flex-direction: row; align-items: center; justify-content: space-between; padding: 20px 24px; }
+  .sugerir .boton { padding: 0 32px; }
+  .cierre { display: block; columns: 2; column-gap: 56px; font-size: 15px; }
+  .cierre p { margin: 0 0 14px; break-inside: avoid; }
+  .cierre .aviso-legal { column-span: all; margin: 10px 0 0; }
+
+  /* Ficha: foto a la izquierda, contenido a la derecha. */
+  main:has(> .tapa) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; padding: 40px 56px 48px; }
+  main:has(> .tapa) > .tapa { height: min(640px, calc(100vh - 180px)); border-radius: 20px; overflow: hidden; position: sticky; top: 40px; }
+  main:has(> .tapa) > .pagina { padding: 0; }
+  .ficha-nombre { font-size: 44px; }
+  .miniatura { width: 88px; height: 88px; }
+  .acciones { max-width: 460px; }
+}
