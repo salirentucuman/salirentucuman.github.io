@@ -762,3 +762,9 @@ main > .pagina > .favorito { margin: 8px 0 2px; }
 .con-leyenda { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .con-leyenda .favorito { font-weight: 500; color: var(--gris); }
 .con-leyenda .favorito .estrella { color: var(--acento); }
+
+/* Aire entre secciones: el espacio es el que separa, no las líneas. */
+#lista-lugares { margin-top: 48px; }
+.paginas { margin-top: 28px; }
+.final { margin-top: 56px; }
+@media (min-width: 820px) { #lista-lugares { margin-top: 80px; } .paginas { margin-top: 40px; } .final { margin-top: 88px; } }

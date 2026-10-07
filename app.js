@@ -408,7 +408,7 @@ function paginado(lista, clave, porPagina) {
   var total = Math.max(1, Math.ceil(lista.length / porPagina));
   var p = Math.min(paginas[clave] || 1, total);
   var nav = '';
-  if (total > 1) {
+  {
     var desde = Math.max(1, Math.min(p - 2, total - 3)), hasta = Math.min(total, desde + 3), nums = [];
     for (var i = desde; i <= hasta; i++) nums.push('<button class="pag-n" data-accion="pagina" data-clave="' + clave + '" data-valor="' + i + '"' + (i === p ? ' aria-current="page"' : '') + '>' + i + '</button>');
     nav = '<nav class="paginas" aria-label="Páginas"><button class="pag-f" data-accion="pagina" data-clave="' + clave + '" data-valor="' + Math.max(1, p - 1) + '" aria-label="' + t('Página anterior') + '"' + (p === 1 ? ' disabled' : '') + '>‹</button>' +
@@ -444,11 +444,11 @@ function vistaInicio() {
   /* Portada: 8 lugares; "Ver más" despliega una vez hasta 16; de ahí en más, páginas. */
   var lugaresHtml;
   if (!expandido) {
-    lugaresHtml = '<section class="bloque" id="lista-lugares"><div class="con-leyenda"><h2 class="etiqueta">' + t('Lugares') + '</h2>' + leyendaFavorito() + '</div><div class="mosaico">' + resto.slice(0, 8).map(tarjeta).join('') + '</div>' +
-      (resto.length > 8 ? '<button class="boton ver-mas" data-accion="ver-mas">' + t('Ver más lugares') + '</button>' : '') + '</section>';
+    lugaresHtml = '<section class="bloque" id="lista-lugares"><h2 class="etiqueta">' + t('Lugares') + '</h2><div class="mosaico">' + resto.slice(0, 8).map(tarjeta).join('') + '</div>' +
+      (resto.length > 8 ? '<button class="boton ver-mas" data-accion="ver-mas">' + t('Ver más lugares') + '</button>' : paginado(resto, 'inicio', 16).nav) + '</section>';
   } else {
     var pg = paginado(resto, 'inicio', 16);
-    lugaresHtml = '<section class="bloque" id="lista-lugares"><div class="con-leyenda"><h2 class="etiqueta">' + t('Lugares') + '</h2>' + leyendaFavorito() + '</div><div class="mosaico">' + pg.items.map(tarjeta).join('') + '</div>' + pg.nav + '</section>';
+    lugaresHtml = '<section class="bloque" id="lista-lugares"><h2 class="etiqueta">' + t('Lugares') + '</h2><div class="mosaico">' + pg.items.map(tarjeta).join('') + '</div>' + pg.nav + '</section>';
   }
 
   return '<main class="pagina">' +
