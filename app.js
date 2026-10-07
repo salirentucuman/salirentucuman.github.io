@@ -9,7 +9,7 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Todo": "All",
  "Agenda": "Diary",
  "Categorías": "Categories",
- "Hallazgos": "Latest",
+ "Último hallazgo": "Latest find",
  "Lugares": "Places",
  "Curiosear": "Curiosities",
  "Iniciativas tucumanas que tenés que conocer": "Tucumán initiatives worth knowing",
@@ -456,7 +456,7 @@ function vistaInicio() {
     '<a class="menu-enlace" href="#/guardados">' + t('Guardados') + '</a>' + idiomas() + '</nav></div>' +
     (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">' + t('La guía para salir en Tucumán') + '</h1>') +
     (filtrado ? agendaHtml : destacado ?
-      '<div class="apertura"><section class="bloque destacado"><h2 class="etiqueta">' + t('Hallazgos') + '</h2>' + tarjeta(destacado) + '</section>' + lateral + '</div>' : lateral) +
+      '<div class="apertura"><section class="bloque destacado"><h2 class="etiqueta">' + t('Último hallazgo') + '</h2>' + tarjeta(destacado) + '</section>' + lateral + '</div>' : lateral) +
     (resto.length ? lugaresHtml : (filtrado ? '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>' : '')) +
     '<div class="final">' +
     (filtrado || !curiosos.length ? '' : '<section class="curiosear"><div><h2 class="curiosear-titulo">' + t('Curiosear') + '</h2><div class="curiosear-sub">' + t('Iniciativas tucumanas que tenés que conocer') + '</div></div>' +
