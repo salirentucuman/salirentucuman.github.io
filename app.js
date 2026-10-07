@@ -549,7 +549,7 @@ function vistaLugar(id) {
     (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : t('Por qué ir')) + '</h2><div class="texto">' + esc(lugar.texto + (lugar.practico ? '\n\n' + lugar.practico : '')) + '</div></section>' : '') +
     '<section class="fuiste"><div class="fuiste-cabeza"><div class="fuiste-titulo">' + t('Ya fuiste?') + '</div>' +
     '<button class="boton boton-chico" data-accion="abrir-buzon" data-tipo="resena" data-lugar="' + esc(lugar.nombre) + '">' + t('Dejar reseña') + '</button></div></section>' +
-    '</div>' + pie(false) + '</main>' + nav('');
+    '</div></main><div class="fuera">' + pie(false) + '</div>' + nav('');
 }
 
 /* Visor de fotos a pantalla completa: se pasan deslizando. */
