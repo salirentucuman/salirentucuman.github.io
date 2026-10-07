@@ -512,3 +512,35 @@ html { overflow-x: clip; }
 .seguinos { margin: 0; }
 .seguinos a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-family: 'Hanken Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--tinta); }
 @media (min-width: 820px) { .banda .banda-ig { width: 52px; padding: 0; } }
+
+/* ===== Buzón: formulario de sugerencias y reseñas ===== */
+.banda { flex-direction: column; align-items: stretch; gap: 16px; }
+.banda-cabeza { display: flex; flex-direction: column; gap: 14px; }
+.banda-cabeza .boton { align-self: flex-start; padding: 0 26px; }
+.banda-contacto, .indice-pie { font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; }
+.banda-contacto { display: flex; flex-wrap: wrap; gap: 6px 20px; opacity: 0.85; }
+.banda-contacto a { min-height: 32px; display: inline-flex; align-items: center; text-decoration: underline; text-underline-offset: 4px; }
+.indice-pie { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.indice-pie .indice-titulo { width: 100%; margin-bottom: 2px; }
+.indice-pie a { min-height: 32px; display: inline-flex; align-items: center; }
+.buzon { display: flex; flex-direction: column; gap: 6px; }
+.buzon[hidden] { display: none; }
+.buzon label { font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 600; margin-top: 8px; }
+.buzon input, .buzon textarea { width: 100%; font: 400 16px/1.4 'Hanken Grotesk', sans-serif; color: #1E2320; background: #FFFFFF; border: 1px solid var(--borde); border-radius: 10px; padding: 12px 14px; min-height: 48px; }
+.buzon textarea { resize: vertical; }
+.buzon .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; min-height: 0; padding: 0; border: 0; opacity: 0; }
+.buzon-pie { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 12px; }
+.buzon-enviar { padding: 0 32px; border-radius: 26px; }
+.buzon-estado { font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; }
+.buzon-gracias { font-family: var(--serif); font-size: 22px; padding: 6px 0; }
+.banda .buzon-enviar { background: #FFFFFF; color: #2F4A3C; }
+.fuiste { flex-direction: column; align-items: stretch; gap: 14px; }
+.fuiste-cabeza { display: flex; align-items: center; gap: 16px; }
+.fuiste .buzon-enviar { background: var(--acento); border-color: var(--acento); color: #FFFFFF; }
+.evento .fuiste .buzon-enviar, body.noche .fuiste .buzon-enviar { color: #1E2320; }
+@media (min-width: 820px) {
+  .banda { flex-direction: column; align-items: stretch; }
+  .banda-cabeza { flex-direction: row; align-items: center; justify-content: space-between; }
+  .banda-cabeza .boton { align-self: center; }
+  .buzon { max-width: 640px; }
+}

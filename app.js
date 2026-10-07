@@ -92,7 +92,19 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Ver foto ": "View photograph ",
  "Foto anterior": "Previous photograph",
  "Foto siguiente": "Next photograph",
- "Seguinos en Instagram": "Follow us on Instagram"
+ "Seguinos en Instagram": "Follow us on Instagram",
+ "Sugerir un lugar": "Suggest a place",
+ "Qué lugar es?": "Which place?",
+ "Por qué vale la pena?": "Why does it deserve a place?",
+ "Contanos cómo te fue": "Tell us how it was",
+ "Tu nombre o contacto (opcional)": "Your name or contact (optional)",
+ "Enviar": "Send",
+ "Enviando…": "Sending…",
+ "Gracias. Lo recibimos.": "Thank you. We have it.",
+ "No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.": "It could not be sent. Please try again, or write to us on WhatsApp.",
+ "Completá los campos para enviar.": "Please fill in the fields before sending.",
+ "Contacto": "Contact",
+ "Hola, te escribo por Hang Out Tucumán: ": "Hello, I am writing about Hang Out Tucumán: "
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -318,6 +330,22 @@ function idiomas() {
     return (n ? '<span aria-hidden="true">/</span>' : '') + '<button class="idioma" data-accion="idioma" data-valor="' + i[0] + '" aria-pressed="' + (idioma === i[0]) + '">' + i[1] + '</button>';
   }).join('') + '</div>';
 }
+/* Buzón: sugerencias y reseñas se envían desde la web y llegan a la planilla y al mail de Hang Out. */
+var BUZON = 'https://script.google.com/macros/s/AKfycbwAqsuG4nnIsPpaaqEtIxH1HKxB_Cp5QyW3H5NdApfqTv5xjkCU1J4-CBs4SWlAwGSo-A/exec';
+function contacto() {
+  return '<a target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te escribo por Hang Out Tucumán: '))) + '">WhatsApp</a>' +
+    '<a href="mailto:hola@hangout-tucuman.com">' + t('Mail') + '</a>' +
+    '<a target="_blank" rel="noopener" href="' + INSTAGRAM + '">Instagram</a>';
+}
+function buzon(tipo, lugar) {
+  var n = tipo + '-' + Math.random().toString(36).slice(2, 7);
+  return '<form class="buzon" data-tipo="' + tipo + '"' + (lugar ? ' data-lugar="' + esc(lugar) + '"' : '') + ' hidden novalidate>' +
+    (lugar ? '' : '<label for="l-' + n + '">' + t('Qué lugar es?') + '</label><input id="l-' + n + '" name="lugar" type="text" maxlength="150" autocomplete="off">') +
+    '<label for="m-' + n + '">' + (lugar ? t('Contanos cómo te fue') : t('Por qué vale la pena?')) + '</label><textarea id="m-' + n + '" name="mensaje" rows="4" maxlength="3000"></textarea>' +
+    '<label for="c-' + n + '">' + t('Tu nombre o contacto (opcional)') + '</label><input id="c-' + n + '" name="contacto" type="text" maxlength="150" autocomplete="off">' +
+    '<input class="trampa" name="web" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+    '<div class="buzon-pie"><button class="boton buzon-enviar" type="submit">' + t('Enviar') + '</button><div class="buzon-estado" role="status"></div></div></form>';
+}
 function indice() {
   var filas = CATEGORIAS.map(function (c) {
     var n = deCategoria(c.id).length;
@@ -334,7 +362,7 @@ function indice() {
     '<button class="enlace-azar" data-accion="azar">' + svg(ICONOS.azar, 18, 1.8) + '<span>' + t('Sorprendeme con un lugar') + '</span></button>' +
     '<a class="indice-link" href="#/guardados">' + svg(ICONOS.guardar, 18, 1.8) + '<span>' + t('Guardados') + '</span></a>' +
     '<a class="indice-link" target="_blank" rel="noopener" href="' + INSTAGRAM + '">' + svg(ICONO_IG, 18, 1.8) + '<span>' + t('Seguinos en Instagram') + '</span></a>' +
-    '<div class="indice-pie">' + sugerir() + '</div></aside>';
+    '<div class="indice-pie"><div class="etiqueta indice-titulo">' + t('Contacto') + '</div>' + contacto() + '</div></aside>';
 }
 function marca() {
   return '<header class="cabecera"><button class="menu-btn" data-accion="menu" aria-label="' + t('Abrir índice') + '">' + svg('<path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/>', 24, 1.8) + '</button>' +
@@ -379,10 +407,10 @@ function vistaInicio() {
           '<span><span class="curiosear-nombre">' + esc(l.nombre) + '</span>' + (l.breve ? '<span class="curiosear-breve">' + esc(l.breve) + '</span>' : '') + '</span>' +
           '<span class="curiosear-flecha" aria-hidden="true">→</span></a>';
       }).join('') + '</div></section>') +
-    '<section class="banda"><div><div class="banda-titulo">' + t('Falta algún lugar?') + '</div><div class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</div></div>' +
-    '<div class="banda-botones"><a class="boton banda-lleno" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te sugiero un lugar para Hang Out Tucumán: '))) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>WhatsApp</span></a>' +
-    '<a class="boton" href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent(t('Sugerencia para Hang Out Tucumán')) + '">' + svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', 18, 1.8) + '<span>' + t('Mail') + '</span></a>' +
-    '<a class="boton banda-ig" target="_blank" rel="noopener" href="' + INSTAGRAM + '" aria-label="Instagram @hangout_tucuman">' + svg(ICONO_IG, 20, 1.8) + '</a></div></section>' +
+    '<section class="banda"><div class="banda-cabeza"><div><div class="banda-titulo">' + t('Falta algún lugar?') + '</div><div class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</div></div>' +
+    '<button class="boton banda-lleno" data-accion="abrir-buzon" aria-expanded="false">' + t('Sugerir un lugar') + '</button></div>' +
+    buzon('sugerencia') +
+    '<div class="banda-contacto">' + contacto() + '</div></section>' +
     '<section class="cierre">' +
     '<p>' + t('cierre') + '</p>' +
     '<p class="seguinos"><a target="_blank" rel="noopener" href="' + INSTAGRAM + '">' + svg(ICONO_IG, 18, 1.8) + '<span>@hangout_tucuman</span></a></p>' +
@@ -467,8 +495,9 @@ function vistaLugar(id) {
     '</div>' +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
     (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : t('Por qué ir')) + '</h2><div class="texto">' + esc(lugar.texto) + '</div></section>' : '') +
-    '<div class="fuiste"><div class="fuiste-titulo">' + t('Ya fuiste?') + '</div>' +
-    '<a class="boton boton-chico" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Mi reseña de ') + lugar.nombre + t(' para Hang Out Tucumán: '))) + '">' + t('Dejar reseña') + '</a></div>' +
+    '<section class="fuiste"><div class="fuiste-cabeza"><div class="fuiste-titulo">' + t('Ya fuiste?') + '</div>' +
+    '<button class="boton boton-chico" data-accion="abrir-buzon" aria-expanded="false">' + t('Dejar reseña') + '</button></div>' +
+    buzon('resena', lugar.nombre) + '</section>' +
     '</div></main>' + nav('');
 }
 
@@ -512,10 +541,36 @@ function pintar() {
   window.scrollTo(0, 0);
 }
 
+app.addEventListener('submit', function (ev) {
+  var f = ev.target.closest('.buzon');
+  if (!f) return;
+  ev.preventDefault();
+  var estado = f.querySelector('.buzon-estado'), boton = f.querySelector('.buzon-enviar');
+  var lugar = f.getAttribute('data-lugar') || (f.elements.lugar ? f.elements.lugar.value.trim() : '');
+  var mensaje = f.elements.mensaje.value.trim();
+  if (!lugar || !mensaje) { estado.textContent = t('Completá los campos para enviar.'); return; }
+  var datosEnvio = new URLSearchParams({ tipo: f.getAttribute('data-tipo'), lugar: lugar, mensaje: mensaje, contacto: f.elements.contacto.value.trim(), idioma: idioma, web: f.elements.web.value });
+  boton.disabled = true;
+  estado.textContent = t('Enviando…');
+  fetch(BUZON, { method: 'POST', mode: 'no-cors', body: datosEnvio }).then(function () {
+    f.innerHTML = '<div class="buzon-gracias" role="status">' + t('Gracias. Lo recibimos.') + '</div>';
+  }).catch(function () {
+    boton.disabled = false;
+    estado.textContent = t('No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.');
+  });
+});
+
 app.addEventListener('click', function (ev) {
   var el = ev.target.closest('[data-accion]');
   if (!el) return;
   var accion = el.getAttribute('data-accion');
+  if (accion === 'abrir-buzon') {
+    var caja = el.closest('section').querySelector('.buzon');
+    caja.hidden = !caja.hidden;
+    el.setAttribute('aria-expanded', String(!caja.hidden));
+    if (!caja.hidden) { var primero = caja.querySelector('input, textarea'); if (primero) primero.focus(); }
+    return;
+  }
   if (accion === 'menu') { document.body.classList.add('indice-abierto'); return; }
   if (accion === 'cerrar-menu') { document.body.classList.remove('indice-abierto'); return; }
   if (accion === 'inicio') { document.body.classList.remove('indice-abierto'); window.scrollTo(0, 0); return; }
