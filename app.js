@@ -332,7 +332,7 @@ function idiomas() {
   }).join('') + '</div>';
 }
 /* Buzón: sugerencias y reseñas se envían desde la web y llegan a la planilla y al mail de Hang Out. */
-var BUZON = 'https://script.google.com/macros/s/AKfycbwAqsuG4nnIsPpaaqEtIxH1HKxB_Cp5QyW3H5NdApfqTv5xjkCU1J4-CBs4SWlAwGSo-A/exec';
+var BUZON = 'https://script.google.com/macros/s/AKfycbwvoVw61GuKXi8-dW1FNIQP2RemJcBIkQtiOQipCZdQJa6aExXCJJrC_vjSs78ZD0Rvcg/exec';
 function contacto() {
   return '<a target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te escribo por Hang Out Tucumán: '))) + '">WhatsApp</a>' +
     '<a href="mailto:hola@hangout-tucuman.com">' + t('Mail') + '</a>' +
