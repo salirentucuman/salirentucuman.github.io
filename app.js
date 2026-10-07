@@ -107,7 +107,8 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Gracias! Hemos recibido tu sugerencia exitosamente.": "Thank you. Your suggestion has reached us safely.",
  "Gracias! Hemos recibido tu reseña exitosamente.": "Thank you. Your note has reached us safely.",
  "Dejar otra sugerencia": "Suggest another",
- "Dejar otra reseña": "Leave another note"
+ "Dejar otra reseña": "Leave another note",
+ "Zona / Barrio": "Area"
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -458,7 +459,7 @@ function vistaLugar(id) {
   if (lugar.curiosidad) lugar.sinMapa = true;
   var guardado = leerGuardados().indexOf(lugar.id) !== -1;
   var filas = [
-    [t('Tipo'), lugar.tipo], [t('Momento'), lugar.curiosidad ? '' : etiquetaMomento(lugar)], [t('Dirección'), lugar.direccion], [t('Precio'), lugar.precio],
+    [t('Tipo'), lugar.tipo], [t('Momento'), lugar.curiosidad ? '' : etiquetaMomento(lugar)], [t('Zona / Barrio'), lugar.zona], [t('Dirección'), lugar.direccion], [t('Precio'), lugar.precio],
     [t('Ideal para'), lugar.idealPara], ['Web', lugar.web], [t('Mail'), lugar.mail], ['Instagram', lugar.instagram], ['WhatsApp', lugar.whatsapp]
   ].filter(function (f) { return f[1]; }).map(function (f) {
     var valor = esc(f[1]);
@@ -479,9 +480,9 @@ function vistaLugar(id) {
     (miniaturas ? '<div class="miniaturas">' + miniaturas + '</div>' : '') +
     (lugar.credito ? '<div class="credito">' + t('Fotos: ') + esc(lugar.credito) + '</div>' : '') + '</div>' : '';
   var pasos = todas.length < 2 ? '' :
-    '<div class="contador"><button class="paso" data-accion="paso" data-dir="-1" aria-label="' + t('Foto anterior') + '">' + svg('<path d="M15 5 8 12l7 7"/>', 14, 2) + '</button>' +
+    '<div class="contador"><button class="paso" data-accion="paso" data-dir="-1" aria-label="' + t('Foto anterior') + '">' + svg('<path d="M15 5 8 12l7 7"/>', 11, 2) + '</button>' +
     '<span class="contador-n" aria-live="polite">1 / ' + todas.length + '</span>' +
-    '<button class="paso" data-accion="paso" data-dir="1" aria-label="' + t('Foto siguiente') + '">' + svg('<path d="m9 5 7 7-7 7"/>', 14, 2) + '</button></div>';
+    '<button class="paso" data-accion="paso" data-dir="1" aria-label="' + t('Foto siguiente') + '">' + svg('<path d="m9 5 7 7-7 7"/>', 11, 2) + '</button></div>';
 
   return '<main' + (lugar.evento ? ' class="evento"' : '') + '>' +
     '<div class="lado"><div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0">' : '') + pasos +
