@@ -651,3 +651,12 @@ main > .pagina > .bloque { margin-top: 14px; }
 }
 /* Contador de fotos: una medida más chico, como bloque */
 .contador { zoom: 0.84; right: 14px; bottom: 14px; }
+
+/* Ficha en PC: la columna derecha arranca a la altura del botón de guardar */
+@media (min-width: 820px) {
+  main:has(> .lado) > .pagina > .ficha-cabecera .ficha-cat,
+  main:has(> .lado) > .pagina > .ficha-cabecera .pildora + .ficha-cat { margin-top: 0; }
+  main:has(> .lado) > .pagina { padding-top: 22px; }
+}
+/* Contador de fotos, una medida más chico */
+.contador { transform: scale(0.84); transform-origin: right bottom; }
