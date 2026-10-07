@@ -4,7 +4,7 @@ var CATEGORIAS = [
   ['comer', 'Café y copas'], ['restaurantes', 'Restaurantes y bodegones'], ['pasear', 'Aire libre'],
   ['cultura', 'Cultura'], ['diseno', 'Diseño'], ['autor', 'De autor'], ['barrio', 'De barrio']
 ];
-var CAMPOS = ['nombre', 'tipo', 'zona', 'direccion', 'whatsapp', 'web', 'mail', 'instagram', 'breve', 'texto', 'precio', 'credito'];
+var CAMPOS = ['nombre', 'tipo', 'zona', 'direccion', 'whatsapp', 'web', 'mail', 'instagram', 'breve', 'texto', 'practico', 'precio', 'credito'];
 var ARCHIVO = 'data/lugares.json';
 var REPO = 'salirentucuman/salirentucuman.github.io';
 
@@ -116,7 +116,7 @@ function ajustarClase() {
   var previa = $('cat1').value;
   opciones($('cat1'), evento ? 'Solo en Eventos' : curiosidad ? 'Solo en Curiosear' : 'Elegí una categoría');
   $('cat1').value = previa;
-  $('rotulo-texto').textContent = evento || curiosidad ? 'De qué se trata' : 'Por qué ir';
+  $('rotulo-texto').textContent = evento || curiosidad ? 'De qué se trata · Descripción' : 'Por qué ir · Descripción';
 }
 
 function llenarSelector() {

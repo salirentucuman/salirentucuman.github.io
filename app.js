@@ -4,7 +4,7 @@
 var idioma = 'es';
 try { idioma = localStorage.getItem('hangout-idioma') === 'en' ? 'en' : 'es'; } catch (e) { /* sin almacenamiento */ }
 document.documentElement.lang = idioma === 'en' ? 'en-GB' : 'es-AR';
-var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.", "legal1": "Hang Out Tucumán es una guía independiente y autofinanciada. Las descripciones son una mirada personal. Encontraste un dato inexacto? Por favor ", " días restantes": " días", "Sorprendeme con un lugar": "Click aquí para seleccionar un lugar random", "nos escribís": "escribinos", " para corregirlo.": ".", "Dejar reseña": "Dejá tu reseña"}, en: {
+var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.", "legal1": "Hang Out Tucumán es una guía independiente y autofinanciada. Las descripciones son una mirada personal. Encontraste un dato inexacto? Por favor ", " días restantes": " días", "Sorprendeme con un lugar": "Click aquí para seleccionar un lugar random", "nos escribís": "escribinos", " para corregirlo.": ".", "Dejar reseña": "Dejá tu reseña", "sobre1": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente, una invitación a ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local.", "sobre2": "Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece aquí porque fuimos, y porque volveríamos.", "sobreCorto": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un lugar aparece porque fuimos, y porque volveríamos.", "aviso1": "Hang Out Tucumán es una guía independiente. Las descripciones son subjetivas. Encontraste un dato inexacto? Agradecemos que ", "aviso2": "nos escribas", "base1": "Si conocés un sitio que creés que merece ser parte de esta selección, avisanos ", "base2": "aquí"}, en: {
  "La guía para salir en Tucumán": "A considered guide to enjoying Tucumán.",
  "Todo": "All",
  "Agenda": "Diary",
@@ -109,7 +109,22 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Gracias! Hemos recibido tu reseña exitosamente.": "Thank you. Your note has reached us safely.",
  "Dejar otra sugerencia": "Suggest another",
  "Dejar otra reseña": "Leave another note",
- "Zona / Barrio": "Area"
+ "Zona / Barrio": "Area",
+ "sobre1": "Hang Out Tucumán is not a directory, nor does it try to gather everything. It is a selection of the places we are especially fond of: an invitation to be a visitor in your own town, or to see it with the eye of someone who lives here.",
+ "sobre2": "Hang Out Tucumán is self-funded and carries no advertising. A place appears here because we went, and because we would go back.",
+ "sobreCorto": "Hang Out Tucumán is not a directory, nor does it try to gather everything. It is a selection of the places we are especially fond of. A place appears because we went, and because we would go back.",
+ "aviso1": "Hang Out Tucumán is an independent guide. The descriptions are subjective. Found a detail that is not quite right? We would be grateful if you would ",
+ "aviso2": "write to us",
+ "base1": "If you know somewhere that belongs in this selection, tell us ",
+ "base2": "here",
+ "Sobre la guía": "About the guide",
+ "Aviso": "Note",
+ "E-mail": "Email",
+ "Ver más lugares": "View more places",
+ "Página anterior": "Previous page",
+ "Página siguiente": "Next page",
+ "Escribí acá": "Write here",
+ "Cerrar": "Close"
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -344,10 +359,10 @@ function contacto() {
 }
 function buzon(tipo, lugar) {
   var n = tipo + '-' + Math.random().toString(36).slice(2, 7);
-  return '<form class="buzon" data-tipo="' + tipo + '"' + (lugar ? ' data-lugar="' + esc(lugar) + '"' : '') + ' hidden novalidate>' +
-    (lugar ? '' : '<label for="l-' + n + '">' + t('Qué lugar es?') + '</label><input id="l-' + n + '" name="lugar" type="text" maxlength="150" autocomplete="off">') +
-    '<label for="m-' + n + '">' + (lugar ? t('Contanos cómo te fue') : t('Por qué vale la pena?')) + '</label><textarea id="m-' + n + '" name="mensaje" rows="4" maxlength="3000"></textarea>' +
-    '<label for="c-' + n + '">' + t('Tu nombre o contacto (opcional)') + '</label><input id="c-' + n + '" name="contacto" type="text" maxlength="150" autocomplete="off">' +
+  return '<form class="buzon" data-tipo="' + tipo + '"' + (lugar ? ' data-lugar="' + esc(lugar) + '"' : '') + ' novalidate>' +
+    (lugar ? '' : '<label for="l-' + n + '">' + t('Qué lugar es?') + '</label><input id="l-' + n + '" name="lugar" type="text" maxlength="150" autocomplete="off" placeholder="' + t('Escribí acá') + '">') +
+    '<label for="m-' + n + '">' + (lugar ? t('Contanos cómo te fue') : t('Por qué vale la pena?')) + '</label><textarea id="m-' + n + '" name="mensaje" rows="4" maxlength="3000" placeholder="' + t('Escribí acá') + '"></textarea>' +
+    '<label for="c-' + n + '">' + t('Tu nombre o contacto (opcional)') + '</label><input id="c-' + n + '" name="contacto" type="text" maxlength="150" autocomplete="off" placeholder="' + t('Escribí acá') + '">' +
     '<input class="trampa" name="web" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
     '<div class="buzon-pie"><button class="boton buzon-enviar" type="submit">' + t('Enviar') + '</button><div class="buzon-estado" role="status"></div></div></form>';
 }
@@ -374,6 +389,31 @@ function marca() {
     '<a class="marca" href="#/" data-accion="inicio" aria-label="Hang Out Tucumán">' + LOGO + '</a></header>' + indice();
 }
 
+/* Pie: completo en la portada; en el resto, solo "Sobre la guía". */
+function pie(completo) {
+  if (!completo) return '<div class="zona sola"><div class="pie1"><div class="pie-rotulo">' + t('Sobre la guía') + '</div>' + t('sobreCorto') + '</div></div>';
+  return '<div class="pie3"><div><div class="pie-rotulo">' + t('Sobre la guía') + '</div><p>' + t('sobre1') + '</p><p>' + t('sobre2') + '</p></div>' +
+    '<div class="pie-contacto"><div class="pie-rotulo">' + t('Contacto') + '</div><a target="_blank" rel="noopener" href="' + INSTAGRAM + '">Instagram</a>' +
+    '<a target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te escribo por Hang Out Tucumán: '))) + '">WhatsApp</a><a href="mailto:hola@hangout-tucuman.com">' + t('E-mail') + '</a></div>' +
+    '<div class="pie-aviso"><div class="pie-rotulo">' + t('Aviso') + '</div>' + t('aviso1') + '<a target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, quiero corregir un dato de Hang Out Tucumán: '))) + '">' + t('aviso2') + '</a>!</div>' +
+    '<div class="pie-base">' + t('base1') + '<a href="#/" data-accion="abrir-buzon" data-tipo="sugerencia">' + t('base2') + '</a>!</div></div>';
+}
+
+/* Listas largas: páginas con números discretos (hasta cuatro a la vista, que se van corriendo). */
+var paginas = {}, expandido = false;
+function paginado(lista, clave, porPagina) {
+  var total = Math.max(1, Math.ceil(lista.length / porPagina));
+  var p = Math.min(paginas[clave] || 1, total);
+  var nav = '';
+  if (total > 1) {
+    var desde = Math.max(1, Math.min(p - 2, total - 3)), hasta = Math.min(total, desde + 3), nums = [];
+    for (var i = desde; i <= hasta; i++) nums.push('<button class="pag-n" data-accion="pagina" data-clave="' + clave + '" data-valor="' + i + '"' + (i === p ? ' aria-current="page"' : '') + '>' + i + '</button>');
+    nav = '<nav class="paginas" aria-label="Páginas"><button class="pag-f" data-accion="pagina" data-clave="' + clave + '" data-valor="' + Math.max(1, p - 1) + '" aria-label="' + t('Página anterior') + '"' + (p === 1 ? ' disabled' : '') + '>‹</button>' +
+      '<span>' + nums.join(', ') + '</span><button class="pag-f" data-accion="pagina" data-clave="' + clave + '" data-valor="' + Math.min(total, p + 1) + '" aria-label="' + t('Página siguiente') + '"' + (p === total ? ' disabled' : '') + '>›</button></nav>';
+  }
+  return { items: lista.slice((p - 1) * porPagina, p * porPagina), nav: nav };
+}
+
 function vistaInicio() {
   var filtrado = momento !== 'todo';
   var eventos = deCategoria('eventos').filter(function (l) { return l.evento; }).sort(porUrgencia);
@@ -398,13 +438,24 @@ function vistaInicio() {
     return !lista.length ? '' : '<section class="bloque"><div><h2 class="etiqueta">' + titulo + '</h2>' + (sub ? '<div class="bloque-sub">' + sub + '</div>' : '') + '</div><div class="mosaico">' + lista.map(tarjeta).join('') + '</div></section>';
   }
 
+  /* Portada: 8 lugares; "Ver más" despliega una vez hasta 16; de ahí en más, páginas. */
+  var lugaresHtml;
+  if (!expandido) {
+    lugaresHtml = '<section class="bloque" id="lista-lugares"><h2 class="etiqueta">' + t('Lugares') + '</h2><div class="mosaico">' + resto.slice(0, 8).map(tarjeta).join('') + '</div>' +
+      (resto.length > 8 ? '<button class="boton ver-mas" data-accion="ver-mas">' + t('Ver más lugares') + '</button>' : '') + '</section>';
+  } else {
+    var pg = paginado(resto, 'inicio', 16);
+    lugaresHtml = '<section class="bloque" id="lista-lugares"><h2 class="etiqueta">' + t('Lugares') + '</h2><div class="mosaico">' + pg.items.map(tarjeta).join('') + '</div>' + pg.nav + '</section>';
+  }
+
   return '<main class="pagina">' +
     '<div class="tope">' + marca() + '<nav class="menu-centro" aria-label="' + t('Índice') + '">' + filtroMomento() +
     '<a class="menu-enlace" href="#/guardados">' + t('Guardados') + '</a>' + idiomas() + '</nav></div>' +
     (filtrado ? '<h1 class="lema conteo">' + conteo + '</h1>' : '<h1 class="lema">' + t('La guía para salir en Tucumán') + '</h1>') +
     (filtrado ? agendaHtml : destacado ?
       '<div class="apertura"><section class="bloque destacado"><h2 class="etiqueta">' + t('Hallazgos') + '</h2>' + tarjeta(destacado) + '</section>' + lateral + '</div>' : lateral) +
-    (resto.length ? bloque(t('Lugares'), resto) : (filtrado ? '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>' : '')) +
+    (resto.length ? lugaresHtml : (filtrado ? '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>' : '')) +
+    '<div class="final">' +
     (filtrado || !curiosos.length ? '' : '<section class="curiosear"><div><h2 class="curiosear-titulo">' + t('Curiosear') + '</h2><div class="curiosear-sub">' + t('Iniciativas tucumanas que tenés que conocer') + '</div></div>' +
       '<div class="curiosear-lista">' + curiosos.map(function (l, i) {
         l = L(l);
@@ -412,17 +463,9 @@ function vistaInicio() {
           '<span><span class="curiosear-nombre">' + esc(l.nombre) + '</span>' + (l.breve ? '<span class="curiosear-breve">' + esc(l.breve) + '</span>' : '') + '</span>' +
           '<span class="curiosear-flecha" aria-hidden="true">→</span></a>';
       }).join('') + '</div></section>') +
-    '<section class="banda"><div class="banda-cabeza"><div class="banda-texto"><span class="banda-titulo">' + t('Falta algún lugar?') + '</span> <span class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</span></div>' +
-    '<button class="boton banda-lleno" data-accion="abrir-buzon" aria-expanded="false">' + t('Sugerir un lugar') + '</button></div>' +
-    buzon('sugerencia') +
-    '</section>' +
-    '<section class="cierre">' +
-    '<p>' + t('cierre') + '</p>' +
-    '<p class="seguinos"><a target="_blank" rel="noopener" href="' + INSTAGRAM + '">' + svg(ICONO_IG, 16, 1.8) + '<span>@hangout_tucuman</span></a>' +
-    '<a target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te escribo por Hang Out Tucumán: '))) + '">WhatsApp</a>' +
-    '<a href="mailto:hola@hangout-tucuman.com">' + t('Mail') + '</a></p>' +
-    '<p class="aviso-legal">' + t('legal1') + '<a class="enlace" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, quiero corregir un dato de Hang Out Tucumán: '))) + '">' + t('nos escribís') + '</a>' + t(' para corregirlo.') + '</p>' +
-    '</section>' +
+    '<div class="zona"><section class="banda"><div class="banda-cabeza"><div class="banda-texto"><span class="banda-titulo">' + t('Falta algún lugar?') + '</span> <span class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</span></div>' +
+    '<button class="boton banda-lleno" data-accion="abrir-buzon" data-tipo="sugerencia">' + t('Sugerir un lugar') + '</button></div></section>' +
+    pie(true) + '</div></div>' +
     '</main>' + nav('inicio');
 }
 
@@ -431,12 +474,13 @@ function vistaCategoria(id) {
   if (!c) return vistaInicio();
   var lista = deCategoria(id);
   if (id === 'eventos') lista.sort(porUrgencia);
+  var pg = paginado(lista, 'cat-' + id, 32);
   return '<main class="pagina">' +
     marca() +
     '<div><h1 class="titulo">' + c.nombre + '</h1>' + (c.sub ? '<div class="subtitulo">' + c.sub + '</div>' : '') + '</div>' +
     filtroMomento() +
-    (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">' + (momento === 'todo' ? 'Todavía no hay lugares en esta categoría.' : t('No hay nada cargado para este momento del día. Probá con Todo.')) + '</p>') +
-    '</main>' + nav('');
+    (lista.length ? '<div class="lista" id="lista-lugares">' + pg.items.map(tarjeta).join('') + '</div>' + pg.nav : '<p class="vacio">' + (momento === 'todo' ? 'Todavía no hay lugares en esta categoría.' : t('No hay nada cargado para este momento del día. Probá con Todo.')) + '</p>') +
+    pie(false) + '</main>' + nav('');
 }
 
 function vistaGuardados() {
@@ -446,7 +490,7 @@ function vistaGuardados() {
     marca() +
     '<div><h1 class="titulo">' + t('Guardados') + '</h1><div class="subtitulo">' + t('Los lugares que marcaste para ir') + '</div></div>' +
     (lista.length ? '<div class="lista">' + lista.map(tarjeta).join('') + '</div>' : '<p class="vacio">' + t('Todavía no guardaste ningún lugar. Tocá el marcador en la ficha de un lugar para tenerlo acá.') + '</p>') +
-    '</main>' + nav('guardados');
+    pie(false) + '</main>' + nav('guardados');
 }
 
 function vistaLugar(id) {
@@ -502,11 +546,10 @@ function vistaLugar(id) {
     '<button class="boton" data-accion="compartir" data-nombre="' + esc(lugar.nombre) + '">' + svg(ICONOS.compartir, 18, 1.8) + '<span>' + t('Compartir') + '</span></button>' +
     '</div>' +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
-    (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : t('Por qué ir')) + '</h2><div class="texto">' + esc(lugar.texto) + '</div></section>' : '') +
+    (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : t('Por qué ir')) + '</h2><div class="texto">' + esc(lugar.texto + (lugar.practico ? '\n\n' + lugar.practico : '')) + '</div></section>' : '') +
     '<section class="fuiste"><div class="fuiste-cabeza"><div class="fuiste-titulo">' + t('Ya fuiste?') + '</div>' +
-    '<button class="boton boton-chico" data-accion="abrir-buzon" aria-expanded="false">' + t('Dejar reseña') + '</button></div>' +
-    buzon('resena', lugar.nombre) + '</section>' +
-    '</div></main>' + nav('');
+    '<button class="boton boton-chico" data-accion="abrir-buzon" data-tipo="resena" data-lugar="' + esc(lugar.nombre) + '">' + t('Dejar reseña') + '</button></div></section>' +
+    '</div>' + pie(false) + '</main>' + nav('');
 }
 
 /* Visor de fotos a pantalla completa: se pasan deslizando. */
@@ -549,48 +592,62 @@ function pintar() {
   window.scrollTo(0, 0);
 }
 
-app.addEventListener('submit', function (ev) {
-  var f = ev.target.closest('.buzon');
-  if (!f) return;
-  ev.preventDefault();
-  var estado = f.querySelector('.buzon-estado'), boton = f.querySelector('.buzon-enviar');
-  var lugar = f.getAttribute('data-lugar') || (f.elements.lugar ? f.elements.lugar.value.trim() : '');
-  var mensaje = f.elements.mensaje.value.trim();
-  if (!lugar || !mensaje) { estado.textContent = t('Completá los campos para enviar.'); return; }
-  var datosEnvio = new URLSearchParams({ tipo: f.getAttribute('data-tipo'), lugar: lugar, mensaje: mensaje, contacto: f.elements.contacto.value.trim(), idioma: idioma, web: f.elements.web.value });
-  boton.disabled = true;
-  estado.textContent = t('Enviando…');
-  fetch(BUZON, { method: 'POST', mode: 'no-cors', body: datosEnvio }).then(function () {
-    /* El agradecimiento reemplaza a la invitación y el botón ofrece dejar otra. */
-    var seccion = f.closest('section');
-    var texto = seccion.querySelector('.banda-texto, .fuiste-titulo'), abrir = seccion.querySelector('[data-accion="abrir-buzon"]');
-    var esResena = f.getAttribute('data-tipo') === 'resena';
-    if (!texto.hasAttribute('data-original')) texto.setAttribute('data-original', texto.innerHTML);
-    texto.textContent = esResena ? t('Gracias! Hemos recibido tu reseña exitosamente.') : t('Gracias! Hemos recibido tu sugerencia exitosamente.');
-    texto.setAttribute('role', 'status');
-    abrir.textContent = esResena ? t('Dejar otra reseña') : t('Dejar otra sugerencia');
-    abrir.setAttribute('aria-expanded', 'false');
-    f.reset();
-    f.hidden = true;
-    boton.disabled = false;
-    estado.textContent = '';
-  }).catch(function () {
-    boton.disabled = false;
-    estado.textContent = t('No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.');
-  });
-});
+/* Formulario emergente de sugerencias y reseñas. */
+function abrirBuzon(tipo, lugar) {
+  var esResena = tipo === 'resena';
+  var v = document.createElement('div');
+  v.className = 'ventana';
+  v.setAttribute('role', 'dialog');
+  v.setAttribute('aria-modal', 'true');
+  function cerrar() { v.remove(); document.removeEventListener('keydown', tecla); document.body.style.overflow = ''; }
+  function tecla(ev) { if (ev.key === 'Escape') cerrar(); }
+  function armar() {
+    v.innerHTML = '<div class="caja"><button class="caja-x" type="button" aria-label="' + t('Cerrar') + '">' + svg('<path d="M6 6l12 12"/><path d="M18 6 6 18"/>', 18, 1.8) + '</button>' +
+      '<h3 class="caja-titulo">' + (esResena ? t('Dejar reseña') : t('Sugerir un lugar')) + '</h3><p class="caja-sub">' + (esResena ? esc(lugar) : t('Contanos cuál y por qué vale la pena.')) + '</p>' +
+      buzon(tipo, esResena ? lugar : '') + '</div>';
+    v.querySelector('.caja-x').addEventListener('click', cerrar);
+    var f = v.querySelector('.buzon');
+    f.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var estado = f.querySelector('.buzon-estado'), boton = f.querySelector('.buzon-enviar');
+      var nombre = f.getAttribute('data-lugar') || (f.elements.lugar ? f.elements.lugar.value.trim() : '');
+      var mensaje = f.elements.mensaje.value.trim();
+      if (!nombre || !mensaje) { estado.textContent = t('Completá los campos para enviar.'); return; }
+      var envio = new URLSearchParams({ tipo: tipo, lugar: nombre, mensaje: mensaje, contacto: f.elements.contacto.value.trim(), idioma: idioma, web: f.elements.web.value });
+      boton.disabled = true;
+      estado.textContent = t('Enviando…');
+      fetch(BUZON, { method: 'POST', mode: 'no-cors', body: envio }).then(function () {
+        v.querySelector('.caja').innerHTML = '<button class="caja-x" type="button" aria-label="' + t('Cerrar') + '">' + svg('<path d="M6 6l12 12"/><path d="M18 6 6 18"/>', 18, 1.8) + '</button>' +
+          '<h3 class="caja-titulo" role="status">' + (esResena ? t('Gracias! Hemos recibido tu reseña exitosamente.') : t('Gracias! Hemos recibido tu sugerencia exitosamente.')) + '</h3>' +
+          '<button class="boton caja-otra" type="button">' + (esResena ? t('Dejar otra reseña') : t('Dejar otra sugerencia')) + '</button>';
+        v.querySelector('.caja-x').addEventListener('click', cerrar);
+        v.querySelector('.caja-otra').addEventListener('click', armar);
+      }).catch(function () {
+        boton.disabled = false;
+        estado.textContent = t('No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.');
+      });
+    });
+    var primero = f.querySelector('input:not(.trampa), textarea');
+    if (primero) primero.focus();
+  }
+  v.addEventListener('click', function (ev) { if (ev.target === v) cerrar(); });
+  document.addEventListener('keydown', tecla);
+  document.body.style.overflow = 'hidden';
+  document.body.appendChild(v);
+  armar();
+}
 
 app.addEventListener('click', function (ev) {
   var el = ev.target.closest('[data-accion]');
   if (!el) return;
   var accion = el.getAttribute('data-accion');
-  if (accion === 'abrir-buzon') {
-    var caja = el.closest('section').querySelector('.buzon');
-    caja.hidden = !caja.hidden;
-    var invitacion = el.closest('section').querySelector('[data-original]');
-    if (invitacion && !caja.hidden) { invitacion.innerHTML = invitacion.getAttribute('data-original'); invitacion.removeAttribute('data-original'); invitacion.removeAttribute('role'); }
-    el.setAttribute('aria-expanded', String(!caja.hidden));
-    if (!caja.hidden) { var primero = caja.querySelector('input, textarea'); if (primero) primero.focus(); }
+  if (accion === 'abrir-buzon') { ev.preventDefault(); document.body.classList.remove('indice-abierto'); abrirBuzon(el.getAttribute('data-tipo'), el.getAttribute('data-lugar') || ''); return; }
+  if (accion === 'ver-mas' || accion === 'pagina') {
+    var antes = window.scrollY;
+    if (accion === 'ver-mas') expandido = true; else paginas[el.getAttribute('data-clave')] = Number(el.getAttribute('data-valor'));
+    pintar();
+    var destino = document.getElementById('lista-lugares');
+    if (accion === 'ver-mas' || !destino) window.scrollTo(0, antes); else window.scrollTo(0, destino.getBoundingClientRect().top + window.scrollY - 110);
     return;
   }
   if (accion === 'menu') { document.body.classList.add('indice-abierto'); return; }
@@ -608,6 +665,7 @@ app.addEventListener('click', function (ev) {
     if (history.length > 1) { ev.preventDefault(); history.back(); }
   } else if (accion === 'momento') {
     momento = el.getAttribute('data-valor');
+    paginas = {}; expandido = false;
     try { localStorage.setItem('dayout-momento', momento); } catch (e) { /* sin almacenamiento */ }
     var arriba = window.scrollY;
     pintar();

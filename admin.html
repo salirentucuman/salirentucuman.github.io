@@ -118,8 +118,9 @@
     <section class="seccion">
       <h2>Textos</h2>
       <div class="campo"><label for="tipo">Tipo</label><input id="tipo" type="text" placeholder="Cafetería de especialidad"></div>
-      <div class="campo"><label for="breve">Reseña breve</label><input id="breve" type="text" maxlength="160"><small>Una o dos líneas. Es lo que se ve en la tarjeta.</small></div>
-      <div class="campo"><label for="texto" id="rotulo-texto">Por qué ir</label><textarea id="texto"></textarea><small>Dejá una línea en blanco entre párrafos.</small></div>
+      <div class="campo"><label for="breve">Bajada</label><input id="breve" type="text" maxlength="160"><small>La frase corta que va debajo del nombre, en la tarjeta y en la ficha. Una o dos líneas.</small></div>
+      <div class="campo"><label for="texto" id="rotulo-texto">Por qué ir · Descripción</label><textarea id="texto"></textarea><small>Lo que más te moviliza del lugar. Dejá una línea en blanco entre párrafos.</small></div>
+      <div class="campo"><label for="practico">Por qué ir · Datos prácticos</label><textarea id="practico" style="min-height:96px"></textarea><small>Uno por renglón. Por ejemplo: No tiene cochera. Reservar antes de ir. En la web aparece a continuación de la descripción.</small></div>
     </section>
 
     <section class="seccion">
@@ -139,6 +140,6 @@
   </form>
 </main>
 </div>
-<script src="admin.js?v=9"></script>
+<script src="admin.js?v=10"></script>
 </body>
 </html>
