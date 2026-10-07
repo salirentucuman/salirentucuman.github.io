@@ -318,7 +318,9 @@ function idiomas() {
 function indice() {
   var filas = CATEGORIAS.map(function (c) {
     var n = deCategoria(c.id).length;
-    return '<a class="indice-fila' + (n ? '' : ' apagada') + '" href="#/categoria/' + c.id + '"><span>' + c.nombre + '</span><span>' + (n || t('pronto')) + '</span></a>';
+    /* "pronto" solo si la categoría no tiene nada cargado; si está vacía por el filtro de momento, va un cero. */
+    var total = datos.lugares.filter(vigente).filter(function (l) { return (l.categorias || []).indexOf(c.id) !== -1; }).length;
+    return '<a class="indice-fila' + (n ? '' : ' apagada') + '" href="#/categoria/' + c.id + '"><span>' + c.nombre + '</span><span>' + (n || (total ? '0' : t('pronto'))) + '</span></a>';
   }).join('');
   return '<div class="velo" data-accion="cerrar-menu"></div>' +
     '<aside class="indice" aria-label="' + t('Índice') + '">' +
