@@ -4,7 +4,7 @@
 var idioma = 'es';
 try { idioma = localStorage.getItem('hangout-idioma') === 'en' ? 'en' : 'es'; } catch (e) { /* sin almacenamiento */ }
 document.documentElement.lang = idioma === 'en' ? 'en-GB' : 'es-AR';
-var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.", "legal1": "Hang Out Tucumán es una guía independiente. Las descripciones son una mirada personal. Sos parte de un sitio o evento y encontraste un dato inexacto? Agradecemos si ", " días restantes": " días", "Sorprendeme con un lugar": "Sorprendeme con un lugar para visitar"}, en: {
+var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.", "legal1": "Hang Out Tucumán es una guía independiente y autofinanciada. Las descripciones son una mirada personal. Encontraste un dato inexacto? Por favor ", " días restantes": " días", "Sorprendeme con un lugar": "Click aquí para seleccionar un lugar random", "nos escribís": "escribinos", " para corregirlo.": "."}, en: {
  "La guía para salir en Tucumán": "A considered guide to enjoying Tucumán.",
  "Todo": "All",
  "Agenda": "Diary",
@@ -25,7 +25,7 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Cultura": "Culture",
  "Museos, teatros, muestras": "Museums, theatres, exhibitions",
  "Eventos": "Events",
- "Sorprendeme con un lugar": "Surprise me with a place to visit",
+ "Sorprendeme con un lugar": "Click here for a place at random",
  "Falta algún lugar?": "Somewhere we have missed?",
  "Contanos cuál y por qué vale la pena.": "Tell us where, and why it deserves a place within this guide.",
  "Mail": "Email",
@@ -77,9 +77,9 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Mi reseña de ": "My note on ",
  " para Hang Out Tucumán: ": " for Hang Out Tucumán: ",
  "cierre": "Hang Out Tucumán is not a directory, nor does it try to gather everything. It is a selection of the places we are especially fond of. A coffee house for the few, a neighbourhood cheesemaker, the right corner of a park in which to read. It is an invitation to the best of the city: to be a visitor in your own town, or to see it with the eye of someone who lives here. Hang Out Tucumán is self-funded and carries no advertising. A place appears because we went, and because we would go back. If you know somewhere that belongs in this selection, do tell us. And if you know the places gathered here, leave a note.",
- "legal1": "Hang Out Tucumán is an independent guide. The descriptions are a personal view. If you are part of a place or event and have found a detail that is not quite right, we would be grateful if you would ",
+ "legal1": "Hang Out Tucumán is an independent, self-funded guide. The descriptions are a personal view. Found a detail that is not quite right? Please ",
  "nos escribís": "write to us",
- " para corregirlo.": " so that we may correct it.",
+ " para corregirlo.": ".",
  "Curiosidad": "Curiosity",
  "pronto": "soon",
  "Abrir índice": "Open index",
@@ -479,8 +479,9 @@ function vistaLugar(id) {
     (miniaturas ? '<div class="miniaturas">' + miniaturas + '</div>' : '') +
     (lugar.credito ? '<div class="credito">' + t('Fotos: ') + esc(lugar.credito) + '</div>' : '') + '</div>' : '';
   var pasos = todas.length < 2 ? '' :
-    '<button class="paso paso-ant" data-accion="paso" data-dir="-1" aria-label="' + t('Foto anterior') + '">' + svg('<path d="M15 5 8 12l7 7"/>', 20, 1.8) + '</button>' +
-    '<button class="paso paso-sig" data-accion="paso" data-dir="1" aria-label="' + t('Foto siguiente') + '">' + svg('<path d="m9 5 7 7-7 7"/>', 20, 1.8) + '</button>';
+    '<div class="contador"><button class="paso" data-accion="paso" data-dir="-1" aria-label="' + t('Foto anterior') + '">' + svg('<path d="M15 5 8 12l7 7"/>', 14, 2) + '</button>' +
+    '<span class="contador-n" aria-live="polite">1 / ' + todas.length + '</span>' +
+    '<button class="paso" data-accion="paso" data-dir="1" aria-label="' + t('Foto siguiente') + '">' + svg('<path d="m9 5 7 7-7 7"/>', 14, 2) + '</button></div>';
 
   return '<main' + (lugar.evento ? ' class="evento"' : '') + '>' +
     '<div class="lado"><div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0">' : '') + pasos +
@@ -617,6 +618,8 @@ app.addEventListener('click', function (ev) {
     var nuevo = accion === 'elegir' ? Number(el.getAttribute('data-indice')) : (actual + Number(el.getAttribute('data-dir')) + minis.length) % minis.length;
     grande.src = minis[nuevo].querySelector('img').src;
     grande.setAttribute('data-indice', nuevo);
+    var cuenta = document.querySelector('.contador-n');
+    if (cuenta) cuenta.textContent = (nuevo + 1) + ' / ' + minis.length;
     minis.forEach(function (m, i) { if (i === nuevo) m.setAttribute('aria-current', 'true'); else m.removeAttribute('aria-current'); });
     var pista = minis[nuevo].parentNode;
     pista.scrollLeft = minis[nuevo].offsetLeft - pista.offsetLeft - (pista.clientWidth - minis[nuevo].offsetWidth) / 2;

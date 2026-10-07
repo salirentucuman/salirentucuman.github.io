@@ -604,3 +604,18 @@ html { overflow-x: clip; }
 .tarjeta-breve, .mosaico .tarjeta-breve, .dato, .boton-chico, .momento, .idioma, .indice-fila span:last-child { font-size: var(--t4); }
 .destacado .tarjeta-breve, .ficha-breve, .texto, .indice-fila span:first-child, .curiosear-breve, .tarjeta-evento-cuando, .compacta .tarjeta-evento-cuando { font-size: var(--t3); }
 .buzon input, .buzon textarea { font-size: var(--t3); }
+
+/* ===== Foto de la ficha: controles discretos, sin círculos blancos ===== */
+.tapa .volver, .tapa .guardar { width: 36px; height: 36px; border-radius: 18px; top: 12px; background: rgba(20, 22, 20, 0.42); color: #FFFFFF; }
+.tapa .volver { left: 12px; }
+.tapa .guardar { right: 12px; }
+.tapa .volver svg, .tapa .guardar svg { width: 17px; height: 17px; }
+.tapa .guardar[aria-pressed="true"] svg, .evento .guardar[aria-pressed="true"] svg { fill: #FFFFFF; }
+.contador { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; border-radius: 18px; background: rgba(20, 22, 20, 0.5); color: #FFFFFF; font-family: 'Hanken Grotesk', sans-serif; font-size: var(--t4); font-weight: 500; letter-spacing: 1px; }
+.contador .paso { position: static; transform: none; width: 36px; height: 36px; border-radius: 18px; background: none; color: #FFFFFF; }
+.contador-n { min-width: 38px; text-align: center; }
+@media (min-width: 820px) {
+  .tapa .volver, .tapa .guardar { width: 32px; height: 32px; border-radius: 16px; }
+  .tapa .volver svg, .tapa .guardar svg { width: 15px; height: 15px; }
+  .contador .paso { width: 30px; height: 30px; }
+}
