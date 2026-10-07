@@ -681,3 +681,4 @@ main > .pagina > .bloque { margin-top: 14px; }
 .tarjeta-cat { line-height: 1.2; margin-bottom: 7px; }
 .tarjeta-nombre { margin-bottom: 4px; }
 .tarjeta-breve { line-height: 1.3; }
+@media (min-width: 820px) { .menu-centro .idiomas { border-left: none; padding-left: 0; margin-left: 36px; } }
