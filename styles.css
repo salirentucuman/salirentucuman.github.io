@@ -675,3 +675,9 @@ main > .pagina > .bloque { margin-top: 14px; }
   .ficha-tope { grid-column: 1 / -1; padding: 0; margin-bottom: -24px; }
   main:has(> .lado) > .lado { top: 20px; }
 }
+
+/* Tarjetas de portada y listas: misma lógica de espacios que la ficha (rótulo separado, nombre y bajada juntos) */
+.tarjeta-texto, .mosaico .tarjeta-texto { gap: 0; padding-top: 12px; }
+.tarjeta-cat { line-height: 1.2; margin-bottom: 7px; }
+.tarjeta-nombre { margin-bottom: 4px; }
+.tarjeta-breve { line-height: 1.3; }
