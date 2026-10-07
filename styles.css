@@ -754,3 +754,11 @@ main:has(> .lado) > .zona { padding-left: 24px; padding-right: 24px; margin-top:
 .pie3, .pie1 { font-weight: 300; }
 .pie-rotulo { font-weight: 500; }
 @media (min-width: 820px) { .fuera { padding: 0 56px; margin-top: 56px; } }
+
+/* Leyenda de la estrella */
+.favorito { display: flex; align-items: center; gap: 7px; font-family: 'Hanken Grotesk', sans-serif; font-size: var(--t4); font-weight: 600; letter-spacing: 0.3px; color: var(--acento); }
+.favorito .estrella { margin: 0; width: 11px; height: 11px; flex-shrink: 0; }
+main > .pagina > .favorito { margin: 8px 0 2px; }
+.con-leyenda { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.con-leyenda .favorito { font-weight: 500; color: var(--gris); }
+.con-leyenda .favorito .estrella { color: var(--acento); }

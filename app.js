@@ -94,6 +94,7 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Foto siguiente": "Next photograph",
  "Seguinos en Instagram": "Follow us on Instagram",
  "Volver": "Back",
+ "Favorito de Hang Out": "A Hang Out favourite",
  "Sugerir un lugar": "Suggest a place",
  "Qué lugar es?": "Which place?",
  "Por qué vale la pena?": "Why does it deserve a place?",
@@ -300,6 +301,8 @@ function pildora(lugar) {
 }
 
 /* Estrella propia para los favoritos de la selección. */
+var ESTRELLA = '<svg class="estrella" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg>';
+function leyendaFavorito() { return '<div class="favorito">' + ESTRELLA + '<span>' + t('Favorito de Hang Out') + '</span></div>'; }
 function nombreCon(lugar) {
   return esc(lugar.nombre) + (lugar.favorito ? ' <svg class="estrella" viewBox="0 0 24 24" role="img" aria-label="Favorito de Hang Out"><path fill="currentColor" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg>' : '');
 }
@@ -441,11 +444,11 @@ function vistaInicio() {
   /* Portada: 8 lugares; "Ver más" despliega una vez hasta 16; de ahí en más, páginas. */
   var lugaresHtml;
   if (!expandido) {
-    lugaresHtml = '<section class="bloque" id="lista-lugares"><h2 class="etiqueta">' + t('Lugares') + '</h2><div class="mosaico">' + resto.slice(0, 8).map(tarjeta).join('') + '</div>' +
+    lugaresHtml = '<section class="bloque" id="lista-lugares"><div class="con-leyenda"><h2 class="etiqueta">' + t('Lugares') + '</h2>' + leyendaFavorito() + '</div><div class="mosaico">' + resto.slice(0, 8).map(tarjeta).join('') + '</div>' +
       (resto.length > 8 ? '<button class="boton ver-mas" data-accion="ver-mas">' + t('Ver más lugares') + '</button>' : '') + '</section>';
   } else {
     var pg = paginado(resto, 'inicio', 16);
-    lugaresHtml = '<section class="bloque" id="lista-lugares"><h2 class="etiqueta">' + t('Lugares') + '</h2><div class="mosaico">' + pg.items.map(tarjeta).join('') + '</div>' + pg.nav + '</section>';
+    lugaresHtml = '<section class="bloque" id="lista-lugares"><div class="con-leyenda"><h2 class="etiqueta">' + t('Lugares') + '</h2>' + leyendaFavorito() + '</div><div class="mosaico">' + pg.items.map(tarjeta).join('') + '</div>' + pg.nav + '</section>';
   }
 
   return '<main class="pagina">' +
@@ -545,6 +548,7 @@ function vistaLugar(id) {
       : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(consulta)) + '">' + svg(ICONOS.mapa, 18, 1.8) + '<span>' + t('Cómo llegar') + '</span></a>' +
     '<button class="boton" data-accion="compartir" data-nombre="' + esc(lugar.nombre) + '">' + svg(ICONOS.compartir, 18, 1.8) + '<span>' + t('Compartir') + '</span></button>' +
     '</div>' +
+    (lugar.favorito ? leyendaFavorito() : '') +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
     (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : t('Por qué ir')) + '</h2><div class="texto">' + esc(lugar.texto + (lugar.practico ? '\n\n' + lugar.practico : '')) + '</div></section>' : '') +
     '<section class="fuiste"><div class="fuiste-cabeza"><div class="fuiste-titulo">' + t('Ya fuiste?') + '</div>' +
