@@ -619,3 +619,9 @@ html { overflow-x: clip; }
   .tapa .volver svg, .tapa .guardar svg { width: 15px; height: 15px; }
   .contador .paso { width: 30px; height: 30px; }
 }
+
+/* ===== Notebooks con pantalla ampliada (Windows al 125 o 150 %): todo un 15 % más chico ===== */
+@media (min-width: 820px) and (max-width: 1400px) {
+  body { zoom: 0.85; }
+  .lado > .tapa { height: min(560px, calc(118vh - 250px)); }
+}

@@ -4,7 +4,7 @@
 var idioma = 'es';
 try { idioma = localStorage.getItem('hangout-idioma') === 'en' ? 'en' : 'es'; } catch (e) { /* sin almacenamiento */ }
 document.documentElement.lang = idioma === 'en' ? 'en-GB' : 'es-AR';
-var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.", "legal1": "Hang Out Tucumán es una guía independiente y autofinanciada. Las descripciones son una mirada personal. Encontraste un dato inexacto? Por favor ", " días restantes": " días", "Sorprendeme con un lugar": "Click aquí para seleccionar un lugar random", "nos escribís": "escribinos", " para corregirlo.": "."}, en: {
+var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende reunirlo todo. Es una selección de aquellos sitios que nos gustan especialmente. Un café de nicho, un productor de queso de barrio, un rincón perfecto para leer en un parque. Hang Out Tucumán es una invitación a ir a los mejores lugares, para ser turista en tu ciudad o para que los visitantes la recorran con el criterio de un local. Hang Out Tucumán es autofinanciado, no es un sitio de publicidad. Un lugar aparece porque fuimos, y porque volveríamos. Si conocés un sitio que creés que merece ser parte de esta selección, avisanos! Si conocés los sitios destacados aquí, dejá tu reseña.", "legal1": "Hang Out Tucumán es una guía independiente y autofinanciada. Las descripciones son una mirada personal. Encontraste un dato inexacto? Por favor ", " días restantes": " días", "Sorprendeme con un lugar": "Click aquí para seleccionar un lugar random", "nos escribís": "escribinos", " para corregirlo.": ".", "Dejar reseña": "Dejá tu reseña"}, en: {
  "La guía para salir en Tucumán": "A considered guide to enjoying Tucumán.",
  "Todo": "All",
  "Agenda": "Diary",
@@ -51,7 +51,7 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "De qué se trata": "About",
  "Por qué ir": "Why go",
  "Ya fuiste?": "Been already?",
- "Dejar reseña": "Leave a note",
+ "Dejar reseña": "Leave your note",
  "Inicio": "Home",
  "Guardado": "Saved",
  "Quitado de guardados": "Removed",
