@@ -114,14 +114,14 @@
       "tipo": "Speakeasy Restaurant",
       "momento": "noche",
       "breve": "Restaurante tipo speakeasy, para cenar y solo con reservas.",
-      "texto": "Atmósfera íntima, comida de autor, pocas mesas y atendido por sus dueños.\nReservas completas hasta mayo de 2027, aunque parecen tener disponibilidad extra para eventos privados.",
-      "foto": "fotos/vintter.jpg",
+      "texto": "Atmósfera íntima, comida de autor, pocas mesas y atendido por sus dueños.",
+      "foto": "fotos/vintter-3.jpg",
       "galeria": [
-        "fotos/vintter-2.jpg",
-        "fotos/vintter-3.jpg",
-        "fotos/vintter-4.jpg",
+        "fotos/vintter.jpg",
         "fotos/vintter-5.jpg",
-        "fotos/vintter-6.jpg"
+        "fotos/vintter-4.jpg",
+        "fotos/vintter-6.jpg",
+        "fotos/vintter-1791412383396-1.jpg"
       ],
       "direccion": "Se solicita por WhatsApp",
       "precio": "",
@@ -138,7 +138,8 @@
         "direccion": "Shared on request, by WhatsApp",
         "breve": "A speakeasy of a restaurant. Supper only, by reservation.",
         "texto": "An intimate room, a personal kitchen, few tables, and the owners at the door.\nFully booked until May 2027, though there appears to be room for private occasions."
-      }
+      },
+      "practico": "Reservas completas hasta mayo de 2027, aunque parecen tener disponibilidad extra para eventos privados."
     },
     {
       "id": "snacphone",
