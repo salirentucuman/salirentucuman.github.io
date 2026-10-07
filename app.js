@@ -34,6 +34,8 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "No hay nada cargado para este momento del día. Probá con Todo.": "Nothing for this time of day. Try All.",
  "No hay lugares cargados para este momento del día.": "Nothing for this time of day.",
  "Guardados": "Saved",
+ "Buscar por zona": "Browse by area",
+ "Elegí una zona": "Choose an area",
  "Los lugares que marcaste para ir": "The places you have set aside",
  "Todavía no guardaste ningún lugar. Tocá el marcador en la ficha de un lugar para tenerlo acá.": "Nothing saved yet. Tap the bookmark on any place to keep it here.",
  "Este lugar ya no está disponible.": "This entry is no longer available.",
@@ -222,6 +224,29 @@ function lugaresVigentes() {
 
 function deCategoria(id) {
   return lugaresVigentes().filter(function (l) { return (l.categorias || []).indexOf(id) !== -1; });
+}
+
+/* Zonas: lista fija; un lugar pertenece a una zona si su campo "Zona / Barrio" la nombra. */
+var ZONAS = ['Barrio Norte', 'Barrio Sur', 'Ciudadela', 'Yerba Buena'];
+function deZona(z) {
+  return lugaresVigentes().filter(function (l) { return !l.curiosidad && !l.evento && (l.zona || '').toLowerCase().indexOf(z.toLowerCase()) !== -1; });
+}
+function buscadorZona() {
+  var filas = ZONAS.map(function (z, i) { return deZona(z).length ? [z, i] : null; }).filter(Boolean);
+  if (!filas.length) return '';
+  return '<section class="bloque buscar-zona"><h2 class="etiqueta">' + t('Buscar por zona') + '</h2><details class="desplegable"><summary><span>' + t('Elegí una zona') + '</span>' + svg('<path d="m6 9 6 6 6-6"/>', 14, 1.6) + '</summary>' +
+    '<div class="zona-lista">' + filas.map(function (f, n) {
+      return '<a class="zona-fila" href="#/zona/' + f[1] + '"><span class="zona-num">' + (n < 9 ? '0' : '') + (n + 1) + '</span><span class="zona-nombre">' + f[0] + '</span><span class="zona-flecha" aria-hidden="true">→</span></a>';
+    }).join('') + '</div></details></section>';
+}
+function vistaZona(i) {
+  var z = ZONAS[Number(i)];
+  if (!z) return vistaInicio();
+  var lista = deZona(z), pg = paginado(lista, 'zona-' + i, 32);
+  return '<main class="pagina">' + marca() +
+    '<div><h1 class="titulo">' + z + '</h1></div>' + filtroMomento() +
+    (lista.length ? '<div class="lista" id="lista-lugares">' + pg.items.map(tarjeta).join('') + '</div>' + pg.nav : '<p class="vacio">' + t('No hay nada cargado para este momento del día. Probá con Todo.') + '</p>') +
+    pie(false) + '</main>' + nav('');
 }
 
 function nombresCategorias(lugar) {
@@ -458,6 +483,7 @@ function vistaInicio() {
     (filtrado ? agendaHtml : destacado ?
       '<div class="apertura"><section class="bloque destacado"><h2 class="etiqueta">' + t('Último hallazgo') + '</h2>' + tarjeta(destacado) + '</section>' + lateral + '</div>' : lateral) +
     (resto.length ? lugaresHtml : (filtrado ? '<p class="vacio">' + t('No hay lugares cargados para este momento del día.') + '</p>' : '')) +
+    (filtrado || !resto.length ? '' : buscadorZona()) +
     '<div class="final">' +
     (filtrado || !curiosos.length ? '' : '<section class="curiosear"><div><h2 class="curiosear-titulo">' + t('Curiosear') + '</h2><div class="curiosear-sub">' + t('Iniciativas tucumanas que tenés que conocer') + '</div></div>' +
       '<div class="curiosear-lista">' + curiosos.map(function (l, i) {
@@ -588,6 +614,7 @@ function pintar() {
   var html;
   if (partes[0] === 'categoria') html = vistaCategoria(partes[1]);
   else if (partes[0] === 'lugar') html = vistaLugar(decodeURIComponent(partes[1] || ''));
+  else if (partes[0] === 'zona') html = vistaZona(partes[1]);
   else if (partes[0] === 'guardados') html = vistaGuardados();
   else html = vistaInicio();
   document.body.classList.toggle('noche', momento === 'noche');

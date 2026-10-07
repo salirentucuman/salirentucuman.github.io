@@ -771,3 +771,17 @@ main > .pagina > .favorito { margin: 8px 0 2px; }
 
 /* Portada: rayita fina en terracota oscuro que abre cada sección. */
 .pagina:has(> .final) h2.etiqueta::before { content: ""; display: block; width: 44px; height: 1px; background: var(--logo); margin-bottom: 18px; }
+
+/* Buscar por zona: una línea que se despliega. */
+.buscar-zona { margin-top: 48px; }
+.desplegable { max-width: 380px; }
+.desplegable summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--logo); cursor: pointer; font-family: var(--serif); font-style: italic; font-size: var(--t2); color: var(--gris); }
+.desplegable summary::-webkit-details-marker { display: none; }
+.desplegable summary svg { color: var(--acento); transition: transform .2s; flex: none; }
+.desplegable[open] summary svg { transform: rotate(180deg); }
+.zona-fila { display: grid; grid-template-columns: 30px minmax(0, 1fr) 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--borde); color: var(--tinta); text-decoration: none; }
+.zona-num { font-size: var(--t4); font-weight: 600; color: var(--gris); }
+.zona-nombre { font-family: var(--serif); font-weight: 500; font-size: var(--t2); }
+.zona-flecha { color: var(--acento); font-size: var(--t3); }
+@media (min-width: 820px) { .buscar-zona { margin-top: 80px; } }
+@media (max-width: 819px) { .desplegable { max-width: none; } }
