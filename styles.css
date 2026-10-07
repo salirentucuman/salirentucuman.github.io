@@ -563,3 +563,36 @@ html { overflow-x: clip; }
 
 .fuiste-cabeza { flex-wrap: wrap; }
 .banda-texto { font-family: var(--serif); font-size: 20px; }
+
+/* ===== Tamaños más contenidos en toda la web ===== */
+.ficha-nombre { font-size: 32px; }
+.ficha-breve { font-size: 18px; line-height: 1.3; }
+.ficha-cabecera { gap: 6px; }
+.acciones .boton { min-height: 44px; font-size: 14px; }
+.dato { padding: 10px 0; font-size: 14px; }
+.texto { font-size: 15px; line-height: 1.5; }
+.fuiste-titulo { font-size: 15px; }
+.tarjeta-nombre, .tarjeta-evento-nombre, .compacta .tarjeta-evento-nombre, .curiosear-nombre { font-size: 20px; }
+.tarjeta-breve, .curiosear-breve, .tarjeta-evento-cuando, .compacta .tarjeta-evento-cuando, .curiosear-sub, .bloque-sub { font-size: 16px; }
+.destacado .tarjeta-nombre { font-size: 25px; }
+.destacado .tarjeta-breve { font-size: 17px; }
+.curiosear-titulo { font-size: 30px; }
+.titulo { font-size: 32px; }
+.subtitulo { font-size: 17px; }
+.lema, .lema.conteo { font-size: 20px; }
+.banda-texto, .banda-titulo { font-size: 18px; }
+.banda-sub { font-size: 16px; }
+.cierre p:first-child { font-size: 16px; }
+@media (min-width: 820px) {
+  main:has(> .lado) { gap: 44px; padding-top: 28px; }
+  main:has(> .lado) > .pagina { gap: 16px; }
+  .ficha-nombre { font-size: 36px; }
+  .ficha-breve { font-size: 18px; }
+  .acciones { max-width: 380px; gap: 10px; }
+  .destacado .tarjeta-nombre { font-size: 27px; }
+  .curiosear-titulo { font-size: 34px; }
+  .titulo { font-size: 36px; }
+  .lema, .lema.conteo { font-size: 22px; }
+  .tarjeta-nombre { font-size: 19px; }
+  .tarjeta-breve { font-size: 15px; }
+}
