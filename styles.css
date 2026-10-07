@@ -666,3 +666,12 @@ main > .pagina > .bloque { margin-top: 14px; }
 .evento .texto { color: var(--tinta-suave); }
 /* En iPhone, un campo de menos de 16 px hace que la pantalla se acerque sola al escribir. */
 @supports (-webkit-touch-callout: none) { .buzon input, .buzon textarea { font-size: 16px; } }
+
+/* ===== Ficha: encabezado con logo y Volver en texto ===== */
+.ficha-tope { display: flex; flex-direction: column; gap: 6px; padding: 14px 24px 12px; }
+.volver-texto { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; font-size: var(--t4); font-weight: 500; text-decoration: underline; text-underline-offset: 4px; }
+.evento { --logo: #F2F3F0; }
+@media (min-width: 820px) {
+  .ficha-tope { grid-column: 1 / -1; padding: 0; margin-bottom: -24px; }
+  main:has(> .lado) > .lado { top: 20px; }
+}

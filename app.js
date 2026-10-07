@@ -93,6 +93,7 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Foto anterior": "Previous photograph",
  "Foto siguiente": "Next photograph",
  "Seguinos en Instagram": "Follow us on Instagram",
+ "Volver": "Back",
  "Sugerir un lugar": "Suggest a place",
  "Qué lugar es?": "Which place?",
  "Por qué vale la pena?": "Why does it deserve a place?",
@@ -485,8 +486,8 @@ function vistaLugar(id) {
     '<button class="paso" data-accion="paso" data-dir="1" aria-label="' + t('Foto siguiente') + '">' + svg('<path d="m9 5 7 7-7 7"/>', 11, 2) + '</button></div>';
 
   return '<main' + (lugar.evento ? ' class="evento"' : '') + '>' +
+    '<div class="ficha-tope">' + marca() + '<a class="volver-texto" href="#/" data-accion="volver">' + svg(ICONOS.volver, 14, 2) + '<span>' + t('Volver') + '</span></a></div>' +
     '<div class="lado"><div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0">' : '') + pasos +
-    '<a class="volver" href="#/" data-accion="volver" aria-label="Volver">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<button class="guardar" data-accion="guardar" data-id="' + esc(lugar.id) + '" aria-pressed="' + guardado + '" aria-label="Guardar lugar">' + svg(ICONOS.guardar, 20, 1.8) + '</button>' +
     '</div>' + fotosBloque + '</div>' +
     '<div class="pagina">' +
