@@ -100,11 +100,12 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Tu nombre o contacto (opcional)": "Your name or contact (optional)",
  "Enviar": "Send",
  "Enviando…": "Sending…",
- "Gracias. Lo recibimos.": "Thank you. We have it.",
  "No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.": "It could not be sent. Please try again, or write to us on WhatsApp.",
  "Completá los campos para enviar.": "Please fill in the fields before sending.",
  "Contacto": "Contact",
- "Hola, te escribo por Hang Out Tucumán: ": "Hello, I am writing about Hang Out Tucumán: "
+ "Hola, te escribo por Hang Out Tucumán: ": "Hello, I am writing about Hang Out Tucumán: ",
+ "Gracias! Hemos recibido tu sugerencia exitosamente.": "Thank you. Your suggestion has reached us safely.",
+ "Gracias! Hemos recibido tu reseña exitosamente.": "Thank you. Your note has reached us safely."
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -407,13 +408,15 @@ function vistaInicio() {
           '<span><span class="curiosear-nombre">' + esc(l.nombre) + '</span>' + (l.breve ? '<span class="curiosear-breve">' + esc(l.breve) + '</span>' : '') + '</span>' +
           '<span class="curiosear-flecha" aria-hidden="true">→</span></a>';
       }).join('') + '</div></section>') +
-    '<section class="banda"><div class="banda-cabeza"><div><div class="banda-titulo">' + t('Falta algún lugar?') + '</div><div class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</div></div>' +
+    '<section class="banda"><div class="banda-cabeza"><div class="banda-texto"><span class="banda-titulo">' + t('Falta algún lugar?') + '</span> <span class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</span></div>' +
     '<button class="boton banda-lleno" data-accion="abrir-buzon" aria-expanded="false">' + t('Sugerir un lugar') + '</button></div>' +
     buzon('sugerencia') +
-    '<div class="banda-contacto">' + contacto() + '</div></section>' +
+    '</section>' +
     '<section class="cierre">' +
     '<p>' + t('cierre') + '</p>' +
-    '<p class="seguinos"><a target="_blank" rel="noopener" href="' + INSTAGRAM + '">' + svg(ICONO_IG, 18, 1.8) + '<span>@hangout_tucuman</span></a></p>' +
+    '<p class="seguinos"><a target="_blank" rel="noopener" href="' + INSTAGRAM + '">' + svg(ICONO_IG, 16, 1.8) + '<span>@hangout_tucuman</span></a>' +
+    '<a target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te escribo por Hang Out Tucumán: '))) + '">WhatsApp</a>' +
+    '<a href="mailto:hola@hangout-tucuman.com">' + t('Mail') + '</a></p>' +
     '<p class="aviso-legal">' + t('legal1') + '<a class="enlace" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, quiero corregir un dato de Hang Out Tucumán: '))) + '">' + t('nos escribís') + '</a>' + t(' para corregirlo.') + '</p>' +
     '</section>' +
     '</main>' + nav('inicio');
@@ -553,7 +556,7 @@ app.addEventListener('submit', function (ev) {
   boton.disabled = true;
   estado.textContent = t('Enviando…');
   fetch(BUZON, { method: 'POST', mode: 'no-cors', body: datosEnvio }).then(function () {
-    f.innerHTML = '<div class="buzon-gracias" role="status">' + t('Gracias. Lo recibimos.') + '</div>';
+    f.innerHTML = '<div class="buzon-gracias" role="status">' + (f.getAttribute('data-tipo') === 'resena' ? t('Gracias! Hemos recibido tu reseña exitosamente.') : t('Gracias! Hemos recibido tu sugerencia exitosamente.')) + '</div>';
   }).catch(function () {
     boton.disabled = false;
     estado.textContent = t('No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.');

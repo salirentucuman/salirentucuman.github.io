@@ -544,3 +544,19 @@ html { overflow-x: clip; }
   .banda-cabeza .boton { align-self: center; }
   .buzon { max-width: 640px; }
 }
+
+/* ===== Cierre de la portada: banda en un renglón y tamaños parejos ===== */
+.banda-texto { line-height: 1.3; }
+.banda-titulo { font-size: 20px; }
+.banda-sub { font-size: 17px; margin: 0; opacity: 0.85; }
+.buzon-gracias { font-size: 20px; }
+.cierre p:first-child { font-size: 17px; }
+.seguinos { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 22px; }
+.seguinos a, .cierre .aviso-legal { font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 500; color: var(--gris); }
+.seguinos a { min-height: 36px; gap: 7px; }
+.seguinos a:first-child { color: var(--tinta); font-weight: 600; }
+.cierre .aviso-legal { line-height: 1.5; }
+@media (min-width: 820px) {
+  .banda-cabeza { justify-content: flex-start; gap: 28px; }
+  .banda-cabeza .boton { min-height: 46px; }
+}
