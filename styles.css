@@ -326,9 +326,10 @@ body.noche .guardar[aria-pressed="true"] svg { fill: var(--tinta); }
   .banda .boton { padding: 0 26px; }
 
   /* Ficha: foto a la izquierda, contenido a la derecha. */
-  main:has(> .tapa) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; padding: 40px 56px 48px; }
-  main:has(> .tapa) > .tapa { height: min(640px, calc(100vh - 180px)); border-radius: 20px; overflow: hidden; position: sticky; top: 40px; }
-  main:has(> .tapa) > .pagina { padding: 0; }
+  main:has(> .lado) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; padding: 40px 56px 48px; }
+  main:has(> .lado) > .lado { position: sticky; top: 40px; }
+  .lado > .tapa { height: min(600px, calc(100vh - 250px)); border-radius: 20px; overflow: hidden; }
+  main:has(> .lado) > .pagina { padding: 0; }
   .ficha-nombre { font-size: 44px; }
   .miniatura { width: 88px; height: 88px; }
   .acciones { max-width: 460px; }
@@ -483,4 +484,24 @@ body.indice-abierto .indice { transform: none; visibility: visible; transition: 
 .indice-pie { font-size: 12px; }
 @media (min-width: 820px) {
   .menu-centro { gap: 0 28px; }
+}
+
+/* ===== Ficha: carrusel de fotos con flechas y miniaturas debajo de la foto ===== */
+.lado .fotos { margin: 0; padding: 14px 24px 0; }
+.miniaturas { padding: 3px; margin: -3px; }
+.miniatura { cursor: pointer; border-radius: 8px; opacity: 0.72; }
+.miniatura[aria-current="true"] { opacity: 1; outline: 2px solid var(--tinta); outline-offset: 1px; }
+.paso { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 20px; border: none; background: rgba(255, 255, 255, 0.85); color: #1E2320; display: flex; align-items: center; justify-content: center; }
+.paso-ant { left: 14px; }
+.paso-sig { right: 14px; }
+
+/* ===== Portada: el menú queda fijo al bajar ===== */
+html { overflow-x: clip; }
+.tope { position: sticky; top: 0; z-index: 15; margin-top: -24px; padding: 14px 0 4px; }
+.tope::before { content: ""; position: absolute; top: 0; bottom: 0; left: -100vmax; right: -100vmax; z-index: -1; background: var(--fondo); border-bottom: 1px solid transparent; }
+.menu-centro .idiomas { margin-left: auto; }
+@media (min-width: 820px) {
+  .lado .fotos { padding: 14px 0 0; }
+  .tope { margin-top: -26px; padding: 16px 0 10px; }
+  .menu-centro .idiomas { margin-left: 4px; padding-left: 28px; border-left: 1px solid var(--borde); }
 }

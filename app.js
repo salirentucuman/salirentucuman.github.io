@@ -88,7 +88,10 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Sugerilo por ": "Tell us by ",
  " o por ": " or by ",
  "mail": "email",
- "Diseño": "Design"
+ "Diseño": "Design",
+ "Ver foto ": "View photograph ",
+ "Foto anterior": "Previous photograph",
+ "Foto siguiente": "Next photograph"
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -427,21 +430,23 @@ function vistaLugar(id) {
   var zona = lugar.zona ? ' · ' + esc(lugar.zona) : '';
   var cuando = lugar.evento && lugar.evento.cuando;
   var consulta = [lugar.nombre, lugar.direccion, 'Tucumán'].filter(Boolean).join(', ');
-  var galeria = (lugar.galeria || []).filter(Boolean);
-  var desfase = lugar.foto ? 1 : 0;
-  var miniaturas = galeria.map(function (ruta, i) {
-    return '<button class="miniatura" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="' + (i + desfase) + '" aria-label="Ver foto ' + (i + 1 + desfase) + '"><img src="' + esc(ruta) + '" alt="" loading="lazy"></button>';
+  var todas = [lugar.foto].concat(lugar.galeria || []).filter(Boolean);
+  var miniaturas = todas.length < 2 ? '' : todas.map(function (ruta, i) {
+    return '<button class="miniatura" data-accion="elegir" data-indice="' + i + '" aria-label="' + t('Ver foto ') + (i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + '><img src="' + esc(ruta) + '" alt="" loading="lazy"></button>';
   }).join('');
   var fotosBloque = (miniaturas || lugar.credito) ? '<div class="fotos">' +
     (miniaturas ? '<div class="miniaturas">' + miniaturas + '</div>' : '') +
     (lugar.credito ? '<div class="credito">' + t('Fotos: ') + esc(lugar.credito) + '</div>' : '') + '</div>' : '';
+  var pasos = todas.length < 2 ? '' :
+    '<button class="paso paso-ant" data-accion="paso" data-dir="-1" aria-label="' + t('Foto anterior') + '">' + svg('<path d="M15 5 8 12l7 7"/>', 20, 1.8) + '</button>' +
+    '<button class="paso paso-sig" data-accion="paso" data-dir="1" aria-label="' + t('Foto siguiente') + '">' + svg('<path d="m9 5 7 7-7 7"/>', 20, 1.8) + '</button>';
 
   return '<main' + (lugar.evento ? ' class="evento"' : '') + '>' +
-    '<div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0">' : '') +
+    '<div class="lado"><div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0">' : '') + pasos +
     '<a class="volver" href="#/" data-accion="volver" aria-label="Volver">' + svg(ICONOS.volver, 20, 1.8) + '</a>' +
     '<button class="guardar" data-accion="guardar" data-id="' + esc(lugar.id) + '" aria-pressed="' + guardado + '" aria-label="Guardar lugar">' + svg(ICONOS.guardar, 20, 1.8) + '</button>' +
-    '</div>' +
-    '<div class="pagina">' + fotosBloque +
+    '</div>' + fotosBloque + '</div>' +
+    '<div class="pagina">' +
     '<div class="ficha-cabecera">' + (lugar.evento ? pildora(lugar) : '') + '<div class="ficha-cat">' + esc(nombresCategorias(lugar)) + zona + '</div>' +
     '<h1 class="ficha-nombre">' + nombreCon(lugar) + '</h1>' +
     (cuando ? '<div class="ficha-cuando">' + esc(cuando) + '</div>' : '') +
@@ -522,6 +527,17 @@ app.addEventListener('click', function (ev) {
     var arriba = window.scrollY;
     pintar();
     window.scrollTo(0, arriba);
+  } else if (accion === 'paso' || accion === 'elegir') {
+    var grande = document.querySelector('.tapa img');
+    var minis = Array.prototype.slice.call(document.querySelectorAll('.miniatura'));
+    if (!grande || !minis.length) return;
+    var actual = Number(grande.getAttribute('data-indice')) || 0;
+    var nuevo = accion === 'elegir' ? Number(el.getAttribute('data-indice')) : (actual + Number(el.getAttribute('data-dir')) + minis.length) % minis.length;
+    grande.src = minis[nuevo].querySelector('img').src;
+    grande.setAttribute('data-indice', nuevo);
+    minis.forEach(function (m, i) { if (i === nuevo) m.setAttribute('aria-current', 'true'); else m.removeAttribute('aria-current'); });
+    var pista = minis[nuevo].parentNode;
+    pista.scrollLeft = minis[nuevo].offsetLeft - pista.offsetLeft - (pista.clientWidth - minis[nuevo].offsetWidth) / 2;
   } else if (accion === 'ver') {
     abrirVisor(el.getAttribute('data-id'), Number(el.getAttribute('data-indice')) || 0);
   } else if (accion === 'guardar') {
