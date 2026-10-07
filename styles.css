@@ -557,6 +557,9 @@ html { overflow-x: clip; }
 .seguinos a:first-child { color: var(--tinta); font-weight: 600; }
 .cierre .aviso-legal { line-height: 1.5; }
 @media (min-width: 820px) {
-  .banda-cabeza { justify-content: flex-start; gap: 28px; }
+  .banda-cabeza { justify-content: space-between; gap: 28px; }
   .banda-cabeza .boton { min-height: 46px; }
 }
+
+.fuiste-cabeza { flex-wrap: wrap; }
+.banda-texto { font-family: var(--serif); font-size: 20px; }

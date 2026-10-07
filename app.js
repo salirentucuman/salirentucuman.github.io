@@ -105,7 +105,9 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Contacto": "Contact",
  "Hola, te escribo por Hang Out Tucumán: ": "Hello, I am writing about Hang Out Tucumán: ",
  "Gracias! Hemos recibido tu sugerencia exitosamente.": "Thank you. Your suggestion has reached us safely.",
- "Gracias! Hemos recibido tu reseña exitosamente.": "Thank you. Your note has reached us safely."
+ "Gracias! Hemos recibido tu reseña exitosamente.": "Thank you. Your note has reached us safely.",
+ "Dejar otra sugerencia": "Suggest another",
+ "Dejar otra reseña": "Leave another note"
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -556,7 +558,19 @@ app.addEventListener('submit', function (ev) {
   boton.disabled = true;
   estado.textContent = t('Enviando…');
   fetch(BUZON, { method: 'POST', mode: 'no-cors', body: datosEnvio }).then(function () {
-    f.innerHTML = '<div class="buzon-gracias" role="status">' + (f.getAttribute('data-tipo') === 'resena' ? t('Gracias! Hemos recibido tu reseña exitosamente.') : t('Gracias! Hemos recibido tu sugerencia exitosamente.')) + '</div>';
+    /* El agradecimiento reemplaza a la invitación y el botón ofrece dejar otra. */
+    var seccion = f.closest('section');
+    var texto = seccion.querySelector('.banda-texto, .fuiste-titulo'), abrir = seccion.querySelector('[data-accion="abrir-buzon"]');
+    var esResena = f.getAttribute('data-tipo') === 'resena';
+    if (!texto.hasAttribute('data-original')) texto.setAttribute('data-original', texto.innerHTML);
+    texto.textContent = esResena ? t('Gracias! Hemos recibido tu reseña exitosamente.') : t('Gracias! Hemos recibido tu sugerencia exitosamente.');
+    texto.setAttribute('role', 'status');
+    abrir.textContent = esResena ? t('Dejar otra reseña') : t('Dejar otra sugerencia');
+    abrir.setAttribute('aria-expanded', 'false');
+    f.reset();
+    f.hidden = true;
+    boton.disabled = false;
+    estado.textContent = '';
   }).catch(function () {
     boton.disabled = false;
     estado.textContent = t('No se pudo enviar. Probá de nuevo o escribinos por WhatsApp.');
@@ -570,6 +584,8 @@ app.addEventListener('click', function (ev) {
   if (accion === 'abrir-buzon') {
     var caja = el.closest('section').querySelector('.buzon');
     caja.hidden = !caja.hidden;
+    var invitacion = el.closest('section').querySelector('[data-original]');
+    if (invitacion && !caja.hidden) { invitacion.innerHTML = invitacion.getAttribute('data-original'); invitacion.removeAttribute('data-original'); invitacion.removeAttribute('role'); }
     el.setAttribute('aria-expanded', String(!caja.hidden));
     if (!caja.hidden) { var primero = caja.querySelector('input, textarea'); if (primero) primero.focus(); }
     return;
