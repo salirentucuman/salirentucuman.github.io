@@ -1,6 +1,6 @@
 :root {
   /* Escala tipográfica: solo cuatro tamaños en toda la web. */
-  --t1: 28px; --t2: 20px; --t3: 16px; --t4: 13px; --fondo: #F2F3F0;
+  --t1: 28px; --t2: 20px; --t3: 15px; --t4: 13px; --fondo: #F2F3F0;
   --tarjeta: #FFFFFF;
   --tinta: #1E2320;
   --tinta-suave: #3C4640;
@@ -660,3 +660,9 @@ main > .pagina > .bloque { margin-top: 14px; }
 }
 /* Contador de fotos, una medida más chico */
 .contador { transform: scale(0.84); transform-origin: right bottom; }
+
+/* ===== Texto largo de las fichas: liviano, aireado y sin justificar ===== */
+.texto { text-align: left; line-height: 1.7; letter-spacing: 0.012em; color: var(--tinta-suave); }
+.evento .texto { color: var(--tinta-suave); }
+/* En iPhone, un campo de menos de 16 px hace que la pantalla se acerque sola al escribir. */
+@supports (-webkit-touch-callout: none) { .buzon input, .buzon textarea { font-size: 16px; } }
