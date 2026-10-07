@@ -768,3 +768,6 @@ main > .pagina > .favorito { margin: 8px 0 2px; }
 .paginas { margin-top: 28px; }
 .final { margin-top: 56px; }
 @media (min-width: 820px) { #lista-lugares { margin-top: 80px; } .paginas { margin-top: 40px; } .final { margin-top: 88px; } }
+
+/* Portada: rayita fina en terracota oscuro que abre cada sección. */
+.pagina:has(> .final) h2.etiqueta::before { content: ""; display: block; width: 44px; height: 1px; background: var(--logo); margin-bottom: 18px; }

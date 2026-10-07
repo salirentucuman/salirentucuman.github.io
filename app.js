@@ -526,7 +526,7 @@ function vistaLugar(id) {
   }).join('');
   var fotosBloque = (miniaturas || lugar.credito) ? '<div class="fotos">' +
     (miniaturas ? '<div class="miniaturas">' + miniaturas + '</div>' : '') +
-    (lugar.credito ? '<div class="credito">' + t('Fotos: ') + esc(lugar.credito) + '</div>' : '') + '</div>' : '';
+    (lugar.credito ? '<div class="credito">© ' + esc(lugar.credito) + '</div>' : '') + '</div>' : '';
   var pasos = todas.length < 2 ? '' :
     '<div class="contador"><button class="paso" data-accion="paso" data-dir="-1" aria-label="' + t('Foto anterior') + '">' + svg('<path d="M15 5 8 12l7 7"/>', 11, 2) + '</button>' +
     '<span class="contador-n" aria-live="polite">1 / ' + todas.length + '</span>' +
