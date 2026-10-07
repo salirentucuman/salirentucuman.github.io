@@ -764,16 +764,16 @@ main > .pagina > .favorito { margin: 8px 0 2px; }
 .con-leyenda .favorito .estrella { color: var(--acento); }
 
 /* Aire entre secciones: el espacio es el que separa, no las líneas. */
-#lista-lugares { margin-top: 48px; }
-.paginas { margin-top: 28px; }
-.final { margin-top: 56px; }
-@media (min-width: 820px) { #lista-lugares { margin-top: 80px; } .paginas { margin-top: 40px; } .final { margin-top: 88px; } }
+section#lista-lugares { margin-top: 32px; }
+.paginas { margin-top: 20px; }
+.final { margin-top: 44px; }
+@media (min-width: 820px) { section#lista-lugares { margin-top: 48px; } .paginas { margin-top: 24px; } .final { margin-top: 60px; } }
 
 /* Portada: rayita fina en terracota oscuro que abre cada sección. */
 .pagina:has(> .final) h2.etiqueta::before { content: ""; display: block; width: 44px; height: 1px; background: var(--logo); margin-bottom: 18px; }
 
 /* Buscar por zona: una línea que se despliega. */
-.buscar-zona { margin-top: 48px; }
+.buscar-zona { margin-top: 32px; }
 .desplegable { max-width: 380px; }
 .desplegable summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--logo); cursor: pointer; font-family: var(--serif); font-style: italic; font-size: var(--t2); color: var(--gris); }
 .desplegable summary::-webkit-details-marker { display: none; }
@@ -783,5 +783,5 @@ main > .pagina > .favorito { margin: 8px 0 2px; }
 .zona-num { font-size: var(--t4); font-weight: 600; color: var(--gris); }
 .zona-nombre { font-family: var(--serif); font-weight: 500; font-size: var(--t2); }
 .zona-flecha { color: var(--acento); font-size: var(--t3); }
-@media (min-width: 820px) { .buscar-zona { margin-top: 80px; } }
+@media (min-width: 820px) { .buscar-zona { margin-top: 44px; } }
 @media (max-width: 819px) { .desplegable { max-width: none; } }
