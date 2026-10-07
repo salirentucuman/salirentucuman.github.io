@@ -505,3 +505,10 @@ html { overflow-x: clip; }
   .tope { margin-top: -26px; padding: 16px 0 10px; }
   .menu-centro .idiomas { margin-left: 4px; padding-left: 28px; border-left: 1px solid var(--borde); }
 }
+
+/* Instagram */
+.banda-botones { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 52px; }
+.banda .banda-ig { padding: 0; }
+.seguinos { margin: 0; }
+.seguinos a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-family: 'Hanken Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--tinta); }
+@media (min-width: 820px) { .banda .banda-ig { width: 52px; padding: 0; } }

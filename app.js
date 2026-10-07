@@ -91,7 +91,8 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Diseño": "Design",
  "Ver foto ": "View photograph ",
  "Foto anterior": "Previous photograph",
- "Foto siguiente": "Next photograph"
+ "Foto siguiente": "Next photograph",
+ "Seguinos en Instagram": "Follow us on Instagram"
 } };
 function t(clave) { var v = TEXTOS[idioma][clave]; return v === undefined ? clave : v; }
 function L(lugar) {
@@ -306,6 +307,8 @@ function nav(actual) {
 
 /* Encabezado: las tres rayitas abren el índice; el logo lleva siempre al inicio. */
 var LOGO = '<b>HANG OUT</b> TUCUMÁN';
+var INSTAGRAM = 'https://www.instagram.com/hangout_tucuman/';
+var ICONO_IG = '<rect x="4" y="4" width="16" height="16" rx="4.500"/><circle cx="12" cy="12" r="3.600"/><circle cx="16.600" cy="7.400" r="0.600" fill="currentColor"/>';
 function sugerir() {
   return t('Falta algún lugar?') + ' ' + t('Sugerilo por ') + '<a target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te sugiero un lugar para Hang Out Tucumán: '))) + '">WhatsApp</a>' +
     t(' o por ') + '<a href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent(t('Sugerencia para Hang Out Tucumán')) + '">' + t('mail') + '</a>.';
@@ -330,6 +333,7 @@ function indice() {
     '<div><div class="etiqueta indice-titulo">' + t('Categorías') + '</div>' + filas + '</div>' +
     '<button class="enlace-azar" data-accion="azar">' + svg(ICONOS.azar, 18, 1.8) + '<span>' + t('Sorprendeme con un lugar') + '</span></button>' +
     '<a class="indice-link" href="#/guardados">' + svg(ICONOS.guardar, 18, 1.8) + '<span>' + t('Guardados') + '</span></a>' +
+    '<a class="indice-link" target="_blank" rel="noopener" href="' + INSTAGRAM + '">' + svg(ICONO_IG, 18, 1.8) + '<span>' + t('Seguinos en Instagram') + '</span></a>' +
     '<div class="indice-pie">' + sugerir() + '</div></aside>';
 }
 function marca() {
@@ -377,9 +381,11 @@ function vistaInicio() {
       }).join('') + '</div></section>') +
     '<section class="banda"><div><div class="banda-titulo">' + t('Falta algún lugar?') + '</div><div class="banda-sub">' + t('Contanos cuál y por qué vale la pena.') + '</div></div>' +
     '<div class="banda-botones"><a class="boton banda-lleno" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, te sugiero un lugar para Hang Out Tucumán: '))) + '">' + svg(ICONOS.chat, 18, 1.8) + '<span>WhatsApp</span></a>' +
-    '<a class="boton" href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent(t('Sugerencia para Hang Out Tucumán')) + '">' + svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', 18, 1.8) + '<span>' + t('Mail') + '</span></a></div></section>' +
+    '<a class="boton" href="mailto:hola@hangout-tucuman.com?subject=' + encodeURIComponent(t('Sugerencia para Hang Out Tucumán')) + '">' + svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', 18, 1.8) + '<span>' + t('Mail') + '</span></a>' +
+    '<a class="boton banda-ig" target="_blank" rel="noopener" href="' + INSTAGRAM + '" aria-label="Instagram @hangout_tucuman">' + svg(ICONO_IG, 20, 1.8) + '</a></div></section>' +
     '<section class="cierre">' +
     '<p>' + t('cierre') + '</p>' +
+    '<p class="seguinos"><a target="_blank" rel="noopener" href="' + INSTAGRAM + '">' + svg(ICONO_IG, 18, 1.8) + '<span>@hangout_tucuman</span></a></p>' +
     '<p class="aviso-legal">' + t('legal1') + '<a class="enlace" target="_blank" rel="noopener" href="' + esc(whatsapp(t('Hola, quiero corregir un dato de Hang Out Tucumán: '))) + '">' + t('nos escribís') + '</a>' + t(' para corregirlo.') + '</p>' +
     '</section>' +
     '</main>' + nav('inicio');
