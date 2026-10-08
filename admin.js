@@ -141,7 +141,9 @@ function fechaLocal(iso) {
   return f && !isNaN(f.getTime()) ? new Date(f.getTime() - f.getTimezoneOffset() * 60000).toISOString().slice(0, 16) : '';
 }
 
+var duplicandoDe = null;
 function cargarFormulario(lugar) {
+  duplicandoDe = null;
   lugar = lugar || {};
   CAMPOS.forEach(function (c) { $(c).value = lugar[c] || ''; });
   var cats = (lugar.categorias || []).filter(function (c) { return c !== 'eventos'; });
@@ -162,6 +164,7 @@ function cargarFormulario(lugar) {
   $('fotos').value = '';
   pintarFotos();
   $('borrar').hidden = !lugar.id;
+  $('duplicar').hidden = !lugar.id;
   $('publicar').textContent = lugar.id ? 'Guardar cambios' : 'Publicar';
   estado('');
 }
@@ -219,6 +222,7 @@ function publicar(ev) {
       var base = id, n = 2;
       while (lista.some(function (l) { return l.id === id; })) id = base + '-' + n++;
       lugar = { id: id, alta: new Date().toISOString().slice(0, 10) };
+      if (duplicandoDe && duplicandoDe.en) lugar.en = JSON.parse(JSON.stringify(duplicandoDe.en));
       lista.push(lugar);
     }
     CAMPOS.forEach(function (c) { lugar[c] = $(c).value.trim(); });
@@ -357,3 +361,18 @@ $('encuadre-vistas').addEventListener('pointermove', function (ev) {
 ['pointerup', 'pointercancel'].forEach(function (t) { $('encuadre-vistas').addEventListener(t, function () { arrastre = null; }); });
 $('encuadre-centrar').addEventListener('click', function () { ponerPos(50, 50); });
 $('encuadre-listo').addEventListener('click', function () { $('encuadre').hidden = true; encuadrando = null; pintarFotos(); });
+
+/* Duplicar: deja el formulario lleno con los datos y fotos de esta ficha, pero se publica como una ficha nueva. */
+$('duplicar').addEventListener('click', function () {
+  var origen = buscar($('elegir').value);
+  if (!origen) return;
+  $('elegir').value = '';
+  duplicandoDe = origen;
+  $('nombre').value = origen.nombre + ' (copia)';
+  $('duplicar').hidden = true;
+  $('borrar').hidden = true;
+  $('publicar').textContent = 'Publicar copia';
+  window.scrollTo(0, 0);
+  estado('Copia lista. Cambiá el nombre y lo que necesites, y tocá "Publicar copia". La original no se toca.');
+  $('nombre').focus();
+});
