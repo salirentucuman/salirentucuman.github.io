@@ -97,7 +97,8 @@ function pintarFotos() {
   if (portada >= fotos.length) portada = 0;
   $('galeria').innerHTML = fotos.map(function (f, i) {
     return '<div class="foto' + (i === portada ? ' es-portada' : '') + '" draggable="true" data-i="' + i + '">' +
-      '<img src="' + (f.vista || f.ruta) + '" alt="" draggable="false">' +
+      '<img src="' + (f.vista || f.ruta) + '" alt="" draggable="false"' + (f.pos ? ' style="object-position:' + f.pos + '"' : '') + '>' +
+      '<button type="button" class="encuadrar" data-encuadrar="' + i + '">Encuadrar</button>' +
       (i > 0 ? '<button type="button" class="mover antes" data-mover="-1" data-i="' + i + '" aria-label="Mover foto ' + (i + 1) + ' hacia atrás">' + FLECHA_IZQ + '</button>' : '') +
       (i < fotos.length - 1 ? '<button type="button" class="mover despues" data-mover="1" data-i="' + i + '" aria-label="Mover foto ' + (i + 1) + ' hacia adelante">' + FLECHA_DER + '</button>' : '') +
       '<button type="button" class="quitar" data-quitar="' + i + '" aria-label="Quitar foto ' + (i + 1) + '">' +
@@ -156,7 +157,7 @@ function cargarFormulario(lugar) {
   $('cuando').value = ev.cuando || '';
   $('inicio').value = fechaLocal(ev.inicio);
   $('fin').value = fechaLocal(ev.fin);
-  fotos = [lugar.foto].concat(lugar.galeria || []).filter(Boolean).map(function (r) { return { ruta: r }; });
+  fotos = [lugar.foto].concat(lugar.galeria || []).filter(Boolean).map(function (r) { return { ruta: r, pos: (lugar.encuadre || {})[r] || '' }; });
   portada = 0;
   $('fotos').value = '';
   pintarFotos();
@@ -230,6 +231,9 @@ function publicar(ev) {
     lugar.foto = rutas[portada] || '';
     var resto = rutas.filter(function (r, i) { return i !== portada; });
     if (resto.length) lugar.galeria = resto; else delete lugar.galeria;
+    var enc = {};
+    fotos.forEach(function (f) { if (f.ruta && f.pos && f.pos !== '50% 50%') enc[f.ruta] = f.pos; });
+    if (Object.keys(enc).length) lugar.encuadre = enc; else delete lugar.encuadre;
     if (esEvento) {
       lugar.evento = { cuando: $('cuando').value.trim() };
       if ($('inicio').value) lugar.evento.inicio = new Date($('inicio').value).toISOString();
@@ -312,3 +316,44 @@ $('galeria').addEventListener('click', function (ev) {
   pintarFotos();
 });
 if ($('token').value && $('repo').value) entrar();
+
+/* Encuadre: se arrastra la foto dentro de los recuadros hasta dejar a la vista lo que importa.
+   Se guarda un punto (x% y%) por foto y la web lo usa en tarjetas, portada y ficha. */
+var encuadrando = null, arrastre = null;
+function abrirEncuadre(i) {
+  var f = fotos[i]; if (!f) return;
+  encuadrando = f;
+  var src = f.vista || f.ruta, pos = f.pos || '50% 50%';
+  $('encuadre-vistas').innerHTML = [['Tarjeta', 'tarjeta'], ['Último hallazgo', 'ancha'], ['Ficha', 'alta']].map(function (v) {
+    return '<figure><div class="marco ' + v[1] + '"><img src="' + src + '" alt="" draggable="false" style="object-position:' + pos + '"></div><figcaption>' + v[0] + '</figcaption></figure>';
+  }).join('');
+  $('encuadre').hidden = false;
+}
+function ponerPos(x, y) {
+  x = Math.max(0, Math.min(100, x)); y = Math.max(0, Math.min(100, y));
+  var p = Math.round(x) + '% ' + Math.round(y) + '%';
+  encuadrando.pos = p;
+  document.querySelectorAll('#encuadre-vistas img').forEach(function (im) { im.style.objectPosition = p; });
+}
+$('galeria').addEventListener('click', function (ev) {
+  var b = ev.target.closest('[data-encuadrar]');
+  if (b) { ev.stopPropagation(); abrirEncuadre(Number(b.getAttribute('data-encuadrar'))); }
+}, true);
+$('encuadre-vistas').addEventListener('pointerdown', function (ev) {
+  var marco = ev.target.closest('.marco'); if (!marco || !encuadrando) return;
+  ev.preventDefault(); marco.setPointerCapture(ev.pointerId);
+  var p = (encuadrando.pos || '50% 50%').split(' ').map(parseFloat);
+  arrastre = { marco: marco, x: ev.clientX, y: ev.clientY, px: p[0], py: p[1] };
+});
+$('encuadre-vistas').addEventListener('pointermove', function (ev) {
+  if (!arrastre) return;
+  var im = arrastre.marco.querySelector('img'), r = arrastre.marco.getBoundingClientRect();
+  var esc = Math.max(r.width / im.naturalWidth, r.height / im.naturalHeight);
+  var sobraX = im.naturalWidth * esc - r.width, sobraY = im.naturalHeight * esc - r.height;
+  var x = sobraX > 1 ? arrastre.px - (ev.clientX - arrastre.x) / sobraX * 100 : 50;
+  var y = sobraY > 1 ? arrastre.py - (ev.clientY - arrastre.y) / sobraY * 100 : 50;
+  ponerPos(x, y);
+});
+['pointerup', 'pointercancel'].forEach(function (t) { $('encuadre-vistas').addEventListener(t, function () { arrastre = null; }); });
+$('encuadre-centrar').addEventListener('click', function () { ponerPos(50, 50); });
+$('encuadre-listo').addEventListener('click', function () { $('encuadre').hidden = true; encuadrando = null; pintarFotos(); });

@@ -49,6 +49,22 @@
 .estado.error { color: #9B2C2C; }
 .boton-borrar { border-color: #9B2C2C; color: #9B2C2C; }
 [hidden] { display: none !important; }
+.encuadrar { position: absolute; left: 6px; bottom: 44px; border: 0; border-radius: 14px; background: rgba(251,241,221,.92); color: #4E2519; font-size: 12px; font-weight: 600; padding: 5px 10px; cursor: pointer; }
+.encuadre { position: fixed; inset: 0; z-index: 50; background: rgba(30,14,10,.6); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 16px; }
+.encuadre[hidden] { display: none; }
+.encuadre-caja { background: #F2F3F0; width: 100%; max-width: 560px; padding: 18px; border-radius: 6px; display: flex; flex-direction: column; gap: 14px; }
+.encuadre-caja h2 { margin: 0; font-size: 17px; }
+.encuadre-caja p { margin: 0; font-size: 14px; color: #666; }
+#encuadre-vistas { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+#encuadre-vistas figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+#encuadre-vistas figure:first-child { grid-column: 1 / -1; }
+#encuadre-vistas figcaption { font-size: 12px; font-weight: 600; color: #666; }
+.marco { position: relative; overflow: hidden; background: #ddd; cursor: grab; touch-action: none; }
+.marco img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; user-select: none; }
+.marco.tarjeta { aspect-ratio: 1.55; } .marco.ancha { aspect-ratio: 1.85; } .marco.alta { aspect-ratio: 0.8; }
+.encuadre-botones { display: flex; gap: 10px; justify-content: flex-end; }
+.encuadre-botones button { min-height: 44px; padding: 0 20px; border-radius: 22px; font-weight: 600; font-size: 14px; cursor: pointer; border: 1px solid #6E3829; background: none; color: #6E3829; }
+.encuadre-botones .lleno { background: #6E3829; color: #FBF1DD; }
 </style>
 </head>
 <body>
@@ -140,6 +156,11 @@
   </form>
 </main>
 </div>
-<script src="admin.js?v=10"></script>
+<div class="encuadre" id="encuadre" hidden><div class="encuadre-caja" role="dialog" aria-label="Encuadrar foto">
+  <h2>Encuadrar foto</h2><p>Arrastrá la foto con el dedo hasta que se vea lo que querés. Los tres recuadros se mueven juntos.</p>
+  <div id="encuadre-vistas"></div>
+  <div class="encuadre-botones"><button type="button" id="encuadre-centrar">Centrar</button><button type="button" class="lleno" id="encuadre-listo">Listo</button></div>
+</div></div>
+<script src="admin.js?v=11"></script>
 </body>
 </html>

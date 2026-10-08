@@ -285,7 +285,7 @@ function aviso(texto) {
 }
 
 function foto(lugar, clase) {
-  if (lugar.foto) return '<img class="' + clase + '" src="' + esc(lugar.foto) + '" alt="" loading="lazy">';
+  if (lugar.foto) return '<img class="' + clase + '" src="' + esc(lugar.foto) + '" alt="" loading="lazy"' + encuadre(lugar, lugar.foto) + '>';
   return '<div class="' + clase + '"></div>';
 }
 
@@ -327,6 +327,8 @@ function pildora(lugar) {
 
 /* Estrella propia para los favoritos de la selección. */
 var ESTRELLA = '<svg class="estrella" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg>';
+/* Encuadre elegido en el panel para cada foto (object-position). */
+function encuadre(lugar, ruta) { var e = (lugar.encuadre || {})[ruta]; return e ? ' style="object-position:' + esc(e) + '"' : ''; }
 function leyendaFavorito() { return '<div class="favorito">' + ESTRELLA + '<span>' + t('Favorito de Hang Out') + '</span></div>'; }
 function nombreCon(lugar) {
   return esc(lugar.nombre) + (lugar.favorito ? ' <svg class="estrella" viewBox="0 0 24 24" role="img" aria-label="Favorito de Hang Out"><path fill="currentColor" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg>' : '');
@@ -336,7 +338,7 @@ function tarjetaEvento(lugar, compacta) {
   lugar = L(lugar);
   var cuando = lugar.evento && lugar.evento.cuando;
   return '<a class="tarjeta-evento' + (compacta === true ? ' compacta' : '') + '" href="#/lugar/' + encodeURIComponent(lugar.id) + '">' +
-    (lugar.foto ? '<img class="tarjeta-evento-foto" src="' + esc(lugar.foto) + '" alt="" loading="lazy">' : '') +
+    (lugar.foto ? '<img class="tarjeta-evento-foto" src="' + esc(lugar.foto) + '" alt="" loading="lazy"' + encuadre(lugar, lugar.foto) + '>' : '') +
     '<div class="tarjeta-evento-texto">' + pildora(lugar) +
     '<div class="tarjeta-evento-nombre">' + nombreCon(lugar) + '</div>' +
     (cuando ? '<div class="tarjeta-evento-cuando">' + esc(cuando) + '</div>' : '') +
@@ -548,7 +550,7 @@ function vistaLugar(id) {
   var consulta = [lugar.nombre, lugar.direccion, 'Tucumán'].filter(Boolean).join(', ');
   var todas = [lugar.foto].concat(lugar.galeria || []).filter(Boolean);
   var miniaturas = todas.length < 2 ? '' : todas.map(function (ruta, i) {
-    return '<button class="miniatura" data-accion="elegir" data-indice="' + i + '" aria-label="' + t('Ver foto ') + (i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + '><img src="' + esc(ruta) + '" alt="" loading="lazy"></button>';
+    return '<button class="miniatura" data-accion="elegir" data-indice="' + i + '" aria-label="' + t('Ver foto ') + (i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + '><img src="' + esc(ruta) + '" alt="" loading="lazy"' + encuadre(lugar, ruta) + '></button>';
   }).join('');
   var fotosBloque = (miniaturas || lugar.credito) ? '<div class="fotos">' +
     (miniaturas ? '<div class="miniaturas">' + miniaturas + '</div>' : '') +
@@ -560,7 +562,7 @@ function vistaLugar(id) {
 
   return '<main' + (lugar.evento ? ' class="evento"' : '') + '>' +
     '<div class="ficha-tope">' + marca() + '<a class="volver-texto" href="#/" data-accion="volver">' + svg(ICONOS.volver, 14, 2) + '<span>' + t('Volver') + '</span></a></div>' +
-    '<div class="lado"><div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0">' : '') + pasos +
+    '<div class="lado"><div class="tapa">' + (lugar.foto ? '<img src="' + esc(lugar.foto) + '" alt="' + esc(lugar.nombre) + '" data-accion="ver" data-id="' + esc(lugar.id) + '" data-indice="0"' + encuadre(lugar, lugar.foto) + '>' : '') + pasos +
     '<button class="guardar" data-accion="guardar" data-id="' + esc(lugar.id) + '" aria-pressed="' + guardado + '" aria-label="Guardar lugar">' + svg(ICONOS.guardar, 20, 1.8) + '</button>' +
     '</div>' + fotosBloque + '</div>' +
     '<div class="pagina">' +
@@ -708,6 +710,7 @@ app.addEventListener('click', function (ev) {
     var actual = Number(grande.getAttribute('data-indice')) || 0;
     var nuevo = accion === 'elegir' ? Number(el.getAttribute('data-indice')) : (actual + Number(el.getAttribute('data-dir')) + minis.length) % minis.length;
     grande.src = minis[nuevo].querySelector('img').src;
+    grande.style.objectPosition = minis[nuevo].querySelector('img').style.objectPosition;
     grande.setAttribute('data-indice', nuevo);
     var cuenta = document.querySelector('.contador-n');
     if (cuenta) cuenta.textContent = (nuevo + 1) + ' / ' + minis.length;
