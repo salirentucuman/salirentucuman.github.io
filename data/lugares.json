@@ -588,14 +588,14 @@
       "nombre": "Pizza Nº1",
       "tipo": "Pizzería",
       "zona": "Barrio Sur",
-      "direccion": "Bolivar 613, San Miguel de Tucumán",
+      "direccion": "Simón Bolívar 635, T4000 San Miguel de Tucumán, Tucumán",
       "whatsapp": "",
       "web": "",
       "mail": "",
       "instagram": "pizza.no1",
       "breve": "Pizza neoyorkina en pleno Barrio Sur",
       "texto": "The coolest pizza place is made in Tucumán. Nos hace dudar que la pizza americana no haya nacido en Barrio Sur, en realidad. \nPizzas por porciones XL y cerveza, en la vereda de la calle Bolívar, a pasos de la plaza San Martin.",
-      "practico": "Circuito de pizzerías de Barrio Sur",
+      "practico": "",
       "precio": "",
       "credito": "pizza.no1",
       "categorias": [
@@ -603,7 +603,15 @@
         "barrio"
       ],
       "momento": "noche",
-      "foto": ""
+      "foto": "fotos/pizza-n-1-1791477767467-2.jpg",
+      "galeria": [
+        "fotos/pizza-n-1-1791477765077-1.jpg",
+        "fotos/pizza-n-1-1791477769813-3.jpg"
+      ],
+      "encuadre": {
+        "fotos/pizza-n-1-1791477765077-1.jpg": "50% 61%",
+        "fotos/pizza-n-1-1791477767467-2.jpg": "50% 60%"
+      }
     }
   ]
 }
