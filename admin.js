@@ -167,6 +167,13 @@ function cargarFormulario(lugar) {
   $('duplicar').hidden = !lugar.id;
   $('publicar').textContent = lugar.id ? 'Guardar cambios' : 'Publicar';
   estado('');
+  avisoArriba('');
+}
+
+/* Aviso junto al botón Duplicar, para que se lea sin bajar hasta el final. */
+function avisoArriba(texto) {
+  $('estado-arriba').textContent = texto;
+  $('estado-arriba').hidden = !texto;
 }
 
 function entrar() {
@@ -252,9 +259,26 @@ function publicar(ev) {
   }).catch(function (e) { pintarFotos(); estado(e.message, true); }).then(function () { $('publicar').disabled = false; });
 }
 
+/* Eliminar: primero abre una ventana propia de confirmación; recién al aceptar se borra. */
+var porBorrar = null;
+function pedirBorrar() {
+  var lugar = buscar($('elegir').value);
+  if (!lugar) return;
+  porBorrar = lugar;
+  $('confirmar-texto').textContent = 'Vas a eliminar "' + lugar.nombre + '". No se puede deshacer desde acá.';
+  $('confirmar').hidden = false;
+  $('confirmar-no').focus();
+}
+function cerrarConfirmar() {
+  $('confirmar').hidden = true;
+  porBorrar = null;
+}
 function borrar() {
-  var id = $('elegir').value, lugar = buscar(id);
-  if (!lugar || !confirm('Eliminar "' + lugar.nombre + '"? No se puede deshacer desde acá.')) return;
+  var lugar = porBorrar;
+  cerrarConfirmar();
+  if (!lugar) return;
+  var id = lugar.id;
+  $('borrar').disabled = true;
   estado('Eliminando…');
   leer().then(function (actual) {
     actual.json.lugares = actual.json.lugares.filter(function (l) { return l.id !== id; });
@@ -263,7 +287,7 @@ function borrar() {
     llenarSelector();
     cargarFormulario(null);
     estado('Eliminado. En uno o dos minutos desaparece de la web.');
-  }).catch(function (e) { estado(e.message, true); });
+  }).catch(function (e) { estado(e.message, true); }).then(function () { $('borrar').disabled = false; });
 }
 
 opciones($('cat1'), 'Elegí una categoría');
@@ -272,7 +296,11 @@ $('token').value = guardado('dayout-token');
 $('repo').value = guardado('dayout-repo') || REPO;
 $('entrar').addEventListener('click', entrar);
 $('formulario').addEventListener('submit', publicar);
-$('borrar').addEventListener('click', borrar);
+$('borrar').addEventListener('click', pedirBorrar);
+$('confirmar-si').addEventListener('click', borrar);
+$('confirmar-no').addEventListener('click', cerrarConfirmar);
+$('confirmar').addEventListener('click', function (ev) { if (ev.target === $('confirmar')) cerrarConfirmar(); });
+document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !$('confirmar').hidden) cerrarConfirmar(); });
 $('clase').addEventListener('change', ajustarClase);
 $('elegir').addEventListener('change', function () { cargarFormulario(buscar($('elegir').value)); });
 $('fotos').addEventListener('change', function () {
@@ -373,6 +401,6 @@ $('duplicar').addEventListener('click', function () {
   $('borrar').hidden = true;
   $('publicar').textContent = 'Publicar copia';
   window.scrollTo(0, 0);
-  estado('Copia lista. Cambiá el nombre y lo que necesites, y tocá "Publicar copia". La original no se toca.');
+  avisoArriba('Copia lista. Cambiá el nombre y lo que necesites, y tocá "Publicar copia" al final. La original no se toca.');
   $('nombre').focus();
 });

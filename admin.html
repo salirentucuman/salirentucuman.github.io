@@ -65,6 +65,10 @@
 .encuadre-botones { display: flex; gap: 10px; justify-content: flex-end; }
 .encuadre-botones button { min-height: 44px; padding: 0 20px; border-radius: 22px; font-weight: 600; font-size: 14px; cursor: pointer; border: 1px solid #6E3829; background: none; color: #6E3829; }
 .encuadre-botones .lleno { background: #6E3829; color: #FBF1DD; }
+.encuadre-botones .rojo { background: #9B2C2C; border-color: #9B2C2C; color: #FFFFFF; }
+#confirmar { align-items: center; }
+.confirmar-caja { max-width: 420px; }
+.confirmar-caja p { font-size: 15px; line-height: 1.5; color: #333; }
 </style>
 </head>
 <body>
@@ -88,6 +92,8 @@
     <section class="seccion">
       <h2>Qué vas a cargar</h2>
       <div class="campo"><label for="elegir">Ficha</label><select id="elegir"></select></div>
+      <button class="boton" type="button" id="duplicar" hidden>Duplicar esta ficha</button>
+      <div class="estado" id="estado-arriba" role="status" hidden></div>
       <div class="campo">
         <label for="clase">Es un</label>
         <select id="clase"><option value="sitio">Sitio</option><option value="evento">Evento</option><option value="curiosidad">Curiosidad (para conocer, no para ir)</option></select>
@@ -151,7 +157,6 @@
     </section>
 
     <button class="boton boton-lleno boton-grande" type="submit" id="publicar">Publicar</button>
-    <button class="boton" type="button" id="duplicar" hidden>Duplicar esta ficha</button>
     <button class="boton boton-borrar" type="button" id="borrar" hidden>Eliminar esta ficha</button>
     <div class="estado" id="estado" role="status"></div>
   </form>
@@ -162,6 +167,10 @@
   <div id="encuadre-vistas"></div>
   <div class="encuadre-botones"><button type="button" id="encuadre-centrar">Centrar</button><button type="button" class="lleno" id="encuadre-listo">Listo</button></div>
 </div></div>
-<script src="admin.js?v=13"></script>
+<div class="encuadre" id="confirmar" hidden><div class="encuadre-caja confirmar-caja" role="alertdialog" aria-modal="true" aria-labelledby="confirmar-titulo" aria-describedby="confirmar-texto">
+  <h2 id="confirmar-titulo">Eliminar esta ficha?</h2><p id="confirmar-texto"></p>
+  <div class="encuadre-botones"><button type="button" id="confirmar-no">Cancelar</button><button type="button" class="rojo" id="confirmar-si">Sí, eliminar</button></div>
+</div></div>
+<script src="admin.js?v=14"></script>
 </body>
 </html>
