@@ -399,6 +399,34 @@
         "breve": "A small café in Barrio Sur that might have stepped out of a story.",
         "texto": "A quiet, welcoming corner in the heart of Barrio Sur; the place for a pause. They often host events that draw a crowd, so it is worth looking at their Instagram before you go.\n\nThe coffee is good, though there is no plant milk for now, and the pastry is lovely. But what draws me most is the café itself: almost hidden, in the middle of the city."
       }
+    },
+    {
+      "id": "pipa",
+      "alta": "2026-10-08",
+      "nombre": "Pipa",
+      "tipo": "Pizzería",
+      "zona": "Barrio Sur",
+      "direccion": "Rondeau",
+      "whatsapp": "+5493812098646",
+      "web": "https://pipatuc.com.ar/",
+      "mail": "",
+      "instagram": "pipapizzeria",
+      "breve": "Tu pizzería favorita",
+      "texto": "De barrio en el ADN, Pipa pizzería es el testimonio de la buena pizza pero además de que Quien quiere, puede. Julito Liendo comenzó en el patio de la casa de sus padres haciendo delivery y take away y en 2026 hay que hacer fila para comer una de sus pizzas en la Rondeau. \n\nVibrante y única, Pipa es el Must de las pizzería y patio cervecero.",
+      "practico": "No toma reservas. \n\nSu versión Day Out es Pipa Sandwich y Café.",
+      "precio": "",
+      "credito": "@pipapizzeria",
+      "categorias": [
+        "restaurantes",
+        "barrio"
+      ],
+      "momento": "noche",
+      "foto": "fotos/pipa-1791428160750-4.jpg",
+      "galeria": [
+        "fotos/pipa-1791428155807-1.jpg",
+        "fotos/pipa-1791428157789-2.jpg",
+        "fotos/pipa-1791428159260-3.jpg"
+      ]
     }
   ]
 }
