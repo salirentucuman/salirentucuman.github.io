@@ -35,7 +35,12 @@
         "breve": "Speciality coffee in Barrio Norte. An ode to the materials of the north; intimate, and calm.",
         "texto": "Good coffee, and lunch besides: a set menu each day, with daily dishes and empanadas.\nInside and out, open and covered. Private tables, and a long one to share.\nA step removed from the centre; close enough, and quieter for it. No parking of its own."
       },
-      "practico": "Con interior y exteriores, abierto y techado. Mesas privadas y mesón para compartir.\n\nTambién se puede almorzar.\nNo tiene cochera."
+      "practico": "Con interior y exteriores, abierto y techado. Mesas privadas y mesón para compartir.\n\nTambién se puede almorzar.\nNo tiene cochera.",
+      "encuadre": {
+        "fotos/rancho.jpg": "50% 100%",
+        "fotos/rancho-5.jpg": "50% 7%",
+        "fotos/rancho-4.jpg": "50% 100%"
+      }
     },
     {
       "id": "madame-rouges",
