@@ -790,5 +790,6 @@ section#lista-lugares { margin-top: 32px; }
 .con-raya { margin-top: 12px; }
 .con-raya > h2.etiqueta::before { content: ""; display: block; width: 44px; height: 1px; background: var(--logo); margin-bottom: 18px; }
 
-/* Dirección: abre en Google Maps; debajo, accesos directos para ir con Google Maps o Waze. */
-.ir-con { display: block; margin-top: 6px; font-size: var(--t4); color: var(--gris); }
+/* Dirección: link azul que abre el lugar en Google Maps. */
+.enlace-mapa { color: #1A5FB4; text-decoration-color: #1A5FB4; }
+body.noche .enlace-mapa { color: #8AB4F8; text-decoration-color: #8AB4F8; }
