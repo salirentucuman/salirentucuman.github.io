@@ -595,7 +595,7 @@
       "instagram": "pizza.no1",
       "breve": "Pizza neoyorkina en pleno Barrio Sur",
       "texto": "The coolest pizza place is made in Tucumán. Nos hace dudar que la pizza americana no haya nacido en Barrio Sur, en realidad. \nPizzas por porciones XL y cerveza, en la vereda de la calle Bolívar, a pasos de la plaza San Martin.",
-      "practico": "",
+      "practico": "Esta dentro del corredor pizzero de Barrio Sur.",
       "precio": "",
       "credito": "pizza.no1",
       "categorias": [
@@ -605,12 +605,15 @@
       "momento": "noche",
       "foto": "fotos/pizza-n-1-1791477767467-2.jpg",
       "galeria": [
+        "fotos/pizza-n-1-1791480268891-1.jpg",
+        "fotos/pizza-n-1-1791480271508-2.jpg",
         "fotos/pizza-n-1-1791477765077-1.jpg",
-        "fotos/pizza-n-1-1791477769813-3.jpg"
+        "fotos/pizza-n-1-1791480274030-3.jpg",
+        "fotos/pizza-n-1-1791480276305-4.jpg"
       ],
       "encuadre": {
-        "fotos/pizza-n-1-1791477765077-1.jpg": "50% 61%",
-        "fotos/pizza-n-1-1791477767467-2.jpg": "50% 60%"
+        "fotos/pizza-n-1-1791477767467-2.jpg": "50% 60%",
+        "fotos/pizza-n-1-1791477765077-1.jpg": "50% 61%"
       }
     },
     {
