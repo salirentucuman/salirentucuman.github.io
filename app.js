@@ -581,7 +581,7 @@ function vistaLugar(id) {
     '<a class="boton boton-lleno" target="_blank" rel="noopener" href="' + (lugar.sinMapa && lugar.whatsapp
       ? 'https://wa.me/' + String(lugar.whatsapp).replace(/\D/g, '') + '?text=' + encodeURIComponent(t('Hola, quisiera saber cómo llegar a ') + lugar.nombre + '.')
       : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(consulta)) + '">' + svg(ICONOS.mapa, 18, 1.8) + '<span>' + t('Cómo llegar') + '</span></a>' +
-    '<button class="boton" data-accion="compartir" data-nombre="' + esc(lugar.nombre) + '">' + svg(ICONOS.compartir, 18, 1.8) + '<span>' + t('Compartir') + '</span></button>' +
+    '<button class="boton" data-accion="compartir" data-id="' + esc(lugar.id) + '" data-nombre="' + esc(lugar.nombre) + '">' + svg(ICONOS.compartir, 18, 1.8) + '<span>' + t('Compartir') + '</span></button>' +
     '</div>' +
     (lugar.favorito ? leyendaFavorito() : '') +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
@@ -732,9 +732,10 @@ app.addEventListener('click', function (ev) {
     el.setAttribute('aria-pressed', String(ahora));
     aviso(ahora ? 'Guardado' : t('Quitado de guardados'));
   } else if (accion === 'compartir') {
-    var info = { title: el.getAttribute('data-nombre') + ' · Hang Out Tucumán', url: location.href };
+    var corto = 'https://www.hangout-tucuman.com/l/' + (el.getAttribute('data-id') || '');
+    var info = { title: el.getAttribute('data-nombre') + ' · Hang Out Tucumán', url: corto };
     if (navigator.share) navigator.share(info).catch(function () {});
-    else if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { aviso(t('Enlace copiado')); });
+    else if (navigator.clipboard) navigator.clipboard.writeText(corto).then(function () { aviso(t('Enlace copiado')); });
   }
 });
 

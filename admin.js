@@ -250,7 +250,7 @@ function publicar(ev) {
       if ($('inicio').value) lugar.evento.inicio = new Date($('inicio').value).toISOString();
       if ($('fin').value) lugar.evento.fin = new Date($('fin').value).toISOString();
     } else delete lugar.evento;
-    return escribir(actual.json, actual.sha, (idActual ? 'Actualiza ' : 'Suma ') + nombre).then(function () { datos = actual.json; });
+    return escribir(actual.json, actual.sha, (idActual ? 'Actualiza ' : 'Suma ') + nombre).then(function () { datos = actual.json; return escribirEnlace(lugar); });
   }).then(function () {
     llenarSelector();
     cargarFormulario(null);
@@ -404,3 +404,35 @@ $('duplicar').addEventListener('click', function () {
   avisoArriba('Copia lista. Cambiá el nombre y lo que necesites, y tocá "Publicar copia" al final. La original no se toca.');
   $('nombre').focus();
 });
+
+/* Enlace corto para compartir (hangout-tucuman.com/l/nombre): una página mínima con la vista previa
+   de WhatsApp (logo, lema y la línea de la ficha) que lleva enseguida a la ficha. */
+var BASE = 'https://www.hangout-tucuman.com';
+var LEMA = 'La guía de los mejores lugares para salir en Tucumán.';
+function escHtml(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'); }
+function paginaEnlace(l) {
+  var desc = LEMA + ' ' + l.nombre + (l.breve ? ': ' + l.breve : '');
+  var dest = '/#/lugar/' + l.id;
+  return '<!doctype html>\n<html lang="es"><head><meta charset="utf-8">\n' +
+    '<title>' + escHtml(l.nombre) + ' · Hang Out Tucumán</title>\n' +
+    '<meta name="description" content="' + escHtml(desc) + '">\n' +
+    '<meta property="og:site_name" content="Hang Out Tucumán">\n' +
+    '<meta property="og:title" content="Hang Out Tucumán">\n' +
+    '<meta property="og:description" content="' + escHtml(desc) + '">\n' +
+    '<meta property="og:type" content="website">\n' +
+    '<meta property="og:url" content="' + BASE + '/l/' + escHtml(l.id) + '">\n' +
+    '<meta property="og:image" content="' + BASE + '/compartir-logo.jpg">\n' +
+    '<meta property="og:image:width" content="600">\n<meta property="og:image:height" content="600">\n' +
+    '<meta name="twitter:card" content="summary">\n' +
+    '<meta http-equiv="refresh" content="0; url=' + escHtml(dest) + '">\n' +
+    '<script>location.replace(' + JSON.stringify(dest) + ');</script>\n' +
+    '</head><body><a href="' + escHtml(dest) + '">' + escHtml(l.nombre) + ' en Hang Out Tucumán</a></body></html>\n';
+}
+function escribirEnlace(l) {
+  var ruta = 'l/' + l.id + '.html';
+  return api(ruta + '?t=' + Date.now(), { cache: 'no-store' }).then(function (f) { return f.sha; }, function () { return null; }).then(function (sha) {
+    var cuerpo = { message: 'Enlace para compartir: ' + l.nombre, content: aBase64(paginaEnlace(l)) };
+    if (sha) cuerpo.sha = sha;
+    return api(ruta, { method: 'PUT', body: JSON.stringify(cuerpo) });
+  }).catch(function () { /* si falla, la ficha ya quedó publicada; el enlace se rehace al próximo guardado */ });
+}
