@@ -52,6 +52,7 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Compartir": "Share",
  "De qué se trata": "About",
  "Por qué ir": "Why go",
+ "Datos prácticos": "Practicalities",
  "Ya fuiste?": "Been already?",
  "Dejar reseña": "Leave your note",
  "Inicio": "Home",
@@ -580,7 +581,8 @@ function vistaLugar(id) {
     '</div>' +
     (lugar.favorito ? leyendaFavorito() : '') +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
-    (lugar.texto ? '<section class="bloque"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : t('Por qué ir')) + '</h2><div class="texto">' + esc(lugar.texto + (lugar.practico ? '\n\n' + lugar.practico : '')) + '</div></section>' : '') +
+    (lugar.texto ? '<section class="bloque con-raya"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : t('Por qué ir')) + '</h2><div class="texto">' + esc(lugar.texto) + '</div></section>' : '') +
+    (lugar.practico ? '<section class="bloque con-raya"><h2 class="etiqueta">' + t('Datos prácticos') + '</h2><div class="texto">' + esc(lugar.practico) + '</div></section>' : '') +
     '<section class="fuiste"><div class="fuiste-cabeza"><div class="fuiste-titulo">' + t('Ya fuiste?') + '</div>' +
     '<button class="boton boton-chico" data-accion="abrir-buzon" data-tipo="resena" data-lugar="' + esc(lugar.nombre) + '">' + t('Dejar reseña') + '</button></div></section>' +
     '</div></main><div class="fuera">' + pie(false) + '</div>' + nav('');

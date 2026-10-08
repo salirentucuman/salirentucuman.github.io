@@ -785,3 +785,7 @@ section#lista-lugares { margin-top: 32px; }
 .zona-flecha { color: var(--acento); font-size: var(--t3); }
 @media (min-width: 820px) { .buscar-zona { margin-top: 44px; } }
 @media (max-width: 819px) { .desplegable { max-width: none; } }
+
+/* Ficha: rayita terracota sobre "Por qué ir" y "Datos prácticos", como en la portada. */
+.con-raya { margin-top: 12px; }
+.con-raya > h2.etiqueta::before { content: ""; display: block; width: 44px; height: 1px; background: var(--logo); margin-bottom: 18px; }
