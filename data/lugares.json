@@ -116,13 +116,14 @@
       "momento": "noche",
       "breve": "Restaurante tipo speakeasy, para cenar y solo con reservas.",
       "texto": "Atmósfera íntima, comida de autor, pocas mesas y atendido por sus dueños.",
-      "foto": "fotos/vintter-3.jpg",
+      "foto": "fotos/vintter-6.jpg",
       "galeria": [
+        "fotos/vintter-3.jpg",
         "fotos/vintter.jpg",
         "fotos/vintter-5.jpg",
         "fotos/vintter-4.jpg",
-        "fotos/vintter-6.jpg",
-        "fotos/vintter-1791412383396-1.jpg"
+        "fotos/vintter-1791412383396-1.jpg",
+        "fotos/vintter-1791424776947-1.jpg"
       ],
       "direccion": "Se solicita por WhatsApp",
       "precio": "",
