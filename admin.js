@@ -436,3 +436,28 @@ function escribirEnlace(l) {
     return api(ruta, { method: 'PUT', body: JSON.stringify(cuerpo) });
   }).catch(function () { /* si falla, la ficha ya quedó publicada; el enlace se rehace al próximo guardado */ });
 }
+
+/* Pasar el acceso al celular: la PC muestra un código QR; al escanearlo, el celular abre el formulario con la clave ya puesta. */
+$('al-celular').addEventListener('click', function () {
+  var enlace = location.origin + location.pathname + '#clave=' + encodeURIComponent($('token').value.trim());
+  $('qr').innerHTML = '';
+  $('ventana-qr').hidden = false;
+  function dibujar() {
+    var q = qrcode(0, 'M'); q.addData(enlace); q.make();
+    $('qr').innerHTML = q.createSvgTag({ cellSize: 5, margin: 2 }).replace(/fill="black"/g, 'fill="#4E2519"').replace(/#000000/g, '#4E2519');
+  }
+  if (window.qrcode) return dibujar();
+  var s = document.createElement('script');
+  s.src = 'qrcode.js';
+  s.onload = dibujar;
+  s.onerror = function () { $('qr').textContent = 'No se pudo generar el código. Revisá la conexión.'; };
+  document.head.appendChild(s);
+});
+$('cerrar-qr').addEventListener('click', function () { $('ventana-qr').hidden = true; $('qr').innerHTML = ''; });
+(function () {
+  var m = location.hash.match(/^#clave=(.+)$/);
+  if (!m) return;
+  $('token').value = decodeURIComponent(m[1]);
+  history.replaceState(null, '', location.pathname);
+  entrar();
+})();
