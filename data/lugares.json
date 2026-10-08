@@ -403,7 +403,7 @@
     {
       "id": "pipa",
       "alta": "2026-10-08",
-      "nombre": "Pipa",
+      "nombre": "Pipa Pizzería",
       "tipo": "Pizzería",
       "zona": "Barrio Sur",
       "direccion": "José Rondeau 1011, T4000 San Miguel de Tucumán, Tucumán",
@@ -423,9 +423,11 @@
       "momento": "noche",
       "foto": "fotos/pipa-1791428160750-4.jpg",
       "galeria": [
-        "fotos/pipa-1791428155807-1.jpg",
         "fotos/pipa-1791428157789-2.jpg",
-        "fotos/pipa-1791428159260-3.jpg"
+        "fotos/pipa-1791429305328-1.jpg",
+        "fotos/pipa-1791428155807-1.jpg",
+        "fotos/pipa-1791428159260-3.jpg",
+        "fotos/pipa-1791429308291-2.jpg"
       ]
     }
   ]
