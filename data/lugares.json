@@ -270,12 +270,12 @@
       "tipo": "Pastelería gourmet. Bakery.",
       "momento": "dia",
       "breve": "El Oscar de oro para esta pastelería.",
-      "texto": "Zelmira es la pastelería que destrona a toda pastelería. Habrá muchas cosas exquisitas en Tucumán, pero será muy difícil sumar otra pastelería después de las delicias de este lugar.\n\nTienen su tienda física en Yerba Buena. Además, podés comprar cómodamente desde su web y también te venden por WhatsApp. Al comprar en la web, te contactan por WhatsApp para coordinar el envío.\n\nEs decir, además de hacer la mejor pastelería con sus propias manos, tienen una atención inigualable.",
+      "texto": "Zelmira es la pastelería que destrona a toda pastelería. Habrá muchas cosas exquisitas en Tucumán, pero será muy difícil sumar otra pastelería después de las delicias de este lugar.\n\nZelmira tiene su tienda física en Yerba Buena. Además, podés comprar cómodamente en su web, y también te venden por WhatsApp. \nEs decir, además de hacer la mejor pastelería, la atención es inigualable.",
       "foto": "fotos/zelmira-8.jpg",
       "galeria": [
+        "fotos/zelmira-6.jpg",
         "fotos/zelmira-9.jpg",
-        "fotos/zelmira-10.jpg",
-        "fotos/zelmira-6.jpg"
+        "fotos/zelmira-10.jpg"
       ],
       "direccion": "Bolivia 1920, T4107 Yerba Buena, Tucumán",
       "precio": "",
@@ -291,7 +291,7 @@
         "breve": "The golden Oscar goes to this pâtisserie.",
         "texto": "Zelmira is the pâtisserie that unseats all others. There is much that is exquisite in Tucumán, but it will be hard to add another after this.\n\nThere is a shop in Yerba Buena. You may also order from their website, or by WhatsApp; buy online and they will write to arrange delivery.\n\nWhich is to say: the finest pastry, made by their own hands, and service to match."
       },
-      "practico": "",
+      "practico": "Al comprar en la web, te contactan por WhatsApp para coordinar el envío.",
       "favorito": true
     },
     {
