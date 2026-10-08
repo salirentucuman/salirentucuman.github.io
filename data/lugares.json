@@ -302,11 +302,11 @@
       "texto": "Detrás de Costal está la talentosa Mercedes Costal, creadora de Costal Prints & Patterns (empapelados). Su mirada creativa y exquisita se nota en cada detalle de su cafetería.\n\nEn la barra, maestros baristas locales trabajan granos elegidos, incluyendo cafés de proceso natural (para entendidos). \nOfrecen además una selección de pastelería artesanal deliciosa.\n\nGuarda su mejor secreto al fondo: una terraza que es, probablemente, uno de los sitios más especiales de la ciudad para tomar un café. Un lugar calmo y meditativo en las cuatro estaciones del año.",
       "foto": "fotos/costal.jpg",
       "galeria": [
-        "fotos/costal-2.jpg",
+        "fotos/costal-1791431409553-1.jpg",
         "fotos/costal-3.jpg",
+        "fotos/costal-2.jpg",
         "fotos/costal-4.jpg",
-        "fotos/costal-5.jpg",
-        "fotos/costal-7.jpg"
+        "fotos/costal-5.jpg"
       ],
       "credito": "@cafécostal",
       "direccion": "Alter Point, Av. Juan Domingo Perón 2300, Av. Juan Domingo Perón 2395, T4107 Yerba Buena, Tucumán",
@@ -326,7 +326,8 @@
       "practico": "También venden café en grano para preparar en casa y hacen take away.\n\nForma parte del circuito de diseño de Alter Point.",
       "encuadre": {
         "fotos/costal.jpg": "50% 96%",
-        "fotos/costal-4.jpg": "50% 22%"
+        "fotos/costal-4.jpg": "50% 22%",
+        "fotos/costal-5.jpg": "50% 44%"
       }
     },
     {
