@@ -251,7 +251,8 @@
       "id": "zelmira",
       "nombre": "Zelmira",
       "categorias": [
-        "barrio"
+        "barrio",
+        "autor"
       ],
       "zona": "Yerba Buena",
       "tipo": "Pastelería gourmet. Bakery.",
@@ -264,12 +265,12 @@
         "fotos/zelmira-10.jpg",
         "fotos/zelmira-6.jpg"
       ],
-      "direccion": "Bolivia 1920, Yerba Buena",
+      "direccion": "Bolivia 1920, T4107 Yerba Buena, Tucumán",
       "precio": "",
       "idealPara": "",
-      "instagram": "",
+      "instagram": "zelmira.pasteleria",
       "alta": "2026-10-06",
-      "web": "zelmira.com.ar",
+      "web": "https://zelmira.com.ar/",
       "whatsapp": "+54 9 381 655-9521",
       "credito": "Zelmira",
       "mail": "",
@@ -277,7 +278,9 @@
         "tipo": "Pâtisserie and bakery",
         "breve": "The golden Oscar goes to this pâtisserie.",
         "texto": "Zelmira is the pâtisserie that unseats all others. There is much that is exquisite in Tucumán, but it will be hard to add another after this.\n\nThere is a shop in Yerba Buena. You may also order from their website, or by WhatsApp; buy online and they will write to arrange delivery.\n\nWhich is to say: the finest pastry, made by their own hands, and service to match."
-      }
+      },
+      "practico": "",
+      "favorito": true
     },
     {
       "id": "costal",
