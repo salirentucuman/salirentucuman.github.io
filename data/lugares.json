@@ -217,10 +217,10 @@
         "barrio"
       ],
       "zona": "Ciudadela (muy cerca de Av. Mate de Luna), SMT",
-      "tipo": "Bodegón de pastas y hojaldres artesanales",
+      "tipo": "Bodegón",
       "momento": "ambos",
-      "breve": "Bodegón para comer pastas caseras y hojaldres de autor.",
-      "texto": "Pastas caseras y laminado artesanal (hojaldres y masas finas) hechos en el propio obrador por Sebastián.\nEl arroz con leche te sorprenderá.\nAtendido por su propio dueño, el dueño de un sueño hecho realidad.",
+      "breve": "Bodegón de pastas caseras y hojaldres de autor",
+      "texto": "Pastas caseras y laminado artesanal (hojaldres y masas finas) hechos en el propio obrador por Sebastián.\n\nEl arroz con leche te sorprenderá.\nAtendido por su propio dueño, el dueño de un sueño hecho realidad.",
       "foto": "fotos/obrador-manteco-4.jpg",
       "galeria": [
         "fotos/obrador-manteco-7.jpg",
@@ -229,7 +229,7 @@
         "fotos/obrador-manteco-2.jpg",
         "fotos/obrador-manteco-5.jpg"
       ],
-      "direccion": "Av. Colón esq. Crisóstomo Álvarez, San Miguel de Tucumán",
+      "direccion": "Av. Colón, Crisóstomo Alvarez esq, T4000 San Miguel, Tucumán",
       "precio": "",
       "idealPara": "",
       "instagram": "@obradormanteco",
@@ -244,7 +244,8 @@
         "breve": "A bodegón for handmade pasta, and pastry with a signature.",
         "texto": "Fresh pasta and hand-laminated pastry, made in the workshop itself by Sebastián.\nThe rice pudding will surprise you.\nServed by the owner: a man living inside the thing he dreamed of."
       },
-      "hallazgo": true
+      "practico": "",
+      "favorito": true
     },
     {
       "id": "zelmira",
