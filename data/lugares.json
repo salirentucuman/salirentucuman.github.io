@@ -9,9 +9,9 @@
       "categorias": [
         "comer"
       ],
-      "zona": "Barrio Norte, SMT",
+      "zona": "Barrio Norte",
       "breve": "Una oda al buen café y a los materiales del norte.",
-      "texto": "Cafetería de especialidad en Barrio Norte de la ciudad.\nAtmósfera íntima y calma. Buen café. \nCon interior y exteriores, abierto y techado. Mesas privadas y mesón para compartir.\nTambién se puede almorzar: tiene menú ejecutivo todos los días, con platos del día y empanadas.\nApenas retirado de pleno centro, justo para estar cerca pero en mayor tranquilidad. No tiene cochera propia.",
+      "texto": "Cafetería en Barrio Norte de la ciudad.\nAtmósfera íntima y calma. Buen café. \n\nApenas retirado de pleno centro, justo para estar cerca pero en total tranquilidad.",
       "foto": "fotos/rancho.jpg",
       "direccion": "Marcos Paz 294",
       "precio": "",
@@ -26,7 +26,7 @@
       "credito": "@ranchocafe.arg",
       "tipo": "Café y brunch",
       "momento": "dia",
-      "whatsapp": "",
+      "whatsapp": "+5493813021733",
       "web": "",
       "mail": "",
       "favorito": true,
@@ -34,7 +34,8 @@
         "tipo": "Coffee and brunch",
         "breve": "Speciality coffee in Barrio Norte. An ode to the materials of the north; intimate, and calm.",
         "texto": "Good coffee, and lunch besides: a set menu each day, with daily dishes and empanadas.\nInside and out, open and covered. Private tables, and a long one to share.\nA step removed from the centre; close enough, and quieter for it. No parking of its own."
-      }
+      },
+      "practico": "Con interior y exteriores, abierto y techado. Mesas privadas y mesón para compartir.\n\nTambién se puede almorzar.\nNo tiene cochera."
     },
     {
       "id": "madame-rouges",
