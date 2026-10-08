@@ -549,6 +549,12 @@ function vistaLugar(id) {
     if (f[0] === 'Web') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://' + esc(String(f[1]).replace(/^https?:\/\//, '')) + '">' + valor + '</a>';
     if (f[0] === t('Mail')) valor = '<a class="enlace" href="mailto:' + esc(f[1]) + '">' + valor + '</a>';
     if (f[0] === 'Instagram') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://www.instagram.com/' + encodeURIComponent(String(f[1]).replace(/^@/, '')) + '/">' + valor + '</a>';
+    if (f[0] === t('Dirección') && !lugar.sinMapa) {
+      var q = encodeURIComponent([lugar.nombre, lugar.direccion, 'Tucumán'].filter(Boolean).join(', '));
+      valor = '<a class="enlace" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=' + q + '">' + valor + '</a>' +
+        '<span class="ir-con"><a class="enlace" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=' + q + '">Google Maps</a> · ' +
+        '<a class="enlace" target="_blank" rel="noopener" href="https://waze.com/ul?q=' + q + '&navigate=yes">Waze</a></span>';
+    }
     if (f[0] === 'WhatsApp') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://wa.me/' + String(f[1]).replace(/\D/g, '') + '">' + valor + '</a>';
     return '<div class="dato"><dt>' + f[0] + '</dt><dd>' + valor + '</dd></div>';
   }).join('');

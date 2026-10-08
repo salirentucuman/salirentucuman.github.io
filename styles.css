@@ -789,3 +789,6 @@ section#lista-lugares { margin-top: 32px; }
 /* Ficha: rayita terracota sobre "Por qué ir" y "Datos prácticos", como en la portada. */
 .con-raya { margin-top: 12px; }
 .con-raya > h2.etiqueta::before { content: ""; display: block; width: 44px; height: 1px; background: var(--logo); margin-bottom: 18px; }
+
+/* Dirección: abre en Google Maps; debajo, accesos directos para ir con Google Maps o Waze. */
+.ir-con { display: block; margin-top: 6px; font-size: var(--t4); color: var(--gris); }
