@@ -544,6 +544,39 @@
         "fotos/costal-1791431409553-1.jpg": "50% 43%",
         "fotos/la-terraza-trasera-de-cafe-costal-1791432487370-5.jpg": "50% 64%"
       }
+    },
+    {
+      "id": "casita-de-tucuman",
+      "alta": "2026-10-08",
+      "nombre": "Casita de Tucumán",
+      "tipo": "Documental",
+      "zona": "",
+      "direccion": "",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "instagram": "casitadetucuman",
+      "breve": "Tucumaneidad",
+      "texto": "Luciano Moretti y Gonzalo Sánchez nos invitan a detenernos y mirar las casitas de Tucumán.\n\nTucumán es, de hecho, hermoso como Casita de Tucumán lo documenta. Es cuestión de mirar.",
+      "practico": "",
+      "precio": "",
+      "credito": "casitadetucuman",
+      "categorias": [],
+      "momento": "dia",
+      "curiosidad": true,
+      "sinMapa": true,
+      "foto": "fotos/casita-de-tucuman-1791468976854-1.jpg",
+      "galeria": [
+        "fotos/casita-de-tucuman-1791468979974-2.jpg",
+        "fotos/casita-de-tucuman-1791468981817-3.jpg",
+        "fotos/casita-de-tucuman-1791468983710-4.jpg"
+      ],
+      "encuadre": {
+        "fotos/casita-de-tucuman-1791468976854-1.jpg": "50% 49%",
+        "fotos/casita-de-tucuman-1791468979974-2.jpg": "50% 0%",
+        "fotos/casita-de-tucuman-1791468981817-3.jpg": "50% 39%",
+        "fotos/casita-de-tucuman-1791468983710-4.jpg": "50% 1%"
+      }
     }
   ]
 }
