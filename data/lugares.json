@@ -429,6 +429,37 @@
         "fotos/pipa-1791428159260-3.jpg",
         "fotos/pipa-1791429308291-2.jpg"
       ]
+    },
+    {
+      "id": "pipa-panaderia",
+      "alta": "2026-10-08",
+      "nombre": "Pipa Panadería",
+      "tipo": "Panadería",
+      "zona": "Barrio Norte",
+      "direccion": "Virgen de la Merced 737, T4000 San Miguel de Tucumán, Tucumán",
+      "whatsapp": "+5493816093716",
+      "web": "",
+      "mail": "",
+      "instagram": "lapanaderiadepipa",
+      "breve": "La tercera estrella de Julito cocinero",
+      "texto": "Julito Liendo no para, así que Pipa, menos. Pipa Panadería es la tercera de este grupo y la primera en hacer los mejores laminados del mundo.\n\nMalas noticias para los franceses: el mejor croissant se come en Tucumán. Así son las cosas.",
+      "practico": "Pegadito a la cafetería de Pipa.",
+      "precio": "",
+      "credito": "pipapanaderia",
+      "categorias": [
+        "barrio"
+      ],
+      "momento": "dia",
+      "hallazgo": true,
+      "foto": "fotos/pipa-panaderia-1791429997468-1.jpg",
+      "galeria": [
+        "fotos/pipa-panaderia-1791430001874-2.jpg",
+        "fotos/pipa-panaderia-1791430004010-3.jpg",
+        "fotos/pipa-panaderia-1791430005777-4.jpg",
+        "fotos/pipa-panaderia-1791430007746-5.jpg",
+        "fotos/pipa-panaderia-1791430009165-6.jpg",
+        "fotos/pipa-panaderia-1791430010973-7.jpg"
+      ]
     }
   ]
 }
