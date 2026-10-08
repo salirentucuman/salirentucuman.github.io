@@ -44,8 +44,8 @@
       ],
       "zona": "Yerba Buena",
       "tipo": "Café",
-      "breve": "Cafetería en las Yungas tucumanas. Un ambiente sofisticado que convive con la vida silvestre.",
-      "texto": "No hay otro lugar así en Tucumán: el café está metido dentro de la selva, literal. Los platitos del desayuno son caseros: granola recién horneada y pancitos hechos a mano en la casa.\nPerfecto para estar alejado del ruido de la ciudad, pero con todas las comodidades. Con interior y exteriores, abierto y techado.\nTiene cochera propia.\nNo toma reservas.",
+      "breve": "Cafetería en las Yungas. Un ambiente sofisticado que convive con la vida silvestre.",
+      "texto": "No hay otro lugar así en Tucumán: el café está metido dentro de la selva, literal. Los platitos del desayuno son caseros: granola recién horneada y pancitos hechos a mano en la casa.\n\nPerfecto para alejadarse del ruido de la ciudad, pero con todas las comodidades.",
       "foto": "fotos/madame-rouges.jpg",
       "direccion": "Villa Poli, Av. Aconquija, Yerba Buena",
       "precio": "",
@@ -64,12 +64,12 @@
       "momento": "dia",
       "web": "",
       "mail": "",
-      "favorito": true,
       "en": {
         "tipo": "Café",
         "breve": "A café in the Yungas of Tucumán. A refined room that lives alongside the wild.",
         "texto": "There is nowhere else like it in Tucumán: the café sits within the forest itself. Breakfast is made in the house: granola just out of the oven, small breads shaped by hand.\nFar from the noise of the city, with every comfort to hand. Inside and out, open and covered.\nIts own parking.\nNo reservations."
-      }
+      },
+      "practico": "Con interior y exteriores, abierto y techado.\nTiene cochera propia.\nNo toma reservas."
     },
     {
       "id": "villa-poli-2-anos",
