@@ -417,7 +417,7 @@ function paginaEnlace(l) {
     '<title>' + escHtml(l.nombre) + ' · Hang Out Tucumán</title>\n' +
     '<meta name="description" content="' + escHtml(desc) + '">\n' +
     '<meta property="og:site_name" content="Hang Out Tucumán">\n' +
-    '<meta property="og:title" content="Hang Out Tucumán">\n' +
+    '<meta property="og:title" content="' + escHtml(l.nombre) + ' · Hang Out Tucumán">\n' +
     '<meta property="og:description" content="' + escHtml(desc) + '">\n' +
     '<meta property="og:type" content="website">\n' +
     '<meta property="og:url" content="' + BASE + '/l/' + escHtml(l.id) + '">\n' +
