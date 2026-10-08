@@ -71,6 +71,19 @@
 .confirmar-caja p { font-size: 15px; line-height: 1.5; color: #333; }
 @font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 500; font-display: swap; src: url(fonts/cormorant-garamond-latin-500-italic.woff2) format('woff2'); }
 .animo { margin: 6px 0 2px; padding: 0 20px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: 24px; line-height: 1.2; color: #6E3829; letter-spacing: 0; text-transform: none; }
+
+/* Panel compacto: rótulo al costado del campo (los textos largos mantienen el rótulo arriba). */
+.seccion { gap: 10px; padding: 16px; }
+.campo { gap: 3px; }
+.campo label, .campo .rotulo { font-size: 13px; }
+.campo input[type=text], .campo input[type=password], .campo input[type=email], .campo input[type=datetime-local], .campo select { min-height: 38px; padding: 7px 12px; border-radius: 10px; }
+.campo textarea { padding: 8px 12px; border-radius: 10px; }
+.campo:has(> input[type=text]), .campo:has(> input[type=password]), .campo:has(> input[type=email]), .campo:has(> select), .campo:has(> input[type=datetime-local]) { display: grid; grid-template-columns: 96px minmax(0, 1fr); align-items: center; column-gap: 10px; row-gap: 3px; }
+.campo:has(> input[type=text]) > small, .campo:has(> input[type=password]) > small, .campo:has(> select) > small, .campo:has(> input[type=datetime-local]) > small { grid-column: 2; }
+.dos { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+@media (min-width: 820px) {
+  .campo:has(> input[type=text]), .campo:has(> input[type=password]), .campo:has(> input[type=email]), .campo:has(> select), .campo:has(> input[type=datetime-local]) { grid-template-columns: 160px minmax(0, 1fr); }
+}
 </style>
 </head>
 <body>
@@ -144,7 +157,7 @@
       <div class="campo"><label for="tipo">Tipo</label><input id="tipo" type="text" placeholder="Cafetería de especialidad"></div>
       <div class="campo"><label for="breve">Bajada</label><input id="breve" type="text" maxlength="160"><small>La frase corta que va debajo del nombre, en la tarjeta y en la ficha. Una o dos líneas.</small></div>
       <div class="campo"><label for="texto" id="rotulo-texto">Por qué ir · Descripción</label><textarea id="texto"></textarea><small>Lo que más te moviliza del lugar. Dejá una línea en blanco entre párrafos.</small></div>
-      <div class="campo"><label for="practico">Por qué ir · Datos prácticos</label><textarea id="practico" style="min-height:96px"></textarea><small>Uno por renglón. Por ejemplo: No tiene cochera. Reservar antes de ir. En la web aparece a continuación de la descripción.</small></div>
+      <div class="campo"><label for="practico">Por qué ir · Datos prácticos</label><textarea id="practico" style="min-height:96px"></textarea><small>Uno por renglón. Por ejemplo: No tiene cochera. Reservar antes de ir. En la web aparece en su propio bloque, con el título Datos prácticos.</small></div>
     </section>
 
     <section class="seccion">
