@@ -612,6 +612,35 @@
         "fotos/pizza-n-1-1791477765077-1.jpg": "50% 61%",
         "fotos/pizza-n-1-1791477767467-2.jpg": "50% 60%"
       }
+    },
+    {
+      "id": "prego-napoletano",
+      "alta": "2026-10-08",
+      "nombre": "Prego Napoletano",
+      "tipo": "Pizzería",
+      "zona": "Barrio Sur",
+      "direccion": "Buenos Aires 394, T4000 San Miguel de Tucumán, Tucumán",
+      "whatsapp": "+549381694263",
+      "web": "",
+      "mail": "",
+      "instagram": "prego_napolitano",
+      "breve": "Barrio Sur, all'italiana",
+      "texto": "Prego Napoletano es la scuderia que lidera el corredor pizzero de Barrio Sur, con su inigualable napolitana. \n\nUna antigua casona en el corazón de Barrio Sur, remodelada por la talentosa diseñadora local Pilar Méndez, es ahora casa de la mejor pizza italiana de la ciudad. Bravissima.\n\nSofisticada, canchera y vibrante. Vas a querer volver.",
+      "practico": "Si recibe reservas.",
+      "precio": "",
+      "credito": "",
+      "categorias": [
+        "street",
+        "barrio"
+      ],
+      "momento": "dia",
+      "foto": "fotos/prego-napoletano-1791479872843-1.jpg",
+      "galeria": [
+        "fotos/prego-napoletano-1791479877884-2.jpg",
+        "fotos/prego-napoletano-1791479880410-3.jpg",
+        "fotos/prego-napoletano-1791479882562-4.jpg",
+        "fotos/prego-napoletano-1791479884430-5.jpg"
+      ]
     }
   ]
 }
