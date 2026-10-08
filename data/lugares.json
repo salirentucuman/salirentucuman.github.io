@@ -70,7 +70,13 @@
         "breve": "A café in the Yungas of Tucumán. A refined room that lives alongside the wild.",
         "texto": "There is nowhere else like it in Tucumán: the café sits within the forest itself. Breakfast is made in the house: granola just out of the oven, small breads shaped by hand.\nFar from the noise of the city, with every comfort to hand. Inside and out, open and covered.\nIts own parking.\nNo reservations."
       },
-      "practico": "Con interior y exteriores, abierto y techado.\nTiene cochera propia.\nNo toma reservas."
+      "practico": "Con interior y exteriores, abierto y techado.\nTiene cochera propia.\nNo toma reservas.",
+      "encuadre": {
+        "fotos/madame-rouges.jpg": "50% 61%",
+        "fotos/madame-rouges-2.jpg": "50% 73%",
+        "fotos/madame-rouges-3.jpg": "50% 13%",
+        "fotos/madame-rouges-4.jpg": "50% 40%"
+      }
     },
     {
       "id": "villa-poli-2-anos",
