@@ -317,7 +317,11 @@
         "breve": "The speciality coffee house of Tucumán. Without argument.",
         "texto": "Behind Costal is Mercedes Costal, the talent who created Costal Prints & Patterns (wallpapers). Her eye, creative and exacting, is in every detail.\n\nAt the bar, local master baristas work with chosen beans, natural process coffees among them. Alongside: an edit of artisan pastry, fresh juices, and tea by Tealosophy.\n\nBeans to take home, and coffee to take away.\n\nIt forms part of the design circuit at Alter Point. And it keeps its best secret at the back: a terrace that is, quite possibly, one of the loveliest places in the city to sit with a coffee. Calm and contemplative, in every season."
       },
-      "practico": "También venden café en grano para preparar en casa y hacen take away.\n\nForma parte del circuito de diseño de Alter Point."
+      "practico": "También venden café en grano para preparar en casa y hacen take away.\n\nForma parte del circuito de diseño de Alter Point.",
+      "encuadre": {
+        "fotos/costal.jpg": "50% 96%",
+        "fotos/costal-4.jpg": "50% 22%"
+      }
     },
     {
       "id": "elevate",
