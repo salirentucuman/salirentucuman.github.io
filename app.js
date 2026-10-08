@@ -690,7 +690,7 @@ app.addEventListener('click', function (ev) {
   }
   if (accion === 'menu') { document.body.classList.add('indice-abierto'); return; }
   if (accion === 'cerrar-menu') { document.body.classList.remove('indice-abierto'); return; }
-  if (accion === 'inicio') { document.body.classList.remove('indice-abierto'); window.scrollTo(0, 0); return; }
+  if (accion === 'inicio') { ev.preventDefault(); irAInicio(); return; }
   if (accion === 'idioma') {
     try { localStorage.setItem('hangout-idioma', el.getAttribute('data-valor')); } catch (e) { /* sin almacenamiento */ }
     location.reload();
@@ -734,6 +734,24 @@ app.addEventListener('click', function (ev) {
     else if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { aviso(t('Enlace copiado')); });
   }
 });
+
+/* Volver a la portada limpia: sin filtros, sin páginas y arriba de todo. */
+function irAInicio() {
+  momento = 'todo'; expandido = false; paginas = {};
+  try { localStorage.setItem('dayout-momento', momento); } catch (e) { /* sin almacenamiento */ }
+  if (location.hash && location.hash !== '#/') location.hash = '#/'; else pintar();
+}
+
+/* Al refrescar la página se vuelve siempre a la portada; un enlace compartido a una ficha sigue abriendo la ficha. */
+try {
+  history.scrollRestoration = 'manual';
+  var entrada = performance.getEntriesByType('navigation')[0];
+  if (entrada && entrada.type === 'reload') {
+    momento = 'todo';
+    try { localStorage.setItem('dayout-momento', momento); } catch (e) { /* sin almacenamiento */ }
+    if (location.hash && location.hash !== '#/') history.replaceState(null, '', location.pathname + location.search);
+  }
+} catch (e) { /* navegador antiguo */ }
 
 window.addEventListener('hashchange', pintar);
 document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') document.body.classList.remove('indice-abierto'); });
