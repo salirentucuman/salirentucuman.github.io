@@ -284,26 +284,24 @@
     },
     {
       "id": "costal",
-      "nombre": "Costal Café",
+      "nombre": "Costal coffee & other crafts",
       "categorias": [
         "comer"
       ],
       "zona": "Yerba Buena",
-      "tipo": "Cafetería de especialidad",
+      "tipo": "Cafetería de especialidad (de verdad)",
       "momento": "dia",
       "breve": "La cafetería de especialidad indiscutida de Tucumán.",
-      "texto": "Detrás de Costal está la talentosa Mercedes Costal, creadora de Costal Prints & Patterns (empapelados). Su mirada creativa y exquisita se nota en cada detalle de su cafetería.\n\nEn la barra, maestros baristas locales trabajan granos elegidos, incluyendo cafés de proceso natural. Ofrecen además una curaduría de pastelería artesana, jugos naturales y té de Tealosophy.\n\nTambién venden café en grano para preparar en casa y tienen take away.\n\nForma parte del circuito de diseño de Alter Point. Y guarda su mejor secreto al fondo: una terraza que es, probablemente, uno de los sitios más especiales de la ciudad para tomar un café. Un lugar calmo y meditativo en las cuatro estaciones del año.",
+      "texto": "Detrás de Costal está la talentosa Mercedes Costal, creadora de Costal Prints & Patterns (empapelados). Su mirada creativa y exquisita se nota en cada detalle de su cafetería.\n\nEn la barra, maestros baristas locales trabajan granos elegidos, incluyendo cafés de proceso natural (para entendidos). \nOfrecen además una selección de pastelería artesanal deliciosa.\n\nGuarda su mejor secreto al fondo: una terraza que es, probablemente, uno de los sitios más especiales de la ciudad para tomar un café. Un lugar calmo y meditativo en las cuatro estaciones del año.",
       "foto": "fotos/costal.jpg",
       "galeria": [
         "fotos/costal-2.jpg",
         "fotos/costal-3.jpg",
         "fotos/costal-4.jpg",
         "fotos/costal-5.jpg",
-        "fotos/costal-6.jpg",
-        "fotos/costal-7.jpg",
-        "fotos/costal-8.jpg"
+        "fotos/costal-7.jpg"
       ],
-      "credito": "Café Costal",
+      "credito": "@cafécostal",
       "direccion": "Alter Point, Av. Perón",
       "precio": "",
       "idealPara": "",
@@ -317,7 +315,8 @@
         "tipo": "Speciality coffee",
         "breve": "The speciality coffee house of Tucumán. Without argument.",
         "texto": "Behind Costal is Mercedes Costal, the talent who created Costal Prints & Patterns (wallpapers). Her eye, creative and exacting, is in every detail.\n\nAt the bar, local master baristas work with chosen beans, natural process coffees among them. Alongside: an edit of artisan pastry, fresh juices, and tea by Tealosophy.\n\nBeans to take home, and coffee to take away.\n\nIt forms part of the design circuit at Alter Point. And it keeps its best secret at the back: a terrace that is, quite possibly, one of the loveliest places in the city to sit with a coffee. Calm and contemplative, in every season."
-      }
+      },
+      "practico": "También venden café en grano para preparar en casa y hacen take away.\n\nForma parte del circuito de diseño de Alter Point."
     },
     {
       "id": "elevate",
