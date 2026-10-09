@@ -684,6 +684,40 @@
         "fotos/tomatito-pizzeria-1791482358752-6.jpg": "50% 68%",
         "fotos/tomatito-pizzeria-1791482361107-7.jpg": "50% 47%"
       }
+    },
+    {
+      "id": "gala-cascanueces",
+      "nombre": "Gala Cascanueces",
+      "categorias": [
+        "eventos",
+        "cultura"
+      ],
+      "zona": "Centro, SMT",
+      "tipo": "Ballet",
+      "momento": "noche",
+      "breve": "El Moscow State Ballet trae al Teatro Mercedes Sosa su gala de Cascanueces y princesas del ballet clásico.",
+      "texto": "Gala Cascanueces y Princesas del Ballet Clásico, por el Moscow State Ballet de Titova.\n\nUna sola función en el Teatro Mercedes Sosa.",
+      "foto": "fotos/gala-cascanueces.jpg",
+      "credito": "Moscow State Ballet",
+      "direccion": "Teatro Mercedes Sosa, San Martín 479, San Miguel de Tucumán",
+      "entradas": "https://entradas.teatromercedessosa.com.ar",
+      "alta": "2026-10-08",
+      "evento": {
+        "cuando": "Martes 17 de noviembre, 21 h",
+        "inicio": "2026-11-17T03:00:00.000Z",
+        "fin": "2026-11-18T02:59:00.000Z"
+      },
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "precio": "",
+      "en": {
+        "nombre": "Nutcracker Gala",
+        "tipo": "Ballet",
+        "cuando": "Tuesday 17 November, 9 pm",
+        "breve": "The Moscow State Ballet brings its Nutcracker gala, with the princesses of classical ballet, to the Teatro Mercedes Sosa.",
+        "texto": "The Nutcracker Gala and Princesses of Classical Ballet, by Titova's Moscow State Ballet.\n\nOne night only at the Teatro Mercedes Sosa."
+      }
     }
   ]
 }

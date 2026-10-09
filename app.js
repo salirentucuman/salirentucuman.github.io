@@ -52,6 +52,8 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Compartir": "Share",
  "De qué se trata": "About",
  "Por qué ir": "Why go",
+ "Entradas": "Tickets",
+ "Comprar entradas": "Buy tickets",
  "Datos prácticos": "Practicalities",
  "Ya fuiste?": "Been already?",
  "Lo que hay que saber": "Worth knowing",
@@ -543,9 +545,10 @@ function vistaLugar(id) {
   var guardado = leerGuardados().indexOf(lugar.id) !== -1;
   var filas = [
     [t('Tipo'), lugar.tipo], [t('Momento'), lugar.curiosidad ? '' : etiquetaMomento(lugar)], [t('Zona / Barrio'), lugar.zona], [t('Dirección'), lugar.direccion], [t('Precio'), lugar.precio],
-    [t('Ideal para'), lugar.idealPara], ['Web', lugar.web], [t('Mail'), lugar.mail], ['Instagram', lugar.instagram], ['WhatsApp', lugar.whatsapp]
+    [t('Ideal para'), lugar.idealPara], [t('Entradas'), lugar.entradas], ['Web', lugar.web], [t('Mail'), lugar.mail], ['Instagram', lugar.instagram], ['WhatsApp', lugar.whatsapp]
   ].filter(function (f) { return f[1]; }).map(function (f) {
     var valor = esc(f[1]);
+    if (f[0] === t('Entradas')) valor = '<a class="enlace" target="_blank" rel="noopener" href="' + esc(f[1]) + '">' + t('Comprar entradas') + '</a>';
     if (f[0] === 'Web') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://' + esc(String(f[1]).replace(/^https?:\/\//, '')) + '">' + valor + '</a>';
     if (f[0] === t('Mail')) valor = '<a class="enlace" href="mailto:' + esc(f[1]) + '">' + valor + '</a>';
     if (f[0] === 'Instagram') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://www.instagram.com/' + encodeURIComponent(String(f[1]).replace(/^@/, '')) + '/">' + valor + '</a>';

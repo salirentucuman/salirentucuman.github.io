@@ -4,7 +4,7 @@ var CATEGORIAS = [
   ['comer', 'Café y copas'], ['restaurantes', 'Restaurantes y bodegones'], ['street', 'Street food'], ['pasear', 'Aire libre'],
   ['cultura', 'Cultura'], ['diseno', 'Diseño'], ['autor', 'De autor'], ['barrio', 'De barrio'], ['productores', 'Grandes pequeños productores']
 ];
-var CAMPOS = ['nombre', 'tipo', 'zona', 'direccion', 'whatsapp', 'web', 'mail', 'instagram', 'breve', 'texto', 'practico', 'precio', 'credito'];
+var CAMPOS = ['nombre', 'tipo', 'zona', 'direccion', 'whatsapp', 'web', 'mail', 'instagram', 'breve', 'texto', 'practico', 'precio', 'credito', 'entradas'];
 var ARCHIVO = 'data/lugares.json';
 var REPO = 'salirentucuman/salirentucuman.github.io';
 
