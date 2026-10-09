@@ -738,7 +738,7 @@
       "breve": "",
       "texto": "Jazz Mood, de la compañía Mudra, con dirección general y coreografía de Jenny Benavente Elías.\nDanza, teatro y música en una sola noche.",
       "direccion": "Teatro Orestes Caviglia, San Martín 251, San Miguel de Tucumán",
-      "entradas": "https://culturadetucuman.entradanet.com",
+      "entradas": "https://culturadetucuman.entradanet.com/tc-events/jazz-mood-17-10-2026-21-00hs-toc/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaAU1IFpleHRuA2FlbQIxMQBwZG9mAmZkaWQWUP92BlZqBhTPiB6DVrnt_dpD151eSXNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp0dP649hMalgBlLJQoJhDGAJ_2ZuLeMc9fSN2g10ikb2JppAa9ml0za6O3gD_aem_sUQ2ikAFQeTG_IJ3_armZg",
       "alta": "2026-10-08",
       "evento": {
         "cuando": "Sábado 17 de octubre, 21 h",
@@ -758,8 +758,11 @@
       },
       "instagram": "",
       "practico": "",
-      "credito": "",
-      "foto": ""
+      "credito": "Entrada Net",
+      "foto": "fotos/jazz-mood-1791508757760-1.jpg",
+      "encuadre": {
+        "fotos/jazz-mood-1791508757760-1.jpg": "34% 50%"
+      }
     },
     {
       "id": "the-last-dance-demodee",
