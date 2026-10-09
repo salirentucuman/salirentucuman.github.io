@@ -791,3 +791,13 @@ section#lista-lugares { margin-top: 32px; }
 .con-raya > h2.etiqueta::before { content: ""; display: block; width: 44px; height: 1px; background: var(--logo); margin-bottom: 18px; }
 
 /* Dirección: link a Google Maps con el mismo estilo que los demás links de la ficha. */
+
+/* Solo PC / solo celular. */
+@media (min-width: 820px) { .solo-cel { display: none !important; } }
+@media (max-width: 819px) {
+  .solo-pc { display: none !important; }
+  .agenda-portada .lista-eventos > :nth-child(n+3) { display: none; }
+  .ir-eventos { align-self: stretch; justify-content: center; min-height: 44px; border-color: var(--acento); color: var(--acento); font-size: var(--t4); margin-top: 4px; }
+  .azar-cel { margin-top: 32px; display: flex; }
+  .azar-cel .boton { flex: 1; justify-content: center; }
+}
