@@ -812,6 +812,43 @@
         "fotos/elena-roger-en-concierto-1791507463812-1.jpg": "50% 40%",
         "fotos/elena-roger-en-concierto-1791507465293-2.jpg": "50% 13%"
       }
+    },
+    {
+      "id": "la-rita",
+      "alta": "2026-10-09",
+      "nombre": "La Rita",
+      "tipo": "Pastelería, dulces y conservas",
+      "zona": "Yerba Buena",
+      "direccion": "Cariola 1681, T4107 Yerba Buena, Tucumán",
+      "whatsapp": "+5493812534845",
+      "web": "",
+      "mail": "",
+      "instagram": "laritapasteleria",
+      "breve": "Frutas y flores de temporada, a tu mesa",
+      "texto": "Dulces, quesos, flores. La Rita pe",
+      "practico": "Al frente de Mercato, Yerba Buena.\nNo abre todos los días, revisar antes de ir.",
+      "precio": "",
+      "credito": "laritapasteleria",
+      "entradas": "",
+      "categorias": [
+        "autor",
+        "productores"
+      ],
+      "momento": "dia",
+      "foto": "fotos/la-rita-1791564610235-1.jpg",
+      "galeria": [
+        "fotos/la-rita-1791564612772-2.jpg",
+        "fotos/la-rita-1791564614668-3.jpg",
+        "fotos/la-rita-1791564670693-4.jpg",
+        "fotos/la-rita-1791564673499-5.jpg",
+        "fotos/la-rita-1791564676109-6.jpg",
+        "fotos/la-rita-1791564678404-7.jpg",
+        "fotos/la-rita-1791564680347-8.jpg",
+        "fotos/la-rita-1791564682094-9.jpg"
+      ],
+      "encuadre": {
+        "fotos/la-rita-1791564670693-4.jpg": "50% 46%"
+      }
     }
   ]
 }
