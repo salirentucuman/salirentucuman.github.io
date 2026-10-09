@@ -93,6 +93,12 @@
 
   <section class="seccion" id="acceso">
     <h2>Acceso</h2>
+    <div id="con-contrasena" hidden>
+      <div class="campo"><label for="contrasena">Contraseña</label><input id="contrasena" type="password" autocomplete="current-password"></div>
+      <button class="boton boton-lleno" id="entrar-contrasena" type="button">Entrar</button>
+      <button class="boton" id="usar-clave-larga" type="button" style="margin-top:6px">Usar la clave larga</button>
+    </div>
+    <div id="con-clave">
     <div class="campo">
       <label for="token">Clave de acceso</label>
       <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
@@ -100,6 +106,7 @@
     </div>
     <div class="campo"><label for="repo">Repositorio</label><input id="repo" type="text" autocomplete="off"></div>
     <button class="boton boton-lleno" id="entrar" type="button">Entrar</button>
+    </div>
     <div class="estado" id="estado-acceso" role="status"></div>
   </section>
 
@@ -176,6 +183,7 @@
     <button class="boton boton-borrar" type="button" id="borrar" hidden>Eliminar esta ficha</button>
     <div class="estado" id="estado" role="status"></div>
     <button class="boton" type="button" id="al-celular">Abrir este formulario en el celular</button>
+    <button class="boton" type="button" id="crear-contrasena">Crear o cambiar la contraseña</button>
   </form>
 </main>
 </div>
@@ -193,6 +201,6 @@
   <div id="qr" style="padding:10px;background:#fff"></div>
   <div class="encuadre-botones"><button type="button" class="lleno" id="cerrar-qr">Listo</button></div>
 </div></div>
-<script src="admin.js?v=19"></script>
+<script src="admin.js?v=20"></script>
 </body>
 </html>

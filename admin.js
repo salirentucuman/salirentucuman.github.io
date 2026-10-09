@@ -461,3 +461,54 @@ $('cerrar-qr').addEventListener('click', function () { $('ventana-qr').hidden = 
   history.replaceState(null, '', location.pathname);
   entrar();
 })();
+
+/* Contraseña propia: la clave larga se guarda cifrada en data/acceso.json y se destraba con la contraseña de María.
+   PBKDF2 (600.000 vueltas) + AES-GCM: sin la contraseña, el archivo no sirve. */
+var ACCESO = 'data/acceso.json';
+function b64(buf) { return btoa(String.fromCharCode.apply(null, new Uint8Array(buf))); }
+function deB64(s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); }
+function llaveDe(contrasena, sal, vueltas) {
+  return crypto.subtle.importKey('raw', new TextEncoder().encode(contrasena), 'PBKDF2', false, ['deriveKey']).then(function (base) {
+    return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: sal, iterations: vueltas, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+  });
+}
+function cifrar(texto, contrasena) {
+  var sal = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12)), vueltas = 600000;
+  return llaveDe(contrasena, sal, vueltas).then(function (k) { return crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, k, new TextEncoder().encode(texto)); })
+    .then(function (c) { return { v: 1, vueltas: vueltas, sal: b64(sal), iv: b64(iv), dato: b64(c) }; });
+}
+function descifrar(obj, contrasena) {
+  return llaveDe(contrasena, deB64(obj.sal), obj.vueltas).then(function (k) { return crypto.subtle.decrypt({ name: 'AES-GCM', iv: deB64(obj.iv) }, k, deB64(obj.dato)); })
+    .then(function (t) { return new TextDecoder().decode(t); });
+}
+var accesoGuardado = null;
+fetch(ACCESO + '?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+  accesoGuardado = j;
+  if (j && !$('token').value.trim()) { $('con-contrasena').hidden = false; $('con-clave').hidden = true; }
+}).catch(function () {});
+$('usar-clave-larga').addEventListener('click', function () { $('con-contrasena').hidden = true; $('con-clave').hidden = false; });
+function entrarConContrasena() {
+  if (!accesoGuardado) return;
+  estado('Abriendo…', false, 'estado-acceso');
+  descifrar(accesoGuardado, $('contrasena').value).then(function (clave) {
+    $('token').value = clave; $('contrasena').value = ''; entrar();
+  }).catch(function () { estado('La contraseña no es correcta.', true, 'estado-acceso'); });
+}
+$('entrar-contrasena').addEventListener('click', entrarConContrasena);
+$('contrasena').addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); entrarConContrasena(); } });
+$('crear-contrasena').addEventListener('click', function () {
+  var c1 = prompt('Elegí tu contraseña (mejor tres o cuatro palabras que recuerdes, por ejemplo: limon cafe yerba buena):');
+  if (!c1) return;
+  if (c1.length < 8) { alert('Usá al menos 8 letras. Tres o cuatro palabras es lo ideal.'); return; }
+  var c2 = prompt('Repetila para confirmar:');
+  if (c1 !== c2) { alert('No coinciden. Probá de nuevo.'); return; }
+  estado('Guardando la contraseña…');
+  cifrar($('token').value.trim(), c1).then(function (obj) {
+    return api(ACCESO + '?t=' + Date.now(), { cache: 'no-store' }).then(function (f) { return f.sha; }, function () { return null; }).then(function (sha) {
+      var cuerpo = { message: 'Acceso con contraseña', content: aBase64(JSON.stringify(obj) + '\n') };
+      if (sha) cuerpo.sha = sha;
+      return api(ACCESO, { method: 'PUT', body: JSON.stringify(cuerpo) });
+    });
+  }).then(function () { accesoGuardado = null; estado('Listo. Desde ahora entrás con tu contraseña en cualquier celular o PC.'); })
+    .catch(function (e) { estado(e.message, true); });
+});
