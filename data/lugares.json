@@ -799,14 +799,14 @@
       "zona": "Centro",
       "tipo": "Concierto",
       "momento": "noche",
-      "breve": "Elena Roger en concierto",
-      "texto": "Fascinante.",
+      "breve": "",
+      "texto": "",
       "direccion": "Teatro San Martín, Av. Sarmiento 601, San Miguel de Tucumán",
       "entradas": "https://culturadetucuman.entradanet.com/tc-events/elena-roger-14-11-2026-21-00hs-tsm/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaAU1GCVleHRuA2FlbQIxMQBwZG9mAmZkaWQWUP_Vzv1S_ca0CQNkEPd6-UWeRjWYaXNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp6Lxb8wswGxMcBJFjKy7oH1rE_tiu9qAZv5_FHJ00N0i0rxAWO6ATATCTXCy_aem_L017JzrRXcpuDyz7DbOSJQ",
       "alta": "2026-10-08",
       "evento": {
         "cuando": "Sábado 14 de noviembre, 21 h",
-        "inicio": "2026-11-14T03:00:00.000Z",
+        "inicio": "2026-11-15T00:00:00.000Z",
         "fin": "2026-11-15T02:59:00.000Z"
       },
       "whatsapp": "",
@@ -823,7 +823,15 @@
       "instagram": "teatrosanmartin",
       "practico": "",
       "credito": "",
-      "foto": ""
+      "foto": "fotos/elena-roger-en-concierto-1791507463812-1.jpg",
+      "favorito": true,
+      "galeria": [
+        "fotos/elena-roger-en-concierto-1791507465293-2.jpg"
+      ],
+      "encuadre": {
+        "fotos/elena-roger-en-concierto-1791507463812-1.jpg": "50% 40%",
+        "fotos/elena-roger-en-concierto-1791507465293-2.jpg": "50% 13%"
+      }
     }
   ]
 }
