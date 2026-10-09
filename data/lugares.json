@@ -796,13 +796,13 @@
         "eventos",
         "cultura"
       ],
-      "zona": "Centro, SMT",
+      "zona": "Centro",
       "tipo": "Concierto",
       "momento": "noche",
-      "breve": "Elena Roger llega al Teatro San Martín en concierto.",
-      "texto": "Elena Roger en concierto, en el Teatro San Martín.\n\nUna sola función.",
+      "breve": "Elena Roger en concierto",
+      "texto": "Fascinante.",
       "direccion": "Teatro San Martín, Av. Sarmiento 601, San Miguel de Tucumán",
-      "entradas": "https://culturadetucuman.entradanet.com",
+      "entradas": "https://culturadetucuman.entradanet.com/tc-events/elena-roger-14-11-2026-21-00hs-tsm/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaAU1GCVleHRuA2FlbQIxMQBwZG9mAmZkaWQWUP_Vzv1S_ca0CQNkEPd6-UWeRjWYaXNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp6Lxb8wswGxMcBJFjKy7oH1rE_tiu9qAZv5_FHJ00N0i0rxAWO6ATATCTXCy_aem_L017JzrRXcpuDyz7DbOSJQ",
       "alta": "2026-10-08",
       "evento": {
         "cuando": "Sábado 14 de noviembre, 21 h",
@@ -819,7 +819,11 @@
         "cuando": "Saturday 14 November, 9 pm",
         "breve": "Elena Roger in concert at the Teatro San Martín.",
         "texto": "Elena Roger in concert at the Teatro San Martín.\n\nOne night only."
-      }
+      },
+      "instagram": "teatrosanmartin",
+      "practico": "",
+      "credito": "",
+      "foto": ""
     }
   ]
 }
