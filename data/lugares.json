@@ -759,22 +759,22 @@
     },
     {
       "id": "the-last-dance-demodee",
-      "nombre": "The Last Dance",
+      "nombre": "Demodee, The Last Dance",
       "categorias": [
         "eventos",
         "cultura"
       ],
-      "zona": "Centro, SMT",
-      "tipo": "Danza",
+      "zona": "Centro",
+      "tipo": "Concierto",
       "momento": "noche",
-      "breve": "Demodée presenta su última noche así: no es el final.",
-      "texto": "Demodée presenta The Last Dance en el Teatro San Martín.\n\nNo es el final, es la última vez así.",
+      "breve": "",
+      "texto": "Cuatro magnéticas voces locales, solo 2 conciertos anuales, imperdibles. Los shows de Demodeé son un viaje fascinante y vibrante.",
       "direccion": "Teatro San Martín, Av. Sarmiento 601, San Miguel de Tucumán",
-      "entradas": "https://culturadetucuman.entradanet.com",
+      "entradas": "https://culturadetucuman.entradanet.com/tc-events/demodee-24-10-2026-21-00hs-tsm/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaAU1HLdleHRuA2FlbQIxMQBwZG9mAmZkaWQWUP-gNA6fnnmluBg0O0NokZwAxprXtnNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABpzTa2QIHycQKcCaKBJnQTtOOJBjzRrLNul5U0lamoBJVf1LLuSaYgVpjRbNv_aem_SWP942ZeeeVi1sossp9R5w",
       "alta": "2026-10-08",
       "evento": {
-        "cuando": "Sábado 24 de octubre, 21 h",
-        "inicio": "2026-10-24T03:00:00.000Z",
+        "cuando": "Sábado 24 de octubre",
+        "inicio": "2026-10-25T00:00:00.000Z",
         "fin": "2026-10-25T02:59:00.000Z"
       },
       "whatsapp": "",
@@ -787,6 +787,20 @@
         "cuando": "Saturday 24 October, 9 pm",
         "breve": "Demodée's last night of its kind. Not the end.",
         "texto": "Demodée presents The Last Dance at the Teatro San Martín.\n\nNot the end; simply the last time like this."
+      },
+      "instagram": "demodeemusique",
+      "practico": "Las Demodeé solo tocan una vez por año. Inesperadamente vuelven al teatro.",
+      "credito": "",
+      "foto": "fotos/the-last-dance-demodee-1791508427712-1.jpg",
+      "galeria": [
+        "fotos/the-last-dance-demodee-1791508429427-2.jpg",
+        "fotos/the-last-dance-demodee-1791508431281-3.jpg",
+        "fotos/the-last-dance-demodee-1791508433009-4.jpg",
+        "fotos/the-last-dance-demodee-1791508434566-5.jpg",
+        "fotos/the-last-dance-demodee-1791508436697-6.jpg"
+      ],
+      "encuadre": {
+        "fotos/the-last-dance-demodee-1791508431281-3.jpg": "50% 70%"
       }
     },
     {
