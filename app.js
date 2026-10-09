@@ -471,7 +471,7 @@ function vistaInicio() {
   /* El hallazgo más reciente abre la portada en grande; los demás encabezan la grilla de lugares. */
   var destacado = nuevos[0];
   var resto = filtrado ? sitios : nuevos.slice(1).concat(sitios.filter(function (l) { return nuevos.indexOf(l) === -1; }));
-  if (VISITAS > 2) resto = mezclar(resto, VISITAS);
+  resto = ordenDelDia(resto);
   var conteo = (momento === 'noche' ? 'Night Out' : 'Day Out') + ' · ' + sitios.length + (sitios.length === 1 ? t(' lugar') : t(' lugares')) +
     (nEventos ? t(' y ') + nEventos + (nEventos === 1 ? t(' evento') : t(' eventos')) : '');
   var lateral = '<div class="lateral">' + agendaHtml +
@@ -750,10 +750,16 @@ app.addEventListener('click', function (ev) {
   }
 });
 
-/* A partir de la tercera visita desde el mismo dispositivo, el orden de Lugares cambia en cada visita
-   (fijo mientras dura la visita, para que las páginas no se mezclen). */
-var VISITAS = 0;
-try { VISITAS = (Number(localStorage.getItem('hangout-visitas')) || 0) + 1; localStorage.setItem('hangout-visitas', VISITAS); } catch (e) { /* sin almacenamiento */ }
+/* Orden de Lugares, mixto: los 3 cargados más recientemente quedan arriba y el resto cambia de orden
+   una vez por día (el mismo orden para todos durante ese día). */
+function ordenDelDia(lista) {
+  var pos = {};
+  datos.lugares.forEach(function (l, i) { pos[l.id] = i; });
+  var porAlta = lista.slice().sort(function (x, y) { return (y.alta || '').localeCompare(x.alta || '') || pos[y.id] - pos[x.id]; });
+  var fijos = porAlta.slice(0, 3);
+  var dia = new Date(); dia = dia.getFullYear() * 400 + dia.getMonth() * 31 + dia.getDate();
+  return fijos.concat(mezclar(lista.filter(function (l) { return fijos.indexOf(l) === -1; }), dia));
+}
 function mezclar(lista, semilla) {
   var s = semilla * 9301 + 49297, copia = lista.slice();
   function azar() { s = (s * 9301 + 49297) % 233280; return s / 233280; }
