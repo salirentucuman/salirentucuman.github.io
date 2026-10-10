@@ -426,7 +426,6 @@ function paginaEnlace(l) {
     '<meta property="og:image" content="' + BASE + '/compartir-logo.jpg">\n' +
     '<meta property="og:image:width" content="600">\n<meta property="og:image:height" content="600">\n' +
     '<meta name="twitter:card" content="summary">\n' +
-    '<meta http-equiv="refresh" content="0; url=' + escHtml(dest) + '">\n' +
     '<script>location.replace(' + JSON.stringify(dest) + ');</script>\n' +
     '</head><body><a href="' + escHtml(dest) + '">' + escHtml(l.nombre) + ' en Hang Out Tucumán</a></body></html>\n';
 }
