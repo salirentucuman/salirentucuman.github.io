@@ -849,6 +849,43 @@
       "encuadre": {
         "fotos/la-rita-1791564670693-4.jpg": "50% 46%"
       }
+    },
+    {
+      "id": "fika",
+      "alta": "2026-10-10",
+      "nombre": "FIKA",
+      "tipo": "Catering",
+      "zona": "",
+      "direccion": "",
+      "whatsapp": "+5493816353169",
+      "web": "",
+      "mail": "",
+      "instagram": "fikaencasa.catering",
+      "breve": "El más delicado catering",
+      "texto": "",
+      "practico": "",
+      "precio": "",
+      "credito": "fikaencasa.catering",
+      "entradas": "",
+      "categorias": [
+        "autor",
+        "productores"
+      ],
+      "momento": "dia",
+      "foto": "fotos/fika-1791637166853-6.jpg",
+      "galeria": [
+        "fotos/fika-1791637154396-1.jpg",
+        "fotos/fika-1791637157290-2.jpg",
+        "fotos/fika-1791637160297-3.jpg",
+        "fotos/fika-1791637162505-4.jpg",
+        "fotos/fika-1791637164409-5.jpg",
+        "fotos/fika-1791637168968-7.jpg",
+        "fotos/fika-1791637170665-8.jpg",
+        "fotos/fika-1791637172887-9.jpg"
+      ],
+      "encuadre": {
+        "fotos/fika-1791637170665-8.jpg": "50% 25%"
+      }
     }
   ]
 }
