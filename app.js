@@ -814,4 +814,20 @@ if ('serviceWorker' in navigator) {
   s.onload = contar;
   document.head.appendChild(s);
   window.addEventListener('hashchange', contar);
+
+  /* Google Analytics (G-RRN35X1WDS): cada ficha o sección cuenta como una página propia. */
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-RRN35X1WDS';
+  document.head.appendChild(ga);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', 'G-RRN35X1WDS', { send_page_view: false });
+  function vistaGA() {
+    var ruta = location.hash ? location.hash.slice(1) : '/';
+    window.gtag('event', 'page_view', { page_location: location.origin + ruta, page_path: ruta, page_title: document.title });
+  }
+  vistaGA();
+  window.addEventListener('hashchange', vistaGA);
 })();
