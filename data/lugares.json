@@ -892,6 +892,37 @@
       "encuadre": {
         "fotos/fika-1791637170665-8.jpg": "50% 25%"
       }
+    },
+    {
+      "id": "fito-paez",
+      "alta": "2026-10-10",
+      "nombre": "Fito Paez",
+      "tipo": "Concierto",
+      "zona": "Ciudadela",
+      "direccion": "Central Córdoba",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "instagram": "",
+      "breve": "",
+      "texto": "",
+      "practico": "",
+      "precio": "",
+      "credito": "",
+      "entradas": "",
+      "categorias": [
+        "eventos"
+      ],
+      "momento": "noche",
+      "foto": "fotos/fito-paez-1791640338188-1.jpg",
+      "encuadre": {
+        "fotos/fito-paez-1791640338188-1.jpg": "50% 0%"
+      },
+      "evento": {
+        "cuando": "Domingo 11 de Octubre, 2026",
+        "inicio": "2026-10-12T00:00:00.000Z",
+        "fin": "2026-10-11T02:59:00.000Z"
+      }
     }
   ]
 }
