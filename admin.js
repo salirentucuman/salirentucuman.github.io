@@ -1,3 +1,5 @@
+/* Este dispositivo es de María: no se cuenta en las estadísticas de la web. */
+try { localStorage.setItem('hangout-no-medir', '1'); } catch (e) { /* sin almacenamiento */ }
 /* Panel privado: publica sitios y eventos escribiendo data/lugares.json y fotos/ en el repositorio de GitHub. */
 
 var CATEGORIAS = [

@@ -797,3 +797,21 @@ fetch('data/lugares.json', { cache: 'no-cache' })
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(function () {});
 }
+
+/* Estadísticas (GoatCounter): cuenta cada página que se abre, también fichas y categorías.
+   No cuenta los dispositivos de María: cualquiera donde se abrió el formulario de carga queda excluido. */
+(function () {
+  try { if (localStorage.getItem('hangout-no-medir')) return; } catch (e) { /* sin almacenamiento */ }
+  if (location.hostname.indexOf('hangout-tucuman.com') === -1) return;
+  window.goatcounter = { no_onload: true };
+  function contar() {
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.hash ? location.hash.slice(1) : '/' });
+  }
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://hangouttucuman.goatcounter.com/count');
+  s.onload = contar;
+  document.head.appendChild(s);
+  window.addEventListener('hashchange', contar);
+})();
