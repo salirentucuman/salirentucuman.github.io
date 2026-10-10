@@ -842,8 +842,8 @@
       "momento": "dia",
       "foto": "fotos/la-rita-1791564673499-5.jpg",
       "galeria": [
-        "fotos/la-rita-1791564610235-1.jpg",
         "fotos/la-rita-1791564612772-2.jpg",
+        "fotos/la-rita-1791655003136-1.jpg",
         "fotos/la-rita-1791564614668-3.jpg",
         "fotos/la-rita-1791564670693-4.jpg",
         "fotos/la-rita-1791564676109-6.jpg",
@@ -852,8 +852,9 @@
         "fotos/la-rita-1791564682094-9.jpg"
       ],
       "encuadre": {
-        "fotos/la-rita-1791564670693-4.jpg": "50% 46%",
-        "fotos/la-rita-1791564673499-5.jpg": "50% 48%"
+        "fotos/la-rita-1791564673499-5.jpg": "50% 48%",
+        "fotos/la-rita-1791655003136-1.jpg": "50% 51%",
+        "fotos/la-rita-1791564670693-4.jpg": "50% 46%"
       }
     },
     {
