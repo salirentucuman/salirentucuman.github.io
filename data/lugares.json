@@ -931,6 +931,41 @@
         "inicio": "2026-10-12T00:00:00.000Z",
         "fin": "2026-10-11T02:59:00.000Z"
       }
+    },
+    {
+      "id": "6k-culmen-las-canas",
+      "alta": "2026-10-15",
+      "nombre": "6K Culmen & Las Cañas",
+      "tipo": "Running",
+      "zona": "Yerba Buena",
+      "direccion": "Las Cañas, 5PXG+24, Yerba Buena, Tucumán",
+      "whatsapp": "‪+5493815767328‬",
+      "web": "",
+      "mail": "",
+      "instagram": "@culmen.challenge",
+      "breve": "Corré 6k con causa!",
+      "texto": "Otra de las maravillas de Culmen Outdoors!",
+      "practico": "En apoyo a la Fundación El Casco Rosa (cáncer de mama).",
+      "precio": "$40.000",
+      "credito": "culmen.challenge",
+      "entradas": "https://inscripciones.culmen.com.ar/eventos/corre-con-causa-2",
+      "categorias": [
+        "eventos"
+      ],
+      "momento": "dia",
+      "foto": "fotos/6k-culmen-las-canas-1792070622697-1.jpg",
+      "galeria": [
+        "fotos/6k-culmen-las-canas-1792070625082-2.jpg",
+        "fotos/6k-culmen-las-canas-1792070626979-3.jpg"
+      ],
+      "encuadre": {
+        "fotos/6k-culmen-las-canas-1792070622697-1.jpg": "50% 81%",
+        "fotos/6k-culmen-las-canas-1792070625082-2.jpg": "50% 0%"
+      },
+      "evento": {
+        "cuando": "Jueves 29 de Octubre",
+        "inicio": "2026-10-29T22:00:00.000Z"
+      }
     }
   ]
 }
