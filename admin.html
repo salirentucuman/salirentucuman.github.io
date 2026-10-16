@@ -84,12 +84,14 @@
 @media (min-width: 820px) {
   .campo:has(> input[type=text]), .campo:has(> input[type=password]), .campo:has(> input[type=email]), .campo:has(> select), .campo:has(> input[type=datetime-local]) { grid-template-columns: 160px minmax(0, 1fr); }
 }
+.no-medir { margin: 8px 4px 0; font-size: 12px; color: #2E6B3A; font-weight: 600; }
 </style>
 </head>
 <body>
 <div class="app">
 <main class="pagina">
   <div class="marca"><div class="marca-nombre">Hang Out</div></div>
+  <p class="no-medir" id="no-medir" hidden>✓ Este dispositivo no se cuenta en las estadísticas de la web.</p>
 
   <section class="seccion" id="acceso">
     <h2>Acceso</h2>
@@ -201,6 +203,6 @@
   <div id="qr" style="padding:10px;background:#fff"></div>
   <div class="encuadre-botones"><button type="button" class="lleno" id="cerrar-qr">Listo</button></div>
 </div></div>
-<script src="admin.js?v=22"></script>
+<script src="admin.js?v=23"></script>
 </body>
 </html>

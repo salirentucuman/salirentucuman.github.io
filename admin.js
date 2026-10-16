@@ -513,3 +513,6 @@ $('crear-contrasena').addEventListener('click', function () {
   }).then(function () { accesoGuardado = null; estado('Listo. Desde ahora entrás con tu contraseña en cualquier celular o PC.'); })
     .catch(function (e) { estado(e.message, true); });
 });
+
+/* Confirmación visible de que este dispositivo está excluido de las estadísticas. */
+try { if (localStorage.getItem('hangout-no-medir')) $('no-medir').hidden = false; } catch (e) { /* sin almacenamiento */ }
