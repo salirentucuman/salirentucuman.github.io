@@ -235,6 +235,7 @@ function publicar(ev) {
       lista.push(lugar);
     }
     CAMPOS.forEach(function (c) { lugar[c] = $(c).value.trim(); });
+    if (/instagram\.com/i.test(lugar.instagram)) lugar.instagram = '@' + lugar.instagram.replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/[\/?#].*$/, '');
     lugar.categorias = cats;
     lugar.momento = $('momento').value;
     if (esCuriosidad) { lugar.curiosidad = true; lugar.sinMapa = true; } else if (lugar.curiosidad) { delete lugar.curiosidad; delete lugar.sinMapa; }

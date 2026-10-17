@@ -52,6 +52,7 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Compartir": "Share",
  "De qué se trata": "About",
  "Por qué ir": "Why go",
+ "Ver el video": "Watch the video",
  "Ir a ver otros eventos": "See more events",
  "Entradas": "Tickets",
  "Comprar entradas": "Buy tickets",
@@ -339,6 +340,17 @@ function pildora(lugar) {
 var ESTRELLA = '<svg class="estrella" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg>';
 /* Encuadre elegido en el panel para cada foto (object-position). */
 function encuadre(lugar, ruta) { var e = (lugar.encuadre || {})[ruta]; return e ? ' style="object-position:' + esc(e) + '"' : ''; }
+/* Links dentro de los textos: se pueden tocar y muestran un nombre corto en vez de la dirección. */
+function usuarioIG(v) { return String(v || '').trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/[\/?#].*$/, '').replace(/^@/, ''); }
+function textoConEnlaces(s) {
+  return esc(s).replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)]/g, function (url) {
+    var limpio = url.replace(/&amp;/g, '&'), nombre;
+    if (/youtu\.?be/i.test(limpio)) nombre = t('Ver el video');
+    else if (/instagram\.com/i.test(limpio)) nombre = '@' + usuarioIG(limpio);
+    else nombre = limpio.replace(/^https?:\/\/(www\.)?/i, '').replace(/\/.*$/, '');
+    return '<a class="enlace" target="_blank" rel="noopener" href="' + url + '">' + esc(nombre) + '</a>';
+  });
+}
 function leyendaFavorito() { return '<div class="favorito">' + ESTRELLA + '<span>' + t('Favorito de Hang Out') + '</span></div>'; }
 function nombreCon(lugar) {
   return esc(lugar.nombre) + (lugar.favorito ? ' <svg class="estrella" viewBox="0 0 24 24" role="img" aria-label="Favorito de Hang Out"><path fill="currentColor" d="M12 1.500c.9 6.200 4.400 9.700 10.500 10.500-6.100.8-9.600 4.300-10.500 10.500C11.100 16.300 7.600 12.800 1.500 12 7.600 11.200 11.100 7.700 12 1.500z"/></svg>' : '');
@@ -553,9 +565,9 @@ function vistaLugar(id) {
   ].filter(function (f) { return f[1]; }).map(function (f) {
     var valor = esc(f[1]);
     if (f[0] === t('Entradas')) valor = '<a class="enlace" target="_blank" rel="noopener" href="' + esc(f[1]) + '">' + t('Comprar entradas') + '</a>';
-    if (f[0] === 'Web') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://' + esc(String(f[1]).replace(/^https?:\/\//, '')) + '">' + valor + '</a>';
+    if (f[0] === 'Web') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://' + esc(String(f[1]).replace(/^https?:\/\//, '')) + '">' + (/youtu\.?be/i.test(f[1]) ? t('Ver el video') : esc(String(f[1]).replace(/^https?:\/\/(www\.)?/i, '').replace(/\/$/, ''))) + '</a>';
     if (f[0] === t('Mail')) valor = '<a class="enlace" href="mailto:' + esc(f[1]) + '">' + valor + '</a>';
-    if (f[0] === 'Instagram') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://www.instagram.com/' + encodeURIComponent(String(f[1]).replace(/^@/, '')) + '/">' + valor + '</a>';
+    if (f[0] === 'Instagram') valor = '<a class="enlace" target="_blank" rel="noopener" href="https://www.instagram.com/' + encodeURIComponent(usuarioIG(f[1])) + '/">@' + esc(usuarioIG(f[1])) + '</a>';
     if (f[0] === t('Dirección') && !lugar.sinMapa) {
       var q = encodeURIComponent([lugar.nombre, lugar.direccion, 'Tucumán'].filter(Boolean).join(', '));
       valor = '<a class="enlace enlace-mapa" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=' + q + '">' + valor + '</a>';
@@ -596,8 +608,8 @@ function vistaLugar(id) {
     '</div>' +
     (lugar.favorito ? leyendaFavorito() : '') +
     (filas ? '<dl class="datos">' + filas + '</dl>' : '') +
-    (lugar.texto ? '<section class="bloque con-raya"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : lugar.curiosidad ? t('Lo que hay que saber') : t('Por qué ir')) + '</h2><div class="texto">' + esc(lugar.texto) + '</div></section>' : '') +
-    (lugar.practico ? '<section class="bloque con-raya"><h2 class="etiqueta">' + t('Datos prácticos') + '</h2><div class="texto">' + esc(lugar.practico) + '</div></section>' : '') +
+    (lugar.texto ? '<section class="bloque con-raya"><h2 class="etiqueta">' + (lugar.evento ? 'De qué se trata' : lugar.curiosidad ? t('Lo que hay que saber') : t('Por qué ir')) + '</h2><div class="texto">' + textoConEnlaces(lugar.texto) + '</div></section>' : '') +
+    (lugar.practico ? '<section class="bloque con-raya"><h2 class="etiqueta">' + t('Datos prácticos') + '</h2><div class="texto">' + textoConEnlaces(lugar.practico) + '</div></section>' : '') +
     (lugar.curiosidad ? '' : '<section class="fuiste"><div class="fuiste-cabeza"><div class="fuiste-titulo">' + t('Ya fuiste?') + '</div>' +
     '<button class="boton boton-chico" data-accion="abrir-buzon" data-tipo="resena" data-lugar="' + esc(lugar.nombre) + '">' + t('Dejar reseña') + '</button></div></section>') +
     '</div></main><div class="fuera">' + pie(false) + '</div>' + nav('');
