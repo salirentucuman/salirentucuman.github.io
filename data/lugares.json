@@ -628,14 +628,14 @@
       "nombre": "Tomatito Pizzería",
       "tipo": "Pizzería",
       "zona": "Barrio Sur",
-      "direccion": "Se están mudando, chequear antes de ir.",
+      "direccion": "Bernabé Araóz 418, T4000IXJ San Miguel de Tucumán, Tucumán",
       "whatsapp": "+5493813351597",
       "web": "",
       "mail": "",
       "instagram": "tomatito.pizzeria",
       "breve": "Pizza de vereda",
-      "texto": "Para veredear, pero seriamente. \n\nSolo 25 pizzas por noche. Se cierra con la última que se va.\n\nEs muy difícil discutir sobre la mejor pizza en Barrio Sur porque las opciones son todas ganadoras, pero Tomatito tiene sin lugar a dudas de las mejores y la experiencia es sin igual. La pizza se come parados en la vereda (literal).",
-      "practico": "No venden bebidas, únicamente pizzas. \nSe están mudando, chequear antes de ir.",
+      "texto": "Para veredear. Solo 25 pizzas por noche. Se cierra con la última que se va. Espectacular. \n\nEs muy difícil discutir sobre la mejor pizza en Barrio Sur porque las opciones son todas ganadoras, pero Tomatito tiene sin lugar a dudas de las mejores y la experiencia es sin igual. La pizza se come parados en la vereda o en el banco placero del frente (literal).",
+      "practico": "No venden bebidas, únicamente pizzas. \n\nChequear antes de ir: por el momento solo delivery & take away, abriendo puertas en Noviembre 2026.",
       "precio": "",
       "credito": "tomatito.pizzeria",
       "categorias": [
@@ -649,7 +649,6 @@
         "fotos/tomatito-pizzeria-1791482349827-2.jpg",
         "fotos/tomatito-pizzeria-1791482352151-3.jpg",
         "fotos/tomatito-pizzeria-1791482353866-4.jpg",
-        "fotos/tomatito-pizzeria-1791482356400-5.jpg",
         "fotos/tomatito-pizzeria-1791482358752-6.jpg",
         "fotos/tomatito-pizzeria-1791482361107-7.jpg"
       ],
@@ -659,7 +658,8 @@
         "fotos/tomatito-pizzeria-1791482353866-4.jpg": "50% 0%",
         "fotos/tomatito-pizzeria-1791482358752-6.jpg": "50% 68%",
         "fotos/tomatito-pizzeria-1791482361107-7.jpg": "50% 47%"
-      }
+      },
+      "entradas": ""
     },
     {
       "id": "gala-cascanueces",
