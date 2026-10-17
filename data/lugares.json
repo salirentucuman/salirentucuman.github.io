@@ -64,7 +64,8 @@
         "fotos/madame-rouges-3.jpg",
         "fotos/madame-rouges-4.jpg",
         "fotos/madame-rouges-6.jpg",
-        "fotos/madame-rouges-5.jpg"
+        "fotos/madame-rouges-5.jpg",
+        "fotos/madame-rouges-1792241906852-1.jpg"
       ],
       "credito": "@madamerougestucuman",
       "momento": "dia",
@@ -80,8 +81,10 @@
         "fotos/madame-rouges.jpg": "50% 61%",
         "fotos/madame-rouges-2.jpg": "50% 73%",
         "fotos/madame-rouges-3.jpg": "50% 13%",
-        "fotos/madame-rouges-4.jpg": "50% 40%"
-      }
+        "fotos/madame-rouges-4.jpg": "50% 40%",
+        "fotos/madame-rouges-1792241906852-1.jpg": "50% 32%"
+      },
+      "entradas": ""
     },
     {
       "id": "villa-poli-2-anos",
