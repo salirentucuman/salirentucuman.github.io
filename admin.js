@@ -253,7 +253,7 @@ function publicar(ev) {
       if ($('inicio').value) lugar.evento.inicio = new Date($('inicio').value).toISOString();
       if ($('fin').value) lugar.evento.fin = new Date($('fin').value).toISOString();
     } else delete lugar.evento;
-    return escribir(actual.json, actual.sha, (idActual ? 'Actualiza ' : 'Suma ') + nombre).then(function () { datos = actual.json; return escribirEnlace(lugar); });
+    return escribir(actual.json, actual.sha, (idActual ? 'Actualiza ' : 'Suma ') + nombre).then(function () { datos = actual.json; var tapa = fotos[portada]; return escribirEnlace(lugar, tapa && (tapa.vista || tapa.ruta)); });
   }).then(function () {
     llenarSelector();
     cargarFormulario(null);
@@ -413,9 +413,19 @@ $('duplicar').addEventListener('click', function () {
 var BASE = 'https://www.hangout-tucuman.com';
 var LEMA = 'La guía de los mejores lugares para salir en Tucumán.';
 function escHtml(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'); }
-function paginaEnlace(l) {
-  var desc = LEMA + ' ' + l.nombre + (l.breve ? ': ' + l.breve : '');
+function textoCompartir(l) {
+  if (l.evento && l.evento.cuando) {
+    var lugarEv = String(l.direccion || '').split(',')[0].trim();
+    return l.evento.cuando + (lugarEv ? ' · ' + lugarEv : '') + '. Mirá la ficha completa en Hang Out.';
+  }
+  var b = String(l.breve || '').trim();
+  if (b && !/[.!?…]$/.test(b)) b += '.';
+  return (b ? b + ' ' : '') + 'Mirá la ficha en Hang Out.';
+}
+function paginaEnlace(l, version) {
+  var desc = textoCompartir(l);
   var dest = '/#/lugar/' + l.id;
+  var conFoto = !!(l.foto && version);
   return '<!doctype html>\n<html lang="es"><head><meta charset="utf-8">\n' +
     '<title>' + escHtml(l.nombre) + ' · Hang Out Tucumán</title>\n' +
     '<meta name="description" content="' + escHtml(desc) + '">\n' +
@@ -424,18 +434,53 @@ function paginaEnlace(l) {
     '<meta property="og:description" content="' + escHtml(desc) + '">\n' +
     '<meta property="og:type" content="website">\n' +
     '<meta property="og:url" content="' + BASE + '/l/' + escHtml(l.id) + '">\n' +
-    '<meta property="og:image" content="' + BASE + '/compartir-logo.jpg">\n' +
-    '<meta property="og:image:width" content="600">\n<meta property="og:image:height" content="600">\n' +
-    '<meta name="twitter:card" content="summary">\n' +
+    (conFoto
+      ? '<meta property="og:image" content="' + BASE + '/l/' + escHtml(l.id) + '.jpg?v=' + version + '">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta name="twitter:card" content="summary_large_image">\n'
+      : '<meta property="og:image" content="' + BASE + '/compartir-logo.jpg">\n<meta property="og:image:width" content="600">\n<meta property="og:image:height" content="600">\n<meta name="twitter:card" content="summary">\n') +
     '<script>location.replace(' + JSON.stringify(dest) + ');</script>\n' +
     '</head><body><a href="' + escHtml(dest) + '">' + escHtml(l.nombre) + ' en Hang Out Tucumán</a></body></html>\n';
 }
-function escribirEnlace(l) {
-  var ruta = 'l/' + l.id + '.html';
+/* Imagen para la vista previa: la foto de portada (con su encuadre) a 1200 × 630, con el sello HANG OUT abajo a la izquierda. */
+function imagenCompartir(src, pos) {
+  var fuente = new FontFace('HankenSello', 'url(fonts/hanken-grotesk-latin-700-normal.woff2)');
+  return fuente.load().then(function (f) { document.fonts.add(f); }, function () {}).then(function () {
+    return new Promise(function (ok, mal) {
+      var img = new Image();
+      img.onload = function () {
+        var W = 1200, H = 630, c = document.createElement('canvas'); c.width = W; c.height = H;
+        var x = c.getContext('2d');
+        var esc = Math.max(W / img.naturalWidth, H / img.naturalHeight), dw = img.naturalWidth * esc, dh = img.naturalHeight * esc;
+        var p = String(pos || '50% 50%').split(' ').map(parseFloat);
+        x.drawImage(img, (W - dw) * (p[0] / 100), (H - dh) * ((isNaN(p[1]) ? 50 : p[1]) / 100), dw, dh);
+        var texto = 'HANG OUT', sep = 7;
+        x.font = '700 26px HankenSello, Helvetica, Arial, sans-serif';
+        var ancho = 0; for (var i = 0; i < texto.length; i++) ancho += x.measureText(texto[i]).width + (i < texto.length - 1 ? sep : 0);
+        var padX = 24, alto = 54, bx = 34, by = H - 34 - alto, bw = ancho + padX * 2;
+        x.fillStyle = '#4E2519';
+        if (x.roundRect) { x.beginPath(); x.roundRect(bx, by, bw, alto, 5); x.fill(); } else x.fillRect(bx, by, bw, alto);
+        x.fillStyle = '#FBF1DD'; x.textBaseline = 'middle';
+        var cx = bx + padX; for (var k = 0; k < texto.length; k++) { x.fillText(texto[k], cx, by + alto / 2 + 1); cx += x.measureText(texto[k]).width + sep; }
+        ok(c.toDataURL('image/jpeg', 0.86).split(',')[1]);
+      };
+      img.onerror = function () { mal(new Error('No se pudo leer la foto de portada.')); };
+      img.src = src;
+    });
+  });
+}
+function subirArchivo(ruta, contenidoB64, mensaje) {
   return api(ruta + '?t=' + Date.now(), { cache: 'no-store' }).then(function (f) { return f.sha; }, function () { return null; }).then(function (sha) {
-    var cuerpo = { message: 'Enlace para compartir: ' + l.nombre, content: aBase64(paginaEnlace(l)) };
+    var cuerpo = { message: mensaje, content: contenidoB64 };
     if (sha) cuerpo.sha = sha;
     return api(ruta, { method: 'PUT', body: JSON.stringify(cuerpo) });
+  });
+}
+function escribirEnlace(l, fotoLocal) {
+  var version = Date.now();
+  var foto = l.foto ? imagenCompartir(fotoLocal || l.foto, (l.encuadre || {})[l.foto]).then(function (b64) {
+    return subirArchivo('l/' + l.id + '.jpg', b64, 'Imagen para compartir: ' + l.nombre).then(function () { return version; });
+  }).catch(function () { return null; }) : Promise.resolve(null);
+  return foto.then(function (v) {
+    return subirArchivo('l/' + l.id + '.html', aBase64(paginaEnlace(l, v)), 'Enlace para compartir: ' + l.nombre);
   }).catch(function () { /* si falla, la ficha ya quedó publicada; el enlace se rehace al próximo guardado */ });
 }
 
