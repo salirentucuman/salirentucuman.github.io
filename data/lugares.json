@@ -1002,6 +1002,42 @@
         "fotos/culmen-outdoor-1792242533133-2.jpg": "50% 40%",
         "fotos/culmen-outdoor-1792244350880-1.jpg": "50% 77%"
       }
+    },
+    {
+      "id": "pago-querido-juan-quintero",
+      "nombre": "Pago Querido",
+      "categorias": [
+        "eventos",
+        "cultura"
+      ],
+      "zona": "Parque 9 de Julio, SMT",
+      "tipo": "Recital",
+      "momento": "ambos",
+      "breve": "Un recital de Juan Quintero al atardecer, en la Casa de la Cultura del Parque 9 de Julio.",
+      "texto": "Pago Querido, un recital de Juan Quintero.\n\nUna tarde de música en la Casa de la Cultura del Parque 9 de Julio.",
+      "practico": "Entrada libre y gratuita.\nEn caso de lluvia, se traslada al Complejo Ledesma, 25 de Mayo 971.",
+      "foto": "fotos/pago-querido-juan-quintero.jpg",
+      "credito": "",
+      "direccion": "Casa de la Cultura, Parque 9 de Julio, San Miguel de Tucumán",
+      "precio": "Entrada libre y gratuita",
+      "instagram": "@cultura.smt",
+      "alta": "2026-10-20",
+      "evento": {
+        "cuando": "Domingo 1 de noviembre, 19 h",
+        "inicio": "2026-11-01T03:00:00.000Z",
+        "fin": "2026-11-02T02:59:00.000Z"
+      },
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "en": {
+        "nombre": "Pago Querido",
+        "tipo": "Recital",
+        "cuando": "Sunday 1 November, 7 pm",
+        "breve": "Juan Quintero in recital at dusk, at the Casa de la Cultura in Parque 9 de Julio.",
+        "texto": "Pago Querido, a recital by Juan Quintero.\n\nAn evening of music at the Casa de la Cultura in Parque 9 de Julio.",
+        "practico": "Free entry.\nIf it rains, the recital moves to the Complejo Ledesma, 25 de Mayo 971."
+      }
     }
   ]
 }
