@@ -1038,6 +1038,46 @@
         "texto": "Pago Querido, a recital by Juan Quintero.\n\nAn evening of music at the Casa de la Cultura in Parque 9 de Julio.",
         "practico": "Free entry.\nIf it rains, the recital moves to the Complejo Ledesma, 25 de Mayo 971."
       }
+    },
+    {
+      "id": "golden-folk",
+      "nombre": "Golden Folk",
+      "categorias": [
+        "eventos",
+        "cultura"
+      ],
+      "zona": "Parque Avellaneda, SMT",
+      "tipo": "Sunset de folklore",
+      "momento": "noche",
+      "breve": "Un sunset de folklore hecho en el norte, en su primera edición.",
+      "texto": "Golden Folk, un sunset de folklore de De Aquí Nomá. Edición #1.\n\n19:30 h · DJ en set\n21:00 h · Vale Nieva\n21:30 h · Chakana\n22:15 h · Ema Ayala",
+      "practico": "Solo con entradas. Se consiguen por WhatsApp al +54 9 3815 50-8622.",
+      "foto": "fotos/golden-folk.jpg",
+      "galeria": [
+        "fotos/golden-folk-2.jpg"
+      ],
+      "credito": "@deaquinomaok",
+      "direccion": "Pje. María Auxiliadora 96, T4000 San Miguel de Tucumán, Tucumán",
+      "whatsapp": "+54 9 3815 50-8622",
+      "instagram": "@deaquinomaok",
+      "entradas": "https://wa.me/5493815508622",
+      "alta": "2026-10-22",
+      "web": "",
+      "mail": "",
+      "precio": "",
+      "evento": {
+        "cuando": "Jueves 12 de noviembre, de 19:30 a 0 h",
+        "inicio": "2026-11-12T03:00:00.000Z",
+        "fin": "2026-11-13T02:59:00.000Z"
+      },
+      "en": {
+        "nombre": "Golden Folk",
+        "tipo": "Folk at sunset",
+        "cuando": "Thursday 12 November, 7.30 pm to midnight",
+        "breve": "A sunset of folk music made in the north, in its first edition.",
+        "texto": "Golden Folk, a folk sunset by De Aquí Nomá. Edition no. 1.\n\n7.30 pm · DJ set\n9 pm · Vale Nieva\n9.30 pm · Chakana\n10.15 pm · Ema Ayala",
+        "practico": "Tickets only. Available via WhatsApp on +54 9 3815 50-8622."
+      }
     }
   ]
 }
