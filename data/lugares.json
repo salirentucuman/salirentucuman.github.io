@@ -1083,7 +1083,8 @@
       "id": "nina-obrador",
       "nombre": "Niña Obrador",
       "categorias": [
-        "barrio"
+        "barrio",
+        "productores"
       ],
       "zona": "Yerba Buena y San Miguel de Tucumán",
       "tipo": "Panadería",
