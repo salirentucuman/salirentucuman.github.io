@@ -1078,6 +1078,43 @@
         "texto": "Golden Folk, a folk sunset by De Aquí Nomá. Edition no. 1.\n\n7.30 pm · DJ set\n9 pm · Vale Nieva\n9.30 pm · Chakana\n10.15 pm · Ema Ayala",
         "practico": "Tickets only. Available via WhatsApp on +54 9 3815 50-8622."
       }
+    },
+    {
+      "id": "nina-obrador",
+      "nombre": "Niña Obrador",
+      "categorias": [
+        "barrio"
+      ],
+      "zona": "Yerba Buena y San Miguel de Tucumán",
+      "tipo": "Panadería",
+      "momento": "dia",
+      "breve": "Las Lunas: medialunas XL que opacan cualquier otra.",
+      "texto": "Niña Obrador tiene la delicadeza de llamar tímidamente Lunas a sus medialunas XL, que opacan cualquier otra.\n\nYa cumplió 3 años; sin embargo, es para nosotros (y muchos) un hallazgo y un favorito absoluto!",
+      "practico": "Dos locales: San Martín 1124, Yerba Buena, y Lamadrid 1229, San Miguel de Tucumán.",
+      "foto": "fotos/nina-obrador.jpg",
+      "galeria": [
+        "fotos/nina-obrador-2.jpg",
+        "fotos/nina-obrador-3.jpg",
+        "fotos/nina-obrador-4.jpg",
+        "fotos/nina-obrador-5.jpg"
+      ],
+      "credito": "@ninaobrador",
+      "direccion": "San Martín 1124, Yerba Buena",
+      "instagram": "@ninaobrador",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "precio": "",
+      "hallazgo": true,
+      "favorito": true,
+      "alta": "2026-10-24",
+      "en": {
+        "nombre": "Niña Obrador",
+        "tipo": "Bakery",
+        "breve": "The Lunas: oversized croissants that eclipse all others.",
+        "texto": "Niña Obrador has the modesty to call its oversized croissants simply Lunas. They eclipse all others.\n\nThree years in, it remains, for us and for many, a find and an absolute favourite.",
+        "practico": "Two shops: San Martín 1124, Yerba Buena, and Lamadrid 1229, San Miguel de Tucumán."
+      }
     }
   ]
 }
