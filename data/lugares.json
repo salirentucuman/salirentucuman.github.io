@@ -1116,6 +1116,44 @@
         "texto": "Niña Obrador has the modesty to call its oversized croissants simply Lunas. They eclipse all others.\n\nThree years in, it remains, for us and for many, a find and an absolute favourite.",
         "practico": "Two shops: San Martín 1124, Yerba Buena, and Lamadrid 1229, San Miguel de Tucumán."
       }
+    },
+    {
+      "id": "nora-en-pure",
+      "nombre": "Nora En Pure",
+      "categorias": [
+        "eventos"
+      ],
+      "zona": "San Miguel de Tucumán",
+      "tipo": "Fiesta electrónica",
+      "momento": "noche",
+      "breve": "La DJ suizo-sudafricana pasa por Tucumán en su gira Winter 2026.",
+      "texto": "",
+      "practico": "Viernes 6 de noviembre, de 22 a 6 h.\nLa Cascada Club Nocturno, San Miguel de Tucumán.\nEntradas en Central Ticket, desde $28.000.",
+      "foto": "fotos/nora-en-pure.jpg",
+      "galeria": [
+        "fotos/nora-en-pure-2.jpg"
+      ],
+      "credito": "@noraenpure",
+      "direccion": "La Cascada Club Nocturno, San Miguel de Tucumán",
+      "precio": "Desde $28.000",
+      "entradas": "https://centralticket.net",
+      "instagram": "@noraenpure",
+      "alta": "2026-10-24",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "evento": {
+        "cuando": "Viernes 6 de noviembre, de 22 a 6 h",
+        "inicio": "2026-11-06T03:00:00.000Z",
+        "fin": "2026-11-07T09:00:00.000Z"
+      },
+      "en": {
+        "nombre": "Nora En Pure",
+        "tipo": "Electronic night",
+        "cuando": "Friday 6 November, 10 pm to 6 am",
+        "breve": "The Swiss-South African DJ stops in Tucumán on her Winter 2026 tour.",
+        "practico": "Friday 6 November, 10 pm to 6 am.\nLa Cascada Club Nocturno, San Miguel de Tucumán.\nTickets on Central Ticket, from $28,000."
+      }
     }
   ]
 }
