@@ -1183,6 +1183,42 @@
         "texto": "Tucked inside DICHA, a gallery and art space, La Copa Rota is a small, intimate bar: considered cocktails, good music, local artists and something to nibble.\n\nEach night has its own Copa Rota de la Noche. One of them, the Última Cosecha: whisky, a house apple and cinnamon cordial, lemon and ginger. Silky, fresh and gently spiced.",
         "practico": "Open on Friday nights.\nThe address is shared by direct message on Instagram."
       }
+    },
+    {
+      "id": "dicha",
+      "nombre": "DICHA",
+      "categorias": [
+        "cultura",
+        "diseno"
+      ],
+      "zona": "San Miguel de Tucumán",
+      "tipo": "Galería y espacio de arte",
+      "momento": "ambos",
+      "breve": "Talleres de artistas y espacio de fantasía.",
+      "texto": "En una antigua casa que pertenece al patrimonio arquitectónico de la provincia, se encuentra DICHA, galería y espacio de arte.\n\nLos viernes de noche, dentro de la galería, sucede La Copa Rota: https://www.hangout-tucuman.com/l/la-copa-rota",
+      "practico": "La dirección se pide por mensaje privado en su Instagram.",
+      "foto": "fotos/dicha.jpg",
+      "galeria": [
+        "fotos/dicha-2.jpg",
+        "fotos/dicha-3.jpg",
+        "fotos/dicha-4.jpg",
+        "fotos/dicha-5.jpg"
+      ],
+      "credito": "@dicha.lugar",
+      "direccion": "Galería DICHA, San Miguel de Tucumán",
+      "instagram": "@dicha.lugar",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "precio": "",
+      "alta": "2026-10-26",
+      "en": {
+        "nombre": "DICHA",
+        "tipo": "Gallery and art space",
+        "breve": "Artists' studios and a space for fantasy.",
+        "texto": "Set in an old house that is part of the province's architectural heritage, DICHA is a gallery and art space.\n\nOn Friday nights, La Copa Rota opens inside the gallery: https://www.hangout-tucuman.com/l/la-copa-rota",
+        "practico": "The address is shared by direct message on Instagram."
+      }
     }
   ]
 }

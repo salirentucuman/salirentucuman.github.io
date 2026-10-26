@@ -52,6 +52,7 @@ var TEXTOS = { es: {"cierre": "Hang Out Tucumán no es un directorio ni pretende
  "Compartir": "Share",
  "De qué se trata": "About",
  "Por qué ir": "Why go",
+ "Ver ": "See ",
  "Ver el video": "Watch the video",
  "Ir a ver otros eventos": "See more events",
  "Entradas": "Tickets",
@@ -345,6 +346,12 @@ function usuarioIG(v) { return String(v || '').trim().replace(/^https?:\/\/(www\
 function textoConEnlaces(s) {
   return esc(s).replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)]/g, function (url) {
     var limpio = url.replace(/&amp;/g, '&'), nombre;
+    /* Link a otra ficha de la guía: se abre en la misma pestaña y muestra "Ver Nombre". */
+    var propia = limpio.match(/hangout-tucuman\.com\/(?:l\/|#\/lugar\/)([a-z0-9-]+)/i);
+    if (propia) {
+      var otra = datos.lugares.filter(function (x) { return x.id === propia[1]; })[0];
+      return '<a class="enlace" href="#/lugar/' + propia[1] + '">' + t('Ver ') + esc(otra ? L(otra).nombre : propia[1]) + '</a>';
+    }
     if (/youtu\.?be/i.test(limpio)) nombre = t('Ver el video');
     else if (/instagram\.com/i.test(limpio)) nombre = '@' + usuarioIG(limpio);
     else nombre = limpio.replace(/^https?:\/\/(www\.)?/i, '').replace(/\/.*$/, '');
