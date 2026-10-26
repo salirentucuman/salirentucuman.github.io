@@ -1154,6 +1154,35 @@
         "breve": "Deep house",
         "practico": "Friday 6 November, 10 pm to 6 am.\nLa Cascada Club Nocturno, San Miguel de Tucumán.\nTickets on Central Ticket, from $28,000."
       }
+    },
+    {
+      "id": "la-copa-rota",
+      "nombre": "La Copa Rota",
+      "categorias": [
+        "comer"
+      ],
+      "zona": "San Miguel de Tucumán",
+      "tipo": "Bar de copas",
+      "momento": "noche",
+      "breve": "Copas, música y artistas locales, en formato íntimo.",
+      "texto": "Dentro de la galería y espacio de arte DICHA, La Copa Rota es un bar de formato íntimo: tragos de autor, buena música, artistas locales y algo para picar.\n\nCada noche tiene su Copa Rota de la Noche. Una de ellas, la Última Cosecha: whisky, cordial artesanal de manzana y canela, limón y jengibre. Sedosa, fresca y especiada.",
+      "practico": "Abre los viernes por la noche.\nLa dirección se pide por mensaje privado en su Instagram.",
+      "foto": "fotos/la-copa-rota.jpg",
+      "credito": "@lacoparotabar_",
+      "direccion": "Galería DICHA, San Miguel de Tucumán",
+      "instagram": "@lacoparotabar_",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "precio": "",
+      "alta": "2026-10-26",
+      "en": {
+        "nombre": "La Copa Rota",
+        "tipo": "Cocktail bar",
+        "breve": "Drinks, music and local artists, kept intimate.",
+        "texto": "Tucked inside DICHA, a gallery and art space, La Copa Rota is a small, intimate bar: considered cocktails, good music, local artists and something to nibble.\n\nEach night has its own Copa Rota de la Noche. One of them, the Última Cosecha: whisky, a house apple and cinnamon cordial, lemon and ginger. Silky, fresh and gently spiced.",
+        "practico": "Open on Friday nights.\nThe address is shared by direct message on Instagram."
+      }
     }
   ]
 }
