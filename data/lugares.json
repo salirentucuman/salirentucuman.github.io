@@ -1202,7 +1202,8 @@
         "fotos/dicha-2.jpg",
         "fotos/dicha-3.jpg",
         "fotos/dicha-4.jpg",
-        "fotos/dicha-5.jpg"
+        "fotos/dicha-5.jpg",
+        "fotos/dicha-6.jpg"
       ],
       "credito": "@dicha.lugar",
       "direccion": "Galería DICHA, San Miguel de Tucumán",
@@ -1218,6 +1219,111 @@
         "breve": "Artists' studios and a space for fantasy.",
         "texto": "Set in an old house that is part of the province's architectural heritage, DICHA is a gallery and art space.\n\nOn Friday nights, La Copa Rota opens inside the gallery: https://www.hangout-tucuman.com/l/la-copa-rota",
         "practico": "The address is shared by direct message on Instagram."
+      }
+    },
+    {
+      "id": "foco",
+      "nombre": "FOCO",
+      "categorias": [
+        "eventos",
+        "cultura"
+      ],
+      "zona": "Centro",
+      "tipo": "Feria pop-up de fotografía contemporánea",
+      "momento": "noche",
+      "breve": "Muestra efímera (apurate!) de fotografía contemporánea de Tucumán.",
+      "texto": "Primera edición de FOCO, un proyecto de @dinamo.creativo.\nDiez fotógrafos y artistas de la hostia: Rosalba Mirabella, Julio Pantoja, Valeria Cannata, Gabriel Varsanyi, Solana Peña, Pablo Masino, Valentina Manservigi, El Ojo de Agamotto, Jimena Montenegro y Aníbal Aparicio.\n\nJueves 29 · Preopening, de 19 a 22 h\nViernes 30 · Feria abierta, de 19 a 22 h\nSábado 31 · Noche de los Museos, de 19 a 0 h",
+      "practico": "Todas las obras se pueden ver en https://www.feriafoco.com.ar\nAntes de ir, revisar que no hayan cambiado días u horarios.",
+      "foto": "fotos/foco.jpg",
+      "galeria": [
+        "fotos/foco-2.jpg",
+        "fotos/foco-3.jpg"
+      ],
+      "credito": "@feriafo.co",
+      "direccion": "Federación Económica de Tucumán (FET), San Martín 427, San Miguel de Tucumán",
+      "instagram": "@feriafo.co",
+      "whatsapp": "",
+      "web": "https://www.feriafoco.com.ar",
+      "mail": "",
+      "precio": "",
+      "alta": "2026-10-28",
+      "evento": {
+        "cuando": "Del jueves 29 al sábado 31 de octubre",
+        "inicio": "2026-10-29T03:00:00.000Z",
+        "fin": "2026-11-01T02:59:00.000Z"
+      },
+      "en": {
+        "nombre": "FOCO",
+        "tipo": "Pop-up contemporary photography fair",
+        "cuando": "Thursday 29 to Saturday 31 October",
+        "breve": "A fleeting show (hurry!) of contemporary photography from Tucumán.",
+        "texto": "First edition of FOCO, a project by @dinamo.creativo.\nTen brilliant photographers and artists: Rosalba Mirabella, Julio Pantoja, Valeria Cannata, Gabriel Varsanyi, Solana Peña, Pablo Masino, Valentina Manservigi, El Ojo de Agamotto, Jimena Montenegro and Aníbal Aparicio.\n\nThursday 29 · Pre-opening, 7 to 10 pm\nFriday 30 · Fair open, 7 to 10 pm\nSaturday 31 · Night of the Museums, 7 pm to midnight",
+        "practico": "All the works can be seen at https://www.feriafoco.com.ar\nBefore going, check that days and times haven't changed."
+      }
+    },
+    {
+      "id": "zafra-y-acero",
+      "nombre": "Zafra y Acero",
+      "categorias": [
+        "eventos",
+        "cultura"
+      ],
+      "zona": "",
+      "tipo": "Muestra de fotografía",
+      "momento": "noche",
+      "breve": "Zafra y Acero, a 60 años del cierre de los ingenios azucareros en Tucumán.",
+      "texto": "Con la curaduría de la Dra. Silvia Leonor Agüero, las artistas Ana Lía Sorrentino y Graciela Lavado abren al público su espectacular registro visual sobre la industria azucarera.",
+      "practico": "Organiza la Facultad de Artes de la UNT.",
+      "foto": "fotos/zafra-y-acero.jpg",
+      "credito": "@ingeniodelasartes",
+      "direccion": "Ingenio de las Artes, San Miguel de Tucumán",
+      "instagram": "@ingeniodelasartes",
+      "whatsapp": "",
+      "web": "",
+      "mail": "",
+      "precio": "",
+      "alta": "2026-10-28",
+      "evento": {
+        "cuando": "Jueves 29 de octubre, 19 h",
+        "inicio": "2026-10-29T03:00:00.000Z",
+        "fin": "2026-10-30T02:59:00.000Z"
+      },
+      "en": {
+        "nombre": "Zafra y Acero",
+        "tipo": "Photography exhibition",
+        "cuando": "Thursday 29 October, 7 pm",
+        "breve": "Zafra y Acero, 60 years on from the closure of Tucumán's sugar mills.",
+        "texto": "Curated by Dr Silvia Leonor Agüero, artists Ana Lía Sorrentino and Graciela Lavado open their remarkable visual record of the sugar industry to the public.",
+        "practico": "Organised by the Faculty of Arts, UNT."
+      }
+    },
+    {
+      "id": "aguacero",
+      "nombre": "Aguacero Ediciones",
+      "categorias": [
+        "cultura"
+      ],
+      "zona": "",
+      "tipo": "Editorial y revista de poesía",
+      "momento": "ambos",
+      "breve": "Editorial independiente de poesía, hecha en Tucumán.",
+      "texto": "Siete años de libros. Aguacero descubre y promueve voces poéticas, de poetas emergentes y consolidados.\n\nSu nombre viene de la lluvia repentina, impetuosa y abundante.",
+      "practico": "Hacen envíos a todo el país desde su web.",
+      "foto": "fotos/aguacero.jpg",
+      "credito": "@aguaceroediciones",
+      "direccion": "",
+      "instagram": "@aguaceroediciones",
+      "whatsapp": "",
+      "web": "https://www.aguaceroediciones.com",
+      "mail": "",
+      "precio": "",
+      "alta": "2026-10-28",
+      "en": {
+        "nombre": "Aguacero Ediciones",
+        "tipo": "Poetry publisher and magazine",
+        "breve": "An independent poetry publisher, made in Tucumán.",
+        "texto": "Seven years of books. Aguacero seeks out and champions poetic voices, from emerging and established poets alike.\n\nIts name comes from a sudden, heavy, abundant downpour.",
+        "practico": "They ship nationwide from their website."
       }
     }
   ]
